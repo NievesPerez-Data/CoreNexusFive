@@ -51,16 +51,22 @@ const { title, description, image = '/blog-placeholder-1.jpg' } = Astro.props;
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={new URL(image, Astro.url)} />
 
-<!-- Google font fugaz - optimized to prevent render blocking -->
+<!-- Google font fugaz - optimized -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" href="https://fonts.googleapis.com/css2?family=Fugaz+One&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link href="https://fonts.googleapis.com/css2?family=Fugaz+One&display=swap" rel="stylesheet"></noscript>
+<link href="https://fonts.googleapis.com/css2?family=Fugaz+One&display=swap" rel="stylesheet">
+
+<!-- Preload primary font -->
+<link
+  rel="preload"
+  href="/styles/fonts/RobotoCondensed-Regular.woff2"
+  as="font"
+  type="font/woff2"
+  crossorigin
+/>
 
 <!-- Preconnect to Iconify API for faster icon loading -->
 <link rel="preconnect" href="https://api.iconify.design" crossorigin>
 
-<!-- Preload critical resources -->
-<link rel="preload" href="/assets/city1.webp" as="image" fetchpriority="high">
-<link rel="preload" href="/assets/city2.webp" as="image">
-<link rel="preload" href="/assets/city3.webp" as="image">
+<!-- Preload only the first hero image (responsive version) -->
+<link rel="preload" href="/assets/city1-800.webp" as="image" fetchpriority="high">

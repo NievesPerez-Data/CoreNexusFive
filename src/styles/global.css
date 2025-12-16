@@ -1,5 +1,5 @@
 @import "tailwindcss";
-@import "@/styles/fonts/stylesheet.css";
+@import "./fonts/stylesheet.css";
 
 @theme {
   --font-sans: "Roboto Condensed", "sans-serif";

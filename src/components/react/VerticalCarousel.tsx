@@ -125,19 +125,32 @@ const VerticalCarousel: React.FC<VerticalCarouselProps> = ({
         }}
         className={`h-full flex gap-10 ${isMobile ? 'flex-row items-center' : 'flex-col'}`}
       >
-        {images.map(({ src, alt }, index) => (
-          <div key={index} className={`flex flex-grow justify-center ${isMobile ? 'h-full min-w-[100vw]' : 'w-full'}`}>
-            <img
-              src={src}
-              alt={alt}
-              loading={index === 0 ? "eager" : "lazy"}
-              decoding="async"
-              draggable={false}
-              fetchPriority={index === 0 ? "high" : "auto"}
-              className={`object-contain ${isMobile ? 'max-h-[80vh] max-w-[90vw]' : 'max-w-full max-h-[80vh]'}`}
-            />
-          </div>
-        ))}
+        {images.map(({ src, alt }, index) => {
+          const baseName = src.replace('.webp', '').replace('/assets/', '');
+          const srcset = [
+            `/assets/${baseName}-400.webp 400w`,
+            `/assets/${baseName}-800.webp 800w`,
+            `/assets/${baseName}-1200.webp 1200w`
+          ].join(', ');
+          
+          return (
+            <div key={index} className={`flex flex-grow justify-center ${isMobile ? 'h-full min-w-[100vw]' : 'w-full'}`}>
+              <img
+                src={`/assets/${baseName}-800.webp`}
+                srcset={srcset}
+                sizes={isMobile ? "(max-width: 768px) 90vw, 400px" : "(min-width: 768px) 1200px"}
+                width="1200"
+                height="800"
+                alt={alt}
+                loading={index === 0 ? "eager" : "lazy"}
+                decoding="async"
+                draggable={false}
+                fetchPriority={index === 0 ? "high" : "low"}
+                className={`object-contain ${isMobile ? 'max-h-[80vh] max-w-[90vw]' : 'max-w-full max-h-[80vh]'}`}
+              />
+            </div>
+          );
+        })}
       </motion.div>
     </div>
   );

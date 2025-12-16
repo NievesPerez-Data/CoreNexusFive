@@ -12,6 +12,19 @@ import { Icon } from "astro-icon/components";
 <html lang="en">
   <head>
     <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+    <style is:inline>
+      /* Critical above-the-fold styles */
+      body {
+        font-family: "Roboto Condensed", sans-serif;
+        background-color: #f2f2f2;
+        margin: 0;
+        padding: 0;
+      }
+      .container {
+        max-width: 100%;
+        margin: 0 auto;
+      }
+    </style>
   </head>
   <body class="flex flex-col items-center min-h-screen relative max-w-screen p-0 m-0 " >
     <main
