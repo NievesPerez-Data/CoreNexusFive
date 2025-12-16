@@ -31,11 +31,11 @@ const VerticalCarousel: React.FC<VerticalCarouselProps> = ({
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 768);
     };
-    
+
     checkMobile();
-    window.addEventListener('resize', checkMobile);
-    
-    return () => window.removeEventListener('resize', checkMobile);
+    window.addEventListener("resize", checkMobile);
+
+    return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
   useEffect(() => {
@@ -118,27 +118,30 @@ const VerticalCarousel: React.FC<VerticalCarouselProps> = ({
     <div className="h-screen w-full overflow-hidden relative" ref={carouselRef}>
       <motion.div
         ref={contentRef}
-        style={{ 
-          y: isMobile ? 0 : y, 
-          x: isMobile ? x : 0, 
-          willChange: "transform" 
+        style={{
+          y: isMobile ? 0 : y,
+          x: isMobile ? x : 0,
+          willChange: "transform",
         }}
-        className={`h-full flex gap-10 ${isMobile ? 'flex-row items-center' : 'flex-col'}`}
+        className="h-full flex gap-10 flex-row items-center md:flex-col"
       >
         {images.map(({ src, alt }, index) => {
-          const baseName = src.replace('.webp', '').replace('/assets/', '');
+          const baseName = src.replace(".webp", "").replace("/assets/", "");
           const srcset = [
             `/assets/${baseName}-400.webp 400w`,
             `/assets/${baseName}-800.webp 800w`,
-            `/assets/${baseName}-1200.webp 1200w`
-          ].join(', ');
-          
+            `/assets/${baseName}-1200.webp 1200w`,
+          ].join(", ");
+
           return (
-            <div key={index} className={`flex flex-grow justify-center ${isMobile ? 'h-full min-w-[100vw]' : 'w-full'}`}>
+            <div
+              key={index}
+              className="flex flex-grow justify-center h-full min-w-[100vw] md:w-full md:min-w-0 md:h-auto"
+            >
               <img
                 src={`/assets/${baseName}-800.webp`}
-                srcset={srcset}
-                sizes={isMobile ? "(max-width: 768px) 90vw, 400px" : "(min-width: 768px) 1200px"}
+                srcSet={srcset}
+                sizes="(max-width: 768px) 90vw, 1200px"
                 width="1200"
                 height="800"
                 alt={alt}
@@ -146,7 +149,7 @@ const VerticalCarousel: React.FC<VerticalCarouselProps> = ({
                 decoding="async"
                 draggable={false}
                 fetchPriority={index === 0 ? "high" : "low"}
-                className={`object-contain ${isMobile ? 'max-h-[80vh] max-w-[90vw]' : 'max-w-full max-h-[80vh]'}`}
+                className="object-contain max-h-[80vh] max-w-[90vw] md:max-w-full"
               />
             </div>
           );
