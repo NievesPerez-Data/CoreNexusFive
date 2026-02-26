@@ -72,7 +72,7 @@ const VerticalCarousel: React.FC<VerticalCarouselProps> = ({
       // Scroll horizontal en mobile
       const maxScroll = Math.max(
         0,
-        content.scrollWidth - container.clientWidth
+        content.scrollWidth - container.clientWidth,
       );
       if (maxScroll <= 0) return;
 
@@ -85,7 +85,7 @@ const VerticalCarousel: React.FC<VerticalCarouselProps> = ({
       // Scroll vertical en desktop
       const maxScroll = Math.max(
         0,
-        content.scrollHeight - container.clientHeight
+        content.scrollHeight - container.clientHeight,
       );
       if (maxScroll <= 0) return;
 
@@ -137,18 +137,18 @@ const VerticalCarousel: React.FC<VerticalCarouselProps> = ({
                 {/* Mobile: solo 400w (suficiente para ~90vw en móviles) */}
                 <source
                   media="(max-width: 768px)"
-                  srcSet={`/assets/${baseName}-400.webp`}
+                  srcSet={`/assets/${baseName}.webp`}
                   type="image/webp"
                 />
                 {/* Desktop: 800w (suficiente para max-h-[80vh]) */}
                 <source
                   media="(min-width: 769px)"
-                  srcSet={`/assets/${baseName}-800.webp`}
+                  srcSet={`/assets/${baseName}.webp`}
                   type="image/webp"
                 />
                 {/* Fallback */}
                 <img
-                  src={`/assets/${baseName}-400.webp`}
+                  src={`/assets/${baseName}.webp`}
                   alt={alt}
                   loading={index === 0 ? "eager" : "lazy"}
                   decoding="async"
