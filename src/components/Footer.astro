@@ -104,15 +104,19 @@ const toSlugFromId = (id: string) =>
         </ul>
       </div>
     </div>
-    <hr class="col-span-1 md:col-span-2" />
-    <p class="col-span-1 md:col-span-2 text-center italic text-gray-400 px-10">
-      "If you decide that you’re going to do only the things you know are going to work, you’re going to leave a lot of opportunity on the table." — Jeff Bezos
+  <hr class="col-span-1 md:col-span-2" />
+    
+    {/* Frase de Jeff Bezos forzada en 3 líneas balanceadas */}
+    <p class="col-span-1 md:col-span-2 text-center italic text-gray-400 px-6 max-w-xl mx-auto leading-relaxed">
+      "If you decide that you’re going to do only the things<br class="hidden md:inline" /> 
+      you know are going to work, you’re going to leave<br class="hidden md:inline" /> 
+      a lot of opportunity on the table." <span class="text-gray-400 font-semibold not-italic block mt-2">— Jeff Bezos</span>
     </p>
     
-    {/* Nuevo Icono de la Nube (Cloud) */}
-    <div class="col-span-1 md:col-span-2 text-center mx-auto pb-20 opacity-60 text-blue-400">
+    {/* Icono de la Nube en color Negro y sin animación para una estética más sólida */}
+    <div class="col-span-1 md:col-span-2 text-center mx-auto pb-20 text-black">
       <svg
-        class="w-10 h-10 mx-auto animate-pulse"
+        class="w-10 h-10 mx-auto"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
         fill="none"
