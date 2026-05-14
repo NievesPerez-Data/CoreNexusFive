@@ -1,44 +1,82 @@
----
-import { Icon } from "astro-icon/components";
-import DeskNav from "@/components/react/DeskNav";
-import SearchBar from "@/components/react/SearchBar";
-import { getCollection } from "astro:content";
+import { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import OptimizedIcon from "../OptimizedIcon";
 
-const [blogEntries, collectionEntries] = await Promise.all([
-  getCollection("blog"),
-  getCollection("collection"),
-]);
-
-const searchItems = [
-  ...blogEntries.map((p) => ({
-    title: p.data.title as string,
-    url: `/blog/${p.id}`,
-    collection: "blog",
-  })),
-  ...collectionEntries.map((p) => ({
-    title: p.data.title as string,
-    url: `/collection/${p.id}`,
-    collection: "collection",
-  })),
+// Definimos los nuevos nombres técnicos directamente
+const navLinks = [
+  { href: "/", text: "Project Overview" },
+  { href: "/arquitectura", text: "Stack & Data Flow" },
+  { href: "/blog", text: "Documentación Técnica" },
+  { href: "/resultados", text: "Demo & Entrega" },
+  { href: "/contacto", text: "Perfil Profesional" },
 ];
----
 
-<section
-  class="hidden p-2 fixed right-6 md:flex flex-col w-2/12 py-10 justify-between h-full min-h-screen"
->
-  <div class="flex justify-end relative z-10">
-    <SearchBar items={searchItems} client:idle />
-  </div>
-  <DeskNav client:idle />
-  <div
-    class="flex flex-col justify-end items-end text-3xl gap-5 relative z-10 ab"
-  >
-    <a
-      href="https://jramma.com"
-      target="_blank"
-      class="text-base rotate-90 absolute -top-30 -right-4">jramma &reg;</a
-    >
-    <a href="https://jramma.com" target="_blank"> <Icon name="insta" /></a>
-    <a href="https://jramma.com" target="_blank"> <Icon name="pinterest" /></a>
-  </div>
-</section>
+export default function Navigation() {
+  const [isOpen, setOpen] = useState(false);
+  const [currentPath, setCurrentPath] = useState("");
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setCurrentPath(window.location.pathname);
+      // Abrir automáticamente solo en la home para presentar el proyecto
+      if (window.location.pathname === "/") {
+        setOpen(true);
+      }
+    }
+  }, []);
+
+  return (
+    <div className="flex flex-col items-end absolute top-1/2 right-0">
+      {!isOpen ? (
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+          <button onClick={() => setOpen(true)} className="cursor-pointer p-2">
+            <OptimizedIcon name="menu" className="w-10 h-10" />
+          </button>
+        </motion.div>
+      ) : (
+        <button onClick={() => setOpen(false)} className="z-50 cursor-pointer p-2">
+          <OptimizedIcon name="close" className="w-8 h-8" />
+        </button>
+      )}
+
+      <AnimatePresence>
+        {isOpen && (
+          <motion.nav
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: 50 }}
+            className="flex flex-col text-right justify-center gap-10 fixed top-0 right-0 p-10 h-screen bg-background border-l border-white/10 w-80 shadow-2xl"
+          >
+            <div>
+              <h1 className="text-4xl font-bold leading-tight">
+                Big City <br /> Life
+              </h1>
+              <p className="text-xs tracking-widest uppercase opacity-50 mt-2">Data Engineering Project</p>
+            </div>
+            
+            <ul className="text-xl flex flex-col gap-6">
+              {navLinks.map((link) => {
+                const isCurrent = currentPath === link.href;
+                return (
+                  <motion.li key={link.href} whileHover={{ x: -5 }}>
+                    <a 
+                      href={link.href} 
+                      onClick={() => setOpen(false)}
+                      className={`block transition-all ${
+                        isCurrent 
+                        ? "font-bold text-2xl text-white border-r-4 border-white pr-4" 
+                        : "text-gray-400 hover:text-white"
+                      }`}
+                    >
+                      {link.text}
+                    </a>
+                  </motion.li>
+                );
+              })}
+            </ul>
+          </motion.nav>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+}
