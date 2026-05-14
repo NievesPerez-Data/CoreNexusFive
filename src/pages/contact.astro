@@ -37,8 +37,8 @@ import Layout from "../layouts/Layout.astro";
 
               <div class="side-note">
                   <svg class="marker-arrow" viewBox="0 0 120 80">
-                    <path d="M-20,60 Q10,50 40,25 Q60,5 110,15" stroke="black" stroke-width="12" fill="none" stroke-linecap="round"/>
-                    <path d="M85,5 L112,16 L90,35" stroke="black" stroke-width="12" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M-20,40 Q30,35 110,40" stroke="black" stroke-width="12" fill="none" stroke-linecap="round"/>
+                    <path d="M85,20 L112,41 L85,60" stroke="black" stroke-width="12" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
                   </svg>
                   <span class="handwritten-text">Uniendo el 'qué' con el 'dónde'</span>
               </div>
@@ -52,9 +52,9 @@ import Layout from "../layouts/Layout.astro";
               </p>
               
               <div class="side-note">
-                  <svg class="marker-arrow" viewBox="0 0 120 80" style="transform: scaleY(-1) rotate(10deg);">
-                    <path d="M-20,60 Q10,50 40,25 Q60,5 110,15" stroke="black" stroke-width="12" fill="none" stroke-linecap="round"/>
-                    <path d="M85,5 L112,16 L90,35" stroke="black" stroke-width="12" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                  <svg class="marker-arrow" viewBox="0 0 120 80">
+                    <path d="M-20,40 Q30,35 110,40" stroke="black" stroke-width="12" fill="none" stroke-linecap="round"/>
+                    <path d="M85,20 L112,41 L85,60" stroke="black" stroke-width="12" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
                   </svg>
                   <span class="handwritten-text">Hitos reales que no se borran de la nube</span>
               </div>
@@ -86,9 +86,9 @@ import Layout from "../layouts/Layout.astro";
               </p>
 
               <div class="side-note">
-                  <svg class="marker-arrow" viewBox="0 0 120 80" style="transform: rotate(15deg);">
-                    <path d="M-20,20 Q20,20 50,50 Q70,80 110,75" stroke="black" stroke-width="12" fill="none" stroke-linecap="round"/>
-                    <path d="M85,60 L112,76 L85,95" stroke="black" stroke-width="12" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                  <svg class="marker-arrow" viewBox="0 0 120 80">
+                    <path d="M-20,40 Q30,35 110,40" stroke="black" stroke-width="12" fill="none" stroke-linecap="round"/>
+                    <path d="M85,20 L112,41 L85,60" stroke="black" stroke-width="12" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
                   </svg>
                   <span class="handwritten-text">Un manual pensado para el mundo real.</span>
               </div>
@@ -148,45 +148,44 @@ import Layout from "../layouts/Layout.astro";
         width: 100%;
     }
 
-    /* CONTENEDOR DE NOTA AJUSTADO */
+    /* CONTENEDOR DE NOTA */
     .side-note {
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
-        right: -240px; /* Acercado al bloque */
-        width: 250px; /* Reducido para letras más pequeñas */
+        right: -280px; /* Aumentado de -240px para separar el texto del borde */
+        width: 250px; 
         display: flex;
         flex-direction: column;
         align-items: flex-start;
         pointer-events: none;
     }
 
-    /* FLECHA MÁS PEQUEÑA */
+    /* TODAS LAS FLECHAS IGUALES (ESTILO RECTO) */
     .marker-arrow {
-        width: 80px; /* Reducido de 130px */
+        width: 80px; 
         height: auto;
-        margin-left: -35px; /* Sigue naciendo dentro */
+        margin-left: -30px; /* Mantiene el origen dentro del recuadro */
         margin-bottom: 5px;
         overflow: visible;
     }
 
-    /* LETRAS UN POCO MÁS PEQUEÑAS */
+    /* TEXTO MANUSCRITO */
     .handwritten-text {
         font-family: 'Caveat', cursive;
-        font-size: 45px; /* Reducido de 65px */
+        font-size: 45px; 
         font-weight: 700;
         color: #000;
         line-height: 0.85;
-        padding-left: 10px;
-        transform: rotate(-2deg);
+        padding-left: 15px; /* Más separación interna */
+        transform: rotate(-1deg);
         display: block;
     }
 
     /* Adaptaciones */
     @media (max-width: 1400px) {
-        .side-note { right: -180px; width: 200px; }
+        .side-note { right: -200px; width: 200px; }
         .handwritten-text { font-size: 32px; }
-        .marker-arrow { width: 60px; margin-left: -20px; }
     }
 
     @media (max-width: 1100px) {
