@@ -3,33 +3,27 @@ import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="Perfil Profesional | Core Nexus Five">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Caveat:wght@600&display=swap" rel="stylesheet">
-
   <div class="web-container">
       
       <aside class="sidebar">
-          <div class="sidebar-decorations">
-              <div class="decoration-line line1"></div>
-              <div class="decoration-line line2"></div>
-              <div class="decoration-line line3"></div>
+          <div class="sidebar-card">
+              <h1 class="sidebar-title font-fugaz">AWS Data Analytics & Architecture</h1>
+              <div class="sidebar-subtitle">Sobre Mí & Enfoque</div>
+              
+              <p class="sidebar-text">
+                  Trayectoria centrada en transforming datos brutos en decisiones inteligentes. Combino una sólida experiencia en gestión de equipos y unidades de negocio con una formación técnica avanzada en Análisis de Datos, aportando una visión ejecutiva única junto a la excelencia técnica en la nube.
+              </p>
+              
+              <a href="/CoreNexusFive" class="portfolio-btn">
+                Ir al Portafolio Principal &rarr;
+              </a>
           </div>
-          
-          <h1 class="sidebar-title">AWS Data Analytics & Architecture</h1>
-          <div class="sidebar-subtitle">Sobre Mí & Enfoque</div>
-          
-          <p class="sidebar-text">
-              Trayectoria centrada en transformar datos brutos en decisiones inteligentes. Combino una sólida experiencia en gestión de equipos y unidades de negocio con una formación técnica avanzada en Análisis de Datos, aportando una visión ejecutiva única junto a la excelencia técnica en la nube.
-          </p>
-          
-          <a href="/" class="portfolio-btn">Ir a mi Portafolio Principal &rarr;</a>
       </aside>
 
       <main class="content-flow">
           
           <section class="block-card">
-              <h2 class="section-title">Donde el dato encuentra su infraestructura</h2>
+              <h2 class="section-title font-fugaz">Donde el dato encuentra su infraestructura</h2>
               <p class="block-text">
                   Mi trayectoria siempre se ha centrado en transformar datos brutos en decisiones estratégicas de alto impacto. Sin embargo, tras finalizar mi bootcamp en Data Analytics con Adalab, me di cuenta de que para que un KPI transforme un negocio, primero necesita una infraestructura sólida, escalable y segura que lo sostenga. 
                   <br><br>
@@ -37,14 +31,14 @@ import Layout from "../layouts/Layout.astro";
               </p>
           </section>
 
-          <section class="catalizador-card">
-              <h2 class="section-title">El Catalizador</h2>
+          <section class="block-card highlight-card">
+              <h2 class="section-title font-fugaz">El Catalizador</h2>
               <p class="block-text italic-text">
                   Rompiendo los estereotipos del sector, decidí dominar la nube de AWS y abrirme paso en el mercado laboral embarazada de cuatro meses. No fue un freno, fue el catalizador definitivo. Ahí comprobé que la madurez profesional y la resiliencia son el mejor motor para desarmar y entender arquitecturas complejas.
               </p>
               
               <div class="handwritten-annotation">
-                  <svg class="arrow-svg" viewBox="0 0 50 50" fill="none" stroke="#e11d48" stroke-width="2.5" stroke-linecap="round">
+                  <svg class="arrow-svg" viewBox="0 0 50 50" fill="none" stroke="#000000" stroke-width="1.5" stroke-linecap="round">
                       <path d="M45,15 C35,10 15,15 10,30" />
                       <path d="M5,22 L10,30 L18,27" />
                   </svg>
@@ -55,7 +49,7 @@ import Layout from "../layouts/Layout.astro";
           </section>
 
           <section class="block-card">
-              <h2 class="section-title">La Reality de la Nube: Más allá de los manuales</h2>
+              <h2 class="section-title font-fugaz">La Reality de la Nube: Más allá de los manuales</h2>
               <p class="block-text">
                   El ecosistema de AWS avanza a una velocidad vertiginosa. Quienes venimos de gestionar equipos y optimizar procesos sabemos que la teoría rara vez sobrevive al impacto con la reality. Nos enfrentamos a laboratorios donde el tiempo jugaba en contra y a plataformas que se actualizaban más rápido que los temarios.
                   <br><br>
@@ -64,7 +58,7 @@ import Layout from "../layouts/Layout.astro";
           </section>
 
           <section class="block-card">
-              <h2 class="section-title">Más allá de la Demo: ¿Por qué documentar este proceso?</h2>
+              <h2 class="section-title font-fugaz">Más allá de la Demo: ¿Por qué documentar este proceso?</h2>
               <p class="block-text">
                   Cualquiera puede seguir un tutorial y desplegar un servicio. Pero mi valor diferencial reside en unir el rigor técnico con la visión ejecutiva, y eso es lo que da vida a este espacio.
                   <br><br>
@@ -78,155 +72,187 @@ import Layout from "../layouts/Layout.astro";
 </Layout>
 
 <style>
+    /* Estructura general con el fondo gris técnico integrado */
     .web-container {
         max-width: 1140px;
         margin: 40px auto;
-        padding: 0 20px;
+        padding: 40px 20px;
         display: flex;
-        gap: 70px;
-        font-family: 'Plus Jakarta Sans', sans-serif;
-        background-color: #ffffff;
+        gap: 40px;
+        background-color: #f4f4f5; /* El fondo general ahora es gris suave (estilo bg-muted) */
+        border-radius: 8px;
         position: relative;
     }
 
+    /* Columna Izquierda (Sticky) */
     .sidebar {
-        flex: 0 0 320px;
+        flex: 0 0 340px;
         position: sticky;
         top: 40px;
         height: fit-content;
     }
-    .sidebar-decorations {
-        position: relative;
-        margin-bottom: 25px;
-        height: 35px;
+
+    .sidebar-card {
+        border: 1px solid rgba(0, 0, 0, 0.15);
+        background-color: #ffffff; /* Los recuadros se mantienen blancos para resaltar */
+        padding: 30px;
+        border-radius: 4px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
     }
-    .decoration-line {
-        position: absolute;
-        width: 25px;
-        height: 1.5px;
-        background-color: #fca5a5;
-        transform: rotate(-45deg);
-        opacity: 0.8;
-    }
-    .line1 { top: 0; left: 10px; }
-    .line2 { top: 12px; left: 25px; }
-    .line3 { top: 24px; left: 40px; }
 
     .sidebar-title {
-        font-size: 24px;
-        font-weight: 700;
-        color: #1a202c;
+        font-size: 20px;
+        color: #000000;
         line-height: 1.2;
-        margin-bottom: 10px;
-    }
-    .sidebar-subtitle {
-        font-size: 13px;
-        font-weight: 600;
-        color: #e11d48;
-        margin-bottom: 20px;
+        margin-bottom: 12px;
         text-transform: uppercase;
-        letter-spacing: 1px;
     }
+
+    .sidebar-subtitle {
+        font-size: 11px;
+        font-weight: 700;
+        color: #666666;
+        margin-bottom: 24px;
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        padding-bottom: 6px;
+    }
+
     .sidebar-text {
         font-size: 14px;
-        color: #4a5568;
+        color: #333333;
         line-height: 1.6;
         text-align: justify;
     }
+
     .portfolio-btn {
         display: inline-block;
-        margin-top: 20px;
-        font-size: 14px;
-        font-weight: 600;
-        color: #e11d48;
+        margin-top: 24px;
+        font-size: 13px;
+        font-weight: 700;
+        color: #000000;
         text-decoration: none;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        border-bottom: 2px solid #000000;
+        padding-bottom: 2px;
         transition: all 0.2s ease;
     }
+
     .portfolio-btn:hover {
-        color: #be123c;
+        opacity: 0.7;
         transform: translateX(4px);
     }
 
+    /* Columna Derecha (Flujo de tarjetas) */
     .content-flow {
         flex: 1;
         display: flex;
         flex-direction: column;
-        gap: 45px;
+        gap: 30px;
     }
+
+    /* Cada sección delimitada herméticamente en blanco sobre el fondo gris */
+    .block-card {
+        background-color: #ffffff; 
+        border: 1px solid rgba(0, 0, 0, 0.15);
+        padding: 35px;
+        border-radius: 4px;
+        position: relative;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+        transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .block-card:hover {
+        border-color: #000000;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    /* Bloque destacado (El Catalizador) con un gris un pelín diferente para romper la monotonía */
+    .highlight-card {
+        background-color: #fafafa;
+        border-width: 1.5px;
+    }
+
+    /* Títulos de sección adaptados a la tipografía Fugaz One, limpios y en negro */
     .section-title {
-        font-size: 15px;
+        font-size: 16px;
         text-transform: uppercase;
-        letter-spacing: 1px;
-        color: #e11d48;
-        font-weight: 700;
-        margin-bottom: 12px;
+        letter-spacing: 0.02em;
+        color: #000000;
+        line-height: 1.3;
+        margin-bottom: 18px;
     }
+
     .block-text {
         font-size: 15px;
-        color: #4a5568;
-        line-height: 1.6;
+        color: #222222;
+        line-height: 1.65;
         text-align: justify;
     }
 
-    .catalizador-card {
-        background-color: #ffffff;
-        border-radius: 12px;
-        padding: 24px;
-        position: relative;
-        box-shadow: 0 0 30px rgba(244, 63, 94, 0.16), inset 0 0 15px rgba(244, 63, 94, 0.04);
-        border: 1px solid rgba(244, 63, 94, 0.14);
-    }
     .italic-text {
         font-style: italic;
-        color: #1a202c;
-        font-weight: 500;
+        color: #000000;
     }
 
+    /* Nota manuscrita */
     .handwritten-annotation {
         position: absolute;
-        right: -290px;
-        top: 25px;
-        width: 260px;
+        right: 35px;
+        bottom: -22px;
         display: flex;
-        align-items: flex-start;
-        gap: 10px;
+        align-items: center;
+        gap: 8px;
         pointer-events: none;
-    }
-    .arrow-svg {
-        width: 45px;
-        height: auto;
-        flex-shrink: 0;
-        transform: translateY(4px);
-    }
-    .handwritten-text {
-        font-family: 'Caveat', cursive;
-        font-size: 25px;
-        color: #e11d48;
-        line-height: 1.1;
-        transform: rotate(-1deg);
+        background: #ffffff;
+        padding: 4px 8px;
+        border: 1px solid rgba(0, 0, 0, 0.15);
+        border-radius: 4px;
     }
 
+    .arrow-svg {
+        width: 30px;
+        height: auto;
+        flex-shrink: 0;
+    }
+
+    .handwritten-text {
+        font-family: 'Caveat', cursive;
+        font-size: 18px;
+        color: #000000;
+        line-height: 1;
+    }
+
+    /* Responsivo */
     @media (max-width: 1100px) {
         .handwritten-annotation {
             position: relative;
             right: 0;
-            top: 0;
-            width: 100%;
-            margin-top: 15px;
-        }
-        .arrow-svg {
-            transform: rotate(95deg);
+            bottom: 0;
+            width: fit-content;
+            margin-top: 20px;
+            background: transparent;
+            border: none;
+            padding: 0;
         }
     }
+
     @media (max-width: 768px) {
         .web-container {
             flex-direction: column;
-            gap: 40px;
+            gap: 30px;
+            margin: 20px auto;
+            padding: 20px 15px;
         }
         .sidebar {
             position: relative;
             top: 0;
             width: 100%;
+        }
+        .block-card {
+            padding: 24px;
         }
     }
 </style>
