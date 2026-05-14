@@ -2,13 +2,13 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import OptimizedIcon from "../OptimizedIcon";
 
-// AQUÍ ES DONDE REDEFINIMOS LOS NOMBRES (Opción 2: Técnica)
+// Definición de rutas limpias para abrir en páginas independientes
 const navLinks = [
   { href: "/", text: "Project Overview" },
   { href: "/arquitectura", text: "Stack & Data Flow" },
   { href: "/blog", text: "Documentación Técnica" },
   { href: "/resultados", text: "Demo & Entrega" },
-  { href: "/contacto", text: "Perfil Profesional" },
+  { href: "/perfil", text: "Perfil Profesional" },
 ];
 
 export default function Navigation() {
@@ -64,7 +64,9 @@ export default function Navigation() {
               <h1 className="text-4xl font-bold leading-tight">
                 Core Nexus <br /> Five
               </h1>
-              <p className="text-xs tracking-widest uppercase opacity-40 mt-2">Data Pipeline Architecture: AWS S3 + Glue Architecture</p>
+              <p className="text-xs tracking-widest uppercase opacity-40 mt-2">
+                Data Pipeline Architecture: AWS S3 + Glue Architecture
+              </p>
             </div>
 
             <ul className="text-xl flex flex-col gap-6 z-10">
@@ -78,6 +80,8 @@ export default function Navigation() {
                   >
                     <a
                       href={link.href}
+                      target="_blank" 
+                      rel="noopener noreferrer"
                       className={`block transition-all ${
                         isCurrent 
                         ? "font-bold text-3xl text-white border-r-4 border-white pr-4" 
