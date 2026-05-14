@@ -2,13 +2,13 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import OptimizedIcon from "../OptimizedIcon";
 
-// Definición de rutas limpias para abrir en páginas independientes
+// Enlaces adaptados EXACTAMENTE a los archivos de tu carpeta src/pages
 const navLinks = [
   { href: "/", text: "Project Overview" },
   { href: "/arquitectura", text: "Stack & Data Flow" },
   { href: "/blog", text: "Documentación Técnica" },
-  { href: "/resultados", text: "Demo & Entrega" },
-  { href: "/perfil", text: "Perfil Profesional" },
+  { href: "/about", text: "Demo & Entrega" }, // Apunta a about.astro, puedes cambiar el texto si lo prefieres
+  { href: "/contact", text: "Perfil Profesional" }, // Apunta a contact.astro, ideal para tu perfil/contacto
 ];
 
 export default function Navigation() {
