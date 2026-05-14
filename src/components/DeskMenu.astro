@@ -3,6 +3,10 @@ import DeskNav from "@/components/react/DeskNav";
 import SearchBar from "@/components/react/SearchBar";
 import { getCollection } from "astro:content";
 
+// IMPORTACIÓN DIRECTA: Traemos las imágenes resolviendo la ruta real desde la carpeta public
+import adalabLogo from "../../../public/adalab-logo.png";
+import awsRestartLogo from "../../../public/aws-restart-logo.jpg";
+
 const [blogEntries, collectionEntries] = await Promise.all([
   getCollection("blog"),
   getCollection("collection"),
@@ -44,7 +48,7 @@ const searchItems = [
       </span>
     </div>
 
-    {/* Enlace + Imagen de Adalab (.png correcto) */}
+    {/* Enlace + Imagen de Adalab (Usa la referencia importada en los atributos) */}
     <a 
       href="https://adalab.es/" 
       target="_blank" 
@@ -53,13 +57,13 @@ const searchItems = [
       title="Adalab Tech Bootcamp"
     >
       <img 
-        src="/adalab-logo.png" 
+        src={adalabLogo.src} 
         alt="Logo Adalab" 
         class="w-full max-w-[50px] h-auto object-contain object-center grayscale hover:grayscale-0 transition-all duration-300" 
       />
     </a>
 
-    {/* Enlace + Imagen de AWS re/Start (CORREGIDO A .jpg) */}
+    {/* Enlace + Imagen de AWS re/Start (Usa la referencia importada en los atributos) */}
     <a 
       href="https://aws.amazon.com/es/training/restart/" 
       target="_blank" 
@@ -68,7 +72,7 @@ const searchItems = [
       title="AWS re/Start Program"
     >
       <img 
-        src="/aws-restart-logo.jpg" 
+        src={awsRestartLogo.src} 
         alt="Logo AWS re/Start" 
         class="w-full max-w-[55px] h-auto object-contain object-center grayscale hover:grayscale-0 transition-all duration-300" 
       />
