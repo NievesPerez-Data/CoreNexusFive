@@ -31,9 +31,9 @@ import Layout from "../layouts/Layout.astro";
               </p>
 
               <div class="side-note note-1">
-                  <svg class="arrow-svg" viewBox="0 0 50 50" fill="none" stroke="#000000" stroke-width="1.5" stroke-linecap="round">
-                      <path d="M10,15 C20,10 35,15 40,25" />
-                      <path d="M45,18 L40,25 L33,21" />
+                  <svg class="arrow-svg" viewBox="0 0 60 40" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M-20,30 Q10,15 35,10" />
+                      <path d="M25,3 L36,9 L29,19" />
                   </svg>
                   <span class="handwritten-text">Uniendo el 'qué' con el 'dónde'</span>
               </div>
@@ -46,9 +46,9 @@ import Layout from "../layouts/Layout.astro";
               </p>
               
               <div class="side-note note-2">
-                  <svg class="arrow-svg" viewBox="0 0 50 50" fill="none" stroke="#000000" stroke-width="1.5" stroke-linecap="round">
-                      <path d="M10,35 C18,20 32,15 42,22" />
-                      <path d="M44,14 L42,22 L34,21" />
+                  <svg class="arrow-svg" viewBox="0 0 60 40" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M-20,10 Q15,12 35,25" />
+                      <path d="M26,27 L36,26 L32,15" />
                   </svg>
                   <span class="handwritten-text">Hitos reales que no se borran de la nube</span>
               </div>
@@ -63,9 +63,9 @@ import Layout from "../layouts/Layout.astro";
               </p>
 
               <div class="side-note note-3">
-                  <svg class="arrow-svg" viewBox="0 0 50 50" fill="none" stroke="#000000" stroke-width="1.5" stroke-linecap="round">
-                      <path d="M10,25 C22,25 32,20 40,12" />
-                      <path d="M33,10 L40,12 L42,19" />
+                  <svg class="arrow-svg" viewBox="0 0 60 40" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M-20,25 Q10,20 35,15" />
+                      <path d="M27,7 L37,14 L29,23" />
                   </svg>
                   <span class="handwritten-text">Más allá del entorno controlado</span>
               </div>
@@ -80,9 +80,9 @@ import Layout from "../layouts/Layout.astro";
               </p>
 
               <div class="side-note note-4">
-                  <svg class="arrow-svg" viewBox="0 0 50 50" fill="none" stroke="#000000" stroke-width="1.5" stroke-linecap="round">
-                      <path d="M10,15 C25,20 35,30 40,40" />
-                      <path d="M43,32 L40,40 L32,38" />
+                  <svg class="arrow-svg" viewBox="0 0 60 40" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M-20,15 Q15,25 35,20" />
+                      <path d="M29,12 L37,20 L27,27" />
                   </svg>
                   <span class="handwritten-text">Un manual pensado para el mundo real.</span>
               </div>
@@ -94,19 +94,19 @@ import Layout from "../layouts/Layout.astro";
 </Layout>
 
 <style>
-    /* Distribución y Contenedor Principal */
+    /* Distribución general: Desplazamiento intencionado a la izquierda */
     .web-container {
-        max-width: 1300px; /* Ampliado para dar espacio holgado a las anotaciones del margen derecho */
+        max-width: 1440px; /* Más ancho general para dar salida al margen derecho */
         margin: 40px auto;
-        padding: 0 40px;
+        padding: 0 20px 0 10px; /* Margen izquierdo mínimo para pegar el contenido hacia allá */
         display: flex;
-        gap: 50px;
+        gap: 35px; /* Reducido para compactar el espacio intermedio */
         position: relative;
     }
 
-    /* BARRA LATERAL (Izquierda) - Fondo Blanco Puro */
+    /* BARRA LATERAL (Izquierda) - Más compacta y con texto mayor */
     .sidebar {
-        flex: 0 0 320px;
+        flex: 0 0 290px; /* Reducido de 320px a 290px para ganar espacio */
         position: sticky;
         top: 40px;
         height: fit-content;
@@ -115,21 +115,21 @@ import Layout from "../layouts/Layout.astro";
     .sidebar-card {
         border: 1px solid rgba(0, 0, 0, 0.15);
         background-color: #ffffff; 
-        padding: 30px;
+        padding: 24px;
         border-radius: 6px;
         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
     }
 
     .sidebar-title {
-        font-size: 20px;
+        font-size: 22px; /* Aumentado */
         color: #000000;
         line-height: 1.2;
-        margin-bottom: 10px;
+        margin-bottom: 12px;
         text-transform: uppercase;
     }
 
     .sidebar-subtitle {
-        font-size: 11px;
+        font-size: 12px; /* Aumentado */
         font-weight: 700;
         color: #666666;
         margin-bottom: 24px;
@@ -140,16 +140,16 @@ import Layout from "../layouts/Layout.astro";
     }
 
     .sidebar-text {
-        font-size: 14px;
+        font-size: 15px; /* Aumentado de 14px a 15px */
         color: #333333;
-        line-height: 1.6;
+        line-height: 1.65;
         text-align: justify;
     }
 
     .portfolio-btn {
         display: inline-block;
         margin-top: 24px;
-        font-size: 12px;
+        font-size: 13px; /* Aumentado */
         font-weight: 700;
         color: #000000;
         text-decoration: none;
@@ -170,17 +170,17 @@ import Layout from "../layouts/Layout.astro";
         flex: 1;
         display: flex;
         flex-direction: column;
-        gap: 40px;
-        max-width: 680px; /* Mantiene las líneas de lectura en un ancho óptimo */
+        gap: 45px;
+        max-width: 720px; /* Aumentado de 680px a 720px para mejorar la lectura con fuentes grandes */
     }
 
-    /* Recuadros con fondo transparente */
+    /* Recuadros transparentes */
     .block-card {
         background-color: transparent; 
         border: 1px solid rgba(0, 0, 0, 0.15);
-        padding: 35px;
+        padding: 40px; /* Aumentado el padding interno */
         border-radius: 6px;
-        position: relative; /* Clave para el posicionamiento absoluto de las flechas */
+        position: relative; 
         transition: border-color 0.2s ease;
     }
 
@@ -189,17 +189,17 @@ import Layout from "../layouts/Layout.astro";
     }
 
     .section-title {
-        font-size: 15px;
+        font-size: 18px; /* Aumentado notablemente de 15px a 18px */
         text-transform: uppercase;
         letter-spacing: 0.02em;
         color: #000000;
-        margin-bottom: 16px;
+        margin-bottom: 20px;
     }
 
     .block-text {
-        font-size: 14.5px;
-        color: #222222;
-        line-height: 1.65;
+        font-size: 16px; /* Aumentado de 14.5px a 16px para una lectura clara */
+        color: #111111;
+        line-height: 1.7;
         text-align: justify;
     }
 
@@ -207,54 +207,60 @@ import Layout from "../layouts/Layout.astro";
         font-style: italic;
     }
 
-    /* ESTILIZACIÓN DE LAS ANOTACIONES MANUALES EXTERNAS */
+    /* ANOTACIONES MANUSCRITAS QUE NACEN DESDE DENTRO */
     .side-note {
         position: absolute;
-        left: 102%; /* Saca el bloque por completo fuera del margen derecho del recuadro */
-        width: 240px;
+        left: 95%; /* Hace que comience ligeramente dentro del recuadro (sobre el borde) */
+        width: 320px; /* Ampliado de 240px a 320px para que las frases entren cómodas */
         display: flex;
         align-items: center;
-        gap: 12px;
+        gap: 5px;
         pointer-events: none;
+        z-index: 20;
     }
 
-    /* Variación de alturas personalizadas para que cada una asiente orgánicamente */
-    .note-1 { top: 20%; }
-    .note-2 { top: 40%; }
-    .note-3 { bottom: 30%; }
-    .note-4 { bottom: 15%; }
+    /* Ajuste fino de altura por bloque */
+    .note-1 { top: 35%; }
+    .note-2 { top: 45%; }
+    .note-3 { bottom: 25%; }
+    .note-4 { bottom: 20%; }
 
+    /* Flechas notablemente más grandes y expresivas */
     .arrow-svg {
-        width: 38px;
+        width: 65px; /* Ampliado de 38px a 65px para darle el protagonismo que querías */
         height: auto;
         flex-shrink: 0;
+        overflow: visible;
     }
 
-    /* Tipografía manuscrita más orgánica y legible */
+    /* Frases manuscritas con mayor tamaño de fuente */
     .handwritten-text {
         font-family: 'Caveat', cursive;
-        font-size: 22px;
+        font-size: 27px; /* Ampliado significativamente de 22px a 27px */
         color: #000000;
         line-height: 1.1;
-        transform: rotate(-1.5deg);
+        transform: rotate(-1deg);
         display: inline-block;
+        font-weight: 600; /* Le da un aspecto de trazo con rotulador más definido */
     }
 
-    /* Adaptabilidad de Pantalla (Responsive) */
-    @media (max-width: 1200px) {
+    /* Comportamiento adaptativo */
+    @media (max-width: 1350px) {
         .web-container {
-            max-width: 100%;
             padding: 0 24px;
         }
-        /* En pantallas intermedias, metemos las notas abajo a la derecha de forma sutil */
+        /* Si la pantalla baja de tamaño, integramos las notas abajo de forma limpia */
         .side-note {
             position: relative;
             left: 0;
             top: 0;
             bottom: 0;
-            margin-top: 20px;
+            margin-top: 25px;
             width: 100%;
             justify-content: flex-end;
+        }
+        .arrow-svg {
+            transform: scaleY(-1) rotate(20deg); /* Reorienta la flecha si se posiciona abajo */
         }
     }
 
@@ -263,6 +269,7 @@ import Layout from "../layouts/Layout.astro";
             flex-direction: column;
             gap: 30px;
             margin: 20px auto;
+            padding: 0 16px;
         }
         .sidebar {
             position: relative;
@@ -270,8 +277,7 @@ import Layout from "../layouts/Layout.astro";
             width: 100%;
         }
         .block-card {
-            padding: 24px;
+            padding: 28px;
         }
     }
-</style>
 </style>
