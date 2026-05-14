@@ -8,37 +8,39 @@ import VerticalCarousel from "@/components/react/VerticalCarousel";
   <div class="md:flex-row flex flex-col md:gap-10 relative md:pr-72 grow">
     
     <!-- Sección Izquierda: Identidad del Proyecto -->
-    <div class="relative hidden md:flex flex-1 flex-col items-center justify-center text-center p-12 overflow-hidden">
+    <div class="relative hidden md:flex flex-1 flex-col items-center justify-center text-center p-12 overflow-hidden bg-white">
       
-      <!-- Imagen de Fondo del Título (Ajusta la ruta a tu imagen) -->
-      <div class="absolute inset-0 z-0 flex items-center justify-center opacity-20 pointer-events-none">
+      <!-- Fondo: Imagen de nubes -->
+      <div class="absolute inset-0 z-0">
         <img 
           src="/nubes-fondo.JPG" 
-          alt="Background Decor" 
-          class="w-full h-full object-cover"
+          alt="" 
+          class="w-full h-full object-cover opacity-30 shadow-inner"
         />
+        <!-- Capa extra para suavizar el fondo si es muy fuerte -->
+        <div class="absolute inset-0 bg-white/20"></div>
       </div>
 
-      <!-- Título Principal-->
-      <h1 class="text-7xl md:text-8xl font-fugaz leading-tight uppercase mb-8 z-10 relative px-4">
+      <!-- Título Principal (Un poco más grande: de 8xl a 9xl) -->
+      <h1 class="text-8xl md:text-9xl font-fugaz leading-[0.9] uppercase mb-10 z-10 relative px-4 text-black tracking-tighter">
         Core Nexus Five
       </h1>
 
       <!-- Contenedor de Textos -->
-      <div class="flex flex-col items-center gap-4 z-10 relative">
-        <p class="text-3xl font-bold tracking-tight uppercase">
+      <div class="flex flex-col items-center gap-6 z-10 relative text-black">
+        <p class="text-4xl font-bold tracking-tight uppercase">
           Proyecto Final AWS Re/Start
         </p>
         
-        <p class="text-lg font-light italic max-w-md">
+        <p class="text-2xl font-light italic max-w-xl leading-relaxed">
           El nexo entre la infraestructura y la analítica de datos.
         </p>
 
         <!-- Tu Nombre -->
-        <div class="mt-10">
+        <div class="mt-14">
           <a 
             href="https://nievesperez-data.github.io/" 
-            class="text-xl font-medium hover:opacity-50 transition-opacity duration-300 border-b border-black"
+            class="text-3xl font-medium hover:opacity-50 transition-opacity duration-300 border-b-2 border-black pb-1"
           >
             Nieves Pérez
           </a>
