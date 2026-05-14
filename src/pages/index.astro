@@ -5,44 +5,31 @@ import VerticalCarousel from "@/components/react/VerticalCarousel";
 ---
 
 <Layout>
-  <style>
-    /* Importación de Google Fonts: Noto Serif JP para elegancia y Ma Shan Zheng para el toque asiático de pincel */
-    @import url('https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Noto+Serif+JP:wght@200;900&display=swap');
-
-    .font-asian-title {
-      font-family: 'Ma Shan Zheng', cursive;
-    }
-
-    .font-noto {
-      font-family: 'Noto Serif JP', serif;
-    }
-  </style>
-
-  <div class="md:flex-row flex flex-col md:gap-10 relative md:pr-72 grow text-black">
+  <div class="md:flex-row flex flex-col md:gap-10 relative md:pr-72 grow">
     
     <!-- Sección Izquierda: Identidad del Proyecto -->
-    <div class="relative hidden md:flex flex-1 flex-col items-center justify-center text-center p-10 font-noto">
+    <div class="relative hidden md:flex flex-1 flex-col items-center justify-center text-center">
       
-      <!-- Título Principal (Estilo Pincel Asiático) -->
-      <h1 class="text-[12rem] font-asian-title leading-none lowercase tracking-normal mb-4">
+      <!-- Título Principal (Más grande y centrado) -->
+      <h1 class="text-9xl md:text-[11rem] font-fugaz leading-none uppercase mb-10">
         Core Nexus Five
       </h1>
 
-      <!-- Contenedor de Textos Centrados -->
+      <!-- Contenedor de Textos -->
       <div class="flex flex-col items-center gap-4">
-        <p class="text-3xl font-black tracking-[0.5em] uppercase border-b-2 border-black pb-2">
+        <p class="text-4xl font-bold tracking-tight uppercase">
           Proyecto Final AWS Re/Start
         </p>
         
-        <p class="text-xl font-extralight italic max-w-xl leading-relaxed mt-4">
+        <p class="text-xl font-light italic max-w-xl">
           El nexo entre la infraestructura y la analítica de datos.
         </p>
 
-        <!-- Firma Personal -->
-        <div class="mt-16">
+        <!-- Tu Nombre -->
+        <div class="mt-12">
           <a 
             href="https://nievesperez-data.github.io/" 
-            class="text-4xl font-asian-title hover:opacity-40 transition-opacity duration-300"
+            class="text-2xl font-medium hover:opacity-50 transition-opacity duration-300 border-b border-black"
           >
             Nieves Pérez
           </a>
@@ -54,7 +41,7 @@ import VerticalCarousel from "@/components/react/VerticalCarousel";
     <HomeMob />
 
     <!-- Sección Derecha: Carrusel Visual -->
-    <div class="min-h-screen md:w-1/2 -mt-50 md:mt-0 max-h-full overflow-hidden border-l border-black/5">
+    <div class="min-h-screen md:w-1/2 -mt-50 md:mt-0 max-h-full overflow-hidden">
       <VerticalCarousel client:visible imageCount={10} />
     </div>
 
