@@ -62,9 +62,9 @@ export default function Navigation() {
           >
             <div className="mb-4">
               <h1 className="text-4xl font-bold leading-tight">
-                Big City <br /> Life
+                Core Nexus <br /> Five
               </h1>
-              <p className="text-xs tracking-widest uppercase opacity-40 mt-2">Data Pipeline Architecture</p>
+              <p className="text-xs tracking-widest uppercase opacity-40 mt-2">Data Pipeline Architecture: AWS S3 + Glue Architecture</p>
             </div>
 
             <ul className="text-xl flex flex-col gap-6 z-10">
