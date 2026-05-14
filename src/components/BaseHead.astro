@@ -1,101 +1,91 @@
-import { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import OptimizedIcon from "../OptimizedIcon";
+---
+// Import the global.css file here so that it is included on
+// all pages through the use of the <BaseHead /> component.
+import "../styles/global.css";
+import { SITE_TITLE } from "../consts";
+import { ClientRouter } from "astro:transitions";
 
-// Definimos los nuevos nombres técnicos directamente
-const navLinks = [
-  { href: "/", text: "Project Overview" },
-  { href: "/arquitectura", text: "Stack & Data Flow" },
-  { href: "/blog", text: "Documentación Técnica" },
-  { href: "/resultados", text: "Demo & Entrega" },
-  { href: "/contacto", text: "Perfil Profesional" },
-];
+import robotoCondensed from "../styles/fonts/RobotoCondensed-Regular.woff2?url";
 
-export default function Navigation() {
-  const [isOpen, setOpen] = useState(false);
-  const [currentPath, setCurrentPath] = useState("");
-
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      setCurrentPath(window.location.pathname);
-      // Abrir automáticamente solo en la home para presentar el proyecto
-      if (window.location.pathname === "/") {
-        setOpen(true);
-      }
-    }
-  }, []);
-
-  const handleLinkClick = () => {
-    setOpen(false);
-  };
-
-  return (
-    <div className="flex flex-col items-end absolute top-1/2 right-0">
-      {!isOpen ? (
-        <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }}>
-          <button 
-            className="cursor-pointer p-2" 
-            onClick={() => setOpen(true)}
-            aria-label="Open menu"
-          >
-            <OptimizedIcon name="menu" className="w-10 h-10" />
-          </button>
-        </motion.div>
-      ) : (
-        <button 
-          className="z-50 text-2xl cursor-pointer p-2" 
-          onClick={() => setOpen(false)}
-          aria-label="Close menu"
-        >
-          <OptimizedIcon name="close" className="w-8 h-8" />
-        </button>
-      )}
-
-      <AnimatePresence>
-        {isOpen && (
-          <motion.nav
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: 50 }}
-            transition={{ duration: 0.4 }}
-            className="flex flex-col text-right justify-center gap-10 fixed top-0 right-0 p-10 h-screen bg-background border-l border-white/10 w-72 md:w-96 shadow-2xl"
-          >
-            <div className="mb-10 mt-4">
-              <h1 className="text-4xl font-black leading-[0.9] text-white tracking-tighter uppercase">
-                Core Nexus <br /> 
-                <span className="text-blue-500">Five</span>
-              </h1>
-              <p className="text-[10px] tracking-[0.2em] uppercase font-bold text-blue-400/80 mt-3 border-t border-white/10 pt-2(1)">
-                Data Pipeline: AWS S3 + Glue Architecture
-              </p>
-            </div>
-
-            <ul className="text-xl flex flex-col gap-6 z-10">
-              {navLinks.map((link) => {
-                const isCurrent = currentPath === link.href;
-                return (
-                  <motion.li 
-                    key={link.href} 
-                    whileHover={{ x: -5 }}
-                    onClick={handleLinkClick}
-                  >
-                    <a
-                      href={link.href}
-                      className={`block transition-all ${
-                        isCurrent 
-                        ? "font-bold text-3xl text-white border-r-4 border-white pr-4" 
-                        : "text-gray-400 hover:text-white"
-                      }`}
-                    >
-                      {link.text}
-                    </a>
-                  </motion.li>
-                );
-              })}
-            </ul>
-          </motion.nav>
-        )}
-      </AnimatePresence>
-    </div>
-  );
+interface Props {
+  title: string;
+  description: string;
+  image?: string;
 }
+
+const {
+	title, 
+	description, 
+	image = "/blog-placeholder-about.jpg"
+} = Astro.props;
+
+const finalTitle = "Core Nexus Five | Data Pipeline";
+const finalDescription = "AWS S3 + Glue Architecture por Nieves Pérez";
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+---
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="sitemap" href="/sitemap-index.xml" />
+<link
+  rel="alternate"
+  type="application/rss+xml"
+  title={SITE_TITLE}
+  href={new URL("rss.xml", Astro.site)}
+/>
+<meta name="generator" content={Astro.generator} />
+
+<link rel="canonical" href={canonicalURL} />
+
+<title>{finalTitle}</title>
+<meta name="title" content={finalTitle} />
+<meta name="description" content={finalDescription} />
+
+<meta property="og:type" content="website" />
+<meta property="og:url" content={Astro.url} />
+<meta property="og:title" content={finalTitle} />
+<meta property="og:description" content={finalDescription} />
+<meta property="og:image" content={new URL(image, Astro.url)} />
+
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content={Astro.url} />
+<meta property="twitter:title" content={finalTitle} />
+<meta property="twitter:description" content={finalDescription} />
+<meta property="twitter:image" content={new URL(image, Astro.url)} />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Fugaz+One&display=swap"
+  rel="stylesheet"
+  media="print"
+  onload="this.media='all'"
+/>
+<noscript>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fugaz+One&display=swap"
+    rel="stylesheet"
+  />
+</noscript>
+
+<link
+  rel="preload"
+  href={robotoCondensed}
+  as="font"
+  type="font/woff2"
+  crossorigin
+/>
+
+<link rel="preconnect" href="https://api.iconify.design" crossorigin />
+
+<link
+  rel="preload"
+  as="image"
+  href="/assets/city1-800.webp"
+  imagesrcset="/assets/city1.webp"
+  imagesizes="(max-width: 768px) 90vw, 1200px"
+  fetchpriority="high"
+/>
