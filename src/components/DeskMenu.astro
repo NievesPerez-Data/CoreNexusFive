@@ -32,44 +32,43 @@ const searchItems = [
   <DeskNav client:idle />
 
   {/* Contenedor inferior de logos y texto perfectamente centrado en columna */}
-  <div class="flex flex-col items-center justify-end gap-6 relative z-10 w-10 ml-auto">
+  <div class="flex flex-col items-center justify-end gap-5 relative z-10 w-12 ml-auto">
     
-    {/* CORRECCIÓN: Cambiado text-white a text-neutral-500 para que contraste con el fondo claro */}
-    <div class="h-32 w-10 flex items-center justify-center relative mb-4">
+    {/* Texto vertical estilizado en negro/gris oscuro */}
+    <div class="h-32 w-12 flex items-center justify-center relative mb-4">
       <span 
-        class="text-[10px] tracking-[0.3em] uppercase opacity-60 font-bold select-none whitespace-nowrap inline-block text-center tracking-widest text-neutral-700"
+        class="text-[10px] tracking-[0.3em] uppercase opacity-60 font-bold select-none whitespace-nowrap inline-block text-center text-neutral-800"
         style="transform: rotate(-90deg); width: 120px; min-width: 120px;"
       >
         Cradle & Context
       </span>
     </div>
 
-    {/* CORRECCIÓN: Cambiado text-white a text-neutral-800 para dar visibilidad al logo de Adalab */}
+    {/* Logo Oficial Fiel de Adalab en Negro */}
     <a 
       href="https://adalab.es/" 
       target="_blank" 
       rel="noopener noreferrer"
-      class="opacity-70 hover:opacity-100 transition-opacity w-8 h-8 flex items-center justify-center text-neutral-800"
+      class="opacity-80 hover:opacity-100 transition-opacity w-12 h-6 flex items-center justify-center text-black"
       title="Adalab Tech Bootcamp"
     >
-      <svg viewBox="0 0 40 40" class="w-6 h-6" fill="currentColor">
-        <path d="M25.9 3.2L11.7 30H5.2L19.4 3.2h6.5zm8.9 20.1h-4.3v6.7h4.3v-6.7zm-8.2-11.2l-4 7.6h7.9l-3.9-7.6zm1.9 11.2h-3.8v6.7h3.8v-6.7z" />
-        <path d="M20 0C9 0 0 9 0 20s9 20 20 20 20-9 20-20S31 0 20 0zm0 38c-9.9 0-18-8.1-18-18S10.1 2 20 2s18 8.1 18 18-8.1 18-18 18z" />
+      <svg viewBox="0 0 115 30" class="w-12 h-auto" fill="currentColor">
+        {/* Letras A-D-A-L-A-B */}
+        <path d="M10.8 21.6H3.4L2 25H0l6.7-16h1.8l6.7 16h-2l-1.4-3.4zm-.6-1.5L7.4 12.2l-2.8 7.9h5.6zm16.5-10.9c3.8 0 6.4 2.7 6.4 6.8s-2.6 6.8-6.4 6.8H21v-13.6h5.7zm-.2 11.9c2.7 0 4.5-1.9 4.5-5.1s-1.8-5.1-4.5-5.1H23v10.2h3.6zm16.4-1h-7.4l-1.4 3.4h-2l6.7-16h1.8l6.7 16h-2l-1.4-3.4zm-.6-1.5l-2.8-7.9-2.8 7.9h5.6zM52.4 9.2h2v14.1h7.4v1.7h-9.4V9.2zm17.5 11.4h-7.4l-1.4 3.4h-2l6.7-16h1.8l6.7 16h-2l-1.4-3.4zm-.6-1.5l-2.8-7.9-2.8 7.9h5.6zm13.1-10.9c2.1 0 3.7.8 4.6 2.1.8-1.2 2.3-2.1 4.5-2.1 3.2 0 5.4 2.1 5.4 5.4v8.2h-2v-8c0-2.3-1.3-3.7-3.4-3.7-2.1 0-3.5 1.4-3.5 3.7v8h-2v-8c0-2.3-1.3-3.7-3.4-3.7-2.1 0-3.5 1.4-3.5 3.7v8h-2v-13.6h2v1.4c.9-1.1 2.4-1.7 3.9-1.7z"/>
+        {/* Isotipo triángulo/flecha original de Adalab */}
+        <path d="M100.2 9.2l13.5 7.8-13.5 7.8V9.2zm1.5 2.6v10.4l9-5.2-9-5.2z" opacity="0.8"/>
+        <path d="M101.2 11.2l11.5 5.8-11.5 5.8V11.2z" opacity="0.5"/>
       </svg>
     </a>
 
-    {/* CORRECCIÓN: Cambiado text-white a text-neutral-800 para dar visibilidad al logo de AWS */}
+    {/* Logo Oficial Fiel de AWS re/start en Negro */}
     <a 
       href="https://aws.amazon.com/es/training/restart/" 
       target="_blank" 
       rel="noopener noreferrer"
-      class="opacity-70 hover:opacity-100 transition-opacity w-8 h-8 flex items-center justify-center text-neutral-800"
+      class="opacity-80 hover:opacity-100 transition-opacity w-12 h-6 flex items-center justify-center text-black"
       title="AWS re/Start Program"
     >
-      <svg viewBox="0 0 24 24" class="w-7 h-7" fill="currentColor">
-        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm3.12 12.3c-.63.41-1.46.61-2.48.61-.95 0-1.68-.19-2.18-.57-.46-.35-.7-.88-.7-1.57 0-1.22.86-1.92 2.58-2.09l2.58-.25v-.34c0-.49-.13-.85-.38-1.07-.3-.26-.8-.39-1.5-.39-.63 0-1.12.11-1.47.34-.33.22-.53.53-.61.94l-1.97-.26c.23-.88.75-1.55 1.55-2 1-.56 2.4-.84 4.17-.84 1.59 0 2.76.36 3.51 1.07.7.67 1.05 1.69 1.05 3.06v3.29c0 .94.17 1.63.5 2.06h-2.11c-.19-.3-.32-.67-.39-1.12zM12.4 13.3c.48 0 .9-.11 1.25-.33.34-.22.52-.56.54-1.01v-.53l-2.08.21c-.84.09-1.26.43-1.26 1.02 0 .42.17.72.5.9.34.16.69.24 1.05.24zM2.8 14.5c2.4 2.1 5.9 3.2 9.2 3.2 2.8 0 5.6-.8 8-2.2.4-.2.5-.7.2-1.1-.2-.4-.7-.5-1.1-.2-2.1 1.2-4.5 1.9-7.1 1.9-3 0-6.1-1-8.2-2.8-.4-.3-.9-.2-1.2.2-.3.4-.2.9.2 1.0z"/>
-      </svg>
-    </a>
-    
-  </div>
-</section>
+      <svg viewBox="0 0 110 35" class="w-12 h-auto" fill="currentColor">
+        {/* Letras "aws" */}
+        <path d="M14.2 16.7c0 2.4-.8 3.9-2.6 3.9-1 0-1.7-.5-2.1-1.2V13c.4-.7 1.1-1.2 2.1-1.2 1.8 0 2.6 1.6 2.6 4.9zm2.1-.2c0-4.6-1.7-6.3-4.7-6.3-1.7 0-3.1.8-3.7 2.1V10.5H6v13.3h2.1v-1.3c.6 1.1 2 1.8 3.7 1.8 3-.1 4.5-2 4.5-7.8zM23.1 14.2c0-1.3
