@@ -3,9 +3,9 @@ import DeskNav from "@/components/react/DeskNav";
 import SearchBar from "@/components/react/SearchBar";
 import { getCollection } from "astro:content";
 
-// IMPORTACIÓN DIRECTA: Traemos las imágenes resolviendo la ruta real desde la carpeta public
-import adalabLogo from "../../../public/adalab-logo.png";
-import awsRestartLogo from "../../../public/aws-restart-logo.jpg";
+// CORRECCIÓN DE RUTA: Ajustado a dos niveles porque DeskMenu está en src/components/
+import adalabLogo from "../../public/adalab-logo.png";
+import awsRestartLogo from "../../public/aws-restart-logo.jpg";
 
 const [blogEntries, collectionEntries] = await Promise.all([
   getCollection("blog"),
@@ -48,7 +48,7 @@ const searchItems = [
       </span>
     </div>
 
-    {/* Enlace + Imagen de Adalab (Usa la referencia importada en los atributos) */}
+    {/* Enlace + Imagen de Adalab */}
     <a 
       href="https://adalab.es/" 
       target="_blank" 
@@ -63,7 +63,7 @@ const searchItems = [
       />
     </a>
 
-    {/* Enlace + Imagen de AWS re/Start (Usa la referencia importada en los atributos) */}
+    {/* Enlace + Imagen de AWS re/Start */}
     <a 
       href="https://aws.amazon.com/es/training/restart/" 
       target="_blank" 
