@@ -1,5 +1,4 @@
 ---
-import { Icon } from "astro-icon/components";
 import DeskNav from "@/components/react/DeskNav";
 import SearchBar from "@/components/react/SearchBar";
 import { getCollection } from "astro:content";
@@ -32,44 +31,45 @@ const searchItems = [
 
   <DeskNav client:idle />
 
-  <div class="flex flex-col justify-end items-end text-3xl gap-6 relative z-10">
+  {/* Contenedor inferior de logos y texto perfectamente centrado en columna */}
+  <div class="flex flex-col items-center justify-end gap-6 relative z-10 w-10 ml-auto">
     
-    <span 
-      class="text-[10px] tracking-[0.3em] uppercase opacity-40 rotate-90 absolute font-bold select-none"
-      style="top: -140px; right: -1.5rem; transform-origin: right bottom; white-space: nowrap;"
-    >
-      Cradle & Context
-    </span>
+    {/* Texto vertical corregido con dimensiones fijas para evitar solapamientos */}
+    <div class="h-32 w-10 flex items-center justify-center relative mb-4">
+      <span 
+        class="text-[10px] tracking-[0.3em] uppercase opacity-40 font-bold select-none whitespace-nowrap inline-block text-center tracking-widest text-white"
+        style="transform: rotate(-90deg); width: 120px; min-width: 120px;"
+      >
+        Cradle & Context
+      </span>
+    </div>
 
+    {/* Logo Oficial de Adalab (Isotipo geométrico limpio) */}
     <a 
       href="https://adalab.es/" 
       target="_blank" 
       rel="noopener noreferrer"
-      class="opacity-60 hover:opacity-100 transition-opacity w-8 h-8 flex items-center justify-center mb-1"
+      class="opacity-60 hover:opacity-100 transition-opacity w-8 h-8 flex items-center justify-center text-white"
       title="Adalab Tech Bootcamp"
     >
-      <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="w-7 h-7">
-        <path d="M4 26L14 6l10 20M9 16h10M22 18h6v8h-6z" />
+      <svg viewBox="0 0 40 40" class="w-6 h-6" fill="currentColor">
+        <path d="M25.9 3.2L11.7 30H5.2L19.4 3.2h6.5zm8.9 20.1h-4.3v6.7h4.3v-6.7zm-8.2-11.2l-4 7.6h7.9l-3.9-7.6zm1.9 11.2h-3.8v6.7h3.8v-6.7z" />
+        <path d="M20 0C9 0 0 9 0 20s9 20 20 20 20-9 20-20S31 0 20 0zm0 38c-9.9 0-18-8.1-18-18S10.1 2 20 2s18 8.1 18 18-8.1 18-18 18z" />
       </svg>
     </a>
 
+    {/* Logo Oficial de AWS (Sonrisa / Flecha representativa) */}
     <a 
       href="https://aws.amazon.com/es/training/restart/" 
       target="_blank" 
       rel="noopener noreferrer"
-      class="opacity-60 hover:opacity-100 transition-opacity w-8 h-8 flex items-center justify-center mb-3"
+      class="opacity-60 hover:opacity-100 transition-opacity w-8 h-8 flex items-center justify-center text-white"
       title="AWS re/Start Program"
     >
-      <svg viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8">
-        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1.83 14.17c-.38-.3-.59-.75-.59-1.28 0-.91.73-1.42 2.15-1.52l1.69-.11v.9c0 .4-.1.72-.3.92-.21.2-.55.3-1.02.3-.41 0-.71-.07-.93-.21zm4.18-4.22l-1.54.12c-2.31.18-3.56.96-3.56 2.51 0 1.22.86 2.05 2.27 2.05 1.12 0 1.95-.49 2.45-1.26v1.08h1.83V10.2c0-2.22-1.45-3.15-3.95-3.15-2.07 0-3.79.66-4.26 1.63l1.64.76c.26-.55.9-.94 2.1-.94 1.39 0 2 .5 2 1.63v1.32z"/>
+      <svg viewBox="0 0 24 24" class="w-7 h-7" fill="currentColor">
+        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm3.12 12.3c-.63.41-1.46.61-2.48.61-.95 0-1.68-.19-2.18-.57-.46-.35-.7-.88-.7-1.57 0-1.22.86-1.92 2.58-2.09l2.58-.25v-.34c0-.49-.13-.85-.38-1.07-.3-.26-.8-.39-1.5-.39-.63 0-1.12.11-1.47.34-.33.22-.53.53-.61.94l-1.97-.26c.23-.88.75-1.55 1.55-2 1-.56 2.4-.84 4.17-.84 1.59 0 2.76.36 3.51 1.07.7.67 1.05 1.69 1.05 3.06v3.29c0 .94.17 1.63.5 2.06h-2.11c-.19-.3-.32-.67-.39-1.12zM12.4 13.3c.48 0 .9-.11 1.25-.33.34-.22.52-.56.54-1.01v-.53l-2.08.21c-.84.09-1.26.43-1.26 1.02 0 .42.17.72.5.9.34.16.69.24 1.05.24zM2.8 14.5c2.4 2.1 5.9 3.2 9.2 3.2 2.8 0 5.6-.8 8-2.2.4-.2.5-.7.2-1.1-.2-.4-.7-.5-1.1-.2-2.1 1.2-4.5 1.9-7.1 1.9-3 0-6.1-1-8.2-2.8-.4-.3-.9-.2-1.2.2-.3.4-.2.9.2 1.0z"/>
       </svg>
     </a>
     
-    <a href="https://instagram.com" target="_blank" class="opacity-60 hover:opacity-100 transition-opacity"> 
-      <Icon name="insta" class="w-7 h-7" />
-    </g>
-    <a href="https://pinterest.com" target="_blank" class="opacity-60 hover:opacity-100 transition-opacity"> 
-      <Icon name="pinterest" class="w-7 h-7" />
-    </a>
   </div>
 </section>
