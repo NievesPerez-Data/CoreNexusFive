@@ -32,43 +32,47 @@ const searchItems = [
   <DeskNav client:idle />
 
   {/* Contenedor inferior de logos y texto perfectamente centrado en columna */}
-  <div class="flex flex-col items-center justify-end gap-5 relative z-10 w-12 ml-auto">
+  <div class="flex flex-col items-center justify-end gap-8 relative z-10 w-16 ml-auto mb-6">
     
-    {/* Texto vertical estilizado en negro/gris oscuro */}
-    <div class="h-32 w-12 flex items-center justify-center relative mb-4">
+    {/* Texto vertical estilizado */}
+    <div class="h-28 w-full flex items-center justify-center relative">
       <span 
-        class="text-[10px] tracking-[0.3em] uppercase opacity-60 font-bold select-none whitespace-nowrap inline-block text-center text-neutral-800"
+        class="text-[10px] tracking-[0.3em] uppercase opacity-50 font-bold select-none whitespace-nowrap inline-block text-center text-neutral-800"
         style="transform: rotate(-90deg); width: 120px; min-width: 120px;"
       >
         Cradle & Context
       </span>
     </div>
 
-    {/* Logo Oficial Fiel de Adalab en Negro */}
+    {/* Enlace + Imagen de Adalab */}
     <a 
       href="https://adalab.es/" 
       target="_blank" 
       rel="noopener noreferrer"
-      class="opacity-80 hover:opacity-100 transition-opacity w-12 h-6 flex items-center justify-center text-black"
+      class="opacity-80 hover:opacity-100 transition-opacity w-full flex items-center justify-center"
       title="Adalab Tech Bootcamp"
     >
-      <svg viewBox="0 0 115 30" class="w-12 h-auto" fill="currentColor">
-        {/* Letras A-D-A-L-A-B */}
-        <path d="M10.8 21.6H3.4L2 25H0l6.7-16h1.8l6.7 16h-2l-1.4-3.4zm-.6-1.5L7.4 12.2l-2.8 7.9h5.6zm16.5-10.9c3.8 0 6.4 2.7 6.4 6.8s-2.6 6.8-6.4 6.8H21v-13.6h5.7zm-.2 11.9c2.7 0 4.5-1.9 4.5-5.1s-1.8-5.1-4.5-5.1H23v10.2h3.6zm16.4-1h-7.4l-1.4 3.4h-2l6.7-16h1.8l6.7 16h-2l-1.4-3.4zm-.6-1.5l-2.8-7.9-2.8 7.9h5.6zM52.4 9.2h2v14.1h7.4v1.7h-9.4V9.2zm17.5 11.4h-7.4l-1.4 3.4h-2l6.7-16h1.8l6.7 16h-2l-1.4-3.4zm-.6-1.5l-2.8-7.9-2.8 7.9h5.6zm13.1-10.9c2.1 0 3.7.8 4.6 2.1.8-1.2 2.3-2.1 4.5-2.1 3.2 0 5.4 2.1 5.4 5.4v8.2h-2v-8c0-2.3-1.3-3.7-3.4-3.7-2.1 0-3.5 1.4-3.5 3.7v8h-2v-8c0-2.3-1.3-3.7-3.4-3.7-2.1 0-3.5 1.4-3.5 3.7v8h-2v-13.6h2v1.4c.9-1.1 2.4-1.7 3.9-1.7z"/>
-        {/* Isotipo triángulo/flecha original de Adalab */}
-        <path d="M100.2 9.2l13.5 7.8-13.5 7.8V9.2zm1.5 2.6v10.4l9-5.2-9-5.2z" opacity="0.8"/>
-        <path d="M101.2 11.2l11.5 5.8-11.5 5.8V11.2z" opacity="0.5"/>
-      </svg>
+      <img 
+        src="/adalab-logo.png" 
+        alt="Logo Adalab" 
+        class="w-full max-w-[50px] h-auto object-contain object-center grayscale" 
+      />
     </a>
 
-    {/* Logo Oficial Fiel de AWS re/start en Negro */}
+    {/* Enlace + Imagen de AWS re/Start */}
     <a 
       href="https://aws.amazon.com/es/training/restart/" 
       target="_blank" 
       rel="noopener noreferrer"
-      class="opacity-80 hover:opacity-100 transition-opacity w-12 h-6 flex items-center justify-center text-black"
+      class="opacity-80 hover:opacity-100 transition-opacity w-full flex items-center justify-center"
       title="AWS re/Start Program"
     >
-      <svg viewBox="0 0 110 35" class="w-12 h-auto" fill="currentColor">
-        {/* Letras "aws" */}
-        <path d="M14.2 16.7c0 2.4-.8 3.9-2.6 3.9-1 0-1.7-.5-2.1-1.2V13c.4-.7 1.1-1.2 2.1-1.2 1.8 0 2.6 1.6 2.6 4.9zm2.1-.2c0-4.6-1.7-6.3-4.7-6.3-1.7 0-3.1.8-3.7 2.1V10.5H6v13.3h2.1v-1.3c.6 1.1 2 1.8 3.7 1.8 3-.1 4.5-2 4.5-7.8zM23.1 14.2c0-1.3
+      <img 
+        src="/aws-restart-logo.png" 
+        alt="Logo AWS re/Start" 
+        class="w-full max-w-[55px] h-auto object-contain object-center grayscale" 
+      />
+    </a>
+    
+  </div>
+</section>
