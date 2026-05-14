@@ -3,7 +3,7 @@ import DeskNav from "@/components/react/DeskNav";
 import SearchBar from "@/components/react/SearchBar";
 import { getCollection } from "astro:content";
 
-// CORRECCIÓN DE RUTA: Ajustado a dos niveles porque DeskMenu está en src/components/
+// Importaciones de imágenes estables de la carpeta public
 import adalabLogo from "../../public/adalab-logo.png";
 import awsRestartLogo from "../../public/aws-restart-logo.jpg";
 
@@ -36,10 +36,10 @@ const searchItems = [
   <DeskNav client:idle />
 
   {/* Contenedor inferior de logos y texto perfectamente centrado en columna */}
-  <div class="flex flex-col items-center justify-end gap-8 relative z-10 w-16 ml-auto mb-6">
+  <div class="flex flex-col items-center justify-end gap-6 relative z-10 w-16 ml-auto mb-6">
     
     {/* Texto vertical estilizado */}
-    <div class="h-28 w-full flex items-center justify-center relative">
+    <div class="h-28 w-full flex items-center justify-center relative mb-2">
       <span 
         class="text-[10px] tracking-[0.3em] uppercase opacity-50 font-bold select-none whitespace-nowrap inline-block text-center text-neutral-800"
         style="transform: rotate(-90deg); width: 120px; min-width: 120px;"
@@ -48,33 +48,33 @@ const searchItems = [
       </span>
     </div>
 
-    {/* Enlace + Imagen de Adalab */}
+    {/* Enlace + Recuadro contenedor de Adalab */}
     <a 
       href="https://adalab.es/" 
       target="_blank" 
       rel="noopener noreferrer"
-      class="opacity-80 hover:opacity-100 transition-opacity w-full flex items-center justify-center"
+      class="group opacity-90 hover:opacity-100 transition-all duration-300 w-14 h-14 flex items-center justify-center border border-neutral-300/80 bg-neutral-50/50 hover:bg-neutral-900 rounded-xl shadow-sm hover:shadow-md hover:-translate-y-0.5"
       title="Adalab Tech Bootcamp"
     >
       <img 
         src={adalabLogo.src} 
         alt="Logo Adalab" 
-        class="w-full max-w-[50px] h-auto object-contain object-center grayscale hover:grayscale-0 transition-all duration-300" 
+        class="w-10 h-10 object-contain object-center grayscale group-hover:grayscale-0 group-hover:invert-0 transition-all duration-300" 
       />
     </a>
 
-    {/* Enlace + Imagen de AWS re/Start */}
+    {/* Enlace + Recuadro contenedor de AWS re/Start */}
     <a 
       href="https://aws.amazon.com/es/training/restart/" 
       target="_blank" 
       rel="noopener noreferrer"
-      class="opacity-80 hover:opacity-100 transition-opacity w-full flex items-center justify-center"
+      class="group opacity-90 hover:opacity-100 transition-all duration-300 w-14 h-14 flex items-center justify-center border border-neutral-300/80 bg-neutral-50/50 hover:bg-neutral-900 rounded-xl shadow-sm hover:shadow-md hover:-translate-y-0.5"
       title="AWS re/Start Program"
     >
       <img 
         src={awsRestartLogo.src} 
         alt="Logo AWS re/Start" 
-        class="w-full max-w-[55px] h-auto object-contain object-center grayscale hover:grayscale-0 transition-all duration-300" 
+        class="w-10 h-10 object-contain object-center grayscale group-hover:grayscale-0 transition-all duration-300" 
       />
     </a>
     
