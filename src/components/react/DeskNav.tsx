@@ -4,11 +4,11 @@ import OptimizedIcon from "../OptimizedIcon";
 
 // Enlaces adaptados EXACTAMENTE a los archivos de tu carpeta src/pages
 const navLinks = [
-  { href: "/", text: "Project Overview" },
-  { href: "/arquitectura", text: "Stack & Data Flow" },
-  { href: "/blog", text: "Documentación Técnica" },
-  { href: "/about", text: "Demo & Entrega" }, // Apunta a about.astro, puedes cambiar el texto si lo prefieres
-  { href: "/contact", text: "Perfil Profesional" }, // Apunta a contact.astro, ideal para tu perfil/contacto
+  { href: "/CoreNexusFive/", text: "Project Overview" },
+  { href: "/CoreNexusFive/arquitectura", text: "Stack & Data Flow" },
+  { href: "/CoreNexusFive/blog", text: "Documentación Técnica" },
+  { href: "/CoreNexusFive/about", text: "Demo & Entrega" },
+  { href: "/CoreNexusFive/contact", text: "Perfil Profesional" },
 ];
 
 export default function Navigation() {
