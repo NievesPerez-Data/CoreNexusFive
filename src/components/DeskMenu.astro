@@ -34,22 +34,22 @@ const searchItems = [
   {/* Contenedor inferior de logos y texto perfectamente centrado en columna */}
   <div class="flex flex-col items-center justify-end gap-6 relative z-10 w-10 ml-auto">
     
-    {/* Texto vertical corregido con dimensiones fijas para evitar solapamientos */}
+    {/* CORRECCIÓN: Cambiado text-white a text-neutral-500 para que contraste con el fondo claro */}
     <div class="h-32 w-10 flex items-center justify-center relative mb-4">
       <span 
-        class="text-[10px] tracking-[0.3em] uppercase opacity-40 font-bold select-none whitespace-nowrap inline-block text-center tracking-widest text-white"
+        class="text-[10px] tracking-[0.3em] uppercase opacity-60 font-bold select-none whitespace-nowrap inline-block text-center tracking-widest text-neutral-700"
         style="transform: rotate(-90deg); width: 120px; min-width: 120px;"
       >
         Cradle & Context
       </span>
     </div>
 
-    {/* Logo Oficial de Adalab (Isotipo geométrico limpio) */}
+    {/* CORRECCIÓN: Cambiado text-white a text-neutral-800 para dar visibilidad al logo de Adalab */}
     <a 
       href="https://adalab.es/" 
       target="_blank" 
       rel="noopener noreferrer"
-      class="opacity-60 hover:opacity-100 transition-opacity w-8 h-8 flex items-center justify-center text-white"
+      class="opacity-70 hover:opacity-100 transition-opacity w-8 h-8 flex items-center justify-center text-neutral-800"
       title="Adalab Tech Bootcamp"
     >
       <svg viewBox="0 0 40 40" class="w-6 h-6" fill="currentColor">
@@ -58,12 +58,12 @@ const searchItems = [
       </svg>
     </a>
 
-    {/* Logo Oficial de AWS (Sonrisa / Flecha representativa) */}
+    {/* CORRECCIÓN: Cambiado text-white a text-neutral-800 para dar visibilidad al logo de AWS */}
     <a 
       href="https://aws.amazon.com/es/training/restart/" 
       target="_blank" 
       rel="noopener noreferrer"
-      class="opacity-60 hover:opacity-100 transition-opacity w-8 h-8 flex items-center justify-center text-white"
+      class="opacity-70 hover:opacity-100 transition-opacity w-8 h-8 flex items-center justify-center text-neutral-800"
       title="AWS re/Start Program"
     >
       <svg viewBox="0 0 24 24" class="w-7 h-7" fill="currentColor">
