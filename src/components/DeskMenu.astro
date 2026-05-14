@@ -32,18 +32,44 @@ const searchItems = [
 
   <DeskNav client:idle />
 
-  <div class="flex flex-col justify-end items-end text-3xl gap-5 relative z-10">
-    {/* Ajuste de jramma: usamos estilos en línea o clases estándar para evitar el error de build */}
-    <a
-      href="https://jramma.com"
-      target="_blank"
-      class="text-base rotate-90 absolute"
-      style="top: -120px; right: -1rem;"
+  <div class="flex flex-col justify-end items-end text-3xl gap-6 relative z-10">
+    
+    <span 
+      class="text-[10px] tracking-[0.3em] uppercase opacity-40 rotate-90 absolute font-bold select-none"
+      style="top: -140px; right: -1.5rem; transform-origin: right bottom; white-space: nowrap;"
     >
-      jramma &reg;
+      Cradle & Context
+    </span>
+
+    <a 
+      href="https://adalab.es/" 
+      target="_blank" 
+      rel="noopener noreferrer"
+      class="opacity-60 hover:opacity-100 transition-opacity w-8 h-8 flex items-center justify-center mb-1"
+      title="Adalab Tech Bootcamp"
+    >
+      <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="w-7 h-7">
+        <path d="M4 26L14 6l10 20M9 16h10M22 18h6v8h-6z" />
+      </svg>
+    </a>
+
+    <a 
+      href="https://aws.amazon.com/es/training/restart/" 
+      target="_blank" 
+      rel="noopener noreferrer"
+      class="opacity-60 hover:opacity-100 transition-opacity w-8 h-8 flex items-center justify-center mb-3"
+      title="AWS re/Start Program"
+    >
+      <svg viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8">
+        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1.83 14.17c-.38-.3-.59-.75-.59-1.28 0-.91.73-1.42 2.15-1.52l1.69-.11v.9c0 .4-.1.72-.3.92-.21.2-.55.3-1.02.3-.41 0-.71-.07-.93-.21zm4.18-4.22l-1.54.12c-2.31.18-3.56.96-3.56 2.51 0 1.22.86 2.05 2.27 2.05 1.12 0 1.95-.49 2.45-1.26v1.08h1.83V10.2c0-2.22-1.45-3.15-3.95-3.15-2.07 0-3.79.66-4.26 1.63l1.64.76c.26-.55.9-.94 2.1-.94 1.39 0 2 .5 2 1.63v1.32z"/>
+      </svg>
     </a>
     
-    <a href="https://jramma.com" target="_blank"> <Icon name="insta" /></a>
-    <a href="https://jramma.com" target="_blank"> <Icon name="pinterest" /></a>
+    <a href="https://instagram.com" target="_blank" class="opacity-60 hover:opacity-100 transition-opacity"> 
+      <Icon name="insta" class="w-7 h-7" />
+    </g>
+    <a href="https://pinterest.com" target="_blank" class="opacity-60 hover:opacity-100 transition-opacity"> 
+      <Icon name="pinterest" class="w-7 h-7" />
+    </a>
   </div>
 </section>
