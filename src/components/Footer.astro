@@ -37,7 +37,7 @@ const toSlugFromId = (id: string) =>
       <div class="flex justify-between items-center mt-20 mb-6">
         {/* Enlace directo a tu nuevo portfolio */}
         <a 
-          href="https://nievesperez-data.github.io/" 
+          href="/CoreNexusFive/contact/" 
           target="_blank" 
           rel="noopener noreferrer" 
           class="font-bold hover:text-blue-400 transition-colors"
@@ -54,11 +54,12 @@ const toSlugFromId = (id: string) =>
       <div>
         <h2 class="font-bold uppercase text-sm mb-4">Menú</h2>
         <ul class="font-bold flex flex-col gap-2">
-          <li><a href="/">Project Overview</a></li>
-          <li><a href="/arquitectura">Stack & Data Flow</a></li>
-          <li><a href="/blog">Documentación Técnica</a></li>
-          <li><a href="/resultados">Demo & Entrega</a></li>
-          <li><a href="/contacto">Perfil Profesional</a></li>
+          {/* Corregidas todas las rutas estáticas con el prefijo /CoreNexusFive, la barra final y target="_blank" */}
+          <li><a href="/CoreNexusFive" target="_blank" rel="noopener noreferrer" class="hover:text-primary transition-colors">Project Overview</a></li>
+          <li><a href="/CoreNexusFive/arquitectura/" target="_blank" rel="noopener noreferrer" class="hover:text-primary transition-colors">Stack & Data Flow</a></li>
+          <li><a href="/CoreNexusFive/blog/" target="_blank" rel="noopener noreferrer" class="hover:text-primary transition-colors">Documentación Técnica</a></li>
+          <li><a href="/CoreNexusFive/about/" target="_blank" rel="noopener noreferrer" class="hover:text-primary transition-colors">Demo & Entrega</a></li>
+          <li><a href="/CoreNexusFive/contact/" target="_blank" rel="noopener noreferrer" class="hover:text-primary transition-colors">Perfil Profesional</a></li>
         </ul>
       </div>
       <div>
@@ -67,7 +68,8 @@ const toSlugFromId = (id: string) =>
           {
             blogCol1.map((entry: any) => (
               <li class="font-bold mb-2">
-                <a href={`/blog/${entry.id}`} class="hover:text-primary transition-colors">
+                {/* Añadido prefijo /CoreNexusFive/blog/ y barra final para las colecciones */}
+                <a href={`/CoreNexusFive/blog/${entry.id}/`} target="_blank" rel="noopener noreferrer" class="hover:text-primary transition-colors">
                   {entry.data?.title ?? entry.id}
                 </a>
               </li>
@@ -81,7 +83,8 @@ const toSlugFromId = (id: string) =>
           {
             blogCol2.map((entry: any) => (
               <li class="font-bold mb-2">
-                <a href={`/blog/${entry.id}`} class="hover:text-primary transition-colors">
+                {/* Añadido prefijo /CoreNexusFive/blog/ y barra final para las colecciones */}
+                <a href={`/CoreNexusFive/blog/${entry.id}/`} target="_blank" rel="noopener noreferrer" class="hover:text-primary transition-colors">
                   {entry.data?.title ?? entry.id}
                 </a>
               </li>
@@ -95,7 +98,8 @@ const toSlugFromId = (id: string) =>
           {
             collectionEntries.map((entry: any) => (
               <li class="font-bold mb-2">
-                <a href={`/collection/${entry.id}`} class="hover:text-primary transition-colors">
+                {/* Añadido prefijo /CoreNexusFive/collection/ y barra final para los resultados */}
+                <a href={`/CoreNexusFive/collection/${entry.id}/`} target="_blank" rel="noopener noreferrer" class="hover:text-primary transition-colors">
                   {entry.data?.title ?? entry.id}
                 </a>
               </li>
