@@ -9,7 +9,8 @@ import tailwindcss from "@tailwindcss/vite";
 import react from "@astrojs/react";
 
 export default defineConfig({
-  site: "https://CoreNexusFive.github.io",
+  site: "https://NievesPerez-Data.github.io",
+  base: "/CoreNexusFive",
   output: 'static',
   integrations: [mdx(), sitemap(), icon(), react()],
   vite: {
