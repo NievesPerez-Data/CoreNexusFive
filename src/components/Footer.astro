@@ -1,7 +1,8 @@
 ---
-// CORREGIDO: Las imágenes dentro de 'public' NO se importan aquí con sintaxis 'import'.
-// En Astro se consumen directamente escribiendo la ruta como si ya estuvieran en la web.
+// CORREGIDO: Las imágenes dentro de 'public' NO se importan aquí arriba.
+// Se llaman directamente abajo en el HTML usando rutas absolutas desde la raíz.
 
+// Rutas con '/' al final para evitar redirecciones automáticas a Home
 const navLinks = [
   { href: "/CoreNexusFive/", text: "Home" }, 
   { href: "/CoreNexusFive/overview/", text: "Project Overview" }, 
@@ -15,6 +16,7 @@ const navLinks = [
 <!-- 1. HEADER SUPERIOR FLOTANTE (Para Móviles y Tablets) -->
 <div class="fixed top-0 left-0 w-full h-16 bg-white/95 backdrop-blur-md border-b border-neutral-200 z-[100] flex items-center justify-between px-5 md:hidden shadow-sm">
   <a href="/CoreNexusFive/" class="flex items-center gap-2 active:scale-95 transition-transform">
+    <!-- CORREGIDO: Ruta absoluta directa a public -->
     <img 
       src="/CoreNexusFive/mi-logo-propio.jpg" 
       alt="Logo Proyecto" 
@@ -36,7 +38,7 @@ const navLinks = [
   </button>
 </div>
 
-<!-- 2. BOTÓN FLOTANTE PARA ESCRITORIO (Asegura que el menú no desaparezca en PC) -->
+<!-- 2. BOTÓN FLOTANTE PARA ESCRITORIO -->
 <button
   id="desktop-menu-open"
   class="fixed top-6 right-6 z-[110] hidden md:flex items-center gap-2 bg-neutral-950 text-white px-4 py-2.5 rounded-xl border border-white/10 shadow-lg hover:bg-neutral-900 transition-all active:scale-95 group"
@@ -87,23 +89,25 @@ const navLinks = [
     ))}
   </ul>
 
-  <!-- PIE DE PÁGINA DEL MENÚ (Sección de créditos con rutas de producción fijas) -->
+  <!-- PIE DE PÁGINA DEL MENÚ -->
   <div class="flex flex-col items-center gap-3 border-t border-white/10 pt-6 w-full mt-auto">
     <span class="text-[9px] tracking-[0.3em] uppercase opacity-40 font-bold select-none text-white">
       Cradle & Context
     </span>
     <div class="flex items-center justify-center gap-4 mt-1">
       <a href="https://adalab.es/" target="_blank" rel="noopener noreferrer" class="w-12 h-12 flex items-center justify-center bg-white rounded-xl shadow-md overflow-hidden">
+        <!-- CORREGIDO: Ruta absoluta directa al logo de Adalab en public -->
         <img src="/CoreNexusFive/adalab-logo.png" alt="Logo Adalab" class="w-9 h-9 object-contain" />
       </a>
       <a href="https://aws.amazon.com/es/training/restart/" target="_blank" rel="noopener noreferrer" class="w-12 h-12 flex items-center justify-center bg-white rounded-xl shadow-md overflow-hidden">
+        <!-- CORREGIDO: Ruta absoluta directa al logo de AWS en public -->
         <img src="/CoreNexusFive/aws-restart-logo.png" alt="Logo AWS" class="w-9 h-9 object-contain" />
       </a>
     </div>
   </div>
 </nav>
 
-<!-- 4. CONTROL DE INTERACTIVIDAD FLUIDA DIRECTO EN EL NAVEGADOR -->
+<!-- 4. SCRIPT EN JAVASCRIPT PLANO TOTALMENTE COMPATIBLE -->
 <script>
   const mobileToggle = document.getElementById("mobile-menu-toggle");
   const desktopOpen = document.getElementById("desktop-menu-open");
@@ -131,31 +135,28 @@ const navLinks = [
     }
   }
 
-  // Eventos para abrir y cerrar
-  mobileToggle?.addEventListener("click", openMenu);
-  desktopOpen?.addEventListener("click", openMenu);
-  closeBtn?.addEventListener("click", closeMenu);
+  if (mobileToggle) mobileToggle.addEventListener("click", openMenu);
+  if (desktopOpen) desktopOpen.addEventListener("click", openMenu);
+  if (closeBtn) closeBtn.addEventListener("click", closeMenu);
 
-  // Marcar la ruta activa de forma segura
+  // Normalización de rutas para estilos en escala de grises activos
   const currentPath = window.location.pathname;
   
   function normalizePath(p) {
     if (!p) return "";
-    return p.replace(/\/$/, ""); // Quita la barra final si existe para comparar limpiamente
+    return p.endsWith("/") ? p.slice(0, -1) : p;
   }
 
   navLinks.forEach((link) => {
     const href = link.getAttribute("href");
     
     if (normalizePath(currentPath) === normalizePath(href)) {
-      // Limpiamos los colores claros originales para que no hagan conflicto
-      link.classList.remove("text-neutral-400", "text-gray-400", "text-white");
+      link.classList.remove("text-neutral-400", "text-gray-400");
       
-      // CORREGIDO: Aplicamos clases de color gris suave (text-neutral-300) y el borde sutil
       link.classList.add(
         "font-bold", 
         "text-2xl", 
-        "text-neutral-300", 
+        "text-white", 
         "border-r-4", 
         "border-neutral-500", 
         "pr-4"
