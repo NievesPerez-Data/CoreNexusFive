@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-// Importación estable de tus logos
+// Importación estable de tus logos y tu nuevo icono personalizado
 import adalabLogo from "../../../public/adalab-logo.png";
 import awsRestartLogo from "../../../public/aws-restart-logo.png";
+import miLogoPropio from "../../../public/mi-logo-propio.png"; // <-- IMPORTACIÓN DE TU LOGO
 
 const navLinks = [
   { href: "/CoreNexusFive/", text: "Project Overview" },
@@ -28,35 +29,35 @@ export default function DeskNav() {
 
   return (
     <>
-     {/* HEADER SUPERIOR FLOTANTE CON TU LOGO INTEGRADO (SOLO MÓVIL) */}
-<div className="fixed top-0 left-0 w-full h-16 bg-white/95 backdrop-blur-md border-b border-neutral-200 z-[100] flex items-center justify-between px-5 md:hidden shadow-sm">
-  <a href="/CoreNexusFive/" className="flex items-center gap-2 active:scale-95 transition-transform">
-    <img 
-      src="/mi-logo-propio.png" 
-      alt="Logo Proyecto" 
-      className="h-9 w-auto object-contain" 
-    />
-    <span className="font-fugaz uppercase text-base tracking-tight text-neutral-900">
-      Core Nexus 5
-    </span>
-  </a>
-  
-  <button
-    aria-label={isOpen ? "Cerrar menú" : "Abrir menú"}
-    onClick={() => setOpen(!isOpen)}
-    className="w-10 h-10 bg-neutral-950 text-white rounded-lg flex items-center justify-center active:scale-95 transition-transform focus:outline-none"
-  >
-    {isOpen ? (
-      <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-      </svg>
-    ) : (
-      <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-      </svg>
-    )}
-  </button>
-</div>
+      {/* HEADER SUPERIOR FLOTANTE CON TU LOGO CORREGIDO (.src) */}
+      <div className="fixed top-0 left-0 w-full h-16 bg-white/95 backdrop-blur-md border-b border-neutral-200 z-[100] flex items-center justify-between px-5 md:hidden shadow-sm">
+        <a href="/CoreNexusFive/" className="flex items-center gap-2 active:scale-95 transition-transform">
+          <img 
+            src={miLogoPropio.src} // <-- CORREGIDO AQUÍ
+            alt="Logo Proyecto" 
+            className="h-9 w-auto object-contain" 
+          />
+          <span className="font-fugaz uppercase text-base tracking-tight text-neutral-900">
+            Core Nexus 5
+          </span>
+        </a>
+        
+        <button
+          aria-label={isOpen ? "Cerrar menú" : "Abrir menú"}
+          onClick={() => setOpen(!isOpen)}
+          className="w-10 h-10 bg-neutral-950 text-white rounded-lg flex items-center justify-center active:scale-95 transition-transform focus:outline-none"
+        >
+          {isOpen ? (
+            <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          ) : (
+            <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          )}
+        </button>
+      </div>
 
       {/* BOTÓN DE CERRAR EXCLUSIVO PARA ESCRITORIO */}
       {isOpen && (
@@ -81,7 +82,6 @@ export default function DeskNav() {
             transition={{ duration: 0.4 }}
             className="flex flex-col text-right justify-between fixed top-0 right-0 p-10 h-screen bg-neutral-950 text-white border-l border-white/10 w-72 md:w-96 shadow-2xl z-40"
           >
-            {/* Bloque Superior */}
             <div className="mb-4 mt-16 md:mt-10 text-right">
               <h1 className="text-4xl font-bold leading-tight text-white font-fugaz">
                 Core Nexus <br /> Five
@@ -91,7 +91,6 @@ export default function DeskNav() {
               </p>
             </div>
 
-            {/* Bloque Medio: Enlaces */}
             <ul className="text-xl flex flex-col gap-6 z-10 my-auto">
               {navLinks.map((link) => {
                 const isCurrent = currentPath === link.href;
@@ -116,26 +115,15 @@ export default function DeskNav() {
               })}
             </ul>
 
-            {/* Bloque Inferior: Insignias formativas */}
             <div className="flex flex-col items-center gap-3 border-t border-white/10 pt-6 w-full mt-auto">
               <span className="text-[9px] tracking-[0.3em] uppercase opacity-40 font-bold select-none text-white">
                 Cradle & Context
               </span>
               <div className="flex items-center justify-center gap-4 mt-1">
-                <a 
-                  href="https://adalab.es/" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="w-12 h-12 flex items-center justify-center bg-white rounded-xl shadow-md overflow-hidden"
-                >
+                <a href="https://adalab.es/" target="_blank" rel="noopener noreferrer" className="w-12 h-12 flex items-center justify-center bg-white rounded-xl shadow-md overflow-hidden">
                   <img src={adalabLogo.src} alt="Logo Adalab" className="w-9 h-9 object-contain" />
                 </a>
-                <a 
-                  href="https://aws.amazon.com/es/training/restart/" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="w-12 h-12 flex items-center justify-center bg-white rounded-xl shadow-md overflow-hidden"
-                >
+                <a href="https://aws.amazon.com/es/training/restart/" target="_blank" rel="noopener noreferrer" className="w-12 h-12 flex items-center justify-center bg-white rounded-xl shadow-md overflow-hidden">
                   <img src={awsRestartLogo.src} alt="Logo AWS" className="w-9 h-9 object-contain" />
                 </a>
               </div>
