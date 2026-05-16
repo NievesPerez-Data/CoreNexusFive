@@ -12,6 +12,7 @@ import Layout from "../layouts/Layout.astro";
       <aside class="sidebar">
           <div class="sidebar-card">
               <div class="profile-photo-container">
+                <div class="photo-shadow"></div>
                   <img src="/tu-foto.jpg" alt="Nieves Pérez" class="profile-photo" />
               </div>
 
@@ -118,20 +119,46 @@ import Layout from "../layouts/Layout.astro";
         flex-direction: column;
     }
 
-    .profile-photo-container {
-        width: 100px;
-        height: 100px;
-        margin-bottom: 20px;
-        border-radius: 50%;
-        overflow: hidden;
-        border: 2px solid #000;
-    }
+   .sidebar-card {
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    background-color: #ffffff;
+    padding: 140px 30px 30px 30px;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
 
-    .profile-photo {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
+/* contenedor de foto */
+.profile-photo-container {
+    position: absolute;
+    top: -90px;
+    left: 30px;
+    width: 180px;
+    height: 220px;
+}
+
+/* halo gris */
+.photo-shadow {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #d9d9d9;
+    top: 12px;
+    left: 12px;
+    z-index: 1;
+}
+
+/* foto */
+.profile-photo {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border: 2px solid black;
+    z-index: 2;
+    display: block;
+}
 
     .sidebar-title {
         font-size: 22px;
