@@ -77,26 +77,32 @@ import miFoto from "../../public/foto-personal.jpg"; // Ajusta los dos puntos se
               </div>
           </section>
 
-          <section class="block-card">
-              <h2 class="section-title font-fugaz">VALOR ESTRATÉGICO</h2>
-              <p class="block-text">
-                  He construido esta web para desarmar la arquitectura desde su base y entender su lógica. Mi objetivo es desglosar cada decisión técnica, acercando conceptos como S3, AWS Glue, IAM y Athena tanto a estudiantes como a profesionales.
-              </p>
+        <section class="block-card featured-card">
+    <h2 class="section-title font-fugaz">VALOR ESTRATÉGICO</h2>
+    <p class="block-text">
+        He construido esta web para desarmar la arquitectura desde su base y entender su lógica. Mi objetivo es desglosar cada decisión técnica, acercando conceptos como S3, AWS Glue, IAM y Athena tanto a estudiantes como a profesionales.
+    </p>
 
-              <div class="side-note">
-                  <svg class="marker-arrow" viewBox="0 0 120 80">
-                    <path d="M-20,40 Q30,35 110,40" stroke="black" stroke-width="12" fill="none" stroke-linecap="round"/>
-                    <path d="M85,20 L112,41 L85,60" stroke="black" stroke-width="12" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
-                  <span class="handwritten-text">Un manual pensado para el mundo real</span>
-              </div>
-          </section>
+    <div class="side-note">
+        <svg class="marker-arrow" viewBox="0 0 120 80">
+          <path d="M-20,40 Q30,35 110,40" stroke="black" stroke-width="12" fill="none" stroke-linecap="round"/>
+          <path d="M85,20 L112,41 L85,60" stroke="black" stroke-width="12" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="handwritten-text">Un manual pensado para el mundo real</span>
+    </div>
+</section>
 
       </main>
   </div>
 </Layout>
 
 <style>
+    body {
+        overflow-x: hidden;
+        margin: 0;
+        padding: 0;
+    }
+
     .web-container {
         max-width: 1600px;
         margin: 120px auto 40px auto;
@@ -254,4 +260,33 @@ import miFoto from "../../public/foto-personal.jpg"; // Ajusta los dos puntos se
         .side-note { position: relative; right: 0; top: 0; width: 100%; margin: 20px 0; transform: none; }
         .marker-arrow { margin-left: 0; transform: rotate(90deg); width: 40px; }
     }
+/* ==========================================================================
+   ESTILOS PARA DESTACAR VALOR ESTRATÉGICO
+   ========================================================================== */
+
+.featured-card {
+    background-color: #ffffff; /* Asegura el fondo blanco limpio */
+    border: 2px solid #000000 !important; /* Borde negro más grueso y sólido */
+    box-shadow: 10px 10px 0px rgba(0, 0, 0, 0.08); /* Sombra rígida moderna que hace juego con tu estilo */
+    
+    /* Conectamos la animación de movimiento */
+    animation: gentle-pulse 4s infinite ease-in-out;
+}
+
+/* Forzamos que el texto de la nota manuscrita también resalte en sintonía */
+.featured-card .handwritten-text {
+    color: #000000;
+    font-weight: 900;
+}
+
+/* Animación: Un sutil vaivén que le da vida sin ser molesto ni agresivo */
+@keyframes gentle-pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.015); /* Crece un 1.5% simulando un latido o acercamiento */
+        box-shadow: 14px 14px 0px rgba(0, 0, 0, 0.12); /* La sombra se estira al elevarse */
+    }
+}
 </style>
