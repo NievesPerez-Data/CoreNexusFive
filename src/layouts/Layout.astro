@@ -2,8 +2,7 @@
 import "@/styles/global.css";
 import BaseHead from "../components/BaseHead.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
-import Hamburger from "@/components/react/Hamburger";
-import DeskMenu from "@/components/DeskMenu.astro";
+import DeskNav from "@/components/react/DeskNav"; // IMPORTAMOS EL COMPONENTE CORRECTO DE REACT
 import Footer from "@/components/Footer.astro";
 import { Icon } from "astro-icon/components";
 ---
@@ -26,9 +25,12 @@ import { Icon } from "astro-icon/components";
       }
     </style>
   </head>
-  <body class="flex flex-col items-center min-h-screen relative max-w-screen p-0 m-0 " >
+  <body class="flex flex-col items-center min-h-screen relative max-w-screen p-0 m-0">
+    
+    <DeskNav client:load />
+
     <main
-      class="container min-h-screen px-2 flex flex-col gap-10 overflow-hidden mx-auto relative"
+      class="container min-h-screen px-2 flex flex-col gap-10 overflow-hidden mx-auto relative pt-20 md:pt-0"
     >
       <a
         href="/"
@@ -37,8 +39,6 @@ import { Icon } from "astro-icon/components";
         <Icon name="signature" class="h-20 w-20" />
       </a>
       <slot />
-      <DeskMenu />
-      <Hamburger client:idle />
     </main>
     <Footer />
   </body>
