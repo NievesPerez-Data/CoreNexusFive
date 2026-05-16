@@ -2,9 +2,8 @@
 import "@/styles/global.css";
 import BaseHead from "../components/BaseHead.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
-import DeskNav from "@/components/react/DeskNav"; // IMPORTAMOS EL COMPONENTE CORRECTO DE REACT
+import DeskNav from "@/components/react/DeskNav"; 
 import Footer from "@/components/Footer.astro";
-import { Icon } from "astro-icon/components";
 ---
 
 <!doctype html>
@@ -29,15 +28,21 @@ import { Icon } from "astro-icon/components";
     
     <DeskNav client:load />
 
+    <a
+      href="/CoreNexusFive/"
+      class="hidden md:block absolute top-6 left-8 cursor-pointer z-50 hover:scale-105 transition-transform"
+      aria-label="Ir a Project Overview"
+    >
+      <img 
+        src="/mi-logo-propio.png" 
+        alt="Logo Proyecto" 
+        class="h-12 w-auto object-contain"
+      />
+    </a>
+
     <main
       class="container min-h-screen px-2 flex flex-col gap-10 overflow-hidden mx-auto relative pt-20 md:pt-0"
     >
-      <a
-        href="/"
-        class="absolute top-0 left-0 rounded-b-xl rounded-l-none cursor-pointer z-20"
-      >
-        <Icon name="signature" class="h-20 w-20" />
-      </a>
       <slot />
     </main>
     <Footer />
