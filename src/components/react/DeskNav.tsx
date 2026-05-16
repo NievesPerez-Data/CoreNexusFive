@@ -4,7 +4,7 @@ import adalabLogo from "../../../public/adalab-logo.png";
 import awsRestartLogo from "../../../public/aws-restart-logo.png";
 import miLogoPropio from "../../../public/mi-logo-propio.jpg"; 
 
-// CORREGIDO: Rutas con '/' al final para evitar redirecciones automáticas a Home
+// Rutas con '/' al final para evitar redirecciones automáticas a Home
 const navLinks = [
   { href: "/CoreNexusFive/", text: "Home" }, 
   { href: "/CoreNexusFive/overview/", text: "Project Overview" }, 
@@ -15,100 +15,98 @@ const navLinks = [
 ];
 ---
 
-<>
-  {/* 1. HEADER SUPERIOR FLOTANTE (Para Móviles y Tablets) */}
-  <div class="fixed top-0 left-0 w-full h-16 bg-white/95 backdrop-blur-md border-b border-neutral-200 z-[100] flex items-center justify-between px-5 md:hidden shadow-sm">
-    <a href="/CoreNexusFive/" class="flex items-center gap-2 active:scale-95 transition-transform">
-      <img 
-        src={miLogoPropio.src} 
-        alt="Logo Proyecto" 
-        class="h-9 w-auto object-contain" 
-      />
-      <span class="font-fugaz uppercase text-base tracking-tight text-neutral-900">
-        Core Nexus 5
-      </span>
-    </a>
-    
-    <button
-      id="mobile-menu-toggle"
-      aria-label="Abrir menú"
-      class="w-10 h-10 bg-neutral-950 text-white rounded-lg flex items-center justify-center active:scale-95 transition-transform focus:outline-none"
-    >
-      <svg id="hamburger-icon" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-      </svg>
-    </button>
-  </div>
-
-  {/* 2. BOTÓN FLOTANTE PARA ESCRITORIO */}
+<!-- 1. HEADER SUPERIOR FLOTANTE (Para Móviles y Tablets) -->
+<div class="fixed top-0 left-0 w-full h-16 bg-white/95 backdrop-blur-md border-b border-neutral-200 z-[100] flex items-center justify-between px-5 md:hidden shadow-sm">
+  <a href="/CoreNexusFive/" class="flex items-center gap-2 active:scale-95 transition-transform">
+    <img 
+      src={miLogoPropio.src} 
+      alt="Logo Proyecto" 
+      class="h-9 w-auto object-contain" 
+    />
+    <span class="font-fugaz uppercase text-base tracking-tight text-neutral-900">
+      Core Nexus 5
+    </span>
+  </a>
+  
   <button
-    id="desktop-menu-open"
-    class="fixed top-6 right-6 z-[110] hidden md:flex items-center gap-2 bg-neutral-950 text-white px-4 py-2.5 rounded-xl border border-white/10 shadow-lg hover:bg-neutral-900 transition-all active:scale-95 group"
-    aria-label="Abrir menú de navegación"
+    id="mobile-menu-toggle"
+    aria-label="Abrir menú"
+    class="w-10 h-10 bg-neutral-950 text-white rounded-lg flex items-center justify-center active:scale-95 transition-transform focus:outline-none"
   >
-    <span class="font-fugaz uppercase text-xs tracking-wider">Menú</span>
-    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-gray-400 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-      <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+    <svg id="hamburger-icon" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+    </svg>
+  </button>
+</div>
+
+<!-- 2. BOTÓN FLOTANTE PARA ESCRITORIO -->
+<button
+  id="desktop-menu-open"
+  class="fixed top-6 right-6 z-[110] hidden md:flex items-center gap-2 bg-neutral-950 text-white px-4 py-2.5 rounded-xl border border-white/10 shadow-lg hover:bg-neutral-900 transition-all active:scale-95 group"
+  aria-label="Abrir menú de navegación"
+>
+  <span class="font-fugaz uppercase text-xs tracking-wider">Menú</span>
+  <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-gray-400 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+  </svg>
+</button>
+
+<!-- 3. PANEL DEL MENÚ DESPLEGABLE -->
+<nav
+  id="side-nav-panel"
+  class="flex flex-col text-right justify-between fixed top-0 right-0 p-10 h-screen bg-neutral-950 text-white border-l border-white/10 w-72 md:w-96 shadow-2xl z-[120] transform translate-x-full transition-transform duration-350 ease-in-out"
+>
+  <!-- BOTÓN DE CERRAR EXCLUSIVO PARA EL PANEL -->
+  <button 
+    id="menu-close-btn"
+    class="text-2xl cursor-pointer p-2 absolute top-6 right-6 text-white focus:outline-none hover:text-gray-300 transition-colors" 
+    aria-label="Close menu"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
     </svg>
   </button>
 
-  {/* 3. PANEL DEL MENÚ DESPLEGABLE */}
-  <nav
-    id="side-nav-panel"
-    class="flex flex-col text-right justify-between fixed top-0 right-0 p-10 h-screen bg-neutral-950 text-white border-l border-white/10 w-72 md:w-96 shadow-2xl z-[120] transform translate-x-full transition-transform duration-350 ease-in-out"
-  >
-    {/* BOTÓN DE CERRAR EXCLUSIVO PARA EL PANEL */}
-    <button 
-      id="menu-close-btn"
-      class="text-2xl cursor-pointer p-2 absolute top-6 right-6 text-white focus:outline-none hover:text-gray-300 transition-colors" 
-      aria-label="Close menu"
-    >
-      <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-      </svg>
-    </button>
+  <div class="mb-4 mt-16 md:mt-10 text-right">
+    <h1 class="text-4xl font-bold leading-tight text-white font-fugaz">
+      Core Nexus <br /> Five
+    </h1>
+    <p class="text-[10px] tracking-widest uppercase opacity-40 mt-2">
+      Data Pipeline Architecture: AWS S3 + Glue
+    </p>
+  </div>
 
-    <div class="mb-4 mt-16 md:mt-10 text-right">
-      <h1 class="text-4xl font-bold leading-tight text-white font-fugaz">
-        Core Nexus <br /> Five
-      </h1>
-      <p class="text-[10px] tracking-widest uppercase opacity-40 mt-2">
-        Data Pipeline Architecture: AWS S3 + Glue
-      </p>
-    </div>
-
-    <ul class="text-xl flex flex-col gap-6 z-10 my-auto">
-      {navLinks.map((link) => (
-        <li class="transition-transform hover:-translate-x-1">
-          <a
-            href={link.href}
-            data-nav-link
-            class="block text-neutral-400 hover:text-white transition-all"
-          >
-            {link.text}
-          </a>
-        </li>
-      ))}
-    </ul>
-
-    {/* PIE DE PÁGINA DEL MENÚ */}
-    <div class="flex flex-col items-center gap-3 border-t border-white/10 pt-6 w-full mt-auto">
-      <span class="text-[9px] tracking-[0.3em] uppercase opacity-40 font-bold select-none text-white">
-        Cradle & Context
-      </span>
-      <div class="flex items-center justify-center gap-4 mt-1">
-        <a href="https://adalab.es/" target="_blank" rel="noopener noreferrer" class="w-12 h-12 flex items-center justify-center bg-white rounded-xl shadow-md overflow-hidden">
-          <img src={adalabLogo.src} alt="Logo Adalab" class="w-9 h-9 object-contain" />
+  <ul class="text-xl flex flex-col gap-6 z-10 my-auto">
+    {navLinks.map((link) => (
+      <li class="transition-transform hover:-translate-x-1">
+        <a
+          href={link.href}
+          data-nav-link
+          class="block text-neutral-400 hover:text-white transition-all"
+        >
+          {link.text}
         </a>
-        <a href="https://aws.amazon.com/es/training/restart/" target="_blank" rel="noopener noreferrer" class="w-12 h-12 flex items-center justify-center bg-white rounded-xl shadow-md overflow-hidden">
-          <img src={awsRestartLogo.src} alt="Logo AWS" class="w-9 h-9 object-contain" />
-        </a>
-      </div>
-    </div>
-  </nav>
-</>
+      </li>
+    ))}
+  </ul>
 
-{/* 4. SCRIPT EN JAVASCRIPT PLANO BLINDADO PARA EVITAR FALLOS EN EL BUILD DE GITHUB */}
+  <!-- PIE DE PÁGINA DEL MENÚ -->
+  <div class="flex flex-col items-center gap-3 border-t border-white/10 pt-6 w-full mt-auto">
+    <span class="text-[9px] tracking-[0.3em] uppercase opacity-40 font-bold select-none text-white">
+      Cradle & Context
+    </span>
+    <div class="flex items-center justify-center gap-4 mt-1">
+      <a href="https://adalab.es/" target="_blank" rel="noopener noreferrer" class="w-12 h-12 flex items-center justify-center bg-white rounded-xl shadow-md overflow-hidden">
+        <img src={adalabLogo.src} alt="Logo Adalab" class="w-9 h-9 object-contain" />
+      </a>
+      <a href="https://aws.amazon.com/es/training/restart/" target="_blank" rel="noopener noreferrer" class="w-12 h-12 flex items-center justify-center bg-white rounded-xl shadow-md overflow-hidden">
+        <img src={awsRestartLogo.src} alt="Logo AWS" class="w-9 h-9 object-contain" />
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- 4. SCRIPT EN JAVASCRIPT PLANO TOTALMENTE COMPATIBLE -->
 <script>
   const mobileToggle = document.getElementById("mobile-menu-toggle");
   const desktopOpen = document.getElementById("desktop-menu-open");
@@ -140,7 +138,7 @@ const navLinks = [
   if (desktopOpen) desktopOpen.addEventListener("click", openMenu);
   if (closeBtn) closeBtn.addEventListener("click", closeMenu);
 
-  // Normalización segura para las rutas activas (Estilos Blancos y Grises Neutros)
+  // Normalización de rutas para estilos en escala de grises activos
   const currentPath = window.location.pathname;
   
   function normalizePath(p) {
@@ -154,7 +152,6 @@ const navLinks = [
     if (normalizePath(currentPath) === normalizePath(href)) {
       link.classList.remove("text-neutral-400", "text-gray-400");
       
-      // Estilos limpios y corporativos en escala de grises para la opción seleccionada
       link.classList.add(
         "font-bold", 
         "text-2xl", 
