@@ -4,13 +4,14 @@ import adalabLogo from "../../../public/adalab-logo.png";
 import awsRestartLogo from "../../../public/aws-restart-logo.png";
 import miLogoPropio from "../../../public/mi-logo-propio.jpg"; 
 
+// CORREGIDO: Rutas con '/' al final para evitar redirecciones automáticas a Home
 const navLinks = [
   { href: "/CoreNexusFive/", text: "Home" }, 
-  { href: "/CoreNexusFive/overview", text: "Project Overview" }, 
-  { href: "/CoreNexusFive/arquitectura", text: "Stack & Data Flow" },
-  { href: "/CoreNexusFive/blog", text: "Documentación Técnica" },
-  { href: "/CoreNexusFive/about", text: "Demo & Entrega" },
-  { href: "/CoreNexusFive/contact", text: "Perfil Profesional" },
+  { href: "/CoreNexusFive/overview/", text: "Project Overview" }, 
+  { href: "/CoreNexusFive/arquitectura/", text: "Stack & Data Flow" },
+  { href: "/CoreNexusFive/blog/", text: "Documentación Técnica" },
+  { href: "/CoreNexusFive/about/", text: "Demo & Entrega" },
+  { href: "/CoreNexusFive/contact/", text: "Perfil Profesional" },
 ];
 ---
 
@@ -34,12 +35,12 @@ const navLinks = [
       class="w-10 h-10 bg-neutral-950 text-white rounded-lg flex items-center justify-center active:scale-95 transition-transform focus:outline-none"
     >
       <svg id="hamburger-icon" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
       </svg>
     </button>
   </div>
 
-  {/* 2. BOTÓN FLOTANTE PARA ESCRITORIO (Asegura que el menú no desaparezca en PC) */}
+  {/* 2. BOTÓN FLOTANTE PARA ESCRITORIO */}
   <button
     id="desktop-menu-open"
     class="fixed top-6 right-6 z-[110] hidden md:flex items-center gap-2 bg-neutral-950 text-white px-4 py-2.5 rounded-xl border border-white/10 shadow-lg hover:bg-neutral-900 transition-all active:scale-95 group"
@@ -47,11 +48,11 @@ const navLinks = [
   >
     <span class="font-fugaz uppercase text-xs tracking-wider">Menú</span>
     <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-gray-400 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-      <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+      <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
     </svg>
   </button>
 
-  {/* 3. PANEL DEL MENÚ DESPLEGABLE (Inicia oculto con translate-x-full para simular la animación) */}
+  {/* 3. PANEL DEL MENÚ DESPLEGABLE */}
   <nav
     id="side-nav-panel"
     class="flex flex-col text-right justify-between fixed top-0 right-0 p-10 h-screen bg-neutral-950 text-white border-l border-white/10 w-72 md:w-96 shadow-2xl z-[120] transform translate-x-full transition-transform duration-350 ease-in-out"
@@ -63,7 +64,7 @@ const navLinks = [
       aria-label="Close menu"
     >
       <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
       </svg>
     </button>
 
@@ -82,7 +83,7 @@ const navLinks = [
           <a
             href={link.href}
             data-nav-link
-            class="block text-gray-400 hover:text-white transition-all"
+            class="block text-neutral-400 hover:text-white transition-all"
           >
             {link.text}
           </a>
@@ -90,6 +91,7 @@ const navLinks = [
       ))}
     </ul>
 
+    {/* PIE DE PÁGINA DEL MENÚ */}
     <div class="flex flex-col items-center gap-3 border-t border-white/10 pt-6 w-full mt-auto">
       <span class="text-[9px] tracking-[0.3em] uppercase opacity-40 font-bold select-none text-white">
         Cradle & Context
@@ -106,7 +108,7 @@ const navLinks = [
   </nav>
 </>
 
-{/* 4. CONTROL DE INTERACTIVIDAD FLUIDA DIRECTO EN EL NAVEGADOR */}
+{/* 4. SCRIPT EN JAVASCRIPT PLANO BLINDADO PARA EVITAR FALLOS EN EL BUILD DE GITHUB */}
 <script>
   const mobileToggle = document.getElementById("mobile-menu-toggle");
   const desktopOpen = document.getElementById("desktop-menu-open");
@@ -115,29 +117,52 @@ const navLinks = [
   const navLinks = document.querySelectorAll("[data-nav-link]");
 
   function openMenu() {
-    sideNav?.classList.remove("translate-x-full");
-    sideNav?.classList.add("translate-x-0");
-    desktopOpen?.classList.add("opacity-0", "pointer-events-none");
+    if (sideNav) {
+      sideNav.classList.remove("translate-x-full");
+      sideNav.classList.add("translate-x-0");
+    }
+    if (desktopOpen) {
+      desktopOpen.classList.add("opacity-0", "pointer-events-none");
+    }
   }
 
   function closeMenu() {
-    sideNav?.classList.remove("translate-x-0");
-    sideNav?.classList.add("translate-x-full");
-    desktopOpen?.classList.remove("opacity-0", "pointer-events-none");
+    if (sideNav) {
+      sideNav.classList.remove("translate-x-0");
+      sideNav.classList.add("translate-x-full");
+    }
+    if (desktopOpen) {
+      desktopOpen.classList.remove("opacity-0", "pointer-events-none");
+    }
   }
 
-  // Eventos para abrir y cerrar
-  mobileToggle?.addEventListener("click", openMenu);
-  desktopOpen?.addEventListener("click", openMenu);
-  closeBtn?.addEventListener("click", closeMenu);
+  if (mobileToggle) mobileToggle.addEventListener("click", openMenu);
+  if (desktopOpen) desktopOpen.addEventListener("click", openMenu);
+  if (closeBtn) closeBtn.addEventListener("click", closeMenu);
 
-  // Marcar la ruta activa dinámicamente al cargar la página
+  // Normalización segura para las rutas activas (Estilos Blancos y Grises Neutros)
   const currentPath = window.location.pathname;
+  
+  function normalizePath(p) {
+    if (!p) return "";
+    return p.endsWith("/") ? p.slice(0, -1) : p;
+  }
+
   navLinks.forEach((link) => {
     const href = link.getAttribute("href");
-    if (currentPath === href || currentPath === href + "/" || (href !== "/CoreNexusFive/" && currentPath.replace(/\/$/, "") === href?.replace(/\/$/, ""))) {
-      link.classList.remove("text-gray-400");
-      link.classList.add("font-bold", "text-2xl", "text-white", "border-r-4", "border-white", "pr-4");
+    
+    if (normalizePath(currentPath) === normalizePath(href)) {
+      link.classList.remove("text-neutral-400", "text-gray-400");
+      
+      // Estilos limpios y corporativos en escala de grises para la opción seleccionada
+      link.classList.add(
+        "font-bold", 
+        "text-2xl", 
+        "text-white", 
+        "border-r-4", 
+        "border-neutral-500", 
+        "pr-4"
+      );
     }
   });
 </script>
