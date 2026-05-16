@@ -43,7 +43,7 @@ export default function Navigation() {
         </motion.div>
       ) : (
         <button 
-          className="z-50 text-2xl cursor-pointer p-2" 
+          className="z-50 text-2xl cursor-pointer p-2 fixed top-10 right-6" 
           onClick={() => setOpen(false)}
           aria-label="Close menu"
         >
@@ -58,10 +58,11 @@ export default function Navigation() {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: 50 }}
             transition={{ duration: 0.4 }}
-            className="flex flex-col text-right justify-center gap-10 fixed top-0 right-0 p-10 h-screen bg-background border-l border-white/10 w-72 md:w-96 shadow-2xl"
+            className="flex flex-col text-right justify-between fixed top-0 right-0 p-10 h-screen bg-neutral-900 text-white border-l border-white/10 w-72 md:w-96 shadow-2xl z-40"
           >
-            <div className="mb-4">
-              <h1 className="text-4xl font-bold leading-tight">
+            {/* Bloque Superior: Título */}
+            <div className="mb-4 mt-10">
+              <h1 className="text-4xl font-bold leading-tight text-white">
                 Core Nexus <br /> Five
               </h1>
               <p className="text-xs tracking-widest uppercase opacity-40 mt-2">
@@ -69,7 +70,8 @@ export default function Navigation() {
               </p>
             </div>
 
-            <ul className="text-xl flex flex-col gap-6 z-10">
+            {/* Bloque Medio: Enlaces de navegación */}
+            <ul className="text-xl flex flex-col gap-6 z-10 my-auto">
               {navLinks.map((link) => {
                 const isCurrent = currentPath === link.href;
                 return (
@@ -80,8 +82,6 @@ export default function Navigation() {
                   >
                     <a
                       href={link.href}
-                      target="_blank" 
-                      rel="noopener noreferrer"
                       className={`block transition-all ${
                         isCurrent 
                         ? "font-bold text-3xl text-white border-r-4 border-white pr-4" 
@@ -94,6 +94,48 @@ export default function Navigation() {
                 );
               })}
             </ul>
+
+            {/* ==========================================================================
+               BLOQUE INFERIOR REEMPLAZADO: LOGOS PROFESIONALES (SIN INSTAGRAM/PINTEREST Y SIN COPYRIGHT)
+               ========================================================================== */}
+            <div className="flex flex-col items-center gap-4 border-t border-white/10 pt-6 w-full mt-auto">
+              <span className="text-[10px] tracking-[0.3em] uppercase opacity-40 font-bold select-none text-white">
+                Cradle & Context
+              </span>
+              
+              <div className="flex items-center justify-center gap-4 mt-2">
+                {/* Badge Adalab */}
+                <a 
+                  href="https://adalab.es/" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="w-12 h-12 flex items-center justify-center bg-white rounded-xl shadow-md border border-neutral-800 transition-transform active:scale-95"
+                  title="Adalab Tech Bootcamp"
+                >
+                  <img 
+                    src="/adalab-logo.png" 
+                    alt="Logo Adalab" 
+                    className="w-8 h-8 object-contain" 
+                  />
+                </a>
+
+                {/* Badge AWS */}
+                <a 
+                  href="https://aws.amazon.com/es/training/restart/" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="w-12 h-12 flex items-center justify-center bg-white rounded-xl shadow-md border border-neutral-800 transition-transform active:scale-95"
+                  title="AWS re/Start Program"
+                >
+                  <img 
+                    src="/aws-restart-logo.png" 
+                    alt="Logo AWS re/Start" 
+                    className="w-8 h-8 object-contain" 
+                  />
+                </a>
+              </div>
+            </div>
+
           </motion.nav>
         )}
       </AnimatePresence>
