@@ -1,7 +1,5 @@
 ---
-// CORREGIDO: Las imágenes dentro de 'public' NO se importan aquí con sintaxis ESM.
-// Se llaman abajo en el código HTML mediante rutas absolutas.
-
+// Footer.astro - Menú de Navegación corregido
 const navLinks = [
   { href: "/CoreNexusFive/", text: "Home" }, 
   { href: "/CoreNexusFive/overview/", text: "Project Overview" }, 
@@ -53,7 +51,6 @@ const navLinks = [
   id="side-nav-panel"
   class="flex flex-col text-right justify-between fixed top-0 right-0 p-10 h-screen bg-neutral-950 text-white border-l border-white/10 w-72 md:w-96 shadow-2xl z-[120] transform translate-x-full transition-transform duration-350 ease-in-out"
 >
-  <!-- BOTÓN DE CERRAR EXCLUSIVO PARA EL PANEL -->
   <button 
     id="menu-close-btn"
     class="text-2xl cursor-pointer p-2 absolute top-6 right-6 text-white focus:outline-none hover:text-gray-300 transition-colors" 
@@ -87,7 +84,6 @@ const navLinks = [
     ))}
   </ul>
 
-  <!-- PIE DE PÁGINA DEL MENÚ (Sección de créditos) -->
   <div class="flex flex-col items-center gap-3 border-t border-white/10 pt-6 w-full mt-auto">
     <span class="text-[9px] tracking-[0.3em] uppercase opacity-40 font-bold select-none text-white">
       Cradle & Context
@@ -103,7 +99,6 @@ const navLinks = [
   </div>
 </nav>
 
-<!-- 4. CONTROL DE INTERACTIVIDAD FLUIDA DIRECTO EN EL NAVEGADOR -->
 <script>
   const mobileToggle = document.getElementById("mobile-menu-toggle");
   const desktopOpen = document.getElementById("desktop-menu-open");
@@ -135,27 +130,19 @@ const navLinks = [
   desktopOpen?.addEventListener("click", openMenu);
   closeBtn?.addEventListener("click", closeMenu);
 
-  // Marcar la ruta activa usando JS plano y tipos seguros sin romper el bundler
+  // Normalizador estricto de rutas
   const currentPath = window.location.pathname;
-  
   function normalizePath(p) {
     if (!p) return "";
-    return p.endsWith("/") ? p.slice(0, -1) : p;
+    return p.replace(/\/$/, "");
   }
 
   navLinks.forEach((link) => {
     const href = link.getAttribute("href");
     
     if (normalizePath(currentPath) === normalizePath(href)) {
-      link.classList.remove("text-neutral-400", "text-gray-400");
-      link.classList.add(
-        "font-bold", 
-        "text-2xl", 
-        "text-white", 
-        "border-r-4", 
-        "border-neutral-400", 
-        "pr-4"
-      );
+      // Forzamos la limpieza de CUALQUIER otra clase de color (como posibles clases rojas heredadas)
+      link.className = "block font-bold text-2xl text-neutral-300 border-r-4 border-neutral-500 pr-4 transition-all";
     }
   });
 </script>
