@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import miFoto from "../../public/foto-personal.jpg"; // Ajusta los dos puntos según tu nivel de carpeta
 ---
 
 <Layout title="Perfil Profesional | Core Nexus Five">
@@ -13,7 +14,7 @@ import Layout from "../layouts/Layout.astro";
           <div class="sidebar-card">
               <div class="profile-photo-container">
                 <div class="photo-shadow"></div>
-                  <img src="./foto-personal.jpg" alt="Nieves Pérez" class="profile-photo" />
+                  <img src={miFoto.src} alt="Nieves Pérez" class="profile-photo" />
               </div>
 
               <h1 class="sidebar-title font-fugaz">AWS DATA ANALYTICS & ARCHITECTURE</h1>
