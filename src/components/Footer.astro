@@ -1,5 +1,5 @@
 ---
-// Footer.astro - Menú de Navegación corregido
+// Footer.astro - Menú interactivo + Pie de página visible
 const navLinks = [
   { href: "/CoreNexusFive/", text: "Home" }, 
   { href: "/CoreNexusFive/overview/", text: "Project Overview" }, 
@@ -9,6 +9,10 @@ const navLinks = [
   { href: "/CoreNexusFive/contact/", text: "Perfil Profesional" },
 ];
 ---
+
+<!-- ========================================== -->
+<!-- A. ELEMENTOS INTERACTIVOS (MENÚ LATERAL)   -->
+<!-- ========================================== -->
 
 <!-- 1. HEADER SUPERIOR FLOTANTE (Para Móviles y Tablets) -->
 <div class="fixed top-0 left-0 w-full h-16 bg-white/95 backdrop-blur-md border-b border-neutral-200 z-[100] flex items-center justify-between px-5 md:hidden shadow-sm">
@@ -46,7 +50,7 @@ const navLinks = [
   </svg>
 </button>
 
-<!-- 3. PANEL DEL MENÚ DESPLEGABLE -->
+<!-- 3. PANEL DEL MENÚ DESPLEGABLE (OCULTO POR DEFECTO) -->
 <nav
   id="side-nav-panel"
   class="flex flex-col text-right justify-between fixed top-0 right-0 p-10 h-screen bg-neutral-950 text-white border-l border-white/10 w-72 md:w-96 shadow-2xl z-[120] transform translate-x-full transition-transform duration-350 ease-in-out"
@@ -99,6 +103,50 @@ const navLinks = [
   </div>
 </nav>
 
+
+<!-- ========================================== -->
+<!-- B. PIE DE PÁGINA VISIBLE (FLUJO DE LA WEB) -->
+<!-- ========================================== -->
+<footer class="w-full bg-neutral-950 text-white border-t border-white/10 py-12 px-6 mt-20 relative z-10">
+  <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
+    
+    <!-- Lado Izquierdo: Branding -->
+    <div class="text-center md:text-left">
+      <h2 class="text-2xl font-bold font-fugaz uppercase tracking-wide">Core Nexus 5</h2>
+      <p class="text-xs text-neutral-400 mt-1">Data Pipeline Architecture & Analytics</p>
+    </div>
+
+    <!-- Centro: Enlaces rápidos horizontales en el Footer físico -->
+    <div class="flex flex-wrap justify-center gap-6 text-sm">
+      {navLinks.map((link) => (
+        <a href={link.href} class="text-neutral-400 hover:text-white transition-colors">
+          {link.text}
+        </a>
+      ))}
+    </div>
+
+    <!-- Lado Derecho: Logos institucionales -->
+    <div class="flex items-center gap-4">
+      <a href="https://adalab.es/" target="_blank" rel="noopener noreferrer" class="w-10 h-10 flex items-center justify-center bg-white rounded-lg overflow-hidden p-1 shadow-sm hover:opacity-90 transition-opacity">
+        <img src="/CoreNexusFive/adalab-logo.png" alt="Logo Adalab" class="w-full h-full object-contain" />
+      </a>
+      <a href="https://aws.amazon.com/es/training/restart/" target="_blank" rel="noopener noreferrer" class="w-10 h-10 flex items-center justify-center bg-white rounded-lg overflow-hidden p-1 shadow-sm hover:opacity-90 transition-opacity">
+        <img src="/CoreNexusFive/aws-restart-logo.png" alt="Logo AWS" class="w-full h-full object-contain" />
+      </a>
+    </div>
+
+  </div>
+
+  <!-- Copyright Inferior -->
+  <div class="max-w-6xl mx-auto border-t border-white/5 mt-8 pt-6 text-center text-xs text-neutral-500">
+    &copy; {new Date().getFullYear()} Core Nexus 5. Todos los derechos reservados.
+  </div>
+</footer>
+
+
+<!-- ========================================== -->
+<!-- C. SCRIPTS DE INTERACTIVIDAD               -->
+<!-- ========================================== -->
 <script>
   const mobileToggle = document.getElementById("mobile-menu-toggle");
   const desktopOpen = document.getElementById("desktop-menu-open");
@@ -130,7 +178,7 @@ const navLinks = [
   desktopOpen?.addEventListener("click", openMenu);
   closeBtn?.addEventListener("click", closeMenu);
 
-  // Normalizador estricto de rutas
+  // Normalizador estricto de rutas para el menú lateral
   const currentPath = window.location.pathname;
   function normalizePath(p) {
     if (!p) return "";
@@ -139,9 +187,7 @@ const navLinks = [
 
   navLinks.forEach((link) => {
     const href = link.getAttribute("href");
-    
     if (normalizePath(currentPath) === normalizePath(href)) {
-      // Forzamos la limpieza de CUALQUIER otra clase de color (como posibles clases rojas heredadas)
       link.className = "block font-bold text-2xl text-neutral-300 border-r-4 border-neutral-500 pr-4 transition-all";
     }
   });
