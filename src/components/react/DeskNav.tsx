@@ -28,7 +28,7 @@ export default function DeskNav() {
 
   return (
     <>
-     {/* HEADER SUPERIOR FLOTANTE CON Z-INDEX MAXIMUM */}
+     {/* HEADER SUPERIOR FLOTANTE CON Z-INDEX MAXIMUM (SOLO MÓVIL) */}
 <div className="fixed top-0 left-0 w-full h-16 bg-white/95 backdrop-blur-md border-b border-neutral-200 z-[100] flex items-center justify-between px-5 md:hidden shadow-sm">
   <span className="font-fugaz uppercase text-lg tracking-tight text-neutral-900">
     Core Nexus 5
