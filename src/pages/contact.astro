@@ -110,10 +110,11 @@ import Layout from "../layouts/Layout.astro";
         height: fit-content;
     }
 
-    .sidebar-card {
+.sidebar-card {
         border: 1px solid rgba(0, 0, 0, 0.15);
         background-color: #ffffff; 
-        padding: 220px 30px 30px 30px;
+        /* Reducimos el padding superior exagerado para eliminar el espacio vacío */
+        padding: 130px 30px 30px 30px;
         border-radius: 4px;
         display: flex;
         flex-direction: column;
@@ -123,8 +124,11 @@ import Layout from "../layouts/Layout.astro";
 /* contenedor de foto */
 .profile-photo-container {
     position: absolute;
-    top: -120px;
-    left: 30px;
+    /* Bajamos el top de -120px a -40px para que no se corte por arriba de la web */
+    top: -40px;
+    /* Centrado horizontal exacto usando left 50% y transform */
+    left: 50%;
+    transform: translateX(-50%);
     width: 180px;
     height: 220px;
 }
