@@ -36,7 +36,7 @@ const navLinks = [
   </button>
 </div>
 
-<!-- 2. BOTÓN FLOTANTE PARA ESCRITORIO (Asegura que el menú no desaparezca en PC) -->
+<!-- 2. BOTÓN FLOTANTE PARA ESCRITORIO -->
 <button
   id="desktop-menu-open"
   class="fixed top-6 right-6 z-[110] hidden md:flex items-center gap-2 bg-neutral-950 text-white px-4 py-2.5 rounded-xl border border-white/10 shadow-lg hover:bg-neutral-900 transition-all active:scale-95 group"
@@ -131,28 +131,31 @@ const navLinks = [
     }
   }
 
-  // Eventos para abrir y cerrar
   mobileToggle?.addEventListener("click", openMenu);
   desktopOpen?.addEventListener("click", openMenu);
   closeBtn?.addEventListener("click", closeMenu);
 
-  // Marcar la ruta activa usando tonos grises limpios (corregido para evitar el rojo)
+  // Marcar la ruta activa usando JS plano y tipos seguros sin romper el bundler
   const currentPath = window.location.pathname;
   
   function normalizePath(p) {
     if (!p) return "";
-    return p.replace(/\/$/, "");
+    return p.endsWith("/") ? p.slice(0, -1) : p;
   }
 
   navLinks.forEach((link) => {
     const href = link.getAttribute("href");
     
     if (normalizePath(currentPath) === normalizePath(href)) {
-      // Limpiamos los colores previos
       link.classList.remove("text-neutral-400", "text-gray-400");
-      
-      // Forzamos clases en gris neutro/blanco y borde lateral a juego
-      link.className = "block font-bold text-2xl text-neutral-300 border-r-4 border-neutral-500 pr-4 transition-all";
+      link.classList.add(
+        "font-bold", 
+        "text-2xl", 
+        "text-white", 
+        "border-r-4", 
+        "border-neutral-400", 
+        "pr-4"
+      );
     }
   });
 </script>
