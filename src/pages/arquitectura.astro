@@ -1,1 +1,43 @@
+graph TD
+    %% Estilos de los Nodos %%
+    classDef tierra fill:#2d3a22,stroke:#5a7840,stroke-width:2px,color:#fff;
+    classDef inframundo fill:#3a2d22,stroke:#785a40,stroke-width:2px,color:#fff;
+    classDef cielo fill:#22323a,stroke:#406578,stroke-width:2px,color:#fff;
+    classDef seguridad fill:#3d1e1e,stroke:#8c2323,stroke-width:2px,color:#fff;
+    classDef olimpo fill:#39223a,stroke:#774078,stroke-width:2px,color:#fff;
 
+    %% Flujo de Datos %%
+    subgraph Capa_Tierra [Capa 1: El Origen]
+        S3["📦 S3 & Buckets <br> (Gaia & Caja de Pandora) <br> <i>Materia prima y datos raw</i>"]:::tierra
+    end
+
+    subgraph Capa_Viaje [Capa 2: Integración y Catálogo]
+        Crawler["👁️ Glue Crawlers <br> (Argos Panoptes) <br> <i>Descubre el esquema</i>"]:::inframundo
+        Glue["✈️ AWS Glue ETL <br> (Hermes) <br> <i>Transforma y transporta</i>"]:::inframundo
+    end
+
+    subgraph Capa_Cielo [Capa 3: Procesamiento]
+        Lambda["⚡ AWS Lambda <br> (Rayo de Zeus) <br> <i>Cómputo por eventos</i>"]:::cielo
+    end
+
+    subgraph Capa_Seguridad [Capa 4: El Guardián]
+        IAM["🐕 AWS IAM <br> (Cerbero) <br> <i>Políticas de acceso</i>"]:::seguridad
+    end
+
+    subgraph Capa_Olimpo [Capa 5: Consumo y Verdad]
+        Athena["🦉 AWS Athena <br> (Atenea) <br> <i>Sabiduría e Insights SQL</i>"]:::olimpo
+        Demo["✨ Demo Final <br> (Kairós) <br> <i>El momento oportuno</i>"]:::olimpo
+    end
+
+    %% Conexiones (Data Flow) %%
+    S3 -->|1. Escaneo de datos| Crawler
+    Crawler -->|2. Estructura definida| Glue
+    Glue -->|3. Datos limpios| Lambda
+    Lambda -->|4. Ejecución lógica| Athena
+    Athena -->|5. Revelación de valor| Demo
+
+    %% Intervención de Seguridad %%
+    IAM -.->|Vigila| S3
+    IAM -.->|Autoriza| Glue
+    IAM -.->|Controla| Lambda
+    IAM -.->|Protege| Athena
