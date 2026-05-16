@@ -7,8 +7,8 @@ import awsRestartLogo from "../../../public/aws-restart-logo.png";
 import miLogoPropio from "../../../public/mi-logo-propio.jpg"; 
 
 const navLinks = [
-  { href: "/CoreNexusFive/", text: "Home" }, // <-- Ahora la raíz es simplemente tu Home
-  { href: "/CoreNexusFive/overview", text: "Project Overview" }, // <-- Ruta independiente para el inicio y creadoras
+  { href: "/CoreNexusFive/", text: "Home" }, 
+  { href: "/CoreNexusFive/overview", text: "Project Overview" }, 
   { href: "/CoreNexusFive/arquitectura", text: "Stack & Data Flow" },
   { href: "/CoreNexusFive/blog", text: "Documentación Técnica" },
   { href: "/CoreNexusFive/about", text: "Demo & Entrega" },
@@ -22,15 +22,12 @@ export default function DeskNav() {
   useEffect(() => {
     if (typeof window !== "undefined") {
       setCurrentPath(window.location.pathname);
-      
-      // ELIMINADO EL BLOQUE QUE FORZABA "setOpen(true)" EN LA RAÍZ
-      // De esta forma, el menú negro no se queda atascado tapando la pantalla al ir a Home o recargar.
     }
   }, []);
 
   return (
     <>
-      {/* HEADER SUPERIOR FLOTANTE CON TU LOGO */}
+      {/* 1. HEADER SUPERIOR FLOTANTE (Para Móviles y Tablets) */}
       <div className="fixed top-0 left-0 w-full h-16 bg-white/95 backdrop-blur-md border-b border-neutral-200 z-[100] flex items-center justify-between px-5 md:hidden shadow-sm">
         <a href="/CoreNexusFive/" className="flex items-center gap-2 active:scale-95 transition-transform">
           <img 
@@ -60,10 +57,24 @@ export default function DeskNav() {
         </button>
       </div>
 
-      {/* BOTÓN DE CERRAR EXCLUSIVO PARA ESCRITORIO */}
+      {/* 2. NUEVO GIDGET / BOTÓN FLOTANTE PARA ESCRITORIO (Evita que el menú desaparezca) */}
+      {!isOpen && (
+        <button
+          onClick={() => setOpen(true)}
+          className="fixed top-6 right-6 z-[110] hidden md:flex items-center gap-2 bg-neutral-950 text-white px-4 py-2.5 rounded-xl border border-white/10 shadow-lg hover:bg-neutral-900 transition-all active:scale-95 group"
+          aria-label="Abrir menú de navegación"
+        >
+          <span className="font-fugaz uppercase text-xs tracking-wider">Menú</span>
+          <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 text-gray-400 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      )}
+
+      {/* BOTÓN DE CERRAR EXCLUSIVO PARA ESCRITORIO CUANDO EL MENÚ ESTÁ ABIERTO */}
       {isOpen && (
         <button 
-          className="z-50 text-2xl cursor-pointer p-2 fixed top-6 right-6 text-white hidden md:block focus:outline-none" 
+          className="z-[120] text-2xl cursor-pointer p-2 fixed top-6 right-6 text-white hidden md:block focus:outline-none hover:text-gray-300 transition-colors" 
           onClick={() => setOpen(false)}
           aria-label="Close menu"
         >
@@ -73,7 +84,7 @@ export default function DeskNav() {
         </button>
       )}
 
-      {/* PANEL DEL MENÚ DESPLEGABLE (NEGRO) */}
+      {/* 3. PANEL DEL MENÚ DESPLEGABLE (NEGRO) */}
       <AnimatePresence>
         {isOpen && (
           <motion.nav
@@ -81,7 +92,7 @@ export default function DeskNav() {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: 50 }}
             transition={{ duration: 0.4 }}
-            className="flex flex-col text-right justify-between fixed top-0 right-0 p-10 h-screen bg-neutral-950 text-white border-l border-white/10 w-72 md:w-96 shadow-2xl z-40"
+            className="flex flex-col text-right justify-between fixed top-0 right-0 p-10 h-screen bg-neutral-950 text-white border-l border-white/10 w-72 md:w-96 shadow-2xl z-[100]"
           >
             <div className="mb-4 mt-16 md:mt-10 text-right">
               <h1 className="text-4xl font-bold leading-tight text-white font-fugaz">
