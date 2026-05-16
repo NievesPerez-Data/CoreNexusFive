@@ -114,8 +114,8 @@ import miFoto from "../../public/foto-personal.jpg"; // Ajusta los dos puntos se
 .sidebar-card {
         border: 1px solid rgba(0, 0, 0, 0.15);
         background-color: #ffffff; 
-        /* Reducimos el padding superior exagerado para eliminar el espacio vacío */
-        padding: 130px 30px 30px 30px;
+        /* Subimos de 130px a 200px para empujar el título hacia abajo y que no lo pise la foto */
+        padding: 200px 30px 30px 30px;
         border-radius: 4px;
         display: flex;
         flex-direction: column;
@@ -125,9 +125,8 @@ import miFoto from "../../public/foto-personal.jpg"; // Ajusta los dos puntos se
 /* contenedor de foto */
 .profile-photo-container {
     position: absolute;
-    /* Bajamos el top de -120px a -40px para que no se corte por arriba de la web */
-    top: -40px;
-    /* Centrado horizontal exacto usando left 50% y transform */
+    /* Lo subimos un pelín más (-60px) para que equilibre visualmente el nuevo padding */
+    top: -60px;
     left: 50%;
     transform: translateX(-50%);
     width: 180px;
