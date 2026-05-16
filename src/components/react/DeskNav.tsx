@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 // Importación estable de tus logos y tu nuevo icono personalizado
 import adalabLogo from "../../../public/adalab-logo.png";
 import awsRestartLogo from "../../../public/aws-restart-logo.png";
-import miLogoPropio from "../../../public/mi-logo-propio.png"; // <-- IMPORTACIÓN DE TU LOGO
+import miLogoPropio from "../../../public/mi-logo-propio.jpg"; // <-- IMPORTACIÓN DE TU LOGO
 
 const navLinks = [
   { href: "/CoreNexusFive/", text: "Project Overview" },
