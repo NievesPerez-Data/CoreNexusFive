@@ -36,10 +36,10 @@ const navLinks = [
   </button>
 </div>
 
-<!-- 2. BOTÓN FLOTANTE PARA ESCRITORIO -->
+<!-- 2. BOTÓN FLOTANTE PARA ESCRITORIO (CORREGIDO: visible y con z-index alto para que no lo tape nada) -->
 <button
   id="desktop-menu-open"
-  class="fixed top-6 right-6 z-[110] hidden md:flex items-center gap-2 bg-neutral-950 text-white px-4 py-2.5 rounded-xl border border-white/10 shadow-lg hover:bg-neutral-900 transition-all active:scale-95 group"
+  class="fixed top-6 right-6 z-[110] flex items-center gap-2 bg-neutral-950 text-white px-4 py-2.5 rounded-xl border border-white/10 shadow-lg hover:bg-neutral-900 transition-all active:scale-95 group"
   aria-label="Abrir menú de navegación"
 >
   <span class="font-fugaz uppercase text-xs tracking-wider">Menú</span>
@@ -135,7 +135,7 @@ const navLinks = [
   desktopOpen?.addEventListener("click", openMenu);
   closeBtn?.addEventListener("click", closeMenu);
 
-  // Marcar la ruta activa usando JS plano y tipos seguros sin romper el bundler
+  // Marcar la ruta activa usando JS plano
   const currentPath = window.location.pathname;
   
   function normalizePath(p) {
@@ -147,13 +147,16 @@ const navLinks = [
     const href = link.getAttribute("href");
     
     if (normalizePath(currentPath) === normalizePath(href)) {
-      link.classList.remove("text-neutral-400", "text-gray-400");
+      // Limpiamos los colores por defecto para evitar conflictos
+      link.classList.remove("text-neutral-400", "text-gray-400", "text-white");
+      
+      // CORREGIDO: Aplicamos gris claro (text-neutral-300) y borde gris medio
       link.classList.add(
         "font-bold", 
         "text-2xl", 
-        "text-white", 
+        "text-neutral-300", 
         "border-r-4", 
-        "border-neutral-400", 
+        "border-neutral-500", 
         "pr-4"
       );
     }
