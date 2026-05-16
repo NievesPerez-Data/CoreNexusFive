@@ -104,10 +104,15 @@ import miFoto from "../../public/foto-personal.jpg"; // Ajusta los dos puntos se
     }
 
     .web-container {
-        max-width: 1600px;
+        max-width: 1400px;
         margin: 120px auto 40px auto;
         display: flex;
         gap: 40px;
+
+        /* Reservamos el espacio exacto en la derecha para las notas manuscritas */
+        padding-right: 280px;
+        /* Evita que el padding rompa el max-width */
+        box-sizing: border-box;
     }
 
     .sidebar {
