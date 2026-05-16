@@ -4,10 +4,11 @@ import { motion, AnimatePresence } from "framer-motion";
 // Importación estable de tus logos y tu nuevo icono personalizado
 import adalabLogo from "../../../public/adalab-logo.png";
 import awsRestartLogo from "../../../public/aws-restart-logo.png";
-import miLogoPropio from "../../../public/mi-logo-propio.jpg"; // <-- IMPORTACIÓN DE TU LOGO
+import miLogoPropio from "../../../public/mi-logo-propio.jpg"; 
 
 const navLinks = [
-  { href: "/CoreNexusFive/", text: "Project Overview" },
+  { href: "/CoreNexusFive/", text: "Home" }, // <-- Ahora la raíz es simplemente tu Home
+  { href: "/CoreNexusFive/overview", text: "Project Overview" }, // <-- Ruta independiente para el inicio y creadoras
   { href: "/CoreNexusFive/arquitectura", text: "Stack & Data Flow" },
   { href: "/CoreNexusFive/blog", text: "Documentación Técnica" },
   { href: "/CoreNexusFive/about", text: "Demo & Entrega" },
@@ -21,19 +22,19 @@ export default function DeskNav() {
   useEffect(() => {
     if (typeof window !== "undefined") {
       setCurrentPath(window.location.pathname);
-      if (window.location.pathname === "/CoreNexusFive" || window.location.pathname === "/CoreNexusFive/") {
-        setOpen(true);
-      }
+      
+      // ELIMINADO EL BLOQUE QUE FORZABA "setOpen(true)" EN LA RAÍZ
+      // De esta forma, el menú negro no se queda atascado tapando la pantalla al ir a Home o recargar.
     }
   }, []);
 
   return (
     <>
-      {/* HEADER SUPERIOR FLOTANTE CON TU LOGO CORREGIDO (.src) */}
+      {/* HEADER SUPERIOR FLOTANTE CON TU LOGO */}
       <div className="fixed top-0 left-0 w-full h-16 bg-white/95 backdrop-blur-md border-b border-neutral-200 z-[100] flex items-center justify-between px-5 md:hidden shadow-sm">
         <a href="/CoreNexusFive/" className="flex items-center gap-2 active:scale-95 transition-transform">
           <img 
-            src={miLogoPropio.src} // <-- CORREGIDO AQUÍ
+            src={miLogoPropio.src} 
             alt="Logo Proyecto" 
             className="h-9 w-auto object-contain" 
           />
