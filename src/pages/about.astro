@@ -1,42 +1,28 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import miFoto from "../../public/foto-personal.jpg"; // Ajusta según tu estructura de carpetas
 ---
 
-<Layout title="Demo y Entrega | Core Nexus Five">
+<Layout 
+  title="Demo y Entrega | Core Nexus Five"
+  description="Validación visual y dinámica de la arquitectura desplegada en Core Nexus Five."
+>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap" rel="stylesheet">
 
+  <!-- Título Principal Fuera (Igual que en el primer código) -->
+  <header class="flex justify-center items-center pt-20 pb-10 px-4">
+    <h1 class="text-4xl md:text-6xl font-fugaz font-bold text-center max-w-4xl uppercase">
+      Demo y Entrega Final
+    </h1>
+  </header>
+
   <div class="web-container">
-      
-      <!-- Barra lateral fija -->
-      <aside class="sidebar">
-          <div class="sidebar-card">
-              <div class="profile-photo-container">
-                <div class="photo-shadow"></div>
-                  <img src={miFoto.src} alt="Nieves Pérez" class="profile-photo" />
-              </div>
-
-              <h1 class="sidebar-title font-fugaz">AWS DATA ANALYTICS & ARCHITECTURE</h1>
-              <div class="sidebar-subtitle">DEMO & ENTREGA FINAL</div>
-              
-              <p class="sidebar-text">
-                  Validación visual y dinámica de la arquitectura desplegada en Core Nexus Five. La culminación práctica de la infraestructura Cloud y la ingeniería de datos.
-              </p>
-              
-              <a href="https://nievesperez-data.github.io/" class="portfolio-btn" target="_blank">
-                  IR AL PORTAFOLIO PRINCIPAL &rarr;
-              </a>
-          </div>
-      </aside>
-
-      <!-- Contenido Principal -->
       <main class="content-flow">
           
-          <!-- Bloque 1: Conclusión y Cierre -->
+          <!-- Bloque 1: Conclusión y Cierre con la nota en el margen -->
           <section class="block-card">
-              <h2 class="section-title font-fugaz">DEMO Y ENTREGA FINAL</h2>
+              <h2 class="section-title font-fugaz">DONDE LA ARQUITECTURA COBRA VIDA</h2>
               <p class="block-text">
                   Esta sección constituye el cierre práctico de <strong>Core Nexus Five</strong>. Tras haber desglosado la teoría, las decisiones de diseño y la infraestructura, este espacio está dedicado a la validación en un entorno real. Es la consolidación de todo el proyecto resumida en una ejecución interactiva.
               </p>
@@ -51,14 +37,14 @@ import miFoto from "../../public/foto-personal.jpg"; // Ajusta según tu estruct
               </div>
           </section>
 
-          <!-- Bloque 2: El Video Integrado (Reproductor nativo) -->
+          <!-- Bloque 2: El Video Integrado (Corregido para que se vea) -->
           <section class="block-card video-card">
               <h2 class="section-title font-fugaz">VALIDACIÓN EN VIVO (END-TO-END)</h2>
               <p class="block-text mb-6">
-                  A continuación se observa, de manera limpia y fluida, cómo la arquitectura cobra vida: desde la ingesta del dato crudo en S3 hasta su transformación mediante AWS Glue y su disponibilidad final para analítica.
+                  A continuación se observa, de manera limpia y fluida, cómo la arquitectura funciona de extremo a extremo: desde la ingesta del dato crudo en S3 hasta su transformación mediante AWS Glue y su disponibilidad final para analítica.
               </p>
               
-              <!-- Contenedor responsive para el iframe de Dailymotion -->
+              <!-- Contenedor del reproductor -->
               <div class="video-wrapper">
                   <iframe 
                       src="https://www.dailymotion.com/embed/video/xa8agkq?autoplay=0&mute=1" 
@@ -69,7 +55,7 @@ import miFoto from "../../public/foto-personal.jpg"; // Ajusta según tu estruct
               </div>
           </section>
 
-          <!-- Bloque 3: Redirección Destacada (Estilo featured-card de tu perfil) -->
+          <!-- Bloque 3: Redirección Destacada (Estilo featured-card) -->
           <section class="block-card featured-card">
               <h2 class="section-title font-fugaz">¿QUIERES PROFUNDIZAR EN LOS DETALLES TÉCNICOS?</h2>
               <p class="block-text">
@@ -97,103 +83,23 @@ import miFoto from "../../public/foto-personal.jpg"; // Ajusta según tu estruct
     }
 
     .web-container {
-        max-width: 1400px;
-        margin: 120px auto 40px auto;
+        max-width: 1200px;
+        /* Centrado horizontalmente al no tener barra lateral */
+        margin: 20px auto 80px auto;
         display: flex;
-        gap: 40px;
+        justify-content: center;
+        /* Espacio reservado a la derecha para las notas manuscritas */
         padding-right: 280px;
         box-sizing: border-box;
-    }
-
-    .sidebar {
-        flex: 0 0 300px;
-        position: sticky;
-        top: 120px;
-        height: fit-content;
-    }
-
-    .sidebar-card {
-        border: 1px solid rgba(0, 0, 0, 0.15);
-        background-color: #ffffff; 
-        padding: 200px 30px 30px 30px;
-        border-radius: 4px;
-        display: flex;
-        flex-direction: column;
-        position: relative;
-    }
-
-    .profile-photo-container {
-        position: absolute;
-        top: -60px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 180px;
-        height: 220px;
-    }
-
-    .photo-shadow {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        background: #d3d3d3;
-        top: 15px;
-        left: 15px;
-        z-index: 1;
-    }
-
-    .profile-photo {
-        position: relative;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        border: 2px solid black;
-        z-index: 2;
-        display: block;
-        background-color: white;
-    }
-
-    .sidebar-title {
-        font-size: 22px;
-        margin-bottom: 10px;
-        text-transform: uppercase;
-        font-weight: 900;
-        line-height: 1.1;
-    }
-
-    .sidebar-subtitle {
-        font-size: 11px;
-        font-weight: 700;
-        color: #666;
-        margin-bottom: 20px;
-        border-bottom: 1px solid #eee;
-        padding-bottom: 10px;
-    }
-
-    .sidebar-text {
-        font-size: 15px;
-        line-height: 1.6;
-        color: #333;
-        margin-bottom: 25px;
-    }
-
-    .portfolio-btn {
-        font-size: 13px;
-        font-weight: 800;
-        text-decoration: none;
-        color: #000;
-        border-bottom: 2px solid #000;
-        padding-bottom: 4px;
-        display: inline-block;
-        width: fit-content;
-        text-transform: uppercase;
     }
 
     .content-flow {
         flex: 1;
         display: flex;
         flex-direction: column;
-        gap: 30px; 
-        max-width: 900px;
+        gap: 40px; 
+        max-width: 850px;
+        width: 100%;
     }
 
     .block-card {
@@ -221,18 +127,22 @@ import miFoto from "../../public/foto-personal.jpg"; // Ajusta según tu estruct
         margin-bottom: 24px;
     }
 
-    /* Estilos del reproductor integrado */
+    /* ==========================================================================
+       REPRODUCTOR DE VIDEO (CORREGIDO)
+       ========================================================================== */
     .video-card {
-        padding-bottom: 50px;
+        padding-bottom: 40px;
     }
 
     .video-wrapper {
         position: relative;
-        padding-pb: 56.25%; /* Relación de aspecto 16:9 */
+        /* Corregido: padding-bottom real para dar altura al contenedor 16:9 */
+        padding-bottom: 56.25%; 
         height: 0;
         overflow: hidden;
         border: 2px solid #000000;
         box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.05);
+        background-color: #000; /* Fondo negro mientras carga */
     }
 
     .embedded-video {
@@ -244,7 +154,7 @@ import miFoto from "../../public/foto-personal.jpg"; // Ajusta según tu estruct
         border: 0;
     }
 
-    /* Enlace integrado al blog */
+    /* Enlace al blog */
     .blog-inline-link {
         color: #000000;
         text-decoration: none;
@@ -256,7 +166,7 @@ import miFoto from "../../public/foto-personal.jpg"; // Ajusta según tu estruct
         opacity: 0.7;
     }
 
-    /* Notas laterales manuscritas */
+    /* Notas laterales en el margen derecho */
     .side-note {
         position: absolute;
         top: 50%;
@@ -277,7 +187,7 @@ import miFoto from "../../public/foto-personal.jpg"; // Ajusta según tu estruct
 
     .handwritten-text {
         font-family: 'Caveat', cursive;
-        font-size: 40px; 
+        font-size: 38px; 
         font-weight: 700;
         color: #000;
         line-height: 0.85;
@@ -286,9 +196,9 @@ import miFoto from "../../public/foto-personal.jpg"; // Ajusta según tu estruct
         display: block;
     }
 
+    /* Ajustes Responsive */
     @media (max-width: 1100px) {
         .web-container { 
-            flex-direction: column; 
             padding-right: 20px; 
             padding-left: 20px;
         }
@@ -307,16 +217,11 @@ import miFoto from "../../public/foto-personal.jpg"; // Ajusta según tu estruct
         }
     }
 
-    /* Tarjeta Destacada Final (Efecto Pulse) */
+    /* Tarjeta Destacada Final Animada */
     .featured-card {
         border: 2px solid #000000 !important; 
         box-shadow: 10px 10px 0px rgba(0, 0, 0, 0.08); 
         animation: gentle-pulse 4s infinite ease-in-out;
-    }
-
-    .featured-card .handwritten-text {
-        color: #000000;
-        font-weight: 900;
     }
 
     @keyframes gentle-pulse {
