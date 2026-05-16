@@ -1,43 +1,156 @@
-graph TD
-    %% Estilos de los Nodos %%
-    classDef tierra fill:#2d3a22,stroke:#5a7840,stroke-width:2px,color:#fff;
-    classDef inframundo fill:#3a2d22,stroke:#785a40,stroke-width:2px,color:#fff;
-    classDef cielo fill:#22323a,stroke:#406578,stroke-width:2px,color:#fff;
-    classDef seguridad fill:#3d1e1e,stroke:#8c2323,stroke-width:2px,color:#fff;
-    classDef olimpo fill:#39223a,stroke:#774078,stroke-width:2px,color:#fff;
+---
+// Tu lógica de Astro aquí, si la necesitas
+---
 
-    %% Flujo de Datos %%
-    subgraph Capa_Tierra [Capa 1: El Origen]
-        S3["📦 S3 & Buckets <br> (Gaia & Caja de Pandora) <br> <i>Materia prima y datos raw</i>"]:::tierra
-    end
+<section class="network-diagram-container">
+  <svg class="lines-canvas" preserveAspectRatio="none">
+    <path class="line-path" d="M100,50 L250,90" marker-end="url(#arrow)" />
+    <path class="line-path" d="M150,150 C200,200 300,100 400,200" marker-end="url(#arrow)" />
+    <path class="line-path" d="M100,400 L500,600" />
+    
+    <defs>
+      <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+        <path d="M0,0 L0,6 L9,3 z" fill="#fff" />
+      </marker>
+    </defs>
+  </svg>
 
-    subgraph Capa_Viaje [Capa 2: Integración y Catálogo]
-        Crawler["👁️ Glue Crawlers <br> (Argos Panoptes) <br> <i>Descubre el esquema</i>"]:::inframundo
-        Glue["✈️ AWS Glue ETL <br> (Hermes) <br> <i>Transforma y transporta</i>"]:::inframundo
-    end
+  <div class="node node-large" style="--top: 50px; --left: 100px;">
+    <span>ORIGEN</span>
+  </div>
+  <div class="node node-small-light" style="--top: 150px; --left: 150px;">
+    <span>S3<br>(Gaia)</span>
+    <ul class="node-details">
+      <li>Materia prima de datos raw</li>
+      <li>Contenedor universal</li>
+    </ul>
+  </div>
 
-    subgraph Capa_Cielo [Capa 3: Procesamiento]
-        Lambda["⚡ AWS Lambda <br> (Rayo de Zeus) <br> <i>Cómputo por eventos</i>"]:::cielo
-    end
+  <div class="node node-large" style="--top: 90px; --left: 250px;">
+    <span>ORIGEN</span>
+  </div>
+  <div class="node node-small-light" style="--top: 200px; --left: 400px;">
+    <span>Glue ETL<br>(Hermes)</span>
+    <ul class="node-details">
+      <li>Transformación Dinámica</li>
+      <li>Guía de datos</li>
+    </ul>
+  </div>
 
-    subgraph Capa_Seguridad [Capa 4: El Guardián]
-        IAM["🐕 AWS IAM <br> (Cerbero) <br> <i>Políticas de acceso</i>"]:::seguridad
-    end
+  <div class="node node-large-light" style="--top: 500px; --left: 400px;">
+    <span>ATHENA</span>
+  </div>
+  <div class="node node-medium-light" style="--top: 600px; --left: 500px;">
+    <span>Demo Final<br>(Kairós)</span>
+  </div>
 
-    subgraph Capa_Olimpo [Capa 5: Consumo y Verdad]
-        Athena["🦉 AWS Athena <br> (Atenea) <br> <i>Sabiduría e Insights SQL</i>"]:::olimpo
-        Demo["✨ Demo Final <br> (Kairós) <br> <i>El momento oportuno</i>"]:::olimpo
-    end
+  <div class="node node-medium-light" style="--top: 600px; --left: 200px;">
+    <span>LAMBDA<br>(Zeus)</span>
+  </div>
 
-    %% Conexiones (Data Flow) %%
-    S3 -->|1. Escaneo de datos| Crawler
-    Crawler -->|2. Estructura definida| Glue
-    Glue -->|3. Datos limpios| Lambda
-    Lambda -->|4. Ejecución lógica| Athena
-    Athena -->|5. Revelación de valor| Demo
+  <div class="node node-large-central" style="--top: 350px; --left: 300px;">
+    <span>FLUJO CENTRAL</span>
+  </div>
 
-    %% Intervención de Seguridad %%
-    IAM -.->|Vigila| S3
-    IAM -.->|Autoriza| Glue
-    IAM -.->|Controla| Lambda
-    IAM -.->|Protege| Athena
+</section>
+
+<style>
+  /* CONFIGURACIÓN DEL CONTENEDOR PRINCIPAL */
+  .network-diagram-container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    background-color: #1a1a1a;
+    color: #fff;
+    font-family: 'Fauna One', serif;
+    overflow: hidden;
+  }
+
+  /* ESTILOS DE LOS NODOS (CÍRCULOS) */
+  .node {
+    position: absolute;
+    top: var(--top);
+    left: var(--left);
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transition: all 0.3s ease;
+  }
+
+  /* Variaciones de nodos */
+  .node-large {
+    width: 200px;
+    height: 200px;
+    background-color: #000;
+    border: 3px solid #fff;
+    font-size: 24px;
+    text-transform: uppercase;
+  }
+
+  .node-small-light {
+    width: 100px;
+    height: 100px;
+    background-color: transparent;
+    border: 2px dashed #666;
+    font-size: 14px;
+  }
+
+  .node-medium-light {
+    width: 130px;
+    height: 130px;
+    background-color: transparent;
+    border: 2px solid #ccc;
+    font-size: 16px;
+  }
+
+  .node-large-light {
+    width: 180px;
+    height: 180px;
+    background-color: transparent;
+    border: 3px solid #ccc;
+    font-size: 20px;
+  }
+  
+  .node-large-central {
+    width: 190px;
+    height: 190px;
+    background-color: #000;
+    border: 3px solid #fff;
+    font-size: 22px;
+  }
+
+  /* Detalles de los nodos (Texto al lado) */
+  .node-details {
+    position: absolute;
+    left: 110%; /* Ajuste para colocar a la derecha */
+    top: 0;
+    width: 150px;
+    list-style: disc;
+    font-size: 12px;
+    color: #b0b0b0;
+    text-align: left;
+    margin: 0;
+    padding-left: 15px;
+  }
+
+  /* CANVAS DE LÍNEAS SVG */
+  .lines-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Las líneas no bloquean clics */
+  }
+
+  .line-path {
+    fill: none;
+    stroke: #fff;
+    stroke-width: 1.5px;
+    stroke-linecap: round;
+  }
+</style>
