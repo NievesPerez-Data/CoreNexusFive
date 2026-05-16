@@ -1,152 +1,158 @@
 ---
-const today = new Date().toLocaleDateString("en-us", {
-  year: "numeric",
-  month: "short",
-  day: "numeric",
-});
-import Button from "./Button.astro";
-import { getCollection } from "astro:content";
+// Importación de logos estables de tus rutas
+import adalabLogo from "../../../public/adalab-logo.png";
+import awsRestartLogo from "../../../public/aws-restart-logo.png";
+import miLogoPropio from "../../../public/mi-logo-propio.jpg"; 
 
-const blogEntries = await getCollection("blog");
-const collectionEntries = await getCollection("collection");
-
-const midPoint = Math.ceil(blogEntries.length / 2);
-const blogCol1: any = blogEntries.slice(0, midPoint);
-const blogCol2 = blogEntries.slice(midPoint);
-
-const toSlugFromId = (id: string) =>
-  id.replace(/^.*\//, "").replace(/\.(md|mdx)$/i, "");
+// CORREGIDO: Añadidas las barras '/' al final de cada ruta interna
+const navLinks = [
+  { href: "/CoreNexusFive/", text: "Home" }, 
+  { href: "/CoreNexusFive/overview/", text: "Project Overview" }, 
+  { href: "/CoreNexusFive/arquitectura/", text: "Stack & Data Flow" },
+  { href: "/CoreNexusFive/blog/", text: "Documentación Técnica" },
+  { href: "/CoreNexusFive/about/", text: "Demo & Entrega" },
+  { href: "/CoreNexusFive/contact/", text: "Perfil Profesional" },
+];
 ---
 
-<footer
-  class="relative bg-muted pt-10 w-full md:pb-6 border-t flex flex-col md:flex-row gap-20 z-10 max-w-full overflow-hidden"
->
-  <div class="container px-5 mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
-    <div class="md:w-1/2 flex flex-col items-start gap-6 col-span-1">
-      <p class="text-3xl font-semibold font-fugaz">
-        ¿Quieres conocer más sobre el proyecto?
-      </p>
-      {/* Botón enlazado a tu LinkedIn para abrir conversación directa */}
-      <Button text="Hablemos" href="https://www.linkedin.com/in/nievesperezalonso" target="_blank" />
-    </div>
-    <div class="md:w-1/2 flex flex-col justify-between md:pr-20 col-span-1">
-      <p>
-        Explorando la intersección entre la ingeniería de datos y la arquitectura cloud. 
-        Este pipeline representa un flujo escalable y eficiente utilizando lo último en tecnología de AWS.
-      </p>
-      <div class="flex justify-between items-center mt-20 mb-6">
-        {/* Enlace directo a tu nuevo portfolio */}
-        <a 
-          href="/CoreNexusFive/contact/" 
-          target="_blank" 
-          rel="noopener noreferrer" 
-          class="font-bold hover:text-blue-400 transition-colors"
-        >
-          Nieves Pérez &reg;
-        </a>
-        <p>{today}</p>
-      </div>
-    </div>
-    <hr class="col-span-1 md:col-span-2" />
-    <div
-      class="col-span-1 md:col-span-2 justify-between grid md:grid-cols-4 px-6 items-start gap-6 md:gap-0"
+<>
+  {/* 1. HEADER SUPERIOR FLOTANTE (Para Móviles y Tablets) */}
+  <div class="fixed top-0 left-0 w-full h-16 bg-white/95 backdrop-blur-md border-b border-neutral-200 z-[100] flex items-center justify-between px-5 md:hidden shadow-sm">
+    <a href="/CoreNexusFive/" class="flex items-center gap-2 active:scale-95 transition-transform">
+      <img 
+        src={miLogoPropio.src} 
+        alt="Logo Proyecto" 
+        class="h-9 w-auto object-contain" 
+      />
+      <span class="font-fugaz uppercase text-base tracking-tight text-neutral-900">
+        Core Nexus 5
+      </span>
+    </a>
+    
+    <button
+      id="mobile-menu-toggle"
+      aria-label="Abrir menú"
+      class="w-10 h-10 bg-neutral-950 text-white rounded-lg flex items-center justify-center active:scale-95 transition-transform focus:outline-none"
     >
-      <div>
-        <h2 class="font-bold uppercase text-sm mb-4">Menú</h2>
-        <ul class="font-bold flex flex-col gap-2">
-          {/* Corregidas todas las rutas estáticas con el prefijo /CoreNexusFive, la barra final y target="_blank" */}
-          <li><a href="/CoreNexusFive" target="_blank" rel="noopener noreferrer" class="hover:text-primary transition-colors">Project Overview</a></li>
-          <li><a href="/CoreNexusFive/arquitectura/" target="_blank" rel="noopener noreferrer" class="hover:text-primary transition-colors">Stack & Data Flow</a></li>
-          <li><a href="/CoreNexusFive/blog/" target="_blank" rel="noopener noreferrer" class="hover:text-primary transition-colors">Documentación Técnica</a></li>
-          <li><a href="/CoreNexusFive/about/" target="_blank" rel="noopener noreferrer" class="hover:text-primary transition-colors">Demo & Entrega</a></li>
-          <li><a href="/CoreNexusFive/contact/" target="_blank" rel="noopener noreferrer" class="hover:text-primary transition-colors">Perfil Profesional</a></li>
-        </ul>
-      </div>
-      <div>
-        <h2 class="font-bold uppercase text-sm mb-4">Documentación</h2>
-        <ul>
-          {
-            blogCol1.map((entry: any) => (
-              <li class="font-bold mb-2">
-                {/* Añadido prefijo /CoreNexusFive/blog/ y barra final para las colecciones */}
-                <a href={`/CoreNexusFive/blog/${entry.id}/`} target="_blank" rel="noopener noreferrer" class="hover:text-primary transition-colors">
-                  {entry.data?.title ?? entry.id}
-                </a>
-              </li>
-            ))
-          }
-        </ul>
-      </div>
-      <div>
-        <h2 class="font-bold uppercase text-sm mb-4 text-transparent select-none">...</h2>
-        <ul>
-          {
-            blogCol2.map((entry: any) => (
-              <li class="font-bold mb-2">
-                {/* Añadido prefijo /CoreNexusFive/blog/ y barra final para las colecciones */}
-                <a href={`/CoreNexusFive/blog/${entry.id}/`} target="_blank" rel="noopener noreferrer" class="hover:text-primary transition-colors">
-                  {entry.data?.title ?? entry.id}
-                </a>
-              </li>
-            ))
-          }
-        </ul>
-      </div>
-      <div>
-        <h2 class="font-bold uppercase text-sm mb-4">Resultados</h2>
-        <ul>
-          {
-            collectionEntries.map((entry: any) => (
-              <li class="font-bold mb-2">
-                {/* Añadido prefijo /CoreNexusFive/collection/ y barra final para los resultados */}
-                <a href={`/CoreNexusFive/collection/${entry.id}/`} target="_blank" rel="noopener noreferrer" class="hover:text-primary transition-colors">
-                  {entry.data?.title ?? entry.id}
-                </a>
-              </li>
-            ))
-          }
-        </ul>
-      </div>
-    </div>
-  <hr class="col-span-1 md:col-span-2" />
-    
-    {/* Frase de Jeff Bezos forzada en 3 líneas balanceadas */}
-    <p class="col-span-1 md:col-span-2 text-center italic text-gray-400 px-6 max-w-xl mx-auto leading-relaxed">
-      "If you decide that you’re going to do only the things<br class="hidden md:inline" /> 
-      you know are going to work, you’re going to leave<br class="hidden md:inline" /> 
-      a lot of opportunity on the table." <span class="text-gray-400 font-semibold not-italic block mt-2">— Jeff Bezos</span>
-    </p>
-    
-    {/* Icono de la Nube en color Negro y sin animación para una estética más sólida */}
-
-    <div class="col-span-1 md:col-span-2 text-center mx-auto pb-20 text-black">
-
-      <svg
-
-        class="w-10 h-10 mx-auto"
-
-        xmlns="http://www.w3.org/2000/svg"
-
-        viewBox="0 0 24 24"
-
-        fill="none"
-
-        stroke="currentColor"
-
-        stroke-width="1.5"
-
-        stroke-linecap="round"
-
-        stroke-linejoin="round"
-
-      >
-
-        <path d="M17.5 19A3.5 3.5 0 0 0 21 15.5c0-2.79-2.54-4.5-5-4.5-.47 0-.89.09-1.32.26A7 7 0 0 0 1 11.5C1 15.09 3.91 18 7.5 18H17.5z"/>
-
+      <svg id="hamburger-icon" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
       </svg>
-
-    </div>
-
+    </button>
   </div>
 
-</footer>
+  {/* 2. BOTÓN FLOTANTE PARA ESCRITORIO (Asegura que el menú no desaparezca en PC) */}
+  <button
+    id="desktop-menu-open"
+    class="fixed top-6 right-6 z-[110] hidden md:flex items-center gap-2 bg-neutral-950 text-white px-4 py-2.5 rounded-xl border border-white/10 shadow-lg hover:bg-neutral-900 transition-all active:scale-95 group"
+    aria-label="Abrir menú de navegación"
+  >
+    <span class="font-fugaz uppercase text-xs tracking-wider">Menú</span>
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-gray-400 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+    </svg>
+  </button>
+
+  {/* 3. PANEL DEL MENÚ DESPLEGABLE */}
+  <nav
+    id="side-nav-panel"
+    class="flex flex-col text-right justify-between fixed top-0 right-0 p-10 h-screen bg-neutral-950 text-white border-l border-white/10 w-72 md:w-96 shadow-2xl z-[120] transform translate-x-full transition-transform duration-350 ease-in-out"
+  >
+    {/* BOTÓN DE CERRAR EXCLUSIVO PARA EL PANEL */}
+    <button 
+      id="menu-close-btn"
+      class="text-2xl cursor-pointer p-2 absolute top-6 right-6 text-white focus:outline-none hover:text-gray-300 transition-colors" 
+      aria-label="Close menu"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+
+    <div class="mb-4 mt-16 md:mt-10 text-right">
+      <h1 class="text-4xl font-bold leading-tight text-white font-fugaz">
+        Core Nexus <br /> Five
+      </h1>
+      <p class="text-[10px] tracking-widest uppercase opacity-40 mt-2">
+        Data Pipeline Architecture: AWS S3 + Glue
+      </p>
+    </div>
+
+    <ul class="text-xl flex flex-col gap-6 z-10 my-auto">
+      {navLinks.map((link) => (
+        <li class="transition-transform hover:-translate-x-1">
+          <a
+            href={link.href}
+            data-nav-link
+            class="block text-neutral-400 hover:text-white transition-all"
+          >
+            {link.text}
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    {/* PIE DE PÁGINA DEL MENÚ (Sección de créditos) */}
+    <div class="flex flex-col items-center gap-3 border-t border-white/10 pt-6 w-full mt-auto">
+      <span class="text-[9px] tracking-[0.3em] uppercase opacity-40 font-bold select-none text-white">
+        Cradle & Context
+      </span>
+      <div class="flex items-center justify-center gap-4 mt-1">
+        <a href="https://adalab.es/" target="_blank" rel="noopener noreferrer" class="w-12 h-12 flex items-center justify-center bg-white rounded-xl shadow-md overflow-hidden">
+          <img src={adalabLogo.src} alt="Logo Adalab" class="w-9 h-9 object-contain" />
+        </a>
+        <a href="https://aws.amazon.com/es/training/restart/" target="_blank" rel="noopener noreferrer" class="w-12 h-12 flex items-center justify-center bg-white rounded-xl shadow-md overflow-hidden">
+          <img src={awsRestartLogo.src} alt="Logo AWS" class="w-9 h-9 object-contain" />
+        </a>
+      </div>
+    </div>
+  </nav>
+</>
+
+{/* 4. CONTROL DE INTERACTIVIDAD FLUIDA DIRECTO EN EL NAVEGADOR */}
+<script>
+  const mobileToggle = document.getElementById("mobile-menu-toggle");
+  const desktopOpen = document.getElementById("desktop-menu-open");
+  const closeBtn = document.getElementById("menu-close-btn");
+  const sideNav = document.getElementById("side-nav-panel");
+  const navLinks = document.querySelectorAll("[data-nav-link]");
+
+  function openMenu() {
+    sideNav?.classList.remove("translate-x-full");
+    sideNav?.classList.add("translate-x-0");
+    desktopOpen?.classList.add("opacity-0", "pointer-events-none");
+  }
+
+  function closeMenu() {
+    sideNav?.classList.remove("translate-x-0");
+    sideNav?.classList.add("translate-x-full");
+    desktopOpen?.classList.remove("opacity-0", "pointer-events-none");
+  }
+
+  mobileToggle?.addEventListener("click", openMenu);
+  desktopOpen?.addEventListener("click", openMenu);
+  closeBtn?.addEventListener("click", closeMenu);
+
+  // CORREGIDO: Control estricto de estilos activos (Gris y Blanco Neutro, cero rojos)
+  const currentPath = window.location.pathname;
+  navLinks.forEach((link) => {
+    const href = link.getAttribute("href");
+    
+    // Normalizamos rutas quitando barras finales para comparar con precisión
+    const normalize = (p: string | null) => p ? p.replace(/\/$/, "") : "";
+    
+    if (normalize(currentPath) === normalize(href)) {
+      // Limpiamos estilos inactivos por completo
+      link.classList.remove("text-neutral-400", "text-gray-400");
+      
+      // Aplicamos exclusivamente blanco, negrita y un sutil borde gris a la derecha
+      link.classList.add(
+        "font-bold", 
+        "text-2xl", 
+        "text-white", 
+        "border-r-4", 
+        "border-neutral-500", 
+        "pr-4"
+      );
+    }
+  });
+</script>
