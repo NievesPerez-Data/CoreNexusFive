@@ -28,11 +28,18 @@ export default function DeskNav() {
 
   return (
     <>
-     {/* HEADER SUPERIOR FLOTANTE CON Z-INDEX MAXIMUM (SOLO MÓVIL) */}
+     {/* HEADER SUPERIOR FLOTANTE CON TU LOGO INTEGRADO (SOLO MÓVIL) */}
 <div className="fixed top-0 left-0 w-full h-16 bg-white/95 backdrop-blur-md border-b border-neutral-200 z-[100] flex items-center justify-between px-5 md:hidden shadow-sm">
-  <span className="font-fugaz uppercase text-lg tracking-tight text-neutral-900">
-    Core Nexus 5
-  </span>
+  <a href="/CoreNexusFive/" className="flex items-center gap-2 active:scale-95 transition-transform">
+    <img 
+      src="/mi-logo-propio.png" 
+      alt="Logo Proyecto" 
+      className="h-9 w-auto object-contain" 
+    />
+    <span className="font-fugaz uppercase text-base tracking-tight text-neutral-900">
+      Core Nexus 5
+    </span>
+  </a>
   
   <button
     aria-label={isOpen ? "Cerrar menú" : "Abrir menú"}
