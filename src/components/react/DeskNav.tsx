@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 // Importación de logos estables de tus rutas
 import adalabLogo from "../../../public/adalab-logo.png";
 import awsRestartLogo from "../../../public/aws-restart-logo.png";
-import miLogoPropio from "../../../public/mi-logo-propio.jpg"; 
+import miLogoPropio from "../../../public/mi-logo-propio.png"; 
 
 // CORREGIDO: Rutas internas con barra '/' al final para evitar redirección a Home
 const navLinks = [
