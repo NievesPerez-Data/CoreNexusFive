@@ -1,41 +1,47 @@
 ---
 import Layout from "../layouts/Layout.astro";
 
-// Recuperamos la base exacta del proyecto asegurando que empiece por barra y no termine en barra vacía
-const rawBase = import.meta.env.BASE_URL;
-const baseUrl = rawBase.endsWith('/') && rawBase !== '/' ? rawBase.slice(0, -1) : rawBase;
+// Importamos dinámicamente todas las imágenes de la raíz de la carpeta public
+const imagenesPublic = import.meta.glob("../../public/*.{png,jpg,jpeg,svg,webp}", { eager: true });
 
-// Listado oficial con rutas absolutas calculadas dinámicamente que funcionan en local y producción
+// Función ayudante para extraer la URL procesada por Astro (.default.src)
+const obtenerImagen = (nombreArchivo: string) => {
+  const rutaClave = `../../public/${nombreArchivo}`;
+  const moduloImage = imagenesPublic[rutaClave] as any;
+  return moduloImage ? moduloImage.default.src : "";
+};
+
+// Listado oficial mapeando los nombres exactos de tus archivos sueltos en public
 const equipo = [
   { 
     inicial: "E", 
     nombre: "Elena Pavón", 
     linkedin: "https://www.linkedin.com/in/elenapavonfernandez/", 
-    img: baseUrl === '/' ? "/equipo-e.jpg" : `${baseUrl}/equipo-e.jpg`
+    img: obtenerImagen("equipo-e.jpg") 
   },
   { 
     inicial: "C", 
     nombre: "Claudia Cervantes", 
     linkedin: "https://www.linkedin.com/in/claudia-cervantes-worldwide/?locale=es", 
-    img: baseUrl === '/' ? "/equipo-c.jpg" : `${baseUrl}/equipo-c.jpg`
+    img: obtenerImagen("equipo-c.jpg") 
   },
   { 
     inicial: "N", 
     nombre: "Nieves Pérez", 
     linkedin: "https://www.linkedin.com/in/nievesperezalonso", 
-    img: baseUrl === '/' ? "/mi-logo-propio.png" : `${baseUrl}/mi-logo-propio.png`
+    img: obtenerImagen("mi-logo-propio.png") 
   },
   { 
     inicial: "E", 
     nombre: "Esther Quirós", 
     linkedin: "https://www.linkedin.com/in/esther-quir%C3%B3s/", 
-    img: baseUrl === '/' ? "/equipo-e2.jpg" : `${baseUrl}/equipo-e2.jpg`
+    img: obtenerImagen("equipo-e2.jpg") 
   },
   { 
     inicial: "M", 
     nombre: "Mayka Durán", 
     linkedin: "https://www.linkedin.com/in/mdelcarmenduran/", 
-    img: baseUrl === '/' ? "/equipo-m.jpg" : `${baseUrl}/equipo-m.jpg`
+    img: obtenerImagen("equipo-m.jpg") 
   }
 ];
 ---
@@ -89,11 +95,15 @@ const equipo = [
           {equipo.map((member) => (
             <div class="flex flex-col items-center bg-white border-2 border-black p-4 shadow-[6px_6px_0px_rgba(0,0,0,0.08)] rounded-xl group hover:-translate-y-1 transition-transform">
               <div class="w-full aspect-square overflow-hidden rounded-lg border border-neutral-200 bg-neutral-100 mb-3">
-                <img 
-                  src={member.img} 
-                  alt={`Fotografía de ${member.nombre}`} 
-                  class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-350"
-                />
+                {member.img ? (
+                  <img 
+                    src={member.img} 
+                    alt={`Fotografía de ${member.nombre}`} 
+                    class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-350"
+                  />
+                ) : (
+                  <div class="w-full h-full bg-neutral-200 flex items-center justify-center text-xs text-neutral-400">Sin foto</div>
+                )}
               </div>
               <a 
                 href={member.linkedin} 
