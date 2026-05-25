@@ -1,4 +1,3 @@
----
 import Layout from "../layouts/Layout.astro";
 
 // Listado oficial de las 5 integrantes con sus nombres y perfiles de LinkedIn reales
@@ -19,7 +18,7 @@ const equipo = [
     inicial: "N", 
     nombre: "Nieves Pérez", 
     linkedin: "https://www.linkedin.com/in/nievesperezalonso", 
-    img: "/CoreNexusFive/mi-logo-propio.png" 
+    img: "/CoreNexusFive/equipo-n.jpg" 
   },
   { 
     inicial: "E", 
@@ -48,24 +47,20 @@ const equipo = [
 
   <section class="flex grow py-10 flex-col pb-40 justify-center items-center px-4">
     
-    <!-- Hero Statement (Texto grande modificado) -->
-    <h1 class="text-4xl md:text-5xl font-fugaz font-bold pt-20 pb-16 text-center max-w-4xl w-full uppercase leading-tight">
-      "Donde la formación se convierte en arquitectura. Core Nexus Five es la convergencia de cinco mentes y todo un ecosistema AWS para dominar el ciclo de vida del dato."
+    <h1 class="text-2xl md:text-3xl font-fugaz font-bold pt-20 pb-16 text-center max-w-4xl w-full uppercase leading-tight">
+      Aquí la formación se convierte en arquitectura. En Core Nexus Five convergen cinco mentes y el entorno de aprendizaje de AWS para consolidar el conocimiento técnico a través del ciclo de vida del dato.
     </h1>
 
-    <!-- Contenedor General de la Página -->
     <div class="w-full flex flex-col items-center space-y-16">
       
-      <!-- Bloque 1: Origen del Proyecto -->
       <div class="text-block-container block-clean-relative">
         <h2 class="text-xl md:text-2xl font-fugaz font-bold mb-4 uppercase">
           La Génesis de Core Nexus Five
         </h2>
         <p class="text-lg leading-relaxed text-gray-700 dark:text-gray-300">
-          Core Nexus Five no es solo una arquitectura técnica; es el proyecto final de mi formación en <strong>AWS Re/Start</strong>. Representa el punto de inflexión donde todos los conceptos aprendidos durante meses —redes, seguridad, almacenamiento y computación— convergieron por fin para dar sentido al mundo de los datos.
+          Core Nexus Five no es solo una arquitectura técnica; es el proyecto final de la formación en <strong>AWS Re/Start</strong>. Representa el punto de inflexión donde todos los conceptos aprendidos —redes, seguridad, almacenamiento y computación— convergen para dar sentido al mundo de los datos.
         </p>
 
-        <!-- Nota manuscrita 1 -->
         <div class="side-note">
           <svg class="marker-arrow" viewBox="0 0 120 80">
             <path d="M-20,40 Q30,35 110,40" stroke="black" stroke-width="12" fill="none" stroke-linecap="round"/>
@@ -75,18 +70,16 @@ const equipo = [
         </div>
       </div>
 
-      <!-- Bloque 2: Las 5 Mentes / El Equipo (Sustituye al Video Antiguo) -->
       <div class="w-full max-w-4xl space-y-8">
         <div class="text-block-container mx-auto">
           <h2 class="text-xl md:text-2xl font-fugaz font-bold mb-2 uppercase">
             El Nexo Original
           </h2>
           <p class="text-lg leading-relaxed text-gray-700 dark:text-gray-300">
-            El nombre rinde tributo a la sinergia de los cinco integrantes del equipo original en la demo final. Como su nombre indica, este "Nexo" fue el reto donde logramos unificar piezas dispersas en una solución integral. Haz clic en sus iniciales para conectar en LinkedIn.
+            El nombre rinde tributo a la sinergia de las Siliconas del equipo original. Haz clic en sus iniciales para conectar en LinkedIn.
           </p>
         </div>
         
-        <!-- Cuadrícula de Imágenes de las Participantes -->
         <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 w-full pt-4">
           {equipo.map((member) => (
             <div class="flex flex-col items-center bg-white border-2 border-black p-4 shadow-[6px_6px_0px_rgba(0,0,0,0.08)] rounded-xl group hover:-translate-y-1 transition-transform">
@@ -112,28 +105,26 @@ const equipo = [
         </div>
       </div>
 
-      <!-- Bloque 3: Pilares del Ecosistema -->
       <div class="text-block-container block-clean-relative">
         <div class="block-card featured-card">
           <h2 class="text-lg md:text-xl font-fugaz font-bold mb-4 uppercase">
-            Ecosistema de Datos Presentado
+            Infraestructura de Datos: Mi Visión Técnica
           </h2>
           <p class="text-base leading-relaxed text-gray-800 mb-4">
-            En esta plataforma, presento mi documentación detallada y visión técnica de este ecosistema, profundizando en los tres pilares fundamentales de AWS:
+           En esta plataforma, comparto mi documentación detallada y el análisis arquitectónico de esta solución de datos, profundizando en cómo articulé los tres pilares fundamentales de AWS:
           </p>
           <ul class="space-y-3 text-sm text-gray-800 font-medium">
             <li class="flex items-start gap-2">
-              <span class="text-black font-bold">■ S3:</span> El núcleo (Core) de almacenamiento inagotable.
+              <span class="text-black font-bold">■ S3:</span> El núcleo (Core) de almacenamiento inagotable y base de la infraestructura.
             </li>
             <li class="flex items-start gap-2">
-              <span class="text-black font-bold">■ Glue:</span> La inteligencia que cataloga y dota de estructura al caos.
+              <span class="text-black font-bold">■ Glue:</span> La inteligencia de integración que cataloga y dota de estructura al caos.
             </li>
             <li class="flex items-start gap-2">
-              <span class="text-black font-bold">■ Athena:</span> La herramienta de consulta que extrae el valor analítico final.
+              <span class="text-black font-bold">■ Athena:</span> El motor de consultas sin servidor que extrae el valor analítico final.
             </li>
           </ul>
 
-          <!-- Nota manuscrita 2 -->
           <div class="side-note">
             <svg class="marker-arrow" viewBox="0 0 120 80">
               <path d="M-20,40 Q30,35 110,40" stroke="black" stroke-width="12" fill="none" stroke-linecap="round"/>
