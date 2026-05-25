@@ -39,6 +39,7 @@ const equipo = [
     img: maykaFoto.src
   }
 ];
+---
 
 <Layout
   title="Project Overview | Core Nexus Five"
@@ -46,9 +47,12 @@ const equipo = [
   pubDate={new Date("May 16 2026")}
   heroImage="/blog-placeholder-about.jpg"
 >
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap"
+    rel="stylesheet"
+  />
 
   <section class="flex grow py-10 flex-col pb-40 justify-center items-center px-4">
 
@@ -58,8 +62,8 @@ const equipo = [
 
     <div class="w-full flex flex-col items-center space-y-16">
 
-      <!-- BLOQUE 1 -->
       <div class="text-block-container block-clean-relative">
+
         <h2 class="text-xl md:text-2xl font-fugaz font-bold mb-4 uppercase">
           La Génesis de Core Nexus Five
         </h2>
@@ -95,7 +99,6 @@ const equipo = [
         </div>
       </div>
 
-      <!-- EQUIPO -->
       <div class="w-full max-w-5xl space-y-8">
 
         <div class="text-block-container mx-auto">
@@ -111,42 +114,39 @@ const equipo = [
 
         <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-5 w-full pt-4">
 
-          {equipo.map((member) => (
+          {
+            equipo.map((member) => (
+              <div class="team-card group">
 
-            <div class="team-card group">
+                <div class="team-image-container">
+                  <img
+                    src={member.img}
+                    alt={`Fotografía de ${member.nombre}`}
+                    class="team-image"
+                  />
+                </div>
 
-              <div class="team-image-container">
+                <a
+                  href={member.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="team-letter"
+                  title={`Ver perfil de LinkedIn de ${member.nombre}`}
+                >
+                  {member.inicial}
+                </a>
 
-                <img
-                  src={member.img}
-                  alt={`Fotografía de ${member.nombre}`}
-                  class="team-image"
-                />
+                <span class="team-name">
+                  {member.nombre}
+                </span>
 
               </div>
-
-              <a
-                href={member.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="team-letter"
-                title={`Ver perfil de LinkedIn de ${member.nombre}`}
-              >
-                {member.inicial}
-              </a>
-
-              <span class="team-name">
-                {member.nombre}
-              </span>
-
-            </div>
-
-          ))}
+            ))
+          }
 
         </div>
       </div>
 
-      <!-- BLOQUE FINAL -->
       <div class="text-block-container block-clean-relative">
 
         <div class="block-card featured-card">
@@ -204,15 +204,17 @@ const equipo = [
             </span>
 
           </div>
+
         </div>
       </div>
 
     </div>
+
   </section>
+
 </Layout>
 
 <style>
-
   body {
     overflow-x: hidden;
     margin: 0;
@@ -242,8 +244,6 @@ const equipo = [
     box-shadow: 10px 10px 0px rgba(0,0,0,0.08);
     animation: gentle-pulse 4s infinite ease-in-out;
   }
-
-  /* TARJETAS EQUIPO */
 
   .team-card {
     background: white;
@@ -312,8 +312,6 @@ const equipo = [
     text-align: center;
   }
 
-  /* NOTAS */
-
   .side-note {
     position: absolute;
     top: 50%;
@@ -333,7 +331,7 @@ const equipo = [
   }
 
   .handwritten-text {
-    font-family: 'Caveat', cursive;
+    font-family: "Caveat", cursive;
     font-size: 34px;
     font-weight: 700;
     color: #000000;
@@ -344,7 +342,6 @@ const equipo = [
   }
 
   @media (max-width: 950px) {
-
     .side-note {
       position: relative;
       right: 0;
@@ -368,7 +365,6 @@ const equipo = [
   }
 
   @keyframes gentle-pulse {
-
     0%,100% {
       transform: scale(1);
     }
@@ -378,5 +374,4 @@ const equipo = [
       box-shadow: 14px 14px 0px rgba(0,0,0,0.12);
     }
   }
-
 </style>
