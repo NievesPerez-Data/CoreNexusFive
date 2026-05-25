@@ -1,37 +1,44 @@
 ---
 import Layout from "../layouts/Layout.astro";
 
-// Listado oficial con la ruta correcta apuntando al repositorio de GitHub Pages
+// Importación relativa directa (sin la barra / al principio) para que Astro las procese igual que en tu perfil
+import fotoElena from "../../public/equipo-e.jpg";
+import fotoClaudia from "../../public/equipo-c.jpg";
+import fotoNieves from "../../public/mi-logo-propio.png";
+import fotoEsther from "../../public/equipo-e2.jpg";
+import fotoMayka from "../../public/equipo-m.jpg";
+
+// Listado oficial que utiliza el .src de las imágenes procesadas
 const equipo = [
   { 
     inicial: "E", 
     nombre: "Elena Pavón", 
     linkedin: "https://www.linkedin.com/in/elenapavonfernandez/", 
-    img: "/CoreNexusFive/equipo-e.jpg" 
+    img: fotoElena.src 
   },
   { 
     inicial: "C", 
     nombre: "Claudia Cervantes", 
     linkedin: "https://www.linkedin.com/in/claudia-cervantes-worldwide/?locale=es", 
-    img: "/CoreNexusFive/equipo-c.jpg" 
+    img: fotoClaudia.src 
   },
   { 
     inicial: "N", 
     nombre: "Nieves Pérez", 
     linkedin: "https://www.linkedin.com/in/nievesperezalonso", 
-    img: "/CoreNexusFive/equipo-n.jpg" 
+    img: fotoNieves.src 
   },
   { 
     inicial: "E", 
     nombre: "Esther Quirós", 
     linkedin: "https://www.linkedin.com/in/esther-quir%C3%B3s/", 
-    img: "/CoreNexusFive/equipo-e2.jpg" 
+    img: fotoEsther.src 
   },
   { 
     inicial: "M", 
     nombre: "Mayka Durán", 
     linkedin: "https://www.linkedin.com/in/mdelcarmenduran/", 
-    img: "/CoreNexusFive/equipo-m.jpg" 
+    img: fotoMayka.src 
   }
 ];
 ---
