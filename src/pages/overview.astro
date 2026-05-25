@@ -1,47 +1,44 @@
 ---
 import Layout from "../layouts/Layout.astro";
 
-// Importamos dinámicamente todas las imágenes de la raíz de la carpeta public
-const imagenesPublic = import.meta.glob("../../public/*.{png,jpg,jpeg,svg,webp}", { eager: true });
+// IMPORTACIÓN DIRECTA DE IMÁGENES DESDE PUBLIC
+import elenaFoto from "../../public/equipo-e.jpg";
+import claudiaFoto from "../../public/equipo-c.jpg";
+import nievesFoto from "../../public/mi-logo-propio.png";
+import estherFoto from "../../public/equipo-e2.jpg";
+import maykaFoto from "../../public/equipo-m.jpg";
 
-// Función ayudante para extraer la URL procesada por Astro (.default.src)
-const obtenerImagen = (nombreArchivo: string) => {
-  const rutaClave = `../../public/${nombreArchivo}`;
-  const moduloImage = imagenesPublic[rutaClave] as any;
-  return moduloImage ? moduloImage.default.src : "";
-};
-
-// Listado oficial mapeando los nombres exactos de tus archivos sueltos en public
+// ARRAY DEL EQUIPO
 const equipo = [
-  { 
-    inicial: "E", 
-    nombre: "Elena Pavón", 
-    linkedin: "https://www.linkedin.com/in/elenapavonfernandez/", 
-    img: obtenerImagen("equipo-e.jpg") 
+  {
+    inicial: "E",
+    nombre: "Elena Pavón",
+    linkedin: "https://www.linkedin.com/in/elenapavonfernandez/",
+    img: elenaFoto.src
   },
-  { 
-    inicial: "C", 
-    nombre: "Claudia Cervantes", 
-    linkedin: "https://www.linkedin.com/in/claudia-cervantes-worldwide/?locale=es", 
-    img: obtenerImagen("equipo-c.jpg") 
+  {
+    inicial: "C",
+    nombre: "Claudia Cervantes",
+    linkedin: "https://www.linkedin.com/in/claudia-cervantes-worldwide/?locale=es",
+    img: claudiaFoto.src
   },
-  { 
-    inicial: "N", 
-    nombre: "Nieves Pérez", 
-    linkedin: "https://www.linkedin.com/in/nievesperezalonso", 
-    img: obtenerImagen("mi-logo-propio.png") 
+  {
+    inicial: "N",
+    nombre: "Nieves Pérez",
+    linkedin: "https://www.linkedin.com/in/nievesperezalonso",
+    img: nievesFoto.src
   },
-  { 
-    inicial: "E", 
-    nombre: "Esther Quirós", 
-    linkedin: "https://www.linkedin.com/in/esther-quir%C3%B3s/", 
-    img: obtenerImagen("equipo-e2.jpg") 
+  {
+    inicial: "E",
+    nombre: "Esther Quirós",
+    linkedin: "https://www.linkedin.com/in/esther-quir%C3%B3s/",
+    img: estherFoto.src
   },
-  { 
-    inicial: "M", 
-    nombre: "Mayka Durán", 
-    linkedin: "https://www.linkedin.com/in/mdelcarmenduran/", 
-    img: obtenerImagen("equipo-m.jpg") 
+  {
+    inicial: "M",
+    nombre: "Mayka Durán",
+    linkedin: "https://www.linkedin.com/in/mdelcarmenduran/",
+    img: maykaFoto.src
   }
 ];
 ---
@@ -57,95 +54,158 @@ const equipo = [
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap" rel="stylesheet">
 
   <section class="flex grow py-10 flex-col pb-40 justify-center items-center px-4">
-    
+
     <h1 class="text-2xl md:text-3xl font-fugaz font-bold pt-20 pb-16 text-center max-w-4xl w-full uppercase leading-tight">
       Aquí la formación se convierte en arquitectura. En Core Nexus Five convergen cinco mentes y el entorno de aprendizaje de AWS para consolidar el conocimiento técnico a través del ciclo de vida del dato.
     </h1>
 
     <div class="w-full flex flex-col items-center space-y-16">
-      
+
+      <!-- BLOQUE 1 -->
       <div class="text-block-container block-clean-relative">
         <h2 class="text-xl md:text-2xl font-fugaz font-bold mb-4 uppercase">
           La Génesis de Core Nexus Five
         </h2>
+
         <p class="text-lg leading-relaxed text-gray-700 dark:text-gray-300">
-          Core Nexus Five no es solo una arquitectura técnica; es el proyecto final de la formación en <strong>AWS Re/Start</strong>. Representa el punto de inflexión donde todos los conceptos aprendidos —redes, seguridad, almacenamiento y computación— convergen para dar sentido al mundo de los datos.
+          Core Nexus Five no es solo una arquitectura técnica; es el proyecto final de la formación en
+          <strong>AWS Re/Start</strong>. Representa el punto de inflexión donde todos los conceptos aprendidos
+          —redes, seguridad, almacenamiento y computación— convergen para dar sentido al mundo de los datos.
         </p>
 
         <div class="side-note">
           <svg class="marker-arrow" viewBox="0 0 120 80">
-            <path d="M-20,40 Q30,35 110,40" stroke="black" stroke-width="12" fill="none" stroke-linecap="round"/>
-            <path d="M85,20 L112,41 L85,60" stroke="black" stroke-width="12" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <path
+              d="M-20,40 Q30,35 110,40"
+              stroke="black"
+              stroke-width="12"
+              fill="none"
+              stroke-linecap="round"
+            />
+            <path
+              d="M85,20 L112,41 L85,60"
+              stroke="black"
+              stroke-width="12"
+              fill="none"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
           </svg>
-          <span class="handwritten-text">El origen del Nexo</span>
+
+          <span class="handwritten-text">
+            El origen del Nexo
+          </span>
         </div>
       </div>
 
-      <div class="w-full max-w-4xl space-y-8">
+      <!-- EQUIPO -->
+      <div class="w-full max-w-5xl space-y-8">
+
         <div class="text-block-container mx-auto">
           <h2 class="text-xl md:text-2xl font-fugaz font-bold mb-2 uppercase">
             El Nexo Original
           </h2>
+
           <p class="text-lg leading-relaxed text-gray-700 dark:text-gray-300">
-            El nombre rinde tributo a la sinergia de las Siliconas del equipo original. Haz clic en sus iniciales para conectar en LinkedIn.
+            El nombre rinde tributo a la sinergia de las Siliconas del equipo original.
+            Haz clic en sus iniciales para conectar en LinkedIn.
           </p>
         </div>
-        
-        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 w-full pt-4">
+
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-5 w-full pt-4">
+
           {equipo.map((member) => (
-            <div class="flex flex-col items-center bg-white border-2 border-black p-4 shadow-[6px_6px_0px_rgba(0,0,0,0.08)] rounded-xl group hover:-translate-y-1 transition-transform">
-              <div class="w-full aspect-square overflow-hidden rounded-lg border border-neutral-200 bg-neutral-100 mb-3">
-                {member.img ? (
-                  <img 
-                    src={member.img} 
-                    alt={`Fotografía de ${member.nombre}`} 
-                    class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-350"
-                  />
-                ) : (
-                  <div class="w-full h-full bg-neutral-200 flex items-center justify-center text-xs text-neutral-400">Sin foto</div>
-                )}
+
+            <div class="team-card group">
+
+              <div class="team-image-container">
+
+                <img
+                  src={member.img}
+                  alt={`Fotografía de ${member.nombre}`}
+                  class="team-image"
+                />
+
               </div>
-              <a 
-                href={member.linkedin} 
-                target="_blank" 
+
+              <a
+                href={member.linkedin}
+                target="_blank"
                 rel="noopener noreferrer"
-                class="w-10 h-10 rounded-full bg-neutral-950 text-white flex items-center justify-center font-fugaz font-bold text-lg hover:bg-blue-600 transition-colors shadow-sm"
+                class="team-letter"
                 title={`Ver perfil de LinkedIn de ${member.nombre}`}
               >
                 {member.inicial}
               </a>
-              <span class="text-xs text-neutral-500 font-medium mt-2 text-center truncate w-full">{member.nombre}</span>
+
+              <span class="team-name">
+                {member.nombre}
+              </span>
+
             </div>
+
           ))}
+
         </div>
       </div>
 
+      <!-- BLOQUE FINAL -->
       <div class="text-block-container block-clean-relative">
+
         <div class="block-card featured-card">
+
           <h2 class="text-lg md:text-xl font-fugaz font-bold mb-4 uppercase">
             Infraestructura de Datos: Mi Visión Técnica
           </h2>
+
           <p class="text-base leading-relaxed text-gray-800 mb-4">
-           En esta plataforma, comparto mi documentación detallada y el análisis arquitectónico de esta solución de datos, profundizando en cómo articulé los tres pilares fundamentales de AWS:
+            En esta plataforma, comparto mi documentación detallada y el análisis arquitectónico de esta solución de datos,
+            profundizando en cómo articulé los tres pilares fundamentales de AWS:
           </p>
+
           <ul class="space-y-3 text-sm text-gray-800 font-medium">
+
             <li class="flex items-start gap-2">
-              <span class="text-black font-bold">■ S3:</span> El núcleo (Core) de almacenamiento inagotable y base de la infraestructura.
+              <span class="text-black font-bold">■ S3:</span>
+              El núcleo (Core) de almacenamiento inagotable y base de la infraestructura.
             </li>
+
             <li class="flex items-start gap-2">
-              <span class="text-black font-bold">■ Glue:</span> La inteligencia de integración que cataloga y dota de estructura al caos.
+              <span class="text-black font-bold">■ Glue:</span>
+              La inteligencia de integración que cataloga y dota de estructura al caos.
             </li>
+
             <li class="flex items-start gap-2">
-              <span class="text-black font-bold">■ Athena:</span> El motor de consultas sin servidor que extrae el valor analítico final.
+              <span class="text-black font-bold">■ Athena:</span>
+              El motor de consultas sin servidor que extrae el valor analítico final.
             </li>
+
           </ul>
 
           <div class="side-note">
+
             <svg class="marker-arrow" viewBox="0 0 120 80">
-              <path d="M-20,40 Q30,35 110,40" stroke="black" stroke-width="12" fill="none" stroke-linecap="round"/>
-              <path d="M85,20 L112,41 L85,60" stroke="black" stroke-width="12" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+              <path
+                d="M-20,40 Q30,35 110,40"
+                stroke="black"
+                stroke-width="12"
+                fill="none"
+                stroke-linecap="round"
+              />
+              <path
+                d="M85,20 L112,41 L85,60"
+                stroke="black"
+                stroke-width="12"
+                fill="none"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
             </svg>
-            <span class="handwritten-text">S3 + Glue + Athena</span>
+
+            <span class="handwritten-text">
+              S3 + Glue + Athena
+            </span>
+
           </div>
         </div>
       </div>
@@ -155,15 +215,15 @@ const equipo = [
 </Layout>
 
 <style>
+
   body {
     overflow-x: hidden;
     margin: 0;
     padding: 0;
   }
 
-  /* Contenedor estático para bloques de texto */
   .text-block-container {
-    max-width: 450px; 
+    max-width: 450px;
     width: 100%;
     position: relative;
     box-sizing: border-box;
@@ -173,27 +233,96 @@ const equipo = [
     position: relative;
   }
 
-  /* Tarjeta del ecosistema */
   .block-card {
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    padding: 35px 35px;
-    position: relative; 
+    border: 1px solid rgba(0,0,0,0.1);
+    padding: 35px;
+    position: relative;
     background-color: #ffffff;
   }
 
   .featured-card {
-    border: 2px solid #000000 !important; 
-    box-shadow: 10px 10px 0px rgba(0, 0, 0, 0.08); 
+    border: 2px solid #000000 !important;
+    box-shadow: 10px 10px 0px rgba(0,0,0,0.08);
     animation: gentle-pulse 4s infinite ease-in-out;
   }
 
-  /* Notas manuscritas laterales */
+  /* TARJETAS EQUIPO */
+
+  .team-card {
+    background: white;
+    border: 2px solid black;
+    border-radius: 18px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all 0.25s ease;
+    box-shadow: 7px 7px 0px rgba(0,0,0,0.08);
+  }
+
+  .team-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 10px 10px 0px rgba(0,0,0,0.12);
+  }
+
+  .team-image-container {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    border-radius: 12px;
+    border: 1px solid #e5e5e5;
+    background: #f5f5f5;
+    margin-bottom: 14px;
+  }
+
+  .team-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(100%);
+    transition: all 0.3s ease;
+  }
+
+  .group:hover .team-image {
+    filter: grayscale(0%);
+    transform: scale(1.04);
+  }
+
+  .team-letter {
+    width: 42px;
+    height: 42px;
+    border-radius: 999px;
+    background: black;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    text-decoration: none;
+    transition: all 0.25s ease;
+  }
+
+  .team-letter:hover {
+    background: #2563eb;
+    transform: scale(1.05);
+  }
+
+  .team-name {
+    margin-top: 10px;
+    font-size: 12px;
+    color: #555;
+    font-weight: 600;
+    text-align: center;
+  }
+
+  /* NOTAS */
+
   .side-note {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    right: -240px; 
-    width: 210px; 
+    right: -240px;
+    width: 210px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -201,14 +330,14 @@ const equipo = [
   }
 
   .marker-arrow {
-    width: 70px; 
+    width: 70px;
     margin-left: -20px;
     overflow: visible;
   }
 
   .handwritten-text {
     font-family: 'Caveat', cursive;
-    font-size: 34px; 
+    font-size: 34px;
     font-weight: 700;
     color: #000000;
     line-height: 0.85;
@@ -217,22 +346,24 @@ const equipo = [
     display: block;
   }
 
-  /* Responsivo para notas manuscritas en móvil */
   @media (max-width: 950px) {
-    .side-note { 
-      position: relative; 
-      right: 0; 
-      top: 0; 
-      width: 100%; 
+
+    .side-note {
+      position: relative;
+      right: 0;
+      top: 0;
+      width: 100%;
       margin-top: 20px;
-      transform: none; 
+      transform: none;
       align-items: center;
     }
-    .marker-arrow { 
-      margin-left: 0; 
-      transform: rotate(90deg); 
-      width: 35px; 
+
+    .marker-arrow {
+      margin-left: 0;
+      transform: rotate(90deg);
+      width: 35px;
     }
+
     .handwritten-text {
       text-align: center;
       padding-left: 0;
@@ -240,12 +371,15 @@ const equipo = [
   }
 
   @keyframes gentle-pulse {
-    0%, 100% {
+
+    0%,100% {
       transform: scale(1);
     }
+
     50% {
-      transform: scale(1.012); 
-      box-shadow: 14px 14px 0px rgba(0, 0, 0, 0.12); 
+      transform: scale(1.012);
+      box-shadow: 14px 14px 0px rgba(0,0,0,0.12);
     }
   }
+
 </style>
