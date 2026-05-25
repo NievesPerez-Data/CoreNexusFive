@@ -1,44 +1,37 @@
 ---
 import Layout from "../layouts/Layout.astro";
 
-// Importación directa desde la raíz de la carpeta public
-import fotoElena from "/public/equipo-e.jpg";
-import fotoClaudia from "/public/equipo-c.jpg";
-import fotoNieves from "/public/equipo-n.jpg";
-import fotoEsther from "/public/equipo-e2.jpg";
-import fotoMayka from "/public/equipo-m.jpg";
-
-// Listado oficial con las referencias correctas de las imágenes (.src)
+// Listado oficial con rutas relativas directas desde la carpeta pública
 const equipo = [
   { 
     inicial: "E", 
     nombre: "Elena Pavón", 
     linkedin: "https://www.linkedin.com/in/elenapavonfernandez/", 
-    img: fotoElena.src 
+    img: "equipo-e.jpg" 
   },
   { 
     inicial: "C", 
     nombre: "Claudia Cervantes", 
     linkedin: "https://www.linkedin.com/in/claudia-cervantes-worldwide/?locale=es", 
-    img: fotoClaudia.src 
+    img: "equipo-c.jpg" 
   },
   { 
     inicial: "N", 
     nombre: "Nieves Pérez", 
     linkedin: "https://www.linkedin.com/in/nievesperezalonso", 
-    img: fotoNieves.src 
+    img: "mi-logo-propio.png" 
   },
   { 
     inicial: "E", 
     nombre: "Esther Quirós", 
     linkedin: "https://www.linkedin.com/in/esther-quir%C3%B3s/", 
-    img: fotoEsther.src 
+    img: "equipo-e2.jpg" 
   },
   { 
     inicial: "M", 
     nombre: "Mayka Durán", 
     linkedin: "https://www.linkedin.com/in/mdelcarmenduran/", 
-    img: fotoMayka.src 
+    img: "equipo-m.jpg" 
   }
 ];
 ---
