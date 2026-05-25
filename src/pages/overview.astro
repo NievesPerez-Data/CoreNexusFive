@@ -1,37 +1,44 @@
 ---
 import Layout from "../layouts/Layout.astro";
 
-// Listado oficial de las 5 integrantes con sus nombres y perfiles de LinkedIn reales
+// Importación correcta de las imágenes para que Astro las procese sin fallar en las rutas
+import fotoElena from "../../public/CoreNexusFive/equipo-e.jpg";
+import fotoClaudia from "../../public/CoreNexusFive/equipo-c.jpg";
+import fotoNieves from "../../public/CoreNexusFive/mi-logo-propio.png";
+import fotoEsther from "../../public/CoreNexusFive/equipo-e2.jpg";
+import fotoMayka from "../../public/CoreNexusFive/equipo-m.jpg";
+
+// Listado oficial de las 5 integrantes con sus nombres, perfiles de LinkedIn y rutas procesadas (.src)
 const equipo = [
   { 
     inicial: "E", 
     nombre: "Elena Pavón", 
     linkedin: "https://www.linkedin.com/in/elenapavonfernandez/", 
-    img: "/CoreNexusFive/equipo-e.jpg" 
+    img: fotoElena.src 
   },
   { 
     inicial: "C", 
     nombre: "Claudia Cervantes", 
     linkedin: "https://www.linkedin.com/in/claudia-cervantes-worldwide/?locale=es", 
-    img: "/CoreNexusFive/equipo-c.jpg" 
+    img: fotoClaudia.src 
   },
   { 
     inicial: "N", 
     nombre: "Nieves Pérez", 
     linkedin: "https://www.linkedin.com/in/nievesperezalonso", 
-    img: "/CoreNexusFive/equipo-n.jpg" 
+    img: fotoNieves.src 
   },
   { 
     inicial: "E", 
     nombre: "Esther Quirós", 
     linkedin: "https://www.linkedin.com/in/esther-quir%C3%B3s/", 
-    img: "/CoreNexusFive/equipo-e2.jpg" 
+    img: fotoEsther.src 
   },
   { 
     inicial: "M", 
     nombre: "Mayka Durán", 
     linkedin: "https://www.linkedin.com/in/mdelcarmenduran/", 
-    img: "/CoreNexusFive/equipo-m.jpg" 
+    img: fotoMayka.src 
   }
 ];
 ---
