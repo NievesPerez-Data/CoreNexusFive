@@ -1,40 +1,41 @@
 ---
 import Layout from "../layouts/Layout.astro";
 
-// Obtenemos la ruta base de la aplicación (útil para GitHub Pages)
-const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, "");
+// Recuperamos la base exacta del proyecto asegurando que empiece por barra y no termine en barra vacía
+const rawBase = import.meta.env.BASE_URL;
+const baseUrl = rawBase.endsWith('/') && rawBase !== '/' ? rawBase.slice(0, -1) : rawBase;
 
-// Listado oficial con rutas calculadas dinámicamente en base a la carpeta public
+// Listado oficial con rutas absolutas calculadas dinámicamente que funcionan en local y producción
 const equipo = [
   { 
     inicial: "E", 
     nombre: "Elena Pavón", 
     linkedin: "https://www.linkedin.com/in/elenapavonfernandez/", 
-    img: `${baseUrl}/equipo-e.jpg` 
+    img: baseUrl === '/' ? "/equipo-e.jpg" : `${baseUrl}/equipo-e.jpg`
   },
   { 
     inicial: "C", 
     nombre: "Claudia Cervantes", 
     linkedin: "https://www.linkedin.com/in/claudia-cervantes-worldwide/?locale=es", 
-    img: `${baseUrl}/equipo-c.jpg` 
+    img: baseUrl === '/' ? "/equipo-c.jpg" : `${baseUrl}/equipo-c.jpg`
   },
   { 
     inicial: "N", 
     nombre: "Nieves Pérez", 
     linkedin: "https://www.linkedin.com/in/nievesperezalonso", 
-    img: `${baseUrl}/mi-logo-propio.png` 
+    img: baseUrl === '/' ? "/mi-logo-propio.png" : `${baseUrl}/mi-logo-propio.png`
   },
   { 
     inicial: "E", 
     nombre: "Esther Quirós", 
     linkedin: "https://www.linkedin.com/in/esther-quir%C3%B3s/", 
-    img: `${baseUrl}/equipo-e2.jpg` 
+    img: baseUrl === '/' ? "/equipo-e2.jpg" : `${baseUrl}/equipo-e2.jpg`
   },
   { 
     inicial: "M", 
     nombre: "Mayka Durán", 
     linkedin: "https://www.linkedin.com/in/mdelcarmenduran/", 
-    img: `${baseUrl}/equipo-m.jpg` 
+    img: baseUrl === '/' ? "/equipo-m.jpg" : `${baseUrl}/equipo-m.jpg`
   }
 ];
 ---
