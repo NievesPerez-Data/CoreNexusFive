@@ -2,7 +2,7 @@
 title: "Fase 1: Creación de Buckets S3"
 description: "Configuración del almacenamiento crudo y limpio para nuestro pipeline de datos en AWS."
 pubDate: 2026-05-26
-heroImage: "/blog-placeholder-1.jpg"
+heroImage: "/CoreNexusFive/mi-logo-propio.png"
 ---
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
