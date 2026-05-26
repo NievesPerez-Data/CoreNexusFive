@@ -1,46 +1,52 @@
----
+<section class="olimpo-container">
 
----
-
-<section class="network-diagram-container">
-
-  <!-- FLECHAS -->
-  <svg class="lines-canvas">
+  <!-- SVG FLECHAS -->
+  <svg class="lines-canvas" viewBox="0 0 1400 1400" preserveAspectRatio="none">
 
     <defs>
       <marker
         id="arrow"
-        markerWidth="10"
-        markerHeight="10"
-        refX="9"
-        refY="3"
+        markerWidth="12"
+        markerHeight="12"
+        refX="10"
+        refY="4"
         orient="auto"
       >
-        <path d="M0,0 L0,6 L9,3 z" fill="#ffffff"></path>
+        <path d="M0,0 L0,8 L10,4 z" fill="#ffffff" />
       </marker>
     </defs>
 
-    <line x1="300" y1="150" x2="300" y2="280"
-      class="line-path"
-      marker-end="url(#arrow)"
-    />
+    <!-- CERBERO -->
+    <line x1="700" y1="120" x2="700" y2="220" class="line-path" marker-end="url(#arrow)" />
 
-    <line x1="300" y1="400" x2="300" y2="530"
-      class="line-path"
-      marker-end="url(#arrow)"
-    />
+    <!-- ORIGEN -->
+    <line x1="700" y1="320" x2="700" y2="420" class="line-path" marker-end="url(#arrow)" />
 
-    <line x1="300" y1="400" x2="650" y2="400"
-      class="line-path"
-      marker-end="url(#arrow)"
-    />
+    <!-- S3 -->
+    <line x1="700" y1="520" x2="700" y2="620" class="line-path" marker-end="url(#arrow)" />
 
-    <line x1="300" y1="400" x2="50" y2="400"
-      class="line-path"
-      marker-end="url(#arrow)"
-    />
+    <!-- BUCKETS -->
+    <line x1="700" y1="720" x2="700" y2="820" class="line-path" marker-end="url(#arrow)" />
+
+    <!-- CRAWLERS -->
+    <line x1="700" y1="920" x2="700" y2="1020" class="line-path" marker-end="url(#arrow)" />
+
+    <!-- GLUE -> ATHENA -->
+    <line x1="700" y1="1120" x2="700" y2="1220" class="line-path" marker-end="url(#arrow)" />
+
+    <!-- ATHENA -> EFESTO -->
+    <line x1="700" y1="1320" x2="700" y2="1420" class="line-path" marker-end="url(#arrow)" />
+
+    <!-- ZEUS -->
+    <line x1="950" y1="1120" x2="780" y2="1120" class="line-path" marker-end="url(#arrow)" />
 
   </svg>
+
+  <!-- IAM -->
+  <div class="node node-guardian" onclick="openModal('cerbero')">
+    IAM
+    <small>CERBERO</small>
+  </div>
 
   <!-- ORIGEN -->
   <div class="node node-large" onclick="openModal('origen')">
@@ -48,287 +54,45 @@
   </div>
 
   <!-- S3 -->
-  <div class="node node-medium" onclick="openModal('s3')">
+  <div class="node node-main" onclick="openModal('gaia')">
     S3
     <small>GAIA</small>
   </div>
 
-  <!-- FLUJO CENTRAL -->
-  <div class="node node-central" onclick="openModal('flujo')">
-    FLUJO
-    CENTRAL
+  <!-- BUCKETS -->
+  <div class="node node-main" onclick="openModal('pandora')">
+    BUCKETS
+    <small>PANDORA</small>
   </div>
 
-  <!-- ATHENA -->
-  <div class="node node-large-light" onclick="openModal('athena')">
-    ATHENA
+  <!-- CRAWLERS -->
+  <div class="node node-main" onclick="openModal('argos')">
+    CRAWLERS
+    <small>ARGOS</small>
   </div>
 
   <!-- GLUE -->
-  <div class="node node-side" onclick="openModal('glue')">
+  <div class="node node-main" onclick="openModal('hermes')">
     GLUE
     <small>HERMES</small>
   </div>
 
+  <!-- ATHENA -->
+  <div class="node node-main athena-node" onclick="openModal('athena')">
+    ATHENA
+    <small>ATENEA</small>
+  </div>
+
   <!-- LAMBDA -->
-  <div class="node node-side" onclick="openModal('lambda')">
+  <div class="node node-side" onclick="openModal('zeus')">
     LAMBDA
     <small>ZEUS</small>
   </div>
 
+  <!-- DEMO -->
+  <div class="node node-demo" onclick="openModal('hefesto')">
+    DEMO FINAL
+    <small>EFESTO</small>
+  </div>
+
 </section>
-
-<!-- MODAL ORIGEN -->
-<div id="origen" class="modal">
-  <div class="modal-content">
-    <span class="close" onclick="closeModal('origen')">&times;</span>
-
-    <h2>Origen del Dato</h2>
-
-    <p>
-      Punto inicial de entrada de información.
-    </p>
-
-    <ul>
-      <li>Ficheros CSV</li>
-      <li>Logs</li>
-      <li>Bases de datos</li>
-      <li>APIs externas</li>
-    </ul>
-  </div>
-</div>
-
-<!-- MODAL S3 -->
-<div id="s3" class="modal">
-  <div class="modal-content">
-    <span class="close" onclick="closeModal('s3')">&times;</span>
-
-    <h2>S3 · Gaia</h2>
-
-    <p>
-      Almacenamiento principal de toda la arquitectura.
-    </p>
-
-    <ul>
-      <li>Raw Zone</li>
-      <li>Processed Zone</li>
-      <li>Data Lake</li>
-    </ul>
-  </div>
-</div>
-
-<!-- MODAL GLUE -->
-<div id="glue" class="modal">
-  <div class="modal-content">
-    <span class="close" onclick="closeModal('glue')">&times;</span>
-
-    <h2>Glue · Hermes</h2>
-
-    <p>
-      Servicio ETL encargado de catalogar y transformar datos.
-    </p>
-  </div>
-</div>
-
-<!-- MODAL ATHENA -->
-<div id="athena" class="modal">
-  <div class="modal-content">
-    <span class="close" onclick="closeModal('athena')">&times;</span>
-
-    <h2>Athena</h2>
-
-    <p>
-      Motor de consultas SQL serverless.
-    </p>
-  </div>
-</div>
-
-<!-- MODAL LAMBDA -->
-<div id="lambda" class="modal">
-  <div class="modal-content">
-    <span class="close" onclick="closeModal('lambda')">&times;</span>
-
-    <h2>Lambda · Zeus</h2>
-
-    <p>
-      Automatización y ejecución de lógica bajo demanda.
-    </p>
-  </div>
-</div>
-
-<!-- MODAL FLUJO -->
-<div id="flujo" class="modal">
-  <div class="modal-content">
-    <span class="close" onclick="closeModal('flujo')">&times;</span>
-
-    <h2>Flujo Central</h2>
-
-    <p>
-      Núcleo de la arquitectura Core Nexus Five.
-    </p>
-  </div>
-</div>
-
-<script is:inline>
-
-function openModal(id){
-  document.getElementById(id).style.display = "flex";
-}
-
-function closeModal(id){
-  document.getElementById(id).style.display = "none";
-}
-
-window.openModal = openModal;
-window.closeModal = closeModal;
-
-</script>
-
-<style>
-
-.network-diagram-container{
-  position:relative;
-  width:100%;
-  min-height:900px;
-  background:#111;
-  overflow:hidden;
-}
-
-/* FLECHAS */
-
-.lines-canvas{
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
-}
-
-.line-path{
-  stroke:#fff;
-  stroke-width:2;
-  fill:none;
-}
-
-/* NODOS */
-
-.node{
-  position:absolute;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  border-radius:50%;
-  cursor:pointer;
-  transition:.3s;
-  color:white;
-}
-
-.node:hover{
-  transform:scale(1.08);
-}
-
-.node small{
-  margin-top:5px;
-  opacity:.7;
-}
-
-/* ORIGEN */
-
-.node-large{
-  width:180px;
-  height:180px;
-  background:black;
-  border:3px solid white;
-
-  top:60px;
-  left:210px;
-}
-
-/* S3 */
-
-.node-medium{
-  width:130px;
-  height:130px;
-
-  border:2px solid #999;
-
-  top:250px;
-  left:235px;
-}
-
-/* CENTRO */
-
-.node-central{
-  width:200px;
-  height:200px;
-
-  background:black;
-  border:3px solid white;
-
-  top:340px;
-  left:200px;
-}
-
-/* ATHENA */
-
-.node-large-light{
-  width:180px;
-  height:180px;
-
-  border:3px solid white;
-
-  top:560px;
-  left:210px;
-}
-
-/* LATERALES */
-
-.node-side{
-  width:140px;
-  height:140px;
-
-  border:2px dashed #999;
-}
-
-.node-side:nth-of-type(5){
-  top:330px;
-  left:580px;
-}
-
-.node-side:nth-of-type(6){
-  top:330px;
-  left:20px;
-}
-
-/* MODALES */
-
-.modal{
-  display:none;
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.85);
-  justify-content:center;
-  align-items:center;
-  z-index:999;
-}
-
-.modal-content{
-  background:white;
-  color:black;
-  width:800px;
-  max-width:90%;
-  padding:40px;
-  border-radius:20px;
-  position:relative;
-}
-
-.close{
-  position:absolute;
-  right:20px;
-  top:10px;
-  font-size:40px;
-  cursor:pointer;
-}
-
-</style>
