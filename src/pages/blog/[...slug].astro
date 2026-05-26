@@ -1,12 +1,13 @@
 ---
 import { type CollectionEntry, getCollection } from 'astro:content';
-import BlogPost from '../../layouts/BlogPost.astro';
+import Layout from '@/layouts/Layout.astro'; // Usamos tu Layout base
 import { render } from 'astro:content';
 
 export async function getStaticPaths() {
 	const posts = await getCollection('blog');
 	return posts.map((post) => ({
-		params: { slug: post.id },
+		// Cambiamos post.id por post.slug para asegurar compatibilidad con las rutas de Astro
+		params: { slug: post.slug || post.id }, 
 		props: post,
 	}));
 }
@@ -16,6 +17,11 @@ const post = Astro.props;
 const { Content } = await render(post);
 ---
 
-<BlogPost {...post.data}>
-	<Content />
-</BlogPost>
+<Layout 
+	title={`${post.data.title} | Core Nexus Five`} 
+	description={post.data.description}
+>
+	<div class="w-full flex flex-col items-center justify-center">
+		<Content />
+	</div>
+</Layout>
