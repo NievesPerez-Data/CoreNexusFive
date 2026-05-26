@@ -1,49 +1,35 @@
 ---
-interface Props {
-  post: any;
-}
-
+// src/components/ui/Card.astro
 const { post } = Astro.props;
-const hero = post?.data?.heroImage as string;
-const basePath = hero
-  ? `/assets${hero.startsWith("/") ? hero : `/${hero}`}`
-  : "";
-
-const getRandomMargin = () => {
-  const margins = ["mt-36", "mt-72", "mt-56", "mt-96"];
-  return margins[Math.floor(Math.random() * margins.length)];
-};
-var margin = "";
-if (post.id === "img2") {
-  margin = "!mt-0";
-}
-import FormattedDate from "@/components/FormattedDate.astro";
-import { Picture } from "astro:assets";
 ---
 
-<li class={`${getRandomMargin()} + ${margin} relative`}>
-  <a
-    href={`/blog/${post.id}/`}
-    class="relative flex flex-col gap-2 p-6 max-w-96"
-  >
-    {
-      hero && (
-        <Picture
-          src={basePath}
-          alt={post.data.title}
-          quality={10}
-          width="400"
-          height="300"
-          class="w-full"
-        />
-      )
-    }
+<li class="border-2 border-black p-6 bg-white shadow-[8px_8px_0px_rgba(0,0,0,0.15)] flex flex-col gap-4 list-none">
+  
+  {post.data.heroImage && (
+    <img 
+      src={`/CoreNexusFive${post.data.heroImage}`} 
+      alt={post.data.title} 
+      class="w-full h-48 object-cover border-b-2 border-black"
+    />
+  )}
 
-    <p class="date font-semibold text-3xl">
-      <p>{post.data.title}</p>
+  <div class="flex flex-col gap-2">
+    <span class="text-sm text-gray-600">
+      {new Date(post.data.pubDate).toLocaleDateString('es-ES', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      })}
+    </span>
+
+    <a href={`/CoreNexusFive/blog/${post.slug}/`} class="hover:underline">
+      <h2 class="text-xl font-bold font-fugaz uppercase text-black block">
+        {post.data.title}
+      </h2>
+    </a>
+
+    <p class="text-gray-700 line-clamp-3 block">
+      {post.data.description}
     </p>
-  </a>
-  <p class="absolute rotate-90 -right-6 bottom-24 font-bold">
-    <FormattedDate date={new Date(post.data.pubDate)} />
-  </p>
+  </div>
 </li>
