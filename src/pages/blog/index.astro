@@ -2,17 +2,23 @@
 import { getCollection } from "astro:content";
 import Layout from "@/layouts/Layout.astro";
 import Card from "@/components/ui/Card.astro";
+
 const posts = (await getCollection("blog")).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 );
 import { Icon } from "astro-icon/components";
 ---
 
-<Layout>
+<Layout 
+  title="Documentación Técnica | Core Nexus Five" 
+  description="Validación visual y dinámica de la arquitectura desplegada en Core Nexus Five."
+>
   <section
     class="overflow-scroll max-h-fit flex flex-col gap-20 py-10 max-w-[1000px] self-center px-6 no-scrollbar"
   >
-    <h1 class="text-4xl md:text-7xl font-fugaz font-bold mx-auto pt-30">My blog</h1>
+    <h1 class="text-4xl md:text-7xl font-fugaz font-bold mx-auto pt-30 uppercase">
+      Documentación Técnica
+    </h1> 
     <div>
       <div class="grid md:grid-cols-2 gap-x-40 mb-40">
         <ul class="md:space-y-8">
