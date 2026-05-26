@@ -1,156 +1,130 @@
 ---
-// Tu lógica de Astro aquí, si la necesitas
+
 ---
 
-<section class="network-diagram-container">
-  <svg class="lines-canvas" preserveAspectRatio="none">
-    <path class="line-path" d="M100,50 L250,90" marker-end="url(#arrow)" />
-    <path class="line-path" d="M150,150 C200,200 300,100 400,200" marker-end="url(#arrow)" />
-    <path class="line-path" d="M100,400 L500,600" />
-    
-    <defs>
-      <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
-        <path d="M0,0 L0,6 L9,3 z" fill="#fff" />
-      </marker>
-    </defs>
-  </svg>
+<section class="diagram">
 
-  <div class="node node-large" style="--top: 50px; --left: 100px;">
-    <span>ORIGEN</span>
-  </div>
-  <div class="node node-small-light" style="--top: 150px; --left: 150px;">
-    <span>S3<br>(Gaia)</span>
-    <ul class="node-details">
-      <li>Materia prima de datos raw</li>
-      <li>Contenedor universal</li>
-    </ul>
+  <div class="node" onclick="openModal('s3')">
+    S3
   </div>
 
-  <div class="node node-large" style="--top: 90px; --left: 250px;">
-    <span>ORIGEN</span>
-  </div>
-  <div class="node node-small-light" style="--top: 200px; --left: 400px;">
-    <span>Glue ETL<br>(Hermes)</span>
-    <ul class="node-details">
-      <li>Transformación Dinámica</li>
-      <li>Guía de datos</li>
-    </ul>
+  <div class="node" onclick="openModal('glue')">
+    Glue
   </div>
 
-  <div class="node node-large-light" style="--top: 500px; --left: 400px;">
-    <span>ATHENA</span>
-  </div>
-  <div class="node node-medium-light" style="--top: 600px; --left: 500px;">
-    <span>Demo Final<br>(Kairós)</span>
-  </div>
-
-  <div class="node node-medium-light" style="--top: 600px; --left: 200px;">
-    <span>LAMBDA<br>(Zeus)</span>
-  </div>
-
-  <div class="node node-large-central" style="--top: 350px; --left: 300px;">
-    <span>FLUJO CENTRAL</span>
+  <div class="node" onclick="openModal('athena')">
+    Athena
   </div>
 
 </section>
 
+<!-- MODAL S3 -->
+<div id="s3" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('s3')">&times;</span>
+
+    <h2>Amazon S3</h2>
+
+    <p>
+      Almacenamiento principal de la arquitectura.
+    </p>
+
+    <ul>
+      <li>Datos Raw</li>
+      <li>Data Lake</li>
+      <li>Escalable</li>
+    </ul>
+  </div>
+</div>
+
+<!-- MODAL GLUE -->
+<div id="glue" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('glue')">&times;</span>
+
+    <h2>AWS Glue</h2>
+
+    <p>
+      Servicio ETL utilizado para catalogar y transformar datos.
+    </p>
+  </div>
+</div>
+
+<!-- MODAL ATHENA -->
+<div id="athena" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('athena')">&times;</span>
+
+    <h2>Amazon Athena</h2>
+
+    <p>
+      Consultas SQL serverless directamente sobre S3.
+    </p>
+  </div>
+</div>
+
+<script is:inline>
+  function openModal(id) {
+    document.getElementById(id).style.display = "flex";
+  }
+
+  function closeModal(id) {
+    document.getElementById(id).style.display = "none";
+  }
+
+  window.openModal = openModal;
+  window.closeModal = closeModal;
+</script>
+
 <style>
-  /* CONFIGURACIÓN DEL CONTENEDOR PRINCIPAL */
-  .network-diagram-container {
-    position: relative;
-    width: 100vw;
-    height: 100vh;
-    background-color: #1a1a1a;
-    color: #fff;
-    font-family: 'Fauna One', serif;
-    overflow: hidden;
-  }
+.diagram{
+  display:flex;
+  justify-content:center;
+  gap:80px;
+  padding:100px 20px;
+}
 
-  /* ESTILOS DE LOS NODOS (CÍRCULOS) */
-  .node {
-    position: absolute;
-    top: var(--top);
-    left: var(--left);
-    transform: translate(-50%, -50%);
-    border-radius: 50%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    transition: all 0.3s ease;
-  }
+.node{
+  width:180px;
+  height:180px;
+  border-radius:50%;
+  border:3px solid black;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  font-weight:bold;
+  transition:.3s;
+}
 
-  /* Variaciones de nodos */
-  .node-large {
-    width: 200px;
-    height: 200px;
-    background-color: #000;
-    border: 3px solid #fff;
-    font-size: 24px;
-    text-transform: uppercase;
-  }
+.node:hover{
+  transform:scale(1.05);
+}
 
-  .node-small-light {
-    width: 100px;
-    height: 100px;
-    background-color: transparent;
-    border: 2px dashed #666;
-    font-size: 14px;
-  }
+.modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.7);
+  justify-content:center;
+  align-items:center;
+  z-index:999;
+}
 
-  .node-medium-light {
-    width: 130px;
-    height: 130px;
-    background-color: transparent;
-    border: 2px solid #ccc;
-    font-size: 16px;
-  }
+.modal-content{
+  background:white;
+  width:700px;
+  max-width:90%;
+  padding:40px;
+  border-radius:20px;
+  position:relative;
+}
 
-  .node-large-light {
-    width: 180px;
-    height: 180px;
-    background-color: transparent;
-    border: 3px solid #ccc;
-    font-size: 20px;
-  }
-  
-  .node-large-central {
-    width: 190px;
-    height: 190px;
-    background-color: #000;
-    border: 3px solid #fff;
-    font-size: 22px;
-  }
-
-  /* Detalles de los nodos (Texto al lado) */
-  .node-details {
-    position: absolute;
-    left: 110%; /* Ajuste para colocar a la derecha */
-    top: 0;
-    width: 150px;
-    list-style: disc;
-    font-size: 12px;
-    color: #b0b0b0;
-    text-align: left;
-    margin: 0;
-    padding-left: 15px;
-  }
-
-  /* CANVAS DE LÍNEAS SVG */
-  .lines-canvas {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none; /* Las líneas no bloquean clics */
-  }
-
-  .line-path {
-    fill: none;
-    stroke: #fff;
-    stroke-width: 1.5px;
-    stroke-linecap: round;
-  }
+.close{
+  position:absolute;
+  top:15px;
+  right:20px;
+  font-size:32px;
+  cursor:pointer;
+}
 </style>
