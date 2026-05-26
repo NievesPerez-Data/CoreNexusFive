@@ -6,7 +6,7 @@ heroImage: "/city1.webp"
 ---
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="crossorigin" />
 <link href="https://fonts.googleapis.com/css2?family=Caveat:wght=700&display=swap" rel="stylesheet" />
 
 <section class="flex grow py-10 flex-col pb-40 justify-center items-center px-4">
@@ -51,7 +51,7 @@ heroImage: "/city1.webp"
         <iframe 
           src="https://www.dailymotion.com/embed/video/xa8agkq?autoplay=0&mute=1" 
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-          allowfullscreen 
+          allowfullscreen="allowfullscreen" 
           class="embedded-video"
         ></iframe>
       </div>
@@ -82,7 +82,8 @@ heroImage: "/city1.webp"
   </div>
 </section>
 
-<style>
+{/* Usamos un fragmento de estilos seguro para MDX */}
+<style dangerouslySetInnerHTML={{__html: `
   .text-block-container {
     max-width: 450px;
     width: 100%;
@@ -99,7 +100,6 @@ heroImage: "/city1.webp"
   .featured-card {
     border: 2px solid #000000 !important; 
     box-shadow: 10px 10px 0px rgba(0, 0, 0, 0.08); 
-    animation: gentle-pulse 4s infinite ease-in-out;
   }
   .video-wrapper-large {
     position: relative;
@@ -126,8 +126,4 @@ heroImage: "/city1.webp"
     .marker-arrow { margin-left: 0; transform: rotate(90deg); width: 35px; }
     .handwritten-text { text-align: center; padding-left: 0; }
   }
-  @keyframes gentle-pulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.012); box-shadow: 14px 14px 0px rgba(0, 0, 0, 0.12); }
-  }
-</style>
+`}} />
