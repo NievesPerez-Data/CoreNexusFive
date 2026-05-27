@@ -10,11 +10,14 @@
 <section class="architecture-wrapper">
 
   <div class="info-intro-card">
-    <h4 class="font-fugaz">EL OLIMPO DE LOS DATOS</h4>
-    <p>Este mapa conceptual interactivo desarma nuestra arquitectura desde su base para comprender su lógica.</p>
-    <div class="analogy-box">
-      <span class="handwritten-title">¿Por qué Grecia?</span>
-      <p>Unimos la infraestructura Cloud con la deidad mitológica que rige su esencia: desde <strong>Gaia (S3)</strong> como el origen primordial de todo, hasta los rayos de código bajo demanda de <strong>Zeus (Lambda)</strong>.</p>
+    <div class="card-shadow"></div>
+    <div class="card-content">
+      <h4 class="font-fugaz">EL OLIMPO DE LOS DATOS</h4>
+      <p>Este mapa conceptual interactivo desarma nuestra arquitectura desde su base para comprender su lógica.</p>
+      <div class="analogy-box">
+        <span class="handwritten-title">¿Por qué Grecia?</span>
+        <p>Unimos la infraestructura Cloud con la deidad que rige su esencia: desde <strong>Gaia (S3)</strong> como origen, hasta los rayos de código de <strong>Zeus (Lambda)</strong>.</p>
+      </div>
     </div>
   </div>
 
@@ -28,78 +31,120 @@
     <path d="M800 1780 L800 1920" class="main-map-line" />
 
     <path d="M800 1355 L1150 1355" class="dashed-map-line" />
-
     <path d="M800 160 L800 90" class="dashed-map-line" />
   </svg>
 
   <div class="node node-small node-iam">
-    <img src="/iam-logo.png" alt="IAM" class="node-logo" />
-    <h3>IAM</h3>
-    <span class="handwritten-text">Cerbero</span>
+    <div class="node-shadow"></div>
+    <div class="node-content">
+      <img src="/iam-logo.png" alt="IAM" class="node-logo" />
+      <h3>IAM</h3>
+      <span class="handwritten-text">Cerbero</span>
+    </div>
   </div>
 
   <div class="node node-origin">
-    <h2 class="font-fugaz">ORIGEN</h2>
+    <div class="node-shadow"></div>
+    <div class="node-content">
+      <h2 class="font-fugaz">ORIGEN</h2>
+    </div>
   </div>
 
   <div class="node node-medium node-s3">
-    <img src="/s3-logo.png" alt="S3" class="node-logo" />
-    <h3>S3</h3>
-    <span class="handwritten-text">Gaia</span>
+    <div class="node-shadow"></div>
+    <div class="node-content">
+      <img src="/s3-logo.png" alt="S3" class="node-logo" />
+      <h3>S3</h3>
+      <span class="handwritten-text">Gaia</span>
+    </div>
     <div class="node-popup">
       <p><strong>Gaia</strong> representa la base primordial del ecosistema. S3 es el almacenamiento universal donde nace todo el flujo de datos.</p>
     </div>
   </div>
 
   <div class="node node-medium node-buckets">
-    <img src="/bucket-logo.png" alt="Buckets" class="node-logo" />
-    <h3>BUCKETS</h3>
-    <span class="handwritten-text">Pandora</span>
+    <div class="node-shadow"></div>
+    <div class="node-content">
+      <img src="/bucket-logo.png" alt="Buckets" class="node-logo" />
+      <h3>BUCKETS</h3>
+      <span class="handwritten-text">Pandora</span>
+    </div>
     <div class="node-popup">
       <p>Los <strong>Buckets</strong> contienen datos críticos. Bien configurados son tesoros; abiertos por error desatan el caos de <strong>Pandora</strong>.</p>
     </div>
   </div>
 
   <div class="node node-medium node-crawlers">
-    <img src="/crawler-logo.png" alt="Crawlers" class="node-logo" />
-    <h3>CRAWLERS</h3>
-    <span class="handwritten-text">Argos</span>
+    <div class="node-shadow"></div>
+    <div class="node-content">
+      <img src="/crawler-logo.png" alt="Crawlers" class="node-logo" />
+      <h3>CRAWLERS</h3>
+      <span class="handwritten-text">Argos</span>
+    </div>
     <div class="node-popup">
       <p>Los Crawlers exploran automáticamente la estructura de los datos. <strong>Argos</strong> observa cada rincón del sistema.</p>
     </div>
   </div>
 
   <div class="node node-medium node-glue">
-    <img src="/glue-logo.png" alt="Glue" class="node-logo" />
-    <h3>GLUE</h3>
-    <span class="handwritten-text">Hermes</span>
+    <div class="node-shadow"></div>
+    <div class="node-content">
+      <img src="/glue-logo.png" alt="Glue" class="node-logo" />
+      <h3>GLUE</h3>
+      <span class="handwritten-text">Hermes</span>
+    </div>
     <div class="node-popup">
       <p>Glue conecta, transforma y transporta información. <strong>Hermes</strong> enlaza mundos separados mediante integración ETL.</p>
+    </div>
+    
+    <div class="map-side-note">
+      <svg class="marker-arrow" viewBox="0 0 120 80">
+        <path d="M-20,40 Q30,35 110,40" stroke="#d3d3d3" stroke-width="6" fill="none" stroke-linecap="round"/>
+        <path d="M85,20 L112,41 L85,60" stroke="#d3d3d3" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span class="map-handwritten-text">El mensajero de los datos</span>
     </div>
   </div>
 
   <div class="node node-medium node-athena">
-    <img src="/athena-logo.png" alt="Athena" class="node-logo" />
-    <h3>ATHENA</h3>
-    <span class="handwritten-text">Atenea</span>
+    <div class="node-shadow"></div>
+    <div class="node-content">
+      <img src="/athena-logo.png" alt="Athena" class="node-logo" />
+      <h3>ATHENA</h3>
+      <span class="handwritten-text">Atenea</span>
+    </div>
     <div class="node-popup">
       <p>Athena permite consultar datos directamente sobre S3. Sabiduría instantánea de <strong>Atenea</strong> extraída del caos.</p>
+    </div>
+
+    <div class="map-side-note">
+      <svg class="marker-arrow" viewBox="0 0 120 80">
+        <path d="M-20,40 Q30,35 110,40" stroke="#d3d3d3" stroke-width="6" fill="none" stroke-linecap="round"/>
+        <path d="M85,20 L112,41 L85,60" stroke="#d3d3d3" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span class="map-handwritten-text">Consultas con sabiduría</span>
     </div>
   </div>
 
   <div class="node node-final">
-    <img src="/demo-logo.png" alt="Demo" class="node-logo large-logo" />
-    <h2 class="font-fugaz">DEMO FINAL</h2>
-    <span class="handwritten-text">Efesto</span>
+    <div class="node-shadow"></div>
+    <div class="node-content">
+      <img src="/demo-logo.png" alt="Demo" class="node-logo large-logo" />
+      <h2 class="font-fugaz">DEMO FINAL</h2>
+      <span class="handwritten-text">Efesto</span>
+    </div>
     <div class="node-popup">
       <p><strong>Efesto</strong> simboliza la forja tecnológica: la demostración final del ecosistema funcionando en armonía.</p>
     </div>
   </div>
 
   <div class="node node-side node-lambda">
-    <img src="/lambda-logo.png" alt="Lambda" class="node-logo" />
-    <h3>LAMBDA</h3>
-    <span class="handwritten-text">Zeus</span>
+    <div class="node-shadow"></div>
+    <div class="node-content">
+      <img src="/lambda-logo.png" alt="Lambda" class="node-logo" />
+      <h3>LAMBDA</h3>
+      <span class="handwritten-text">Zeus</span>
+    </div>
     <div class="node-popup">
       <p>Lambda ejecuta acciones instantáneas bajo demanda. Rayos de código de <strong>Zeus</strong> activados por eventos.</p>
     </div>
@@ -108,24 +153,24 @@
 </section>
 
 <style>
-/* CONTENEDOR PRINCIPAL ESTILO LIMPIO WEB */
+/* FONDO OSCURO ORIGINAL PERO REFINADO */
 .architecture-wrapper {
   position: relative;
   width: 100%;
   min-height: 2600px;
-  background-color: #fbfbfb; /* Fondo claro de sintonía limpia */
+  background: radial-gradient(circle at center, rgba(20,20,20,1), #000000 80%);
   overflow: hidden;
   padding: 160px 0;
 }
 
-/* NAVBAR INTEGRADO DE MAPA CONCEPTUAL */
+/* NAVBAR SUPERIOR ADAPTADO AL MUNDO OSCURO */
 .map-navigation-bar {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 20px 40px;
-  background: #ffffff;
-  border-bottom: 2px solid #000000;
+  background: #000000;
+  border-bottom: 2px solid #222222;
   position: sticky;
   top: 0;
   z-index: 100;
@@ -133,72 +178,58 @@
 .logo-brand {
   font-size: 18px;
   font-weight: 900;
-  color: #000000;
+  color: #ffffff;
   text-decoration: none;
   letter-spacing: 1px;
 }
-.nav-logo-link {
-  text-decoration: none;
-}
+.nav-logo-link { text-decoration: none; }
 .nav-menu-btn {
-  background: #000000;
-  color: #ffffff;
+  background: #ffffff;
+  color: #000000;
   border: none;
   padding: 8px 16px;
   font-size: 13px;
   font-weight: 800;
   cursor: pointer;
   letter-spacing: 1px;
-  transition: opacity 0.2s ease;
-}
-.nav-menu-btn:hover {
-  opacity: 0.85;
 }
 
-/* VENTANA INFORMATIVA IZQUIERDA */
+/* VENTANA INFORMATIVA CON EL HALO GRIS DE TU FOTO DE PERFIL */
 .info-intro-card {
   position: absolute;
   top: 60px;
   left: 40px;
   width: 320px;
-  background: #ffffff;
-  border: 1px solid rgba(0, 0, 0, 0.15);
-  padding: 30px;
-  border-radius: 4px;
   z-index: 10;
-  box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.05);
 }
-.info-intro-card h4 {
-  margin: 0 0 12px 0;
-  font-size: 16px;
-  letter-spacing: 1px;
+.card-shadow {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #d3d3d3;
+  top: 12px;
+  left: 12px;
+  z-index: 1;
+}
+.card-content {
+  position: relative;
+  background: #ffffff;
+  border: 2px solid #000000;
+  padding: 25px;
+  z-index: 2;
   color: #000000;
 }
-.info-intro-card p {
-  font-size: 14px;
-  line-height: 1.6;
-  color: #333333;
-  margin: 0 0 16px 0;
-}
-.analogy-box {
-  border-top: 1px solid #eeeeee;
-  padding-top: 14px;
-}
+.info-intro-card h4 { margin: 0 0 10px 0; font-size: 16px; color: #000; }
+.info-intro-card p { font-size: 13.5px; line-height: 1.5; color: #222; margin: 0 0 12px 0; }
+.analogy-box { border-top: 1px solid #ddd; padding-top: 10px; }
 .analogy-box .handwritten-title {
   font-family: 'Caveat', cursive;
-  font-size: 28px;
+  font-size: 26px;
   font-weight: 700;
-  color: #000000;
-  display: block;
-  margin-bottom: 6px;
-}
-.analogy-box p {
-  font-size: 13.5px;
-  color: #555555;
-  margin: 0;
+  color: #000;
 }
 
-/* LINEAS SVG NEGRAS EN LUGAR DE BLANCAS */
+/* LÍNEAS ESTRUCTURALES DEL SVG */
 .architecture-lines {
   position: absolute;
   inset: 0;
@@ -208,164 +239,156 @@
 }
 .main-map-line {
   fill: none;
-  stroke: #000000;
-  stroke-width: 3;
-  stroke-linecap: round;
+  stroke: rgba(255, 255, 255, 0.15);
+  stroke-width: 4;
 }
 .dashed-map-line {
   fill: none;
-  stroke: #000000;
+  stroke: rgba(255, 255, 255, 0.25);
   stroke-width: 3;
-  stroke-dasharray: 10 8;
+  stroke-dasharray: 12 10;
 }
 
-/* CONFIGURACIÓN BASE DE LOS NODOS CÍRCULOS */
+/* ESTRUCTURA DE NODOS CON HALO GRIS COMPLETO (ESTILO PHOTO-SHADOW) */
 .node {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
+  z-index: 5;
+  cursor: pointer;
+}
+.node-shadow {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #d3d3d3; /* El halo gris exacto de tu web */
+  top: 8px;
+  left: 8px;
+  border-radius: 999px;
+  z-index: 1;
+  transition: all 0.3s ease;
+}
+.node-content {
+  position: relative;
+  width: 100%;
+  height: 100%;
   border-radius: 999px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-  background: #ffffff;
+  background: #ffffff; /* Círculos limpios blancos */
   border: 2px solid #000000;
   color: #000000;
-  box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.04);
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  cursor: pointer;
-}
-.node:hover {
-  transform: translateX(-50%) translateY(-4px) scale(1.02);
-  box-shadow: 10px 10px 0px rgba(0, 0, 0, 0.08);
+  z-index: 2;
+  box-sizing: border-box;
 }
 
-/* LOGOS E ICONOS */
-.node-logo {
-  width: 48px;
-  height: 48px;
-  object-fit: contain;
-  margin-bottom: 8px;
-}
-.large-logo {
-  width: 60px;
-  height: 60px;
+/* Animación de interacción del nodo */
+.node:hover .node-shadow {
+  top: 14px;
+  left: 14px;
 }
 
-/* TIPOGRAFÍA HANDWRITTEN INTERNA */
-.node h2, .node h3 {
-  margin: 0;
-  color: #000000;
-  line-height: 1.1;
-}
+/* LOGOS */
+.node-logo { width: 44px; height: 44px; object-fit: contain; margin-bottom: 4px; }
+.large-logo { width: 56px; height: 56px; }
+
+/* TEXTOS INTERNOS EN LOS NODOS */
+.node h2, .node h3 { margin: 0; color: #000000; }
 .node .handwritten-text {
   font-family: 'Caveat', cursive;
-  font-size: 32px;
+  font-size: 30px;
   font-weight: 700;
   color: #000000;
   line-height: 0.8;
-  margin-top: 4px;
 }
 
-/* POPUPS LATERALES IZQUIERDOS AJUSTADOS */
+/* POPUPS LATERALES IZQUIERDOS */
 .node-popup {
   position: absolute;
-  right: 112%;
+  right: 115%;
   top: 50%;
-  transform: translateY(-50%) translateX(15px);
-  width: 260px;
+  transform: translateY(-50%);
+  width: 250px;
   background: #ffffff;
   border: 2px solid #000000;
-  padding: 20px;
-  border-radius: 4px;
+  padding: 18px;
   opacity: 0;
   pointer-events: none;
   transition: all 0.25s ease;
   font-size: 14px;
-  line-height: 1.6;
-  color: #222222;
-  box-shadow: 8px 8px 0px rgba(0, 0, 0, 0.08);
+  line-height: 1.5;
+  color: #000000;
+  box-shadow: 8px 8px 0px rgba(255, 255, 255, 0.1);
   text-align: left;
+  z-index: 20;
 }
-.node:hover .node-popup {
-  opacity: 1;
-  transform: translateY(-50%) translateX(0);
-}
+.node:hover .node-popup { opacity: 1; }
 
-/* DIMENSIONES Y ALTURAS DE LOS BLOQUES */
-.node-origin {
-  top: 220px;
-  width: 240px;
-  height: 240px;
-  background: #ffffff;
-  border-width: 3px;
-}
-.node-origin h2 { font-size: 38px; letter-spacing: 2px; }
+/* DIMENSIONES DE LOS CÍRCULOS */
+.node-origin { top: 220px; width: 220px; height: 220px; }
+.node-origin h2 { font-size: 34px; }
 
-.node-iam {
-  top: 20px;
-  width: 150px;
-  height: 150px;
-}
-.node-iam h3 { font-size: 24px; }
+.node-iam { top: 20px; width: 140px; height: 140px; }
+.node-iam h3 { font-size: 22px; }
 
-.node-medium {
-  width: 200px;
-  height: 200px;
-}
-.node-medium h3 { font-size: 32px; }
+.node-medium { width: 190px; height: 190px; }
+.node-medium h3 { font-size: 28px; }
 
-/* RE-POSICIONADO DE ALTURAS GENERALES */
+/* POSICIONAMIENTO VERTICAL */
 .node-s3 { top: 560px; }
 .node-buckets { top: 900px; }
 .node-crawlers { top: 1240px; }
 .node-glue { top: 1580px; }
 .node-athena { top: 1920px; }
 
-.node-final {
-  top: 2260px;
-  width: 260px;
-  height: 260px;
-  border-width: 3px;
-}
-.node-final h2 { font-size: 32px; letter-spacing: 1px; }
+.node-final { top: 2260px; width: 240px; height: 240px; }
+.node-final h2 { font-size: 28px; }
 
-/* AJUSTE Y CALIBRACIÓN DE LAMBDA MILIMÉTRICA */
-.node-side {
-  left: 72%;
-  transform: translateX(-50%);
-}
-.node-side:hover {
-  transform: translateX(-50%) translateY(-4px) scale(1.02);
-}
-.node-lambda {
-  top: 1255px; /* Sincronizado exactamente con el eje de la línea horizontal */
-  width: 200px;
-  height: 200px;
-  border-style: dashed;
-}
-.node-lambda h3 { font-size: 30px; }
+/* CALIBRACIÓN DE LAMBDA */
+.node-side { left: 72%; transform: translateX(-50%); }
+.node-lambda { top: 1260px; width: 190px; height: 190px; }
+.node-lambda .node-content { border-style: dashed; }
+.node-lambda h3 { font-size: 28px; }
 
-/* RESPONSIVE OPTIMIZADO */
+/* NOTAS MANUSCRITAS LATERALES (ESTILO TU PROPIO EJEMPLO) */
+.map-side-note {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: -240px; 
+  width: 210px; 
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  pointer-events: none;
+}
+.marker-arrow {
+  width: 60px; 
+  margin-left: -20px;
+  overflow: visible;
+}
+.map-handwritten-text {
+  font-family: 'Caveat', cursive;
+  font-size: 32px; 
+  font-weight: 700;
+  color: #d3d3d3; /* Color gris claro/blanco para resaltar en el fondo oscuro */
+  line-height: 0.9;
+  transform: rotate(-2deg);
+}
+
+/* RESPONSIVE */
 @media (max-width: 1100px) {
   .architecture-wrapper { min-height: 3400px; padding-top: 380px; }
   .info-intro-card { position: absolute; top: 20px; left: 50%; transform: translateX(-50%); width: 85%; }
-  
   .node { left: 50% !important; transform: translateX(-50%) !important; }
   .node-side { top: 2260px !important; }
   .node-final { top: 2580px !important; }
-  
+  .map-side-note { display: none; } /* Ocultar notas laterales en móviles para evitar desbordes */
   .node-popup { 
-    right: auto; 
-    top: 108%; 
-    left: 50%; 
-    transform: translateX(-50%) translateX(0); 
-    width: 230px; 
-    text-align: center;
-    box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.08);
+    right: auto; top: 105%; left: 50%; transform: translateX(-50%); width: 210px; text-align: center; 
   }
-  .node:hover .node-popup { transform: translateX(-50%) translateY(0); }
 }
 </style>
