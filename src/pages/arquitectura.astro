@@ -1,4 +1,3 @@
-<!-- CONTROL DE NAVEGACIÓN SUPERIOR INTEGRADO -->
 <div class="map-navigation-bar">
   <a href="/" class="nav-logo-link">
     <span class="font-fugaz logo-brand">CORE NEXUS FIVE</span>
@@ -10,7 +9,6 @@
 
 <section class="architecture-wrapper">
 
-  <!-- VENTANA INFORMATIVA PRINCIPAL -->
   <div class="info-intro-card">
     <div class="card-shadow"></div>
     <div class="card-content">
@@ -23,27 +21,25 @@
     </div>
   </div>
 
-  <!-- SVG DE CONEXIONES CON ANIMACIÓN DE FLUJO INTEGRAL -->
   <svg class="architecture-lines" viewBox="0 0 1600 1300" preserveAspectRatio="none">
     <defs>
-      <!-- Gradiente animado para las líneas de datos -->
-      <linearGradient id="data-flow-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <linearGradient id="main-vertical-flow" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stop-color="#ffffff" stop-opacity="0.2" />
+        <stop offset="50%" stop-color="#ffffff" stop-opacity="0.8" />
+        <stop offset="100%" stop-color="#ffffff" stop-opacity="0.2" />
+      </linearGradient>
+
+      <linearGradient id="side-diagonal-flow" x1="0%" y1="0%" x2="100%" y2="100%">
         <stop offset="0%" stop-color="#ffffff" stop-opacity="0.1" />
         <stop offset="50%" stop-color="#ffffff" stop-opacity="0.7" />
         <stop offset="100%" stop-color="#ffffff" stop-opacity="0.1" />
       </linearGradient>
     </defs>
 
-    <!-- LÍNEA CENTRAL PRINCIPAL: Ahora continua y con flujo de movimiento -->
-    <path d="M800 120 L800 1150" class="main-map-line animated-main-flow" />
+    <path d="M800 40 L800 1150" class="main-map-line animated-main-flow" />
 
-    <!-- LÍNEAS LATERALES CONTINUAS CON ANIMACIÓN -->
-    <path d="M800 150 L1080 230" class="side-map-line animated-flow" /> <!-- S3 a IAM -->
-    <path d="M800 490 L530 590" class="side-map-line animated-flow" />  <!-- Eje a Lambda -->
-    <path d="M800 490 L1070 590" class="side-map-line animated-flow" /> <!-- Eje a Crawlers -->
-  </svg>
+    <path d="M800 150 L1080 230" class="side-map-line animated-side-flow" /> <path d="M800 490 L530 590" class="side-map-line animated-side-flow" />  <path d="M800 490 L1070 590" class="side-map-line animated-side-flow" /> </svg>
 
-  <!-- S3 (CORE: GRANDE) -->
   <div class="node node-large node-s3">
     <div class="node-content">
       <img src="/s3-logo.png" alt="S3" class="node-logo" />
@@ -53,8 +49,8 @@
     </div>
     <div class="map-side-note note-right-large-node">
       <svg class="marker-arrow" viewBox="0 0 120 80">
-        <path d="M-20,40 Q30,35 110,40" stroke="#d3d3d3" stroke-width="7.5" fill="none" stroke-linecap="round"/>
-        <path d="M80,15 L112,41 L80,65" stroke="#d3d3d3" stroke-width="7.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M-15,40 Q30,35 110,40" stroke="#d3d3d3" stroke-width="9" fill="none" stroke-linecap="round"/>
+        <path d="M75,12 L112,41 L75,68" stroke="#d3d3d3" stroke-width="9" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
       <div class="note-text-block">
         <span class="service-title-handwritten">S3</span>
@@ -63,7 +59,6 @@
     </div>
   </div>
 
-  <!-- IAM (SATÉLITE: PEQUEÑO - SEPARACIÓN PERFECTA) -->
   <div class="node node-small node-side-right node-iam">
     <div class="node-content">
       <img src="/iam-logo.png" alt="IAM" class="node-logo" />
@@ -73,8 +68,8 @@
     </div>
     <div class="map-side-note note-right-small-node">
       <svg class="marker-arrow" viewBox="0 0 120 80">
-        <path d="M-20,40 Q30,35 110,40" stroke="#d3d3d3" stroke-width="7.5" fill="none" stroke-linecap="round"/>
-        <path d="M80,15 L112,41 L80,65" stroke="#d3d3d3" stroke-width="7.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M-15,40 Q30,35 110,40" stroke="#d3d3d3" stroke-width="9" fill="none" stroke-linecap="round"/>
+        <path d="M75,12 L112,41 L75,68" stroke="#d3d3d3" stroke-width="9" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
       <div class="note-text-block">
         <span class="service-title-handwritten">IAM</span>
@@ -83,7 +78,6 @@
     </div>
   </div>
 
-  <!-- BUCKETS (PROCESAMIENTO: MEDIANO) -->
   <div class="node node-medium node-buckets">
     <div class="node-content">
       <img src="/bucket-logo.png" alt="Buckets" class="node-logo" />
@@ -93,8 +87,8 @@
     </div>
     <div class="map-side-note note-right-medium-node">
       <svg class="marker-arrow" viewBox="0 0 120 80">
-        <path d="M-20,40 Q30,35 110,40" stroke="#d3d3d3" stroke-width="7.5" fill="none" stroke-linecap="round"/>
-        <path d="M80,15 L112,41 L80,65" stroke="#d3d3d3" stroke-width="7.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M-15,40 Q30,35 110,40" stroke="#d3d3d3" stroke-width="9" fill="none" stroke-linecap="round"/>
+        <path d="M75,12 L112,41 L75,68" stroke="#d3d3d3" stroke-width="9" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
       <div class="note-text-block">
         <span class="service-title-handwritten">BUCKETS</span>
@@ -103,283 +97,8 @@
     </div>
   </div>
 
-  <!-- LAMBDA (SATÉLITE: PEQUEÑO) -->
   <div class="node node-small node-side-left node-lambda">
     <div class="node-content">
       <img src="/lambda-logo.png" alt="Lambda" class="node-logo" />
     </div>
-    <div class="node-popup popup-right">
-      <p><strong>Zeus:</strong> Cómputo serverless inmediato que lanza rayos de código de manera reactiva bajo demanda.</p>
-    </div>
-    <div class="map-side-note note-left-small-node">
-      <svg class="marker-arrow reverse-arrow" viewBox="0 0 120 80">
-        <path d="M140,40 Q90,35 10,40" stroke="#d3d3d3" stroke-width="7.5" fill="none" stroke-linecap="round"/>
-        <path d="M40,15 L8,41 L40,65" stroke="#d3d3d3" stroke-width="7.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-      <div class="note-text-block">
-        <span class="service-title-handwritten">LAMBDA</span>
-        <span class="map-handwritten-text">Código reactivo<br>bajo demanda</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- CRAWLERS (SATÉLITE: PEQUEÑO) -->
-  <div class="node node-small node-side-right node-crawlers">
-    <div class="node-content">
-      <img src="/crawler-logo.png" alt="Crawlers" class="node-logo" />
-    </div>
-    <div class="node-popup popup-left">
-      <p><strong>Argos:</strong> Explora automáticamente las fuentes de datos mapeando y estructurando sus metadatos ocultos.</p>
-    </div>
-    <div class="map-side-note note-right-small-node">
-      <svg class="marker-arrow" viewBox="0 0 120 80">
-        <path d="M-20,40 Q30,35 110,40" stroke="#d3d3d3" stroke-width="7.5" fill="none" stroke-linecap="round"/>
-        <path d="M80,15 L112,41 L80,65" stroke="#d3d3d3" stroke-width="7.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-      <div class="note-text-block">
-        <span class="service-title-handwritten">CRAWLERS</span>
-        <span class="map-handwritten-text">Exploradores de<br>esquemas activos</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- GLUE (PROCESAMIENTO: MEDIANO) -->
-  <div class="node node-medium node-glue">
-    <div class="node-content">
-      <img src="/glue-logo.png" alt="Glue" class="node-logo" />
-    </div>
-    <div class="node-popup">
-      <p><strong>Hermes:</strong> Orquestador ETL encargado de transformar y mensajear los flujos de datos entre capas.</p>
-    </div>
-    <div class="map-side-note note-right-medium-node">
-      <svg class="marker-arrow" viewBox="0 0 120 80">
-        <path d="M-20,40 Q30,35 110,40" stroke="#d3d3d3" stroke-width="7.5" fill="none" stroke-linecap="round"/>
-        <path d="M80,15 L112,41 L80,65" stroke="#d3d3d3" stroke-width="7.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-      <div class="note-text-block">
-        <span class="service-title-handwritten">GLUE</span>
-        <span class="map-handwritten-text">El mensajero y ETL<br>de los datos</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- ATHENA (PROCESAMIENTO: MEDIANO) -->
-  <div class="node node-medium node-athena">
-    <div class="node-content">
-      <img src="/athena-logo.png" alt="Athena" class="node-logo" />
-    </div>
-    <div class="node-popup">
-      <p><strong>Atenea:</strong> Motor de análisis interactivo que ejecuta consultas estructuradas SQL directas sobre S3.</p>
-    </div>
-    <div class="map-side-note note-right-medium-node">
-      <svg class="marker-arrow" viewBox="0 0 120 80">
-        <path d="M-20,40 Q30,35 110,40" stroke="#d3d3d3" stroke-width="7.5" fill="none" stroke-linecap="round"/>
-        <path d="M80,15 L112,41 L80,65" stroke="#d3d3d3" stroke-width="7.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-      <div class="note-text-block">
-        <span class="service-title-handwritten">ATHENA</span>
-        <span class="map-handwritten-text">Consultas ágiles<br>con sabiduría</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- DEMO FINAL (CORE: GRANDE) -->
-  <div class="node node-large node-final">
-    <div class="node-content">
-      <img src="/demo-logo.png" alt="Demo" class="node-logo" />
-    </div>
-    <div class="node-popup">
-      <p><strong>Efesto:</strong> La forja definitiva donde confluyen los flujos de datos expuestos en su interfaz funcional.</p>
-    </div>
-    <div class="map-side-note note-right-large-node">
-      <svg class="marker-arrow" viewBox="0 0 120 80">
-        <path d="M-20,40 Q30,35 110,40" stroke="#d3d3d3" stroke-width="7.5" fill="none" stroke-linecap="round"/>
-        <path d="M80,15 L112,41 L80,65" stroke="#d3d3d3" stroke-width="7.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-      <div class="note-text-block">
-        <span class="service-title-handwritten">DEMO</span>
-        <span class="map-handwritten-text">Ecosistema forjado<br>en armonía</span>
-      </div>
-    </div>
-  </div>
-
-</section>
-
-<style>
-/* CONFIGURACIÓN CONTENEDOR */
-.architecture-wrapper {
-  position: relative;
-  width: 100%;
-  min-height: 1300px;
-  background: #0d0d0d;
-  overflow: hidden;
-  padding: 60px 0;
-  box-sizing: border-box;
-}
-
-/* NAVBAR */
-.map-navigation-bar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 40px;
-  background: #000000;
-  border-bottom: 2px solid #222222;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-}
-.logo-brand { font-size: 18px; font-weight: 900; color: #ffffff; text-decoration: none; letter-spacing: 1px; }
-.nav-logo-link { text-decoration: none; }
-.nav-menu-btn { background: #ffffff; color: #000000; border: none; padding: 8px 16px; font-size: 13px; font-weight: 800; cursor: pointer; letter-spacing: 1px; }
-
-/* CARD EXPLICATIVA */
-.info-intro-card { position: absolute; top: 40px; left: 40px; width: 280px; z-index: 10; }
-.card-shadow { position: absolute; width: 100%; height: 100%; background: #d3d3d3; top: 10px; left: 10px; z-index: 1; }
-.card-content { position: relative; background: #ffffff; border: 2px solid #000000; padding: 20px; z-index: 2; color: #000000; }
-.info-intro-card h4 { margin: 0 0 8px 0; font-size: 15px; color: #000; }
-.info-intro-card p { font-size: 13px; line-height: 1.4; color: #222; margin: 0 0 10px 0; }
-.analogy-box { border-top: 1px solid #ddd; padding-top: 8px; }
-.analogy-box .handwritten-title { font-family: 'Caveat', cursive; font-size: 24px; font-weight: 700; color: #000; }
-
-/* --- SECCIÓN LÍNEAS ANIMADAS INTEGRALES --- */
-.architecture-lines { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
-
-/* Línea Central: Flujo descendente grueso y continuo */
-.main-map-line {
-  fill: none;
-  stroke: url(#data-flow-grad);
-  stroke-width: 5.5;
-}
-.animated-main-flow {
-  stroke-dasharray: 80 40;
-  animation: mainFlow 4s linear infinite;
-}
-@keyframes mainFlow {
-  to { stroke-dashoffset: -120; }
-}
-
-/* Líneas Laterales: Movimiento fluido */
-.side-map-line { fill: none; stroke: url(#data-flow-grad); stroke-width: 3.8; }
-.animated-flow {
-  stroke-dasharray: 1000;
-  stroke-dashoffset: 1000;
-  animation: sideFlow 7s linear infinite;
-}
-@keyframes sideFlow {
-  to { stroke-dashoffset: 0; }
-}
-
-/* NODOS CIRCULARES */
-.node { position: absolute; left: 50%; transform: translateX(-50%); z-index: 5; cursor: pointer; }
-.node-content {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  border-radius: 999px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #ffffff;
-  border: 2px solid #000000;
-  box-sizing: border-box;
-  padding: 15px;
-  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
-}
-.node:hover .node-content {
-  box-shadow: 0 0 30px 10px rgba(255, 255, 255, 0.75);
-  transform: scale(1.06);
-}
-.node-logo { width: 63%; height: 63%; object-fit: contain; }
-
-/* --- BLOQUE DE TEXTO REESCALADO (MÁS PEQUEÑO) --- */
-.note-text-block { display: flex; flex-direction: column; text-align: left; width: 190px; }
-
-/* Título reducido de tamaño para estilizar */
-.service-title-handwritten {
-  font-family: 'Caveat', cursive;
-  font-size: 24px;   /* Tamaño reducido a petición */
-  font-weight: 800;
-  color: #ffffff;
-  line-height: 1;
-  margin-bottom: 3px;
-  letter-spacing: 0.5px;
-}
-.map-handwritten-text {
-  font-family: 'Caveat', cursive;
-  font-size: 19px; 
-  font-weight: 500;
-  color: #c5c5c5;
-  line-height: 1.1;
-}
-
-/* COMPORTAMIENTO DE LAS FLECHAS GRUESAS MANUSCRITAS */
-.marker-arrow { width: 50px; flex-shrink: 0; overflow: visible; }
-
-/* NOTAS LATERALES CON MÁRGENES ADAPTATIVOS SEPARADOS DEL BORDE */
-.map-side-note { position: absolute; top: 50%; transform: translateY(-50%); display: flex; align-items: center; pointer-events: none; gap: 14px; }
-
-/* Separación específica según volumen del nodo para que ninguna flecha choque */
-.note-right-large-node  { right: -265px; flex-direction: row; }
-.note-right-medium-node { right: -255px; flex-direction: row; }
-.note-right-small-node  { right: -245px; flex-direction: row; }
-
-/* Caso Nodo Lambda izquierda */
-.note-left-small-node { left: -245px; flex-direction: row-reverse; }
-.note-left-small-node .note-text-block { text-align: right; }
-.reverse-arrow { transform: rotate(180deg); }
-
-/* POPUPS FLOTANTES HACE LA CAPA DE INFORMACIÓN MITOLÓGICA */
-.node-popup {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 230px;
-  background: #ffffff;
-  border: 2px solid #000000;
-  padding: 14px;
-  opacity: 0;
-  pointer-events: none;
-  transition: all 0.25s ease;
-  font-size: 13px;
-  line-height: 1.4;
-  color: #000000;
-  box-shadow: 8px 8px 0px rgba(255, 255, 255, 0.1);
-  text-align: left;
-  z-index: 30;
-}
-.node:hover .node-popup { opacity: 1; }
-.node-popup.popup-left { right: 128%; }
-.node-popup.popup-right { left: 128%; }
-
-/* ESCALADO DINÁMICO DE PRIORIDADES */
-.node-large { width: 165px; height: 165px; }
-.node-medium { width: 145px; height: 145px; }
-.node-small { width: 125px; height: 125px; }
-
-/* COORDENADAS EJE CENTRAL */
-.node-s3 { top: 40px; }
-.node-buckets { top: 320px; }
-.node-glue { top: 700px; }
-.node-athena { top: 920px; }
-.node-final { top: 1110px; }
-
-/* DISPOSICIÓN RAMAS */
-.node-side-left { left: 32%; transform: translateX(-50%); }
-.node-side-right { left: 68%; transform: translateX(-50%); }
-
-.node-iam { top: 150px; }
-.node-lambda { top: 510px; }
-.node-crawlers { top: 510px; }
-
-/* RESPONSIVE */
-@media (max-width: 1100px) {
-  .architecture-wrapper { min-height: 2400px; padding-top: 300px; }
-  .info-intro-card { position: absolute; top: 20px; left: 50%; transform: translateX(-50%); width: 85%; }
-  .node { left: 50% !important; transform: translateX(-50%) !important; }
-  .node-side-left { top: 1260px !important; }
-  .node-side-right { top: 1480px !important; }
-  .node-final { top: 1700px !important; }
-  .map-side-note { display: none; }
-}
-</style>
+    <div class="node-popup popup
