@@ -1,4 +1,3 @@
-<!-- CONTROL DE NAVEGACIÓN SUPERIOR INTEGRADO -->
 <div class="map-navigation-bar">
   <a href="/" class="nav-logo-link">
     <span class="font-fugaz logo-brand">CORE NEXUS FIVE</span>
@@ -10,7 +9,6 @@
 
 <section class="architecture-wrapper">
 
-  <!-- VENTANA INFORMATIVA PRINCIPAL -->
   <div class="info-intro-card">
     <div class="card-shadow"></div>
     <div class="card-content">
@@ -23,17 +21,14 @@
     </div>
   </div>
 
-  <!-- SVG DE CONEXIONES CON GRADIENTES DE FLUJO CORREGIDOS -->
   <svg class="architecture-lines" viewBox="0 0 1600 1300" preserveAspectRatio="none">
     <defs>
-      <!-- Gradiente Vertical para la Línea Central -->
       <linearGradient id="main-vertical-flow" x1="0%" y1="0%" x2="0%" y2="100%">
         <stop offset="0%" stop-color="#ffffff" stop-opacity="0.2" />
         <stop offset="50%" stop-color="#ffffff" stop-opacity="0.8" />
         <stop offset="100%" stop-color="#ffffff" stop-opacity="0.2" />
       </linearGradient>
 
-      <!-- Gradiente Diagonal para las Líneas Laterales -->
       <linearGradient id="side-diagonal-flow" x1="0%" y1="0%" x2="100%" y2="100%">
         <stop offset="0%" stop-color="#ffffff" stop-opacity="0.1" />
         <stop offset="50%" stop-color="#ffffff" stop-opacity="0.7" />
@@ -41,21 +36,15 @@
       </linearGradient>
     </defs>
 
-    <!-- LÍNEA CENTRAL PRINCIPAL: Recuperada con el gradiente vertical correcto -->
-    <path d="M800 40 L800 1150" class="main-map-line" />
+    <path d="M800 40 L800 1150" class="main-map-line animated-main-flow" />
 
-    <!-- LÍNEAS LATERALES CONTINUAS CON ANIMACIÓN -->
-    <path d="M800 150 L1080 230" class="side-map-line animated-side-flow" /> <!-- S3 a IAM -->
-    <path d="M800 490 L530 590" class="side-map-line animated-side-flow" />  <!-- Eje a Lambda -->
-    <path d="M800 490 L1070 590" class="side-map-line animated-side-flow" /> <!-- Eje a Crawlers -->
-  </svg>
+    <path d="M800 150 L1080 230" class="side-map-line" /> <path d="M800 490 L530 590" class="side-map-line" />  <path d="M800 490 L1070 590" class="side-map-line" /> </svg>
 
-  <!-- S3 (MÁXIMA RELEVANCIA: GRANDE) -->
   <div class="node node-large node-s3">
     <div class="node-content">
       <img src="/s3-logo.png" alt="S3" class="node-logo" />
     </div>
-    <div class="node-popup">
+    <div class="node-popup popup-left">
       <p><strong>Gaia:</strong> S3 actúa como la raíz primordial del almacenamiento, donde se origina y asienta todo el ecosistema de datos.</p>
     </div>
     <div class="map-side-note note-right-large-node">
@@ -70,7 +59,6 @@
     </div>
   </div>
 
-  <!-- IAM (SATÉLITE: PEQUEÑO) -->
   <div class="node node-small node-side-right node-iam">
     <div class="node-content">
       <img src="/iam-logo.png" alt="IAM" class="node-logo" />
@@ -90,12 +78,11 @@
     </div>
   </div>
 
-  <!-- BUCKETS (PROCESAMIENTO: MEDIANO) -->
   <div class="node node-medium node-buckets">
     <div class="node-content">
       <img src="/bucket-logo.png" alt="Buckets" class="node-logo" />
     </div>
-    <div class="node-popup">
+    <div class="node-popup popup-left">
       <p><strong>Pandora:</strong> Contenedores de datos específicos. Mal configurados desatan problemas, bien custodiados albergan valor.</p>
     </div>
     <div class="map-side-note note-right-medium-node">
@@ -110,7 +97,6 @@
     </div>
   </div>
 
-  <!-- LAMBDA (SATÉLITE: PEQUEÑO) -->
   <div class="node node-small node-side-left node-lambda">
     <div class="node-content">
       <img src="/lambda-logo.png" alt="Lambda" class="node-logo" />
@@ -130,7 +116,6 @@
     </div>
   </div>
 
-  <!-- CRAWLERS (SATÉLITE: PEQUEÑO) -->
   <div class="node node-small node-side-right node-crawlers">
     <div class="node-content">
       <img src="/crawler-logo.png" alt="Crawlers" class="node-logo" />
@@ -150,12 +135,11 @@
     </div>
   </div>
 
-  <!-- GLUE (MÁXIMA RELEVANCIA: GRANDE) -->
   <div class="node node-large node-glue">
     <div class="node-content">
       <img src="/glue-logo.png" alt="Glue" class="node-logo" />
     </div>
-    <div class="node-popup">
+    <div class="node-popup popup-left">
       <p><strong>Hermes:</strong> Orquestador ETL encargado de transformar y mensajear los flujos de datos entre capas.</p>
     </div>
     <div class="map-side-note note-right-large-node">
@@ -170,12 +154,11 @@
     </div>
   </div>
 
-  <!-- ATHENA (PROCESAMIENTO: MEDIANO) -->
   <div class="node node-medium node-athena">
     <div class="node-content">
       <img src="/athena-logo.png" alt="Athena" class="node-logo" />
     </div>
-    <div class="node-popup">
+    <div class="node-popup popup-left">
       <p><strong>Atenea:</strong> Motor de análisis interactivo que ejecuta consultas estructuradas SQL directas sobre S3.</p>
     </div>
     <div class="map-side-note note-right-medium-node">
@@ -190,12 +173,11 @@
     </div>
   </div>
 
-  <!-- DEMO FINAL (PARTE FINAL: MÁS PEQUEÑO Y ESTILIZADO) -->
   <div class="node node-small node-final">
     <div class="node-content">
       <img src="/demo-logo.png" alt="Demo" class="node-logo" />
     </div>
-    <div class="node-popup">
+    <div class="node-popup popup-left">
       <p><strong>Efesto:</strong> La forja definitiva donde confluyen los flujos de datos expuestos en su interfaz funcional.</p>
     </div>
     <div class="map-side-note note-right-small-node">
@@ -249,14 +231,18 @@
 .analogy-box { border-top: 1px solid #ddd; padding-top: 8px; }
 .analogy-box .handwritten-title { font-family: 'Caveat', cursive; font-size: 24px; font-weight: 700; color: #000; }
 
-/* --- SISTEMA DE LÍNEAS ANIMADAS (CORREGIDO) --- */
+/* --- SISTEMA DE LÍNEAS ANIMADAS --- */
 .architecture-lines { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
 
-/* Línea Central: Gradiente configurado en eje vertical e y-axis animado */
+/* Línea Central: Gradiente configurado en eje vertical y y-axis animado */
 .main-map-line {
   fill: none;
   stroke: url(#main-vertical-flow);
   stroke-width: 6;
+}
+
+/* Única clase que genera movimiento, solo aplicada al eje central */
+.animated-main-flow {
   stroke-dasharray: 60 30;
   animation: centralDataStream 5s linear infinite;
 }
@@ -264,15 +250,11 @@
   to { stroke-dashoffset: -90; }
 }
 
-/* Líneas Laterales */
-.side-map-line { fill: none; stroke: url(#side-diagonal-flow); stroke-width: 3.8; }
-.animated-side-flow {
-  stroke-dasharray: 1000;
-  stroke-dashoffset: 1000;
-  animation: lateralDataStream 7s linear infinite;
-}
-@keyframes lateralDataStream {
-  to { stroke-dashoffset: 0; }
+/* Líneas Laterales: Se mantienen estáticas */
+.side-map-line { 
+  fill: none; 
+  stroke: url(#side-diagonal-flow); 
+  stroke-width: 3.8; 
 }
 
 /* NODOS CONCEPTUALES */
@@ -319,18 +301,18 @@
 /* DISEÑO DE LAS FLECHAS MANUSCRITAS GRUESAS */
 .marker-arrow { width: 50px; flex-shrink: 0; overflow: visible; }
 
-/* EMPLAZAMIENTO DE NOTAS (MÁRGENES ADAPTADOS AL VOLUMEN DE LOS NUEVOS CÍRCULOS) */
+/* EMPLAZAMIENTO DE NOTAS */
 .map-side-note { position: absolute; top: 50%; transform: translateY(-50%); display: flex; align-items: center; pointer-events: none; gap: 14px; }
 
-.note-right-large-node  { right: -268px; flex-direction: row; } /* Ajuste exacto para S3 y Glue */
-.note-right-medium-node { right: -256px; flex-direction: row; } /* Ajuste para Buckets y Athena */
-.note-right-small-node  { right: -246px; flex-direction: row; } /* Ajuste para Demo, IAM y Crawlers */
+.note-right-large-node  { right: -268px; flex-direction: row; } 
+.note-right-medium-node { right: -256px; flex-direction: row; } 
+.note-right-small-node  { right: -246px; flex-direction: row; } 
 
 .note-left-small-node { left: -246px; flex-direction: row-reverse; }
 .note-left-small-node .note-text-block { text-align: right; }
 .reverse-arrow { transform: rotate(180deg); }
 
-/* POPUPS INFORMATIVOS */
+/* POPUPS INFORMATIVOS CORREGIDOS HACIA LOS LADOS */
 .node-popup {
   position: absolute;
   top: 50%;
@@ -353,10 +335,10 @@
 .node-popup.popup-left { right: 128%; }
 .node-popup.popup-right { left: 128%; }
 
-/* --- DINAMISMO ASIGNADO POR NUEVA PRIORIDAD --- */
-.node-large { width: 170px; height: 170px; }   /* S3 y Glue (Relevancia Máxima) */
-.node-medium { width: 150px; height: 150px; }  /* Buckets y Athena */
-.node-small { width: 135px; height: 135px; }   /* IAM, Lambda, Crawlers y Demo (Cierre) */
+/* DIMENSIONES DE LOS NODOS */
+.node-large { width: 170px; height: 170px; }  
+.node-medium { width: 150px; height: 150px; } 
+.node-small { width: 135px; height: 135px; }  
 
 /* POSICIONES DEL EJE VERTICAL COMPACTO */
 .node-s3 { top: 40px; }
