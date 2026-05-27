@@ -21,12 +21,12 @@
     </div>
   </div>
 
-  <svg class="architecture-lines" viewBox="0 0 1600 1300" preserveAspectRatio="none">
+  <svg class="architecture-lines" viewBox="0 0 1600 1500" preserveAspectRatio="none">
     <defs>
       <linearGradient id="main-vertical-flow" x1="0%" y1="0%" x2="0%" y2="100%">
-        <stop offset="0%" stop-color="#ffffff" stop-opacity="0.2" />
+        <stop offset="0%" stop-color="#ffffff" stop-opacity="0.1" />
         <stop offset="50%" stop-color="#ffffff" stop-opacity="0.8" />
-        <stop offset="100%" stop-color="#ffffff" stop-opacity="0.2" />
+        <stop offset="100%" stop-color="#ffffff" stop-opacity="0.1" />
       </linearGradient>
 
       <linearGradient id="side-diagonal-flow" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -36,9 +36,9 @@
       </linearGradient>
     </defs>
 
-    <path d="M800 40 L800 1150" class="main-map-line animated-main-flow" />
+    <path d="M800 50 L800 1350" class="main-map-line animated-main-flow" />
 
-    <path d="M800 150 L1080 230" class="side-map-line animated-side-flow" /> <path d="M800 490 L530 590" class="side-map-line animated-side-flow" />  <path d="M800 490 L1070 590" class="side-map-line animated-side-flow" /> </svg>
+    <path d="M800 135 L1080 255" class="side-map-line animated-side-flow" /> <path d="M800 600 L530 720" class="side-map-line animated-side-flow" />  <path d="M800 600 L1070 720" class="side-map-line animated-side-flow" /> </svg>
 
   <div class="node node-large node-s3">
     <div class="node-content">
@@ -47,10 +47,10 @@
     <div class="node-popup">
       <p><strong>Gaia:</strong> S3 actúa como la raíz primordial del almacenamiento, donde se origina y asienta todo el ecosistema de datos.</p>
     </div>
-    <div class="map-side-note note-right-large-node">
+    <div class="map-side-note note-offset-large">
       <svg class="marker-arrow" viewBox="0 0 120 80">
-        <path d="M-15,40 Q30,35 110,40" stroke="#d3d3d3" stroke-width="9" fill="none" stroke-linecap="round"/>
-        <path d="M75,12 L112,41 L75,68" stroke="#d3d3d3" stroke-width="9" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M10,40 Q45,35 110,40" stroke="#d3d3d3" stroke-width="9" fill="none" stroke-linecap="round"/>
+        <path d="M80,15 L112,41 L80,65" stroke="#d3d3d3" stroke-width="9" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
       <div class="note-text-block">
         <span class="service-title-handwritten">S3</span>
@@ -66,10 +66,10 @@
     <div class="node-popup popup-left">
       <p><strong>Cerbero:</strong> IAM custodia y gestiona los accesos de seguridad periférica de todo el ecosistema.</p>
     </div>
-    <div class="map-side-note note-right-small-node">
+    <div class="map-side-note note-offset-small">
       <svg class="marker-arrow" viewBox="0 0 120 80">
-        <path d="M-15,40 Q30,35 110,40" stroke="#d3d3d3" stroke-width="9" fill="none" stroke-linecap="round"/>
-        <path d="M75,12 L112,41 L75,68" stroke="#d3d3d3" stroke-width="9" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M10,40 Q45,35 110,40" stroke="#d3d3d3" stroke-width="9" fill="none" stroke-linecap="round"/>
+        <path d="M80,15 L112,41 L80,65" stroke="#d3d3d3" stroke-width="9" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
       <div class="note-text-block">
         <span class="service-title-handwritten">IAM</span>
@@ -85,10 +85,10 @@
     <div class="node-popup">
       <p><strong>Pandora:</strong> Contenedores de datos específicos. Mal configurados desatan problemas, bien custodiados albergan valor.</p>
     </div>
-    <div class="map-side-note note-right-medium-node">
+    <div class="map-side-note note-offset-medium">
       <svg class="marker-arrow" viewBox="0 0 120 80">
-        <path d="M-15,40 Q30,35 110,40" stroke="#d3d3d3" stroke-width="9" fill="none" stroke-linecap="round"/>
-        <path d="M75,12 L112,41 L75,68" stroke="#d3d3d3" stroke-width="9" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M10,40 Q45,35 110,40" stroke="#d3d3d3" stroke-width="9" fill="none" stroke-linecap="round"/>
+        <path d="M80,15 L112,41 L80,65" stroke="#d3d3d3" stroke-width="9" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
       <div class="note-text-block">
         <span class="service-title-handwritten">BUCKETS</span>
@@ -101,4 +101,84 @@
     <div class="node-content">
       <img src="/lambda-logo.png" alt="Lambda" class="node-logo" />
     </div>
-    <div class="node-popup popup
+    <div class="node-popup popup-right">
+      <p><strong>Zeus:</strong> Cómputo serverless inmediato que lanza rayos de código de manera reactiva bajo demanda.</p>
+    </div>
+    <div class="map-side-note note-offset-left-small">
+      <svg class="marker-arrow reverse-arrow" viewBox="0 0 120 80">
+        <path d="M110,40 Q75,35 10,40" stroke="#d3d3d3" stroke-width="9" fill="none" stroke-linecap="round"/>
+        <path d="M40,15 L8,41 L40,65" stroke="#d3d3d3" stroke-width="9" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <div class="note-text-block">
+        <span class="service-title-handwritten">LAMBDA</span>
+        <span class="map-handwritten-text">Código reactivo<br>bajo demanda</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="node node-small node-side-right node-crawlers">
+    <div class="node-content">
+      <img src="/crawler-logo.png" alt="Crawlers" class="node-logo" />
+    </div>
+    <div class="node-popup popup-left">
+      <p><strong>Argos:</strong> Explora automáticamente las fuentes de datos mapeando y estructurando sus metadatos ocultos.</p>
+    </div>
+    <div class="map-side-note note-offset-small">
+      <svg class="marker-arrow" viewBox="0 0 120 80">
+        <path d="M10,40 Q45,35 110,40" stroke="#d3d3d3" stroke-width="9" fill="none" stroke-linecap="round"/>
+        <path d="M80,15 L112,41 L80,65" stroke="#d3d3d3" stroke-width="9" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <div class="note-text-block">
+        <span class="service-title-handwritten">CRAWLERS</span>
+        <span class="map-handwritten-text">Exploradores de<br>esquemas activos</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="node node-large node-glue">
+    <div class="node-content">
+      <img src="/glue-logo.png" alt="Glue" class="node-logo" />
+    </div>
+    <div class="node-popup">
+      <p><strong>Hermes:</strong> Orquestador ETL encargado de transformar y mensajear los flujos de datos entre capas.</p>
+    </div>
+    <div class="map-side-note note-offset-large">
+      <svg class="marker-arrow" viewBox="0 0 120 80">
+        <path d="M10,40 Q45,35 110,40" stroke="#d3d3d3" stroke-width="9" fill="none" stroke-linecap="round"/>
+        <path d="M80,15 L112,41 L80,65" stroke="#d3d3d3" stroke-width="9" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <div class="note-text-block">
+        <span class="service-title-handwritten">GLUE</span>
+        <span class="map-handwritten-text">El mensajero y ETL<br>de los datos</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="node node-medium node-athena">
+    <div class="node-content">
+      <img src="/athena-logo.png" alt="Athena" class="node-logo" />
+    </div>
+    <div class="node-popup">
+      <p><strong>Atenea:</strong> Motor de análisis interactivo que ejecuta consultas estructuradas SQL directas sobre S3.</p>
+    </div>
+    <div class="map-side-note note-offset-medium">
+      <svg class="marker-arrow" viewBox="0 0 120 80">
+        <path d="M10,40 Q45,35 110,40" stroke="#d3d3d3" stroke-width="9" fill="none" stroke-linecap="round"/>
+        <path d="M80,15 L112,41 L80,65" stroke="#d3d3d3" stroke-width="9" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <div class="note-text-block">
+        <span class="service-title-handwritten">ATHENA</span>
+        <span class="map-handwritten-text">Consultas ágiles<br>con sabiduría</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="node node-small node-final">
+    <div class="node-content">
+      <img src="/demo-logo.png" alt="Demo" class="node-logo" />
+    </div>
+    <div class="node-popup">
+      <p><strong>Efesto:</strong> La forja definitiva donde confluyen los flujos de datos expuestos en su interfaz funcional.</p>
+    </div>
+    <div class="map-side-note note-offset-small">
+      <svg class="marker-arrow" viewBox="0 0 1
