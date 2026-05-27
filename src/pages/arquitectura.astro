@@ -1,797 +1,446 @@
-<section class="olimpo-container">
+<section class="architecture-wrapper">
 
-  <!-- SVG FLECHAS -->
-  <svg class="lines-canvas" viewBox="0 0 1400 1400" preserveAspectRatio="none">
+  <!-- SVG DE CONEXIONES -->
+  <svg class="architecture-lines" viewBox="0 0 1600 2600" preserveAspectRatio="none">
 
     <defs>
       <marker
         id="arrow"
-        markerWidth="12"
-        markerHeight="12"
+        markerWidth="14"
+        markerHeight="14"
         refX="10"
-        refY="4"
+        refY="5"
         orient="auto"
       >
-        <path d="M0,0 L0,8 L10,4 z" fill="#ffffff" />
+        <path d="M0,0 L0,10 L10,5 z" fill="#ffffff" />
       </marker>
     </defs>
 
-    <!-- CERBERO -->
-    <line x1="700" y1="120" x2="700" y2="220" class="line-path" marker-end="url(#arrow)" />
+    <!-- LÍNEA CENTRAL -->
+    <path
+      d="M800 180 L800 2280"
+      class="main-line"
+    />
 
-    <!-- ORIGEN -->
-    <line x1="700" y1="320" x2="700" y2="420" class="line-path" marker-end="url(#arrow)" />
+    <!-- CONEXIONES -->
+    <path d="M800 420 L800 560" class="line-solid" marker-end="url(#arrow)" />
+    <path d="M800 760 L800 900" class="line-solid" marker-end="url(#arrow)" />
+    <path d="M800 1100 L800 1240" class="line-solid" marker-end="url(#arrow)" />
+    <path d="M800 1440 L800 1580" class="line-solid" marker-end="url(#arrow)" />
+    <path d="M800 1780 L800 1920" class="line-solid" marker-end="url(#arrow)" />
 
-    <!-- S3 -->
-    <line x1="700" y1="520" x2="700" y2="620" class="line-path" marker-end="url(#arrow)" />
+    <!-- LAMBDA -->
+    <path
+      d="M1040 1460 C1200 1460 1200 1460 1320 1460"
+      class="line-dashed"
+      marker-end="url(#arrow)"
+    />
 
-    <!-- BUCKETS -->
-    <line x1="700" y1="720" x2="700" y2="820" class="line-path" marker-end="url(#arrow)" />
-
-    <!-- CRAWLERS -->
-    <line x1="700" y1="920" x2="700" y2="1020" class="line-path" marker-end="url(#arrow)" />
-
-    <!-- GLUE -> ATHENA -->
-    <line x1="700" y1="1120" x2="700" y2="1220" class="line-path" marker-end="url(#arrow)" />
-
-    <!-- ATHENA -> EFESTO -->
-    <line x1="700" y1="1320" x2="700" y2="1420" class="line-path" marker-end="url(#arrow)" />
-
-    <!-- ZEUS -->
-    <line x1="950" y1="1120" x2="780" y2="1120" class="line-path" marker-end="url(#arrow)" />
+    <!-- IAM -->
+    <path
+      d="M800 160 C800 120 800 120 800 80"
+      class="line-dashed"
+      marker-end="url(#arrow)"
+    />
 
   </svg>
 
   <!-- IAM -->
-  <div class="node node-guardian" onclick="openModal('cerbero')">
-    IAM
-    <small>CERBERO</small>
+  <div class="node node-small node-iam">
+    <img src="/iam-logo.png" alt="IAM" class="node-logo" />
+    <h3>IAM</h3>
+    <span>CERBERO</span>
   </div>
 
   <!-- ORIGEN -->
-  <div class="node node-large" onclick="openModal('origen')">
-    ORIGEN
+  <div class="node node-origin">
+    <h2>ORIGEN</h2>
   </div>
 
   <!-- S3 -->
-  <div class="node node-main" onclick="openModal('gaia')">
-    S3
-    <small>GAIA</small>
+  <div class="node node-medium node-s3">
+    <img src="/s3-logo.png" alt="S3" class="node-logo" />
+    <h3>S3</h3>
+    <span>GAIA</span>
+
+    <div class="node-popup">
+      <p>
+        Gaia representa la base primordial del ecosistema.
+        S3 es el almacenamiento universal donde nace todo el flujo de datos.
+      </p>
+    </div>
   </div>
 
   <!-- BUCKETS -->
-  <div class="node node-main" onclick="openModal('pandora')">
-    BUCKETS
-    <small>PANDORA</small>
+  <div class="node node-medium node-buckets">
+    <img src="/bucket-logo.png" alt="Buckets" class="node-logo" />
+    <h3>BUCKETS</h3>
+    <span>PANDORA</span>
+
+    <div class="node-popup">
+      <p>
+        Los Buckets contienen datos críticos.
+        Bien configurados son tesoros; abiertos por error desatan el caos.
+      </p>
+    </div>
   </div>
 
   <!-- CRAWLERS -->
-  <div class="node node-main" onclick="openModal('argos')">
-    CRAWLERS
-    <small>ARGOS</small>
+  <div class="node node-medium node-crawlers">
+    <img src="/crawler-logo.png" alt="Crawlers" class="node-logo" />
+    <h3>CRAWLERS</h3>
+    <span>ARGOS</span>
+
+    <div class="node-popup">
+      <p>
+        Los Crawlers exploran automáticamente la estructura de los datos.
+        Argos observa cada rincón del sistema.
+      </p>
+    </div>
   </div>
 
   <!-- GLUE -->
-  <div class="node node-main" onclick="openModal('hermes')">
-    GLUE
-    <small>HERMES</small>
+  <div class="node node-medium node-glue">
+    <img src="/glue-logo.png" alt="Glue" class="node-logo" />
+    <h3>GLUE</h3>
+    <span>HERMES</span>
+
+    <div class="node-popup">
+      <p>
+        Glue conecta, transforma y transporta información.
+        Hermes enlaza mundos separados mediante integración ETL.
+      </p>
+    </div>
   </div>
 
   <!-- ATHENA -->
-  <div class="node node-main athena-node" onclick="openModal('athena')">
-    ATHENA
-    <small>ATENEA</small>
-  </div>
+  <div class="node node-medium node-athena">
+    <img src="/athena-logo.png" alt="Athena" class="node-logo" />
+    <h3>ATHENA</h3>
+    <span>ATENEA</span>
 
-  <!-- LAMBDA -->
-  <div class="node node-side" onclick="openModal('zeus')">
-    LAMBDA
-    <small>ZEUS</small>
+    <div class="node-popup">
+      <p>
+        Athena permite consultar datos directamente sobre S3.
+        Sabiduría instantánea extraída del caos.
+      </p>
+    </div>
   </div>
 
   <!-- DEMO -->
-  <div class="node node-demo" onclick="openModal('hefesto')">
-    DEMO FINAL
-    <small>EFESTO</small>
+  <div class="node node-final">
+    <img src="/demo-logo.png" alt="Demo" class="node-logo large-logo" />
+    <h2>DEMO FINAL</h2>
+    <span>EFESTO</span>
+
+    <div class="node-popup">
+      <p>
+        Efesto simboliza la forja tecnológica:
+        la demostración final del ecosistema funcionando en armonía.
+      </p>
+    </div>
+  </div>
+
+  <!-- LAMBDA -->
+  <div class="node node-side node-lambda">
+    <img src="/lambda-logo.png" alt="Lambda" class="node-logo" />
+    <h3>LAMBDA</h3>
+    <span>ZEUS</span>
+
+    <div class="node-popup">
+      <p>
+        Lambda ejecuta acciones instantáneas bajo demanda.
+        Rayos de código activados por eventos.
+      </p>
+    </div>
   </div>
 
 </section>
-<!-- ========================= -->
-<!-- MODAL ORIGEN -->
-<!-- ========================= -->
 
-<div id="origen" class="modal">
-  <div class="modal-content">
-    <span class="close" onclick="closeModal('origen')">&times;</span>
-
-    <h2>Origen del Dato</h2>
-
-    <p>
-      Todo sistema de análisis comienza con una fuente de información.
-      En Core Nexus Five el origen representa el punto donde los datos
-      entran en la arquitectura para iniciar su viaje hacia el conocimiento.
-    </p>
-
-    <ul>
-      <li>Archivos CSV</li>
-      <li>Logs de aplicaciones</li>
-      <li>Bases de datos</li>
-      <li>APIs externas</li>
-      <li>Información empresarial</li>
-    </ul>
-  </div>
-</div>
-
-<!-- ========================= -->
-<!-- MODAL GAIA -->
-<!-- ========================= -->
-
-<div id="gaia" class="modal">
-  <div class="modal-content">
-
-    <span class="close" onclick="closeModal('gaia')">&times;</span>
-
-    <img src="/gaia.png" alt="Gaia" class="modal-image" />
-
-    <h2>Amazon S3 · Gaia</h2>
-
-    <p>
-      Gaia es la Madre Tierra, la base primordial de toda existencia.
-      Del mismo modo, Amazon S3 constituye el fundamento de la arquitectura.
-      Es el territorio donde residen los datos, el punto de partida sobre el
-      que se construye el resto de los servicios.
-    </p>
-
-    <p>
-      Sin Gaia no existe el Olimpo. Sin S3 no existiría el Data Lake que
-      alimenta los procesos de transformación y análisis.
-    </p>
-
-    <h3>Funciones principales</h3>
-
-    <ul>
-      <li>Almacenamiento masivo de datos</li>
-      <li>Data Lake centralizado</li>
-      <li>Alta disponibilidad y durabilidad</li>
-      <li>Escalabilidad prácticamente ilimitada</li>
-      <li>Base de toda la arquitectura analítica</li>
-    </ul>
-
-  </div>
-</div>
-
-<!-- ========================= -->
-<!-- MODAL PANDORA -->
-<!-- ========================= -->
-
-<div id="pandora" class="modal">
-  <div class="modal-content">
-
-    <span class="close" onclick="closeModal('pandora')">&times;</span>
-
-    <img src="/pandora.png" alt="Pandora" class="modal-image" />
-
-    <h2>Buckets · La Caja de Pandora</h2>
-
-    <p>
-      Los Buckets son los contenedores que organizan los datos dentro de S3.
-      Su papel recuerda a la legendaria Caja de Pandora: albergan recursos
-      de enorme valor, pero requieren una configuración adecuada para evitar
-      exponer información sensible.
-    </p>
-
-    <p>
-      Un Bucket correctamente gestionado protege auténticos tesoros.
-      Un Bucket mal configurado puede convertirse en una puerta abierta al caos.
-    </p>
-
-    <h3>Funciones principales</h3>
-
-    <ul>
-      <li>Organización lógica de la información</li>
-      <li>Control de acceso</li>
-      <li>Versionado de objetos</li>
-      <li>Políticas de seguridad</li>
-      <li>Gestión de permisos y auditoría</li>
-    </ul>
-
-  </div>
-</div>
-
-<!-- ========================= -->
-<!-- MODAL ARGOS -->
-<!-- ========================= -->
-
-<div id="argos" class="modal">
-  <div class="modal-content">
-
-    <span class="close" onclick="closeModal('argos')">&times;</span>
-
-    <img src="/argos.png" alt="Argos" class="modal-image" />
-
-    <h2>Glue Crawlers · Argos Panoptes</h2>
-
-    <p>
-      Argos Panoptes era el gigante de los cien ojos, un vigilante que
-      observaba el mundo sin descanso.
-    </p>
-
-    <p>
-      Los Crawlers de AWS Glue cumplen una misión similar:
-      inspeccionan continuamente los datos almacenados para descubrir
-      automáticamente su estructura y generar metadatos útiles para el análisis.
-    </p>
-
-    <h3>Funciones principales</h3>
-
-    <ul>
-      <li>Exploración automática de datos</li>
-      <li>Detección de esquemas</li>
-      <li>Catalogación inteligente</li>
-      <li>Clasificación de fuentes</li>
-      <li>Actualización automática del catálogo</li>
-    </ul>
-
-  </div>
-</div>
-
-<!-- ========================= -->
-<!-- MODAL HERMES -->
-<!-- ========================= -->
-
-<div id="hermes" class="modal">
-  <div class="modal-content">
-
-    <span class="close" onclick="closeModal('hermes')">&times;</span>
-
-    <img src="/hermes.png" alt="Hermes" class="modal-image" />
-
-    <h2>AWS Glue · Hermes</h2>
-
-    <p>
-      Hermes era el mensajero de los dioses y el guía capaz de viajar
-      entre mundos distintos.
-    </p>
-
-    <p>
-      AWS Glue conecta fuentes de información, transforma datos
-      y permite que los distintos sistemas de la arquitectura se comuniquen
-      entre sí de forma eficiente.
-    </p>
-
-    <h3>Funciones principales</h3>
-
-    <ul>
-      <li>Procesos ETL</li>
-      <li>Transformación de datos</li>
-      <li>Integración entre servicios</li>
-      <li>Automatización de pipelines</li>
-      <li>Preparación de datos para análisis</li>
-    </ul>
-
-  </div>
-</div>
-
-<!-- ========================= -->
-<!-- MODAL ATHENA -->
-<!-- ========================= -->
-
-<div id="athena" class="modal">
-  <div class="modal-content">
-
-    <span class="close" onclick="closeModal('athena')">&times;</span>
-
-    <img src="/athena.png" alt="Athena" class="modal-image" />
-
-    <h2>Amazon Athena · Atenea</h2>
-
-    <p>
-      Atenea simboliza la sabiduría, la estrategia y el conocimiento.
-    </p>
-
-    <p>
-      Amazon Athena permite consultar directamente los datos almacenados
-      en S3 mediante SQL, transformando grandes volúmenes de información
-      en respuestas útiles para la toma de decisiones.
-    </p>
-
-    <h3>Funciones principales</h3>
-
-    <ul>
-      <li>Consultas SQL Serverless</li>
-      <li>Análisis inmediato</li>
-      <li>Integración con Glue Catalog</li>
-      <li>Business Intelligence</li>
-      <li>Exploración de datos bajo demanda</li>
-    </ul>
-
-  </div>
-</div>
-
-<!-- ========================= -->
-<!-- MODAL ZEUS -->
-<!-- ========================= -->
-
-<div id="zeus" class="modal">
-  <div class="modal-content">
-
-    <span class="close" onclick="closeModal('zeus')">&times;</span>
-
-    <img src="/zeus.png" alt="Zeus" class="modal-image" />
-
-    <h2>AWS Lambda · Zeus</h2>
-
-    <p>
-      Zeus gobierna el cielo mediante el rayo.
-    </p>
-
-    <p>
-      Lambda actúa del mismo modo:
-      una función permanece inactiva hasta que un evento la invoca,
-      ejecutando su tarea en milisegundos antes de desaparecer.
-    </p>
-
-    <h3>Funciones principales</h3>
-
-    <ul>
-      <li>Serverless Computing</li>
-      <li>Ejecución basada en eventos</li>
-      <li>Automatización</li>
-      <li>Escalado automático</li>
-      <li>Procesamiento bajo demanda</li>
-    </ul>
-
-  </div>
-</div>
-
-<!-- ========================= -->
-<!-- MODAL CERBERO -->
-<!-- ========================= -->
-
-<div id="cerbero" class="modal">
-  <div class="modal-content">
-
-    <span class="close" onclick="closeModal('cerbero')">&times;</span>
-
-    <img src="/cerbero.png" alt="Cerbero" class="modal-image" />
-
-    <h2>AWS IAM · Cerbero</h2>
-
-    <p>
-      Cerbero es el guardián de las puertas del inframundo.
-      Su misión consiste en decidir quién puede entrar y quién debe permanecer fuera.
-    </p>
-
-    <p>
-      AWS IAM desempeña exactamente ese papel dentro de la nube,
-      controlando identidades, permisos y accesos a todos los recursos.
-    </p>
-
-    <h3>Funciones principales</h3>
-
-    <ul>
-      <li>Usuarios</li>
-      <li>Roles</li>
-      <li>Políticas</li>
-      <li>Control de acceso</li>
-      <li>Gobernanza y seguridad</li>
-    </ul>
-
-  </div>
-</div>
-
-<!-- ========================= -->
-<!-- MODAL EFESTO -->
-<!-- ========================= -->
-
-<div id="hefesto" class="modal">
-  <div class="modal-content">
-
-    <span class="close" onclick="closeModal('hefesto')">&times;</span>
-
-    <img src="/hefesto.png" alt="Efesto" class="modal-image" />
-
-    <h2>Demo Final · Efesto</h2>
-
-    <p>
-      Efesto representa la culminación del trabajo técnico.
-      Es el artesano que transforma materia prima en una obra funcional.
-    </p>
-
-    <p>
-      La demostración final muestra el resultado de todo el flujo:
-      almacenamiento, catalogación, transformación y análisis convertidos
-      en una solución operativa y escalable.
-    </p>
-
-    <h3>Resultado del proyecto</h3>
-
-    <ul>
-      <li>Arquitectura funcional</li>
-      <li>Procesamiento automatizado</li>
-      <li>Consulta de datos en Athena</li>
-      <li>Gobernanza mediante IAM</li>
-      <li>Visión integral del ciclo de vida del dato</li>
-    </ul>
-
-  </div>
-</div>
-<script is:inline>
-
-  function openModal(id) {
-
-    const modal = document.getElementById(id);
-
-    if (modal) {
-      modal.style.display = "flex";
-
-      document.body.style.overflow = "hidden";
-    }
-  }
-
-  function closeModal(id) {
-
-    const modal = document.getElementById(id);
-
-    if (modal) {
-      modal.style.display = "none";
-
-      document.body.style.overflow = "auto";
-    }
-  }
-
-  /* CERRAR AL HACER CLICK FUERA */
-
-  window.addEventListener("click", (event) => {
-
-    const modals = document.querySelectorAll(".modal");
-
-    modals.forEach((modal) => {
-
-      if (event.target === modal) {
-
-        modal.style.display = "none";
-
-        document.body.style.overflow = "auto";
-      }
-
-    });
-
-  });
-
-  /* CERRAR CON ESC */
-
-  window.addEventListener("keydown", (event) => {
-
-    if (event.key === "Escape") {
-
-      const modals = document.querySelectorAll(".modal");
-
-      modals.forEach((modal) => {
-
-        modal.style.display = "none";
-
-      });
-
-      document.body.style.overflow = "auto";
-    }
-
-  });
-
-  /* HACER FUNCIONES GLOBALES */
-
-  window.openModal = openModal;
-  window.closeModal = closeModal;
-
-</script>
 <style>
 
-  :root {
-    --bg: #050505;
-    --panel: #111111;
-    --line: rgba(255,255,255,0.16);
-    --border: rgba(255,255,255,0.18);
-    --glow: rgba(255,255,255,0.08);
-    --text: #ffffff;
+.architecture-wrapper{
+  position:relative;
+  width:100%;
+  min-height:2600px;
+  background:
+    radial-gradient(circle at center, rgba(20,20,20,.9), #000 70%);
+  overflow:hidden;
+  padding:120px 0;
+}
+
+/* SVG */
+
+.architecture-lines{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  pointer-events:none;
+}
+
+.main-line{
+  fill:none;
+  stroke:rgba(255,255,255,.08);
+  stroke-width:10;
+}
+
+.line-solid{
+  fill:none;
+  stroke:rgba(255,255,255,.55);
+  stroke-width:4;
+  stroke-linecap:round;
+}
+
+.line-dashed{
+  fill:none;
+  stroke:rgba(255,255,255,.35);
+  stroke-width:4;
+  stroke-dasharray:16 14;
+}
+
+/* NODOS */
+
+.node{
+  position:absolute;
+  left:50%;
+  transform:translateX(-50%);
+  border-radius:999px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  color:white;
+  backdrop-filter:blur(10px);
+  transition:all .35s ease;
+  cursor:pointer;
+}
+
+.node:hover{
+  transform:translateX(-50%) scale(1.04);
+}
+
+/* LOGOS */
+
+.node-logo{
+  width:54px;
+  height:54px;
+  object-fit:contain;
+  margin-bottom:14px;
+  filter:drop-shadow(0 0 18px rgba(255,255,255,.25));
+}
+
+.large-logo{
+  width:70px;
+  height:70px;
+}
+
+/* POPUPS */
+
+.node-popup{
+  position:absolute;
+  bottom:-150px;
+  width:260px;
+  background:rgba(15,15,15,.95);
+  border:1px solid rgba(255,255,255,.12);
+  padding:18px;
+  border-radius:18px;
+  opacity:0;
+  pointer-events:none;
+  transition:all .3s ease;
+  font-size:14px;
+  line-height:1.5;
+  color:#d6d6d6;
+  box-shadow:0 0 40px rgba(255,255,255,.08);
+}
+
+.node:hover .node-popup{
+  opacity:1;
+  transform:translateY(10px);
+}
+
+/* ORIGEN */
+
+.node-origin{
+  top:220px;
+  width:280px;
+  height:280px;
+  background:#000;
+  border:4px solid rgba(255,255,255,.35);
+  box-shadow:
+    0 0 80px rgba(255,255,255,.08),
+    inset 0 0 30px rgba(255,255,255,.05);
+}
+
+.node-origin h2{
+  font-size:54px;
+  letter-spacing:4px;
+}
+
+/* IAM */
+
+.node-iam{
+  top:20px;
+  width:170px;
+  height:170px;
+  border:2px solid rgba(255,255,255,.25);
+  background:rgba(255,255,255,.03);
+}
+
+.node-iam h3{
+  font-size:30px;
+}
+
+.node-iam span{
+  font-size:14px;
+  letter-spacing:4px;
+  opacity:.7;
+}
+
+/* MEDIOS */
+
+.node-medium{
+  width:230px;
+  height:230px;
+  border:3px solid rgba(255,255,255,.22);
+  background:rgba(255,255,255,.03);
+  box-shadow:
+    inset 0 0 20px rgba(255,255,255,.03),
+    0 0 60px rgba(255,255,255,.03);
+}
+
+.node-medium h3{
+  font-size:42px;
+  margin:0;
+}
+
+.node-medium span{
+  font-size:16px;
+  letter-spacing:4px;
+  opacity:.75;
+  margin-top:8px;
+}
+
+/* POSICIONES */
+
+.node-s3{
+  top:560px;
+}
+
+.node-buckets{
+  top:900px;
+}
+
+.node-crawlers{
+  top:1240px;
+}
+
+.node-glue{
+  top:1580px;
+}
+
+.node-athena{
+  top:1920px;
+}
+
+/* DEMO */
+
+.node-final{
+  top:2260px;
+  width:320px;
+  height:320px;
+  background:#000;
+  border:4px solid rgba(255,255,255,.35);
+  box-shadow:
+    0 0 90px rgba(255,255,255,.08),
+    inset 0 0 30px rgba(255,255,255,.04);
+}
+
+.node-final h2{
+  font-size:48px;
+  letter-spacing:2px;
+}
+
+.node-final span{
+  margin-top:12px;
+  letter-spacing:6px;
+  opacity:.7;
+}
+
+/* LAMBDA */
+
+.node-side{
+  left:72%;
+  transform:none;
+}
+
+.node-side:hover{
+  transform:scale(1.04);
+}
+
+.node-lambda{
+  top:1480px;
+  width:220px;
+  height:220px;
+  border:3px dashed rgba(255,255,255,.4);
+  background:rgba(255,255,255,.03);
+}
+
+.node-lambda h3{
+  font-size:38px;
+}
+
+.node-lambda span{
+  letter-spacing:5px;
+  opacity:.7;
+}
+
+/* RESPONSIVE */
+
+@media (max-width:1100px){
+
+  .architecture-wrapper{
+    min-height:3200px;
   }
 
-  /* ========================= */
-  /* CONTENEDOR */
-  /* ========================= */
-
-  .olimpo-container {
-    position: relative;
-    width: 100%;
-    min-height: 2600px;
-    background:
-      radial-gradient(circle at top, rgba(255,255,255,0.04), transparent 35%),
-      linear-gradient(to bottom, #080808, #030303);
-    overflow: hidden;
-    padding: 120px 0 200px 0;
+  .node{
+    left:50% !important;
+    transform:translateX(-50%);
   }
 
-  /* ========================= */
-  /* EJE CENTRAL */
-  /* ========================= */
-
-  .central-line {
-    position: absolute;
-    left: 50%;
-    top: 0;
-    width: 2px;
-    height: 100%;
-    transform: translateX(-50%);
-    background:
-      linear-gradient(
-        to bottom,
-        transparent,
-        rgba(255,255,255,0.22),
-        rgba(255,255,255,0.12),
-        transparent
-      );
+  .node-side{
+    top:2500px !important;
   }
 
-  /* ========================= */
-  /* NODOS BASE */
-  /* ========================= */
-
-  .node {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    border-radius: 999px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    color: white;
-    cursor: pointer;
-    transition: all 0.35s ease;
-    backdrop-filter: blur(8px);
-    z-index: 5;
+  .node-popup{
+    width:220px;
+    font-size:13px;
   }
 
-  .node:hover {
-    transform: translateX(-50%) scale(1.05);
+  .node-origin{
+    width:220px;
+    height:220px;
   }
 
-  .node span {
-    font-size: 34px;
-    font-weight: 800;
-    letter-spacing: 2px;
+  .node-medium{
+    width:190px;
+    height:190px;
   }
 
-  .node small {
-    margin-top: 8px;
-    font-size: 13px;
-    letter-spacing: 3px;
-    opacity: 0.75;
+  .node-final{
+    width:240px;
+    height:240px;
   }
 
-  /* ========================= */
-  /* NODOS GRANDES */
-  /* ========================= */
-
-  .node-large {
-    width: 240px;
-    height: 240px;
-    background: #000;
-    border: 3px solid rgba(255,255,255,0.24);
-
-    box-shadow:
-      0 0 80px rgba(255,255,255,0.06),
-      inset 0 0 30px rgba(255,255,255,0.03);
+  .node-origin h2,
+  .node-final h2{
+    font-size:34px;
   }
 
-  /* ========================= */
-  /* NODOS MEDIOS */
-  /* ========================= */
-
-  .node-main {
-    width: 190px;
-    height: 190px;
-
-    background: rgba(255,255,255,0.03);
-
-    border: 2px solid rgba(255,255,255,0.18);
-
-    box-shadow:
-      0 0 45px rgba(255,255,255,0.05),
-      inset 0 0 25px rgba(255,255,255,0.03);
+  .node-medium h3{
+    font-size:28px;
   }
-
-  .node-main:hover {
-    border-color: rgba(255,255,255,0.45);
-
-    box-shadow:
-      0 0 80px rgba(255,255,255,0.12),
-      inset 0 0 40px rgba(255,255,255,0.05);
-  }
-
-  /* ========================= */
-  /* IAM */
-  /* ========================= */
-
-  .node-guardian {
-    top: 80px;
-    width: 180px;
-    height: 180px;
-  }
-
-  /* ========================= */
-  /* ORIGEN */
-  /* ========================= */
-
-  .node-origin {
-    top: 380px;
-  }
-
-  /* ========================= */
-  /* S3 */
-  /* ========================= */
-
-  .node-s3 {
-    top: 720px;
-  }
-
-  /* ========================= */
-  /* BUCKETS */
-  /* ========================= */
-
-  .node-buckets {
-    top: 1040px;
-  }
-
-  /* ========================= */
-  /* CRAWLERS */
-  /* ========================= */
-
-  .node-crawlers {
-    top: 1360px;
-  }
-
-  /* ========================= */
-  /* GLUE */
-  /* ========================= */
-
-  .node-glue {
-    top: 1680px;
-  }
-
-  /* ========================= */
-  /* ATHENA */
-  /* ========================= */
-
-  .node-athena {
-    top: 2000px;
-  }
-
-  /* ========================= */
-  /* DEMO */
-  /* ========================= */
-
-  .node-demo {
-    top: 2350px;
-    width: 260px;
-    height: 260px;
-  }
-
-  /* ========================= */
-  /* LAMBDA */
-  /* ========================= */
-
-  .node-lambda {
-    top: 1680px;
-    left: calc(50% + 340px);
-
-    width: 170px;
-    height: 170px;
-
-    border: 2px dashed rgba(255,255,255,0.28);
-
-    background: rgba(255,255,255,0.02);
-
-    box-shadow:
-      0 0 45px rgba(255,255,255,0.04);
-  }
-
-  /* ========================= */
-  /* CONECTOR LAMBDA */
-  /* ========================= */
-
-  .lambda-line {
-    position: absolute;
-
-    top: 1765px;
-    left: calc(50% + 95px);
-
-    width: 220px;
-    height: 2px;
-
-    background:
-      linear-gradient(
-        to right,
-        rgba(255,255,255,0.25),
-        rgba(255,255,255,0.08)
-      );
-
-    z-index: 1;
-  }
-
-  /* ========================= */
-  /* PUNTOS BRILLO */
-  /* ========================= */
-
-  .glow-point {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-
-    width: 22px;
-    height: 22px;
-
-    border-radius: 999px;
-
-    background: white;
-
-    filter: blur(10px);
-
-    opacity: 0.8;
-  }
-
-  .g1 { top: 640px; }
-  .g2 { top: 960px; }
-  .g3 { top: 1280px; }
-  .g4 { top: 1600px; }
-  .g5 { top: 1920px; }
-  .g6 { top: 2240px; }
-
-  /* ========================= */
-  /* RESPONSIVE */
-  /* ========================= */
-
-  @media (max-width: 1100px) {
-
-    .node-lambda {
-      left: 50%;
-      top: 2600px;
-      transform: translateX(-50%);
-    }
-
-    .lambda-line {
-      display: none;
-    }
-
-    .olimpo-container {
-      min-height: 3200px;
-    }
-  }
-
-  @media (max-width: 768px) {
-
-    .node-large {
-      width: 190px;
-      height: 190px;
-    }
-
-    .node-main {
-      width: 160px;
-      height: 160px;
-    }
-
-    .node-demo {
-      width: 210px;
-      height: 210px;
-    }
-
-    .node span {
-      font-size: 24px;
-    }
-
-    .node small {
-      font-size: 11px;
-    }
-  }
+}
 
 </style>
