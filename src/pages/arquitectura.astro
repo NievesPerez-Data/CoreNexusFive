@@ -169,6 +169,42 @@
   padding:120px 0;
 }
 
+<!-- PANEL INFORMATIVO -->
+
+<div class="info-panel">
+
+  <h2>Arquitectura Mitológica AWS</h2>
+
+  <p>
+    Este mapa conceptual representa el flujo completo de una arquitectura
+    de datos construida sobre servicios de AWS.
+  </p>
+
+  <p>
+    Cada servicio ha sido asociado con una figura de la mitología griega
+    para facilitar la comprensión visual y conceptual del ecosistema.
+  </p>
+
+  <p>
+    La analogía transforma componentes técnicos complejos en entidades
+    fácilmente identificables:
+  </p>
+
+  <p>
+    <strong>Gaia</strong> almacena,
+    <strong>Hermes</strong> conecta,
+    <strong>Atenea</strong> analiza,
+    y <strong>Zeus</strong> ejecuta eventos instantáneos.
+  </p>
+
+  <p>
+    El objetivo es ofrecer una forma más intuitiva,
+    narrativa y visual de entender cómo fluyen los datos
+    dentro de AWS.
+  </p>
+
+</div>
+
 /* SVG */
 
 .architecture-lines{
@@ -198,6 +234,12 @@
   stroke-width:4;
   stroke-dasharray:16 14;
 }
+
+<path
+  d="M920 1460 C1080 1460 1180 1460 1290 1460"
+  class="line-lambda"
+  marker-end="url(#arrow)"
+/>
 
 /* NODOS */
 
@@ -240,24 +282,42 @@
 
 .node-popup{
   position:absolute;
-  bottom:-150px;
-  width:260px;
-  background:rgba(15,15,15,.95);
+  top:50%;
+  right:115%;
+  transform:translateY(-50%);
+  width:280px;
+  background:rgba(8,8,8,.96);
   border:1px solid rgba(255,255,255,.12);
-  padding:18px;
-  border-radius:18px;
+  padding:22px;
+  border-radius:22px;
   opacity:0;
   pointer-events:none;
-  transition:all .3s ease;
+  transition:all .35s ease;
   font-size:14px;
-  line-height:1.5;
+  line-height:1.7;
   color:#d6d6d6;
-  box-shadow:0 0 40px rgba(255,255,255,.08);
+  box-shadow:
+    0 0 50px rgba(255,255,255,.06),
+    inset 0 0 20px rgba(255,255,255,.02);
+  z-index:20;
+}
+
+/* FLECHITA DEL POPUP */
+
+.node-popup::after{
+  content:"";
+  position:absolute;
+  right:-10px;
+  top:50%;
+  transform:translateY(-50%);
+  border-top:10px solid transparent;
+  border-bottom:10px solid transparent;
+  border-left:10px solid rgba(20,20,20,.96);
 }
 
 .node:hover .node-popup{
   opacity:1;
-  transform:translateY(10px);
+  transform:translateY(-50%) translateX(-10px);
 }
 
 /* ORIGEN */
@@ -380,11 +440,15 @@
 }
 
 .node-lambda{
-  top:1480px;
-  width:220px;
-  height:220px;
-  border:3px dashed rgba(255,255,255,.4);
+  top:1470px;
+  left:73%;
+  width:240px;
+  height:240px;
+  border:3px dashed rgba(255,255,255,.45);
   background:rgba(255,255,255,.03);
+  box-shadow:
+    0 0 60px rgba(255,255,255,.03),
+    inset 0 0 20px rgba(255,255,255,.02);
 }
 
 .node-lambda h3{
@@ -396,50 +460,94 @@
   opacity:.7;
 }
 
+.line-lambda{
+  fill:none;
+  stroke:rgba(255,255,255,.45);
+  stroke-width:4;
+  stroke-dasharray:14 10;
+  stroke-linecap:round;
+}
+
+
+/* ============================= */
+/* PANEL SUPERIOR IZQUIERDO */
+/* ============================= */
+
+.info-panel{
+  position:absolute;
+  top:80px;
+  left:80px;
+  width:340px;
+  padding:28px;
+  border-radius:26px;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(18,18,18,.96),
+      rgba(8,8,8,.98)
+    );
+
+  border:1px solid rgba(255,255,255,.1);
+
+  box-shadow:
+    0 0 60px rgba(255,255,255,.05),
+    inset 0 0 20px rgba(255,255,255,.02);
+
+  z-index:50;
+}
+
+.info-panel h2{
+  font-size:28px;
+  margin-bottom:18px;
+  color:white;
+  letter-spacing:1px;
+}
+
+.info-panel p{
+  color:#cfcfcf;
+  line-height:1.8;
+  font-size:14px;
+  margin-bottom:14px;
+}
+
+.info-panel strong{
+  color:white;
+}
+
+/* ============================= */
 /* RESPONSIVE */
+/* ============================= */
 
 @media (max-width:1100px){
 
-  .architecture-wrapper{
-    min-height:3200px;
-  }
-
-  .node{
-    left:50% !important;
-    transform:translateX(-50%);
-  }
-
-  .node-side{
-    top:2500px !important;
-  }
-
   .node-popup{
+    right:auto;
+    left:50%;
+    top:115%;
+    transform:translateX(-50%);
     width:220px;
-    font-size:13px;
   }
 
-  .node-origin{
-    width:220px;
-    height:220px;
+  .node-popup::after{
+    display:none;
   }
 
-  .node-medium{
-    width:190px;
-    height:190px;
+  .node:hover .node-popup{
+    transform:translateX(-50%) translateY(10px);
   }
 
-  .node-final{
-    width:240px;
-    height:240px;
+  .info-panel{
+    position:relative;
+    top:auto;
+    left:auto;
+    width:90%;
+    margin:0 auto 80px auto;
   }
 
-  .node-origin h2,
-  .node-final h2{
-    font-size:34px;
-  }
-
-  .node-medium h3{
-    font-size:28px;
+  .node-lambda{
+    left:50%;
+    top:2520px;
+    transform:translateX(-50%);
   }
 }
 
