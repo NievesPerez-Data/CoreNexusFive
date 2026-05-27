@@ -1,52 +1,51 @@
+<div class="map-navigation-bar">
+  <a href="/" class="nav-logo-link">
+    <span class="font-fugaz logo-brand">CORE NEXUS FIVE</span>
+  </a>
+  <button class="nav-menu-btn" onclick="console.log('Abrir menú')">
+    MENÚ ☰
+  </button>
+</div>
+
 <section class="architecture-wrapper">
 
   <div class="info-intro-card">
-    <h4>El Olimpo de los Datos</h4>
-    <p>Este mapa conceptual interactivo te guiará a través del flujo de nuestra arquitectura de datos.</p>
-    <p class="analogy-text"><strong>¿Por qué Grecia?</strong> Asociamos cada servicio de AWS con una deidad mitológica: desde <strong>Gaia (S3)</strong> como el origen primordial de todo, hasta <strong>Zeus (Lambda)</strong> lanzando rayos de código bajo demanda. Pasa el cursor sobre los nodos para descubrir sus secretos.</p>
+    <h4 class="font-fugaz">EL OLIMPO DE LOS DATOS</h4>
+    <p>Este mapa conceptual interactivo desarma nuestra arquitectura desde su base para comprender su lógica.</p>
+    <div class="analogy-box">
+      <span class="handwritten-title">¿Por qué Grecia?</span>
+      <p>Unimos la infraestructura Cloud con la deidad mitológica que rige su esencia: desde <strong>Gaia (S3)</strong> como el origen primordial de todo, hasta los rayos de código bajo demanda de <strong>Zeus (Lambda)</strong>.</p>
+    </div>
   </div>
 
   <svg class="architecture-lines" viewBox="0 0 1600 2600" preserveAspectRatio="none">
-    <defs>
-      <marker
-        id="arrow"
-        markerWidth="14"
-        markerHeight="14"
-        refX="10"
-        refY="5"
-        orient="auto"
-      >
-        <path d="M0,0 L0,10 L10,5 z" fill="#ffffff" />
-      </marker>
-    </defs>
+    <path d="M800 250 L800 2280" class="main-map-line" />
 
-    <path d="M800 180 L800 2280" class="main-line" />
+    <path d="M800 420 L800 560" class="main-map-line" />
+    <path d="M800 760 L800 900" class="main-map-line" />
+    <path d="M800 1100 L800 1240" class="main-map-line" />
+    <path d="M800 1440 L800 1580" class="main-map-line" />
+    <path d="M800 1780 L800 1920" class="main-map-line" />
 
-    <path d="M800 420 L800 560" class="line-solid" marker-end="url(#arrow)" />
-    <path d="M800 760 L800 900" class="line-solid" marker-end="url(#arrow)" />
-    <path d="M800 1100 L800 1240" class="line-solid" marker-end="url(#arrow)" />
-    <path d="M800 1440 L800 1580" class="line-solid" marker-end="url(#arrow)" />
-    <path d="M800 1780 L800 1920" class="line-solid" marker-end="url(#arrow)" />
+    <path d="M800 1355 L1150 1355" class="dashed-map-line" />
 
-    <path d="M800 1460 L1150 1460" class="line-dashed" marker-end="url(#arrow)" />
-
-    <path d="M800 160 L800 80" class="line-dashed" marker-end="url(#arrow)" />
+    <path d="M800 160 L800 90" class="dashed-map-line" />
   </svg>
 
   <div class="node node-small node-iam">
     <img src="/iam-logo.png" alt="IAM" class="node-logo" />
     <h3>IAM</h3>
-    <span>CERBERO</span>
+    <span class="handwritten-text">Cerbero</span>
   </div>
 
   <div class="node node-origin">
-    <h2>ORIGEN</h2>
+    <h2 class="font-fugaz">ORIGEN</h2>
   </div>
 
   <div class="node node-medium node-s3">
     <img src="/s3-logo.png" alt="S3" class="node-logo" />
     <h3>S3</h3>
-    <span>GAIA</span>
+    <span class="handwritten-text">Gaia</span>
     <div class="node-popup">
       <p><strong>Gaia</strong> representa la base primordial del ecosistema. S3 es el almacenamiento universal donde nace todo el flujo de datos.</p>
     </div>
@@ -55,7 +54,7 @@
   <div class="node node-medium node-buckets">
     <img src="/bucket-logo.png" alt="Buckets" class="node-logo" />
     <h3>BUCKETS</h3>
-    <span>PANDORA</span>
+    <span class="handwritten-text">Pandora</span>
     <div class="node-popup">
       <p>Los <strong>Buckets</strong> contienen datos críticos. Bien configurados son tesoros; abiertos por error desatan el caos de <strong>Pandora</strong>.</p>
     </div>
@@ -64,7 +63,7 @@
   <div class="node node-medium node-crawlers">
     <img src="/crawler-logo.png" alt="Crawlers" class="node-logo" />
     <h3>CRAWLERS</h3>
-    <span>ARGOS</span>
+    <span class="handwritten-text">Argos</span>
     <div class="node-popup">
       <p>Los Crawlers exploran automáticamente la estructura de los datos. <strong>Argos</strong> observa cada rincón del sistema.</p>
     </div>
@@ -73,7 +72,7 @@
   <div class="node node-medium node-glue">
     <img src="/glue-logo.png" alt="Glue" class="node-logo" />
     <h3>GLUE</h3>
-    <span>HERMES</span>
+    <span class="handwritten-text">Hermes</span>
     <div class="node-popup">
       <p>Glue conecta, transforma y transporta información. <strong>Hermes</strong> enlaza mundos separados mediante integración ETL.</p>
     </div>
@@ -82,7 +81,7 @@
   <div class="node node-medium node-athena">
     <img src="/athena-logo.png" alt="Athena" class="node-logo" />
     <h3>ATHENA</h3>
-    <span>ATENEA</span>
+    <span class="handwritten-text">Atenea</span>
     <div class="node-popup">
       <p>Athena permite consultar datos directamente sobre S3. Sabiduría instantánea de <strong>Atenea</strong> extraída del caos.</p>
     </div>
@@ -90,8 +89,8 @@
 
   <div class="node node-final">
     <img src="/demo-logo.png" alt="Demo" class="node-logo large-logo" />
-    <h2>DEMO FINAL</h2>
-    <span>EFESTO</span>
+    <h2 class="font-fugaz">DEMO FINAL</h2>
+    <span class="handwritten-text">Efesto</span>
     <div class="node-popup">
       <p><strong>Efesto</strong> simboliza la forja tecnológica: la demostración final del ecosistema funcionando en armonía.</p>
     </div>
@@ -100,7 +99,7 @@
   <div class="node node-side node-lambda">
     <img src="/lambda-logo.png" alt="Lambda" class="node-logo" />
     <h3>LAMBDA</h3>
-    <span>ZEUS</span>
+    <span class="handwritten-text">Zeus</span>
     <div class="node-popup">
       <p>Lambda ejecuta acciones instantáneas bajo demanda. Rayos de código de <strong>Zeus</strong> activados por eventos.</p>
     </div>
@@ -109,224 +108,264 @@
 </section>
 
 <style>
-.architecture-wrapper{
-  position:relative;
-  width:100%;
-  min-height:2600px;
-  background: radial-gradient(circle at center, rgba(20,20,20,.9), #000 70%);
-  overflow:hidden;
-  padding:120px 0;
-  font-family: sans-serif;
+/* CONTENEDOR PRINCIPAL ESTILO LIMPIO WEB */
+.architecture-wrapper {
+  position: relative;
+  width: 100%;
+  min-height: 2600px;
+  background-color: #fbfbfb; /* Fondo claro de sintonía limpia */
+  overflow: hidden;
+  padding: 160px 0;
 }
 
-/* VENTANA INFORMATIVA (NUEVA) */
+/* NAVBAR INTEGRADO DE MAPA CONCEPTUAL */
+.map-navigation-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background: #ffffff;
+  border-bottom: 2px solid #000000;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.logo-brand {
+  font-size: 18px;
+  font-weight: 900;
+  color: #000000;
+  text-decoration: none;
+  letter-spacing: 1px;
+}
+.nav-logo-link {
+  text-decoration: none;
+}
+.nav-menu-btn {
+  background: #000000;
+  color: #ffffff;
+  border: none;
+  padding: 8px 16px;
+  font-size: 13px;
+  font-weight: 800;
+  cursor: pointer;
+  letter-spacing: 1px;
+  transition: opacity 0.2s ease;
+}
+.nav-menu-btn:hover {
+  opacity: 0.85;
+}
+
+/* VENTANA INFORMATIVA IZQUIERDA */
 .info-intro-card {
   position: absolute;
-  top: 40px;
+  top: 60px;
   left: 40px;
   width: 320px;
-  background: rgba(15, 15, 15, 0.85);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  padding: 24px;
-  border-radius: 16px;
-  color: #fff;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  padding: 30px;
+  border-radius: 4px;
   z-index: 10;
-  box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+  box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.05);
 }
 .info-intro-card h4 {
-  margin: 0 0 10px 0;
-  font-size: 20px;
+  margin: 0 0 12px 0;
+  font-size: 16px;
   letter-spacing: 1px;
-  color: #fff;
-  border-bottom: 1px solid rgba(255,255,255,0.1);
-  padding-bottom: 8px;
+  color: #000000;
 }
 .info-intro-card p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333333;
+  margin: 0 0 16px 0;
+}
+.analogy-box {
+  border-top: 1px solid #eeeeee;
+  padding-top: 14px;
+}
+.analogy-box .handwritten-title {
+  font-family: 'Caveat', cursive;
+  font-size: 28px;
+  font-weight: 700;
+  color: #000000;
+  display: block;
+  margin-bottom: 6px;
+}
+.analogy-box p {
   font-size: 13.5px;
-  line-height: 1.5;
-  color: #b3b3b3;
-  margin: 0 0 12px 0;
-}
-.info-intro-card p:last-child {
-  margin-bottom: 0;
-}
-.info-intro-card .analogy-text {
-  font-size: 13px;
-  border-left: 2px solid rgba(255,255,255,0.3);
-  padding-left: 10px;
-  color: #d6d6d6;
+  color: #555555;
+  margin: 0;
 }
 
-/* SVG CONEXIONES REPARADAS */
-.architecture-lines{
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
-  pointer-events:none;
+/* LINEAS SVG NEGRAS EN LUGAR DE BLANCAS */
+.architecture-lines {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
 }
-.main-line{
-  fill:none;
-  stroke:rgba(255,255,255,.08);
-  stroke-width:10;
+.main-map-line {
+  fill: none;
+  stroke: #000000;
+  stroke-width: 3;
+  stroke-linecap: round;
 }
-.line-solid{
-  fill:none;
-  stroke:rgba(255,255,255,.55);
-  stroke-width:4;
-  stroke-linecap:round;
-}
-.line-dashed{
-  fill:none;
-  stroke:rgba(255,255,255,.35);
-  stroke-width:4;
-  stroke-dasharray:16 14;
+.dashed-map-line {
+  fill: none;
+  stroke: #000000;
+  stroke-width: 3;
+  stroke-dasharray: 10 8;
 }
 
-/* NODOS */
-.node{
-  position:absolute;
-  left:50%;
+/* CONFIGURACIÓN BASE DE LOS NODOS CÍRCULOS */
+.node {
+  position: absolute;
+  left: 50%;
   transform: translateX(-50%);
-  border-radius:999px;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  color:white;
-  backdrop-filter:blur(10px);
-  transition: all .35s ease;
-  cursor:pointer;
+  border-radius: 999px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: #ffffff;
+  border: 2px solid #000000;
+  color: #000000;
+  box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.04);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+}
+.node:hover {
+  transform: translateX(-50%) translateY(-4px) scale(1.02);
+  box-shadow: 10px 10px 0px rgba(0, 0, 0, 0.08);
 }
 
-/* POPUPS CORREGIDOS (AHORA A LA IZQUIERDA) */
-.node-popup{
-  position:absolute;
-  right: 110%; /* Lo empuja hacia la izquierda del círculo */
+/* LOGOS E ICONOS */
+.node-logo {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  margin-bottom: 8px;
+}
+.large-logo {
+  width: 60px;
+  height: 60px;
+}
+
+/* TIPOGRAFÍA HANDWRITTEN INTERNA */
+.node h2, .node h3 {
+  margin: 0;
+  color: #000000;
+  line-height: 1.1;
+}
+.node .handwritten-text {
+  font-family: 'Caveat', cursive;
+  font-size: 32px;
+  font-weight: 700;
+  color: #000000;
+  line-height: 0.8;
+  margin-top: 4px;
+}
+
+/* POPUPS LATERALES IZQUIERDOS AJUSTADOS */
+.node-popup {
+  position: absolute;
+  right: 112%;
   top: 50%;
-  transform: translateY(-50%) translateX(10px); /* Centrado verticalmente respecto al círculo */
-  width:260px;
-  background:rgba(15,15,15,.95);
-  border:1px solid rgba(255,255,255,.12);
-  padding:18px;
-  border-radius:18px;
-  opacity:0;
-  pointer-events:none;
-  transition:all .3s ease;
-  font-size:14px;
-  line-height:1.5;
-  color:#d6d6d6;
-  box-shadow:0 0 40px rgba(255,255,255,.08);
+  transform: translateY(-50%) translateX(15px);
+  width: 260px;
+  background: #ffffff;
+  border: 2px solid #000000;
+  padding: 20px;
+  border-radius: 4px;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.25s ease;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #222222;
+  box-shadow: 8px 8px 0px rgba(0, 0, 0, 0.08);
   text-align: left;
 }
-
-/* Efecto Hover para mostrar popups */
-.node:hover{
-  transform: translateX(-50%) scale(1.04);
-}
-.node:hover .node-popup{
-  opacity:1;
+.node:hover .node-popup {
+  opacity: 1;
   transform: translateY(-50%) translateX(0);
 }
 
-/* LOGOS */
-.node-logo{
-  width:54px;
-  height:54px;
-  object-fit:contain;
-  margin-bottom:14px;
-  filter:drop-shadow(0 0 18px rgba(255,255,255,.25));
+/* DIMENSIONES Y ALTURAS DE LOS BLOQUES */
+.node-origin {
+  top: 220px;
+  width: 240px;
+  height: 240px;
+  background: #ffffff;
+  border-width: 3px;
 }
-.large-logo{
-  width:70px;
-  height:70px;
+.node-origin h2 { font-size: 38px; letter-spacing: 2px; }
+
+.node-iam {
+  top: 20px;
+  width: 150px;
+  height: 150px;
 }
+.node-iam h3 { font-size: 24px; }
 
-/* DISEÑO ESPECÍFICO DE NODOS */
-.node-origin{
-  top:220px;
-  width:280px;
-  height:280px;
-  background:#000;
-  border:4px solid rgba(255,255,255,.35);
-  box-shadow: 0 0 80px rgba(255,255,255,.08), inset 0 0 30px rgba(255,255,255,.05);
+.node-medium {
+  width: 200px;
+  height: 200px;
 }
-.node-origin h2{ font-size:54px; letter-spacing:4px; margin:0; }
+.node-medium h3 { font-size: 32px; }
 
-.node-iam{
-  top:20px;
-  width:170px;
-  height:170px;
-  border:2px solid rgba(255,255,255,.25);
-  background:rgba(255,255,255,.03);
+/* RE-POSICIONADO DE ALTURAS GENERALES */
+.node-s3 { top: 560px; }
+.node-buckets { top: 900px; }
+.node-crawlers { top: 1240px; }
+.node-glue { top: 1580px; }
+.node-athena { top: 1920px; }
+
+.node-final {
+  top: 2260px;
+  width: 260px;
+  height: 260px;
+  border-width: 3px;
 }
-.node-iam h3{ font-size:30px; margin:0; }
-.node-iam span{ font-size:14px; letter-spacing:4px; opacity:.7; }
+.node-final h2 { font-size: 32px; letter-spacing: 1px; }
 
-.node-medium{
-  width:230px;
-  height:230px;
-  border:3px solid rgba(255,255,255,.22);
-  background:rgba(255,255,255,.03);
-  box-shadow: inset 0 0 20px rgba(255,255,255,.03), 0 0 60px rgba(255,255,255,.03);
-}
-.node-medium h3{ font-size:42px; margin:0; }
-.node-medium span{ font-size:16px; letter-spacing:4px; opacity:.75; margin-top:8px; }
-
-/* POSICIONES DEL EJE CENTRAL */
-.node-s3{ top:560px; }
-.node-buckets{ top:900px; }
-.node-crawlers{ top:1240px; }
-.node-glue{ top:1580px; }
-.node-athena{ top:1920px; }
-
-.node-final{
-  top:2260px;
-  width:320px;
-  height:320px;
-  background:#000;
-  border:4px solid rgba(255,255,255,.35);
-  box-shadow: 0 0 90px rgba(255,255,255,.08), inset 0 0 30px rgba(255,255,255,.04);
-}
-.node-final h2{ font-size:48px; letter-spacing:2px; margin:0; }
-.node-final span{ margin-top:12px; letter-spacing:6px; opacity:.7; }
-
-/* REPARACIÓN Y AJUSTE DE LAMBDA */
-.node-side{
+/* AJUSTE Y CALIBRACIÓN DE LAMBDA MILIMÉTRICA */
+.node-side {
   left: 72%;
-  transform: translateX(-50%); /* Ahora se alinea perfectamente con la línea SVG */
+  transform: translateX(-50%);
 }
-.node-side:hover{
-  transform: translateX(-50%) scale(1.04);
+.node-side:hover {
+  transform: translateX(-50%) translateY(-4px) scale(1.02);
 }
-.node-lambda{
-  top:1350px; /* Ajustado para conectar perfectamente con la línea horizontal del SVG */
-  width:220px;
-  height:220px;
-  border:3px dashed rgba(255,255,255,.4);
-  background:rgba(255,255,255,.03);
+.node-lambda {
+  top: 1255px; /* Sincronizado exactamente con el eje de la línea horizontal */
+  width: 200px;
+  height: 200px;
+  border-style: dashed;
 }
-.node-lambda h3{ font-size:38px; margin:0; }
-.node-lambda span{ letter-spacing:5px; opacity:.7; }
+.node-lambda h3 { font-size: 30px; }
 
-/* RESPONSIVE (MÓVILES Y PANTALLAS PEQUEÑAS) */
-@media (max-width:1100px){
-  .architecture-wrapper{ min-height:3400px; padding-top: 380px; }
-  .info-intro-card { position: absolute; top: 20px; left: 50%; transform: translateX(-50%); width: 90%; max-width: 400px; }
-  .node{ left:50% !important; transform:translateX(-50%) !important; }
-  .node-side{ top:2260px !important; } /* Coloca a Lambda en la secuencia abajo si la pantalla es chica */
-  .node-final{ top: 2600px !important; }
+/* RESPONSIVE OPTIMIZADO */
+@media (max-width: 1100px) {
+  .architecture-wrapper { min-height: 3400px; padding-top: 380px; }
+  .info-intro-card { position: absolute; top: 20px; left: 50%; transform: translateX(-50%); width: 85%; }
   
-  /* En móviles los popups se muestran abajo de forma segura */
-  .node-popup{ right: auto; top: 105%; left: 50%; transform: translateX(-50%); width:220px; font-size:13px; text-align: center; }
-  .node:hover .node-popup{ transform: translateX(-50%) translateY(5px); }
+  .node { left: 50% !important; transform: translateX(-50%) !important; }
+  .node-side { top: 2260px !important; }
+  .node-final { top: 2580px !important; }
   
-  .node-origin{ width:220px; height:220px; }
-  .node-medium{ width:190px; height:190px; }
-  .node-final{ width:240px; height:240px; }
-  .node-origin h2, .node-final h2{ font-size:34px; }
-  .node-medium h3{ font-size:28px; }
+  .node-popup { 
+    right: auto; 
+    top: 108%; 
+    left: 50%; 
+    transform: translateX(-50%) translateX(0); 
+    width: 230px; 
+    text-align: center;
+    box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.08);
+  }
+  .node:hover .node-popup { transform: translateX(-50%) translateY(0); }
 }
 </style>
