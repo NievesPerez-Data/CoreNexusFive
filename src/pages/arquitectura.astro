@@ -21,15 +21,8 @@
     </div>
   </div>
 
-  <svg class="architecture-lines" viewBox="0 0 1600 1300" preserveAspectRatio="none">
+  <svg class="architecture-lines" preserveAspectRatio="none">
     <defs>
-      <linearGradient id="main-vertical-pulse" x1="0%" y1="0%" x2="0%" y2="100%">
-        <stop offset="0%" stop-color="#ffffff" stop-opacity="0.2" />
-        <stop offset="30%" stop-color="#ffffff" stop-opacity="1" />
-        <stop offset="60%" stop-color="#ffffff" stop-opacity="0.2" />
-        <stop offset="100%" stop-color="#ffffff" stop-opacity="0.2" />
-      </linearGradient>
-
       <linearGradient id="side-diagonal-flow" x1="0%" y1="0%" x2="100%" y2="100%">
         <stop offset="0%" stop-color="#ffffff" stop-opacity="0.1" />
         <stop offset="50%" stop-color="#ffffff" stop-opacity="0.7" />
@@ -37,9 +30,7 @@
       </linearGradient>
     </defs>
 
-    <line x1="800" y1="40" x2="800" y2="1200" class="main-map-line animated-solid-pulse" />
-
-    <path d="M800 150 L1080 230" class="side-map-line" /> <path d="M800 490 L530 590" class="side-map-line" />  <path d="M800 490 L1070 590" class="side-map-line" /> </svg>
+    <path d="M 50% 125 L 68% 225" class="side-map-line" /> <path d="M 50% 570 L 32% 570" class="side-map-line" /> <path d="M 50% 570 L 68% 570" class="side-map-line" /> </svg>
 
   <div class="node node-large node-s3">
     <div class="node-content">
@@ -196,7 +187,7 @@
 </section>
 
 <style>
-/* CONFIGURACIÓN CONTENEDOR CONSTANTE */
+/* CONFIGURACIÓN CONTENEDOR SEGURO */
 .architecture-wrapper {
   position: relative;
   width: 100%;
@@ -205,6 +196,30 @@
   overflow: hidden;
   padding: 60px 0;
   box-sizing: border-box;
+}
+
+/* LÍNEA RECTA CENTRAL NATIVA EN CSS (Sólida con pulso dinámico que no rompe nada) */
+.architecture-wrapper::before {
+  content: "";
+  position: absolute;
+  top: 120px; /* Empieza en el centro de S3 */
+  bottom: 180px; /* Termina en el centro de Demo */
+  left: 50%;
+  width: 5px;
+  transform: translateX(-50%);
+  background: linear-gradient(to bottom, 
+    rgba(255, 255, 255, 0.15), 
+    rgba(255, 255, 255, 0.8) 50%, 
+    rgba(255, 255, 255, 0.15)
+  );
+  background-size: 100% 200%;
+  animation: solidPulseFlow 3s linear infinite;
+  z-index: 1;
+}
+
+@keyframes solidPulseFlow {
+  0% { background-position: 0% 0%; }
+  100% { background-position: 0% -200%; }
 }
 
 /* NAVBAR */
@@ -232,17 +247,130 @@
 .analogy-box { border-top: 1px solid #ddd; padding-top: 8px; }
 .analogy-box .handwritten-title { font-family: 'Caveat', cursive; font-size: 24px; font-weight: 700; color: #000; }
 
-/* --- SISTEMA DE LÍNEAS ANIMADAS --- */
-.architecture-lines { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
-
-/* Línea Central: Completamente recta y sólida de fondo */
-.main-map-line {
-  fill: none;
-  stroke: rgba(255, 255, 255, 0.15); /* Base sólida visible constante */
-  stroke-width: 5;
+/* SVG PARA RAMAS LATERALES EN PORCENTAJES (Limpio y adaptable) */
+.architecture-lines { 
+  position: absolute; 
+  top: 0;
+  left: 0;
+  width: 100%; 
+  height: 100%; 
+  pointer-events: none; 
+  z-index: 2;
+}
+.side-map-line { 
+  fill: none; 
+  stroke: url(#side-diagonal-flow); 
+  stroke-width: 3.5; 
 }
 
-/* Capa de animación: Crea el pulso brillante lineal de arriba a abajo */
-.animated-solid-pulse {
-  stroke: url(#main-vertical-pulse);
-  stroke-dasharray:
+/* NODOS CONCEPTUALES */
+.node { position: absolute; left: 50%; transform: translateX(-50%); z-index: 5; cursor: pointer; }
+.node-content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  border: 2px solid #000000;
+  box-sizing: border-box;
+  padding: 15px;
+  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.node:hover .node-content {
+  box-shadow: 0 0 32px 12px rgba(255, 255, 255, 0.8);
+  transform: scale(1.05);
+}
+.node-logo { width: 62%; height: 62%; object-fit: contain; }
+
+/* TEXTOS Y TIPOGRAFÍAS MANUSCRITAS */
+.note-text-block { display: flex; flex-direction: column; text-align: left; width: 190px; }
+.service-title-handwritten {
+  font-family: 'Caveat', cursive;
+  font-size: 24px;
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1;
+  margin-bottom: 3px;
+  letter-spacing: 0.5px;
+}
+.map-handwritten-text {
+  font-family: 'Caveat', cursive;
+  font-size: 19px; 
+  font-weight: 500;
+  color: #c5c5c5;
+  line-height: 1.1;
+}
+
+/* FLECHAS MANUSCRITAS */
+.marker-arrow { width: 50px; flex-shrink: 0; overflow: visible; }
+
+/* EMPLAZAMIENTO DE NOTAS */
+.map-side-note { position: absolute; top: 50%; transform: translateY(-50%); display: flex; align-items: center; pointer-events: none; gap: 14px; }
+
+.note-right-large-node  { right: -268px; flex-direction: row; } 
+.note-right-medium-node { right: -256px; flex-direction: row; } 
+.note-right-small-node  { right: -246px; flex-direction: row; } 
+
+.note-left-small-node { left: -246px; flex-direction: row-reverse; }
+.note-left-small-node .note-text-block { text-align: right; }
+.reverse-arrow { transform: rotate(180deg); }
+
+/* POPUPS INFORMATIVOS */
+.node-popup {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 230px;
+  background: #ffffff;
+  border: 2px solid #000000;
+  padding: 14px;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.25s ease;
+  font-size: 13px;
+  line-height: 1.4;
+  color: #000000;
+  box-shadow: 8px 8px 0px rgba(255, 255, 255, 0.1);
+  text-align: left;
+  z-index: 30;
+}
+.node:hover .node-popup { opacity: 1; }
+.node-popup.popup-left { right: 128%; }
+.node-popup.popup-right { left: 128%; }
+
+/* DIMENSIONES DE LOS NODOS */
+.node-large { width: 170px; height: 170px; }  
+.node-medium { width: 150px; height: 150px; } 
+.node-small { width: 135px; height: 135px; }  
+
+/* POSICIONES DEL EJE VERTICAL COMPACTO */
+.node-s3 { top: 40px; }
+.node-buckets { top: 320px; }
+.node-glue { top: 690px; }
+.node-athena { top: 920px; }
+.node-final { top: 1120px; }
+
+/* POSICIONES RAMAS LATERALES */
+.node-side-left { left: 32%; transform: translateX(-50%); }
+.node-side-right { left: 68%; transform: translateX(-50%); }
+
+.node-iam { top: 160px; }
+.node-lambda { top: 505px; }
+.node-crawlers { top: 505px; }
+
+/* RESPONSIVE */
+@media (max-width: 1100px) {
+  .architecture-wrapper { min-height: 2400px; padding-top: 300px; }
+  .architecture-wrapper::before { display: none; }
+  .info-intro-card { position: absolute; top: 20px; left: 50%; transform: translateX(-50%); width: 85%; }
+  .node { left: 50% !important; transform: translateX(-50%) !important; }
+  .node-side-left { top: 1260px !important; }
+  .node-side-right { top: 1480px !important; }
+  .node-final { top: 1700px !important; }
+  .map-side-note { display: none; }
+  .architecture-lines { display: none; }
+}
+</style>
