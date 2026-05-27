@@ -21,12 +21,12 @@
     </div>
   </div>
 
-  <svg class="architecture-lines" viewBox="0 0 1600 1450" preserveAspectRatio="none">
+  <svg class="architecture-lines" viewBox="0 0 1600 1300" preserveAspectRatio="none">
     <defs>
       <linearGradient id="main-vertical-flow" x1="0%" y1="0%" x2="0%" y2="100%">
-        <stop offset="0%" stop-color="#ffffff" stop-opacity="0.1" />
+        <stop offset="0%" stop-color="#ffffff" stop-opacity="0.2" />
         <stop offset="50%" stop-color="#ffffff" stop-opacity="0.8" />
-        <stop offset="100%" stop-color="#ffffff" stop-opacity="0.1" />
+        <stop offset="100%" stop-color="#ffffff" stop-opacity="0.2" />
       </linearGradient>
 
       <linearGradient id="side-diagonal-flow" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -36,22 +36,21 @@
       </linearGradient>
     </defs>
 
-    <path d="M800 50 L800 1350" class="main-map-line animated-main-flow" />
+    <path d="M800 40 L800 1150" class="main-map-line animated-main-flow" />
 
-    <path d="M800 135 L1100 255" class="side-map-line animated-side-flow" /> <path d="M800 600 L500 720" class="side-map-line animated-side-flow" />  <path d="M800 600 L1100 720" class="side-map-line animated-side-flow" /> </svg>
+    <path d="M800 150 L1080 230" class="side-map-line animated-side-flow" /> <path d="M800 490 L530 590" class="side-map-line animated-side-flow" />  <path d="M800 490 L1070 590" class="side-map-line animated-side-flow" /> </svg>
 
-  <div class="map-row row-s3">
-    <div class="node-spacer-left"></div>
-    <div class="node node-large">
-      <div class="node-content"><img src="/s3-logo.png" alt="S3" class="node-logo" /></div>
-      <div class="node-popup popup-left">
-        <p><strong>Gaia:</strong> S3 actúa como la raíz primordial del almacenamiento, donde se origina y asienta todo el ecosistema de datos.</p>
-      </div>
+  <div class="node node-large node-s3">
+    <div class="node-content">
+      <img src="/s3-logo.png" alt="S3" class="node-logo" />
     </div>
-    <div class="map-side-note note-right">
+    <div class="node-popup popup-left">
+      <p><strong>Gaia:</strong> S3 actúa como la raíz primordial del almacenamiento, donde se origina y asienta todo el ecosistema de datos.</p>
+    </div>
+    <div class="map-side-note note-right-large-node">
       <svg class="marker-arrow" viewBox="0 0 120 80">
-        <path d="M10,40 Q45,35 110,40" stroke="#d3d3d3" stroke-width="8" fill="none" stroke-linecap="round"/>
-        <path d="M80,15 L112,41 L80,65" stroke="#d3d3d3" stroke-width="8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M-20,40 Q30,35 110,40" stroke="#d3d3d3" stroke-width="7.5" fill="none" stroke-linecap="round"/>
+        <path d="M80,15 L112,41 L80,65" stroke="#d3d3d3" stroke-width="7.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
       <div class="note-text-block">
         <span class="service-title-handwritten">S3</span>
@@ -59,37 +58,3 @@
       </div>
     </div>
   </div>
-
-  <div class="map-row row-iam">
-    <div class="node-spacer-left-side"></div>
-    <div class="node node-small">
-      <div class="node-content"><img src="/iam-logo.png" alt="IAM" class="node-logo" /></div>
-      <div class="node-popup popup-left">
-        <p><strong>Cerbero:</strong> IAM custodia y gestiona los accesos de seguridad periférica de todo el ecosistema.</p>
-      </div>
-    </div>
-    <div class="map-side-note note-right">
-      <svg class="marker-arrow" viewBox="0 0 120 80">
-        <path d="M10,40 Q45,35 110,40" stroke="#d3d3d3" stroke-width="8" fill="none" stroke-linecap="round"/>
-        <path d="M80,15 L112,41 L80,65" stroke="#d3d3d3" stroke-width="8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-      <div class="note-text-block">
-        <span class="service-title-handwritten">IAM</span>
-        <span class="map-handwritten-text">Guardián de la<br>seguridad perimetral</span>
-      </div>
-    </div>
-  </div>
-
-  <div class="map-row row-buckets">
-    <div class="node-spacer-left"></div>
-    <div class="node node-medium">
-      <div class="node-content"><img src="/bucket-logo.png" alt="Buckets" class="node-logo" /></div>
-      <div class="node-popup popup-left">
-        <p><strong>Pandora:</strong> Contenedores de datos específicos. Mal configurados desatan problemas, bien custodiados albergan valor.</p>
-      </div>
-    </div>
-    <div class="map-side-note note-right">
-      <svg class="marker-arrow" viewBox="0 0 120 80">
-        <path d="M10,40 Q45,35 110,40" stroke="#d3d3d3" stroke-width="8" fill="none" stroke-linecap="round"/>
-        <path d="M80,15 L112,41 L80,65" stroke="#d3d3d3" stroke-width="8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
