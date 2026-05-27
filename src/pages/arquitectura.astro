@@ -488,63 +488,51 @@
 
   :root {
     --bg: #050505;
-    --panel: #101010;
-    --line: rgba(255,255,255,0.18);
-    --text: #f5f5f5;
-    --muted: #b5b5b5;
-    --border: rgba(255,255,255,0.14);
+    --panel: #111111;
+    --line: rgba(255,255,255,0.16);
+    --border: rgba(255,255,255,0.18);
     --glow: rgba(255,255,255,0.08);
+    --text: #ffffff;
   }
 
   /* ========================= */
-  /* CONTENEDOR PRINCIPAL */
+  /* CONTENEDOR */
   /* ========================= */
 
   .olimpo-container {
     position: relative;
     width: 100%;
-    min-height: 1700px;
+    min-height: 2600px;
     background:
-      radial-gradient(circle at top, rgba(255,255,255,0.05), transparent 35%),
-      linear-gradient(to bottom, #0a0a0a, #050505);
+      radial-gradient(circle at top, rgba(255,255,255,0.04), transparent 35%),
+      linear-gradient(to bottom, #080808, #030303);
     overflow: hidden;
-    padding: 120px 0;
+    padding: 120px 0 200px 0;
   }
 
   /* ========================= */
-  /* SVG */
+  /* EJE CENTRAL */
   /* ========================= */
 
-  .lines-canvas {
+  .central-line {
     position: absolute;
-    inset: 0;
-    width: 100%;
+    left: 50%;
+    top: 0;
+    width: 2px;
     height: 100%;
-    pointer-events: none;
-  }
-
-  .line-path {
-    stroke: rgba(255,255,255,0.45);
-    stroke-width: 2;
-    fill: none;
-    stroke-linecap: round;
-    stroke-dasharray: 8;
-    animation: flow 16s linear infinite;
-  }
-
-  @keyframes flow {
-
-    from {
-      stroke-dashoffset: 0;
-    }
-
-    to {
-      stroke-dashoffset: -200;
-    }
+    transform: translateX(-50%);
+    background:
+      linear-gradient(
+        to bottom,
+        transparent,
+        rgba(255,255,255,0.22),
+        rgba(255,255,255,0.12),
+        transparent
+      );
   }
 
   /* ========================= */
-  /* NODOS */
+  /* NODOS BASE */
   /* ========================= */
 
   .node {
@@ -556,250 +544,208 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    cursor: pointer;
     text-align: center;
     color: white;
+    cursor: pointer;
     transition: all 0.35s ease;
-    user-select: none;
     backdrop-filter: blur(8px);
+    z-index: 5;
   }
 
   .node:hover {
     transform: translateX(-50%) scale(1.05);
   }
 
+  .node span {
+    font-size: 34px;
+    font-weight: 800;
+    letter-spacing: 2px;
+  }
+
   .node small {
     margin-top: 8px;
-    font-size: 11px;
-    letter-spacing: 2px;
-    opacity: 0.7;
+    font-size: 13px;
+    letter-spacing: 3px;
+    opacity: 0.75;
   }
 
-  /* IAM */
-
-  .node-guardian {
-    top: 40px;
-    width: 170px;
-    height: 170px;
-    background: rgba(255,255,255,0.04);
-    border: 2px solid rgba(255,255,255,0.22);
-    box-shadow:
-      0 0 40px rgba(255,255,255,0.05),
-      inset 0 0 20px rgba(255,255,255,0.04);
-    font-size: 20px;
-    font-weight: 700;
-  }
-
-  /* ORIGEN */
+  /* ========================= */
+  /* NODOS GRANDES */
+  /* ========================= */
 
   .node-large {
-    top: 240px;
-    width: 220px;
-    height: 220px;
+    width: 240px;
+    height: 240px;
     background: #000;
-    border: 3px solid rgba(255,255,255,0.3);
+    border: 3px solid rgba(255,255,255,0.24);
+
     box-shadow:
-      0 0 60px rgba(255,255,255,0.08),
+      0 0 80px rgba(255,255,255,0.06),
       inset 0 0 30px rgba(255,255,255,0.03);
-    font-size: 28px;
-    font-weight: 800;
-    letter-spacing: 3px;
   }
 
-  /* PRINCIPALES */
+  /* ========================= */
+  /* NODOS MEDIOS */
+  /* ========================= */
 
   .node-main {
-    width: 180px;
-    height: 180px;
+    width: 190px;
+    height: 190px;
+
     background: rgba(255,255,255,0.03);
+
     border: 2px solid rgba(255,255,255,0.18);
+
     box-shadow:
-      0 0 40px rgba(255,255,255,0.05),
-      inset 0 0 20px rgba(255,255,255,0.03);
-    font-size: 22px;
-    font-weight: 700;
+      0 0 45px rgba(255,255,255,0.05),
+      inset 0 0 25px rgba(255,255,255,0.03);
   }
 
   .node-main:hover {
     border-color: rgba(255,255,255,0.45);
+
     box-shadow:
-      0 0 80px rgba(255,255,255,0.15),
-      inset 0 0 30px rgba(255,255,255,0.06);
+      0 0 80px rgba(255,255,255,0.12),
+      inset 0 0 40px rgba(255,255,255,0.05);
   }
 
-  /* POSICIONES */
+  /* ========================= */
+  /* IAM */
+  /* ========================= */
 
-  .node-main:nth-of-type(3) {
-    top: 440px;
+  .node-guardian {
+    top: 80px;
+    width: 180px;
+    height: 180px;
   }
 
-  .node-main:nth-of-type(4) {
-    top: 640px;
+  /* ========================= */
+  /* ORIGEN */
+  /* ========================= */
+
+  .node-origin {
+    top: 380px;
   }
 
-  .node-main:nth-of-type(5) {
-    top: 840px;
+  /* ========================= */
+  /* S3 */
+  /* ========================= */
+
+  .node-s3 {
+    top: 720px;
   }
 
-  .node-main:nth-of-type(6) {
+  /* ========================= */
+  /* BUCKETS */
+  /* ========================= */
+
+  .node-buckets {
     top: 1040px;
   }
 
-  .athena-node {
-    top: 1240px;
+  /* ========================= */
+  /* CRAWLERS */
+  /* ========================= */
+
+  .node-crawlers {
+    top: 1360px;
   }
 
-  /* LAMBDA */
+  /* ========================= */
+  /* GLUE */
+  /* ========================= */
 
-  .node-side {
-    top: 1040px;
-    left: calc(50% + 250px);
-    width: 150px;
-    height: 150px;
-    background: rgba(255,255,255,0.03);
-    border: 2px dashed rgba(255,255,255,0.3);
-    box-shadow:
-      0 0 30px rgba(255,255,255,0.05);
-    font-size: 18px;
-    font-weight: 700;
+  .node-glue {
+    top: 1680px;
   }
 
+  /* ========================= */
+  /* ATHENA */
+  /* ========================= */
+
+  .node-athena {
+    top: 2000px;
+  }
+
+  /* ========================= */
   /* DEMO */
+  /* ========================= */
 
   .node-demo {
-    top: 1450px;
-    width: 230px;
-    height: 230px;
-    background:
-      radial-gradient(circle at top, rgba(255,255,255,0.08), transparent 70%),
-      #000;
-    border: 3px solid rgba(255,255,255,0.28);
-    box-shadow:
-      0 0 80px rgba(255,255,255,0.1),
-      inset 0 0 40px rgba(255,255,255,0.05);
-    font-size: 26px;
-    font-weight: 800;
-    letter-spacing: 2px;
+    top: 2350px;
+    width: 260px;
+    height: 260px;
   }
 
   /* ========================= */
-  /* MODALES */
+  /* LAMBDA */
   /* ========================= */
 
-  .modal {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.82);
-    z-index: 9999;
-    justify-content: center;
-    align-items: center;
-    padding: 30px;
-    backdrop-filter: blur(10px);
-  }
+  .node-lambda {
+    top: 1680px;
+    left: calc(50% + 340px);
 
-  .modal-content {
-    position: relative;
-    width: 100%;
-    max-width: 760px;
-    max-height: 90vh;
-    overflow-y: auto;
-    background: linear-gradient(to bottom, #111111, #0a0a0a);
-    border: 1px solid rgba(255,255,255,0.12);
-    border-radius: 30px;
-    padding: 50px;
-    color: white;
+    width: 170px;
+    height: 170px;
+
+    border: 2px dashed rgba(255,255,255,0.28);
+
+    background: rgba(255,255,255,0.02);
+
     box-shadow:
-      0 0 80px rgba(255,255,255,0.08);
-    animation: modalFade 0.25s ease;
+      0 0 45px rgba(255,255,255,0.04);
   }
 
-  @keyframes modalFade {
+  /* ========================= */
+  /* CONECTOR LAMBDA */
+  /* ========================= */
 
-    from {
-      opacity: 0;
-      transform: translateY(25px) scale(0.98);
-    }
-
-    to {
-      opacity: 1;
-      transform: translateY(0) scale(1);
-    }
-  }
-
-  .modal-image {
-    width: 140px;
-    height: 140px;
-    object-fit: contain;
-    margin: 0 auto 30px auto;
-    display: block;
-    filter:
-      drop-shadow(0 0 20px rgba(255,255,255,0.15));
-  }
-
-  .modal-content h2 {
-    font-size: 38px;
-    margin-bottom: 24px;
-    text-align: center;
-    font-weight: 800;
-    letter-spacing: 1px;
-  }
-
-  .modal-content h3 {
-    margin-top: 35px;
-    margin-bottom: 15px;
-    font-size: 22px;
-  }
-
-  .modal-content p {
-    color: #d2d2d2;
-    line-height: 1.8;
-    margin-bottom: 18px;
-    font-size: 16px;
-  }
-
-  .modal-content ul {
-    margin-top: 10px;
-    padding-left: 20px;
-  }
-
-  .modal-content li {
-    margin-bottom: 10px;
-    color: #d0d0d0;
-    line-height: 1.6;
-  }
-
-  .close {
+  .lambda-line {
     position: absolute;
-    top: 20px;
-    right: 28px;
-    font-size: 38px;
-    color: white;
-    cursor: pointer;
-    transition: 0.25s ease;
-  }
 
-  .close:hover {
-    transform: scale(1.1);
-    opacity: 0.7;
+    top: 1765px;
+    left: calc(50% + 95px);
+
+    width: 220px;
+    height: 2px;
+
+    background:
+      linear-gradient(
+        to right,
+        rgba(255,255,255,0.25),
+        rgba(255,255,255,0.08)
+      );
+
+    z-index: 1;
   }
 
   /* ========================= */
-  /* SCROLL */
+  /* PUNTOS BRILLO */
   /* ========================= */
 
-  .modal-content::-webkit-scrollbar {
-    width: 8px;
-  }
+  .glow-point {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
 
-  .modal-content::-webkit-scrollbar-track {
-    background: #111;
-  }
+    width: 22px;
+    height: 22px;
 
-  .modal-content::-webkit-scrollbar-thumb {
-    background: rgba(255,255,255,0.18);
     border-radius: 999px;
+
+    background: white;
+
+    filter: blur(10px);
+
+    opacity: 0.8;
   }
+
+  .g1 { top: 640px; }
+  .g2 { top: 960px; }
+  .g3 { top: 1280px; }
+  .g4 { top: 1600px; }
+  .g5 { top: 1920px; }
+  .g6 { top: 2240px; }
 
   /* ========================= */
   /* RESPONSIVE */
@@ -807,61 +753,44 @@
 
   @media (max-width: 1100px) {
 
-    .olimpo-container {
-      min-height: 2200px;
-    }
-
-    .node-side {
+    .node-lambda {
       left: 50%;
-      top: 1250px;
+      top: 2600px;
+      transform: translateX(-50%);
     }
 
-    .athena-node {
-      top: 1450px;
+    .lambda-line {
+      display: none;
     }
 
-    .node-demo {
-      top: 1700px;
+    .olimpo-container {
+      min-height: 3200px;
     }
   }
 
   @media (max-width: 768px) {
 
-    .olimpo-container {
-      min-height: 2400px;
-      padding: 60px 0;
-    }
-
     .node-large {
-      width: 180px;
-      height: 180px;
-      font-size: 22px;
+      width: 190px;
+      height: 190px;
     }
 
     .node-main {
-      width: 150px;
-      height: 150px;
-      font-size: 18px;
+      width: 160px;
+      height: 160px;
     }
 
     .node-demo {
-      width: 180px;
-      height: 180px;
-      font-size: 22px;
+      width: 210px;
+      height: 210px;
     }
 
-    .modal-content {
-      padding: 35px 25px;
-      border-radius: 22px;
+    .node span {
+      font-size: 24px;
     }
 
-    .modal-content h2 {
-      font-size: 28px;
-    }
-
-    .modal-image {
-      width: 100px;
-      height: 100px;
+    .node small {
+      font-size: 11px;
     }
   }
 
