@@ -18,26 +18,24 @@
       <p>Este mapa conceptual interactivo desarma nuestra arquitectura desde su base para comprender su lógica.</p>
       <div class="analogy-box">
         <span class="handwritten-title">¿Por qué Grecia?</span>
-        <p>Unimos la infraestructura Cloud con mitología antigua. Pasa el cursor sobre los círculos para descubrir el popup explicativo.</p>
+        <p>Pasa el cursor sobre los círculos para descubrir el popup mitológico explicativo a la izquierda de cada servicio.</p>
       </div>
     </div>
   </div>
 
-  <!-- SVG DE CONEXIONES MEJORADO CON DIAGONAL -->
-  <svg class="architecture-lines" viewBox="0 0 1600 2600" preserveAspectRatio="none">
-    <!-- LÍNEA CENTRAL -->
-    <path d="M800 250 L800 2280" class="main-map-line" />
+  <!-- SVG DE CONEXIONES COMPACTO Y PRECISO -->
+  <svg class="architecture-lines" viewBox="0 0 1600 1500" preserveAspectRatio="none">
+    <!-- LÍNEA CENTRAL PRINCIPAL (Termina exactamente en el centro de Demo Final a 1350) -->
+    <path d="M800 200 L800 1350" class="main-map-line" />
 
-    <!-- LÍNEAS DE CONEXIÓN VERTICALES -->
-    <path d="M800 420 L800 560" class="main-map-line" />
-    <path d="M800 760 L800 900" class="main-map-line" />
-    <path d="M800 1100 L800 1240" class="main-map-line" />
-    <path d="M800 1440 L800 1580" class="main-map-line" />
-    <path d="M800 1780 L800 1920" class="main-map-line" />
+    <!-- CONEXIÓN SUPERIOR IAM -->
+    <path d="M800 110 L800 50" class="dashed-map-line" />
 
-    <!-- NUEVA DIAGONAL EVITA SOLAPAMIENTO: SALE DESDE BUCKETS (900) HACIA LAMBDA A LA IZQUIERDA -->
-    <path d="M800 985 L480 1180" class="dashed-map-line" />
-    <path d="M800 160 L800 90" class="dashed-map-line" />
+    <!-- RAMA DIAGONAL IZQUIERDA: DESDE EJE BUCKETS-GLUE HACIA LAMBDA -->
+    <path d="M800 680 L520 780" class="dashed-map-line" />
+
+    <!-- RAMA DIAGONAL DERECHA: DESDE EJE BUCKETS-GLUE HACIA CRAWLERS -->
+    <path d="M800 680 L1080 780" class="dashed-map-line" />
   </svg>
 
   <!-- IAM -->
@@ -98,7 +96,7 @@
     </div>
   </div>
 
-  <!-- LAMBDA (REUBICADO A LA IZQUIERDA PARA EVITAR SOLAPAMIENTO) -->
+  <!-- LAMBDA (RAMA IZQUIERDA - PERMANECE AJENA AL EJE CENTRAL) -->
   <div class="node node-side-left node-lambda">
     <div class="node-content intense-dash">
       <img src="/lambda-logo.png" alt="Lambda" class="node-logo" />
@@ -115,8 +113,8 @@
     </div>
   </div>
 
-  <!-- CRAWLERS -->
-  <div class="node node-medium node-crawlers">
+  <!-- CRAWLERS (RAMA DERECHA - EQUILIBRANDO EL MAPA SIMÉTRICAMENTE) -->
+  <div class="node node-side-right node-crawlers">
     <div class="node-content">
       <img src="/crawler-logo.png" alt="Crawlers" class="node-logo" />
     </div>
@@ -166,7 +164,7 @@
     </div>
   </div>
 
-  <!-- DEMO -->
+  <!-- DEMO FINAL -->
   <div class="node node-final">
     <div class="node-content">
       <img src="/demo-logo.png" alt="Demo" class="node-logo large-logo" />
@@ -186,14 +184,15 @@
 </section>
 
 <style>
-/* CONFIGURACIÓN DEL ENTORNO OSCURO */
+/* CONTEXTO DE ALTURA COMPACTADA (DE 2600px A 1500px) */
 .architecture-wrapper {
   position: relative;
   width: 100%;
-  min-height: 2600px;
+  min-height: 1500px;
   background: #0d0d0d;
   overflow: hidden;
-  padding: 160px 0;
+  padding: 100px 0;
+  box-sizing: border-box;
 }
 
 /* NAVBAR SUPERIOR APARIENCIA CORE NEXUS */
@@ -213,18 +212,18 @@
 .nav-menu-btn { background: #ffffff; color: #000000; border: none; padding: 8px 16px; font-size: 13px; font-weight: 800; cursor: pointer; letter-spacing: 1px; }
 
 /* PANEL EXPLICATIVO INICIAL */
-.info-intro-card { position: absolute; top: 60px; left: 40px; width: 320px; z-index: 10; }
-.card-shadow { position: absolute; width: 100%; height: 100%; background: #d3d3d3; top: 12px; left: 12px; z-index: 1; }
-.card-content { position: relative; background: #ffffff; border: 2px solid #000000; padding: 25px; z-index: 2; color: #000000; }
-.info-intro-card h4 { margin: 0 0 10px 0; font-size: 16px; color: #000; }
-.info-intro-card p { font-size: 13.5px; line-height: 1.5; color: #222; margin: 0 0 12px 0; }
-.analogy-box { border-top: 1px solid #ddd; padding-top: 10px; }
-.analogy-box .handwritten-title { font-family: 'Caveat', cursive; font-size: 26px; font-weight: 700; color: #000; }
+.info-intro-card { position: absolute; top: 40px; left: 40px; width: 300px; z-index: 10; }
+.card-shadow { position: absolute; width: 100%; height: 100%; background: #d3d3d3; top: 10px; left: 10px; z-index: 1; }
+.card-content { position: relative; background: #ffffff; border: 2px solid #000000; padding: 20px; z-index: 2; color: #000000; }
+.info-intro-card h4 { margin: 0 0 8px 0; font-size: 15px; color: #000; }
+.info-intro-card p { font-size: 13px; line-height: 1.4; color: #222; margin: 0 0 10px 0; }
+.analogy-box { border-top: 1px solid #ddd; padding-top: 8px; }
+.analogy-box .handwritten-title { font-family: 'Caveat', cursive; font-size: 24px; font-weight: 700; color: #000; }
 
 /* TRAZADOS DE LÍNEAS SVG EN EL FONDO */
 .architecture-lines { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
 .main-map-line { fill: none; stroke: rgba(255, 255, 255, 0.15); stroke-width: 4; }
-.dashed-map-line { fill: none; stroke: rgba(255, 255, 255, 0.3); stroke-width: 3.5; stroke-dasharray: 10 8; }
+.dashed-map-line { fill: none; stroke: rgba(255, 255, 255, 0.25); stroke-width: 3.5; stroke-dasharray: 10 8; }
 
 /* NODOS LIMPIOS SIN DOBLE CÍRCULO DETRÁS */
 .node {
@@ -245,23 +244,19 @@
   background: #ffffff;
   border: 2px solid #000000;
   box-sizing: border-box;
-  padding: 15px;
+  padding: 12px;
   transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-/* EFECTO INTERACTIVO: HALO DE LUZ SUTIL AL SELECCIONAR/HOVER */
+/* EFECTO INTERACTIVO: HALO DE LUZ SUTIL AL PASAR EL CURSOR */
 .node:hover .node-content {
   box-shadow: 0 0 25px 8px rgba(255, 255, 255, 0.7);
-  transform: scale(1.04);
+  transform: scale(1.05);
 }
 
-/* IMÁGENES LOGOTIPOS (ÚNICO CONTENIDO INTERNO) */
-.node-logo {
-  width: 65%;
-  height: 65%;
-  object-fit: contain;
-}
-.large-logo { width: 70%; height: 70%; }
+/* IMÁGENES LOGOTIPOS */
+.node-logo { width: 62%; height: 62%; object-fit: contain; }
+.large-logo { width: 68%; height: 68%; }
 
 /* CUADROS EMERGENTES (POPUPS) MANTENIDOS A LA IZQUIERDA */
 .node-popup {
@@ -269,14 +264,14 @@
   right: 120%;
   top: 50%;
   transform: translateY(-50%);
-  width: 240px;
+  width: 230px;
   background: #ffffff;
   border: 2px solid #000000;
-  padding: 15px;
+  padding: 14px;
   opacity: 0;
   pointer-events: none;
   transition: all 0.25s ease;
-  font-size: 13.5px;
+  font-size: 13px;
   line-height: 1.4;
   color: #000000;
   box-shadow: 8px 8px 0px rgba(255, 255, 255, 0.1);
@@ -285,71 +280,68 @@
 }
 .node:hover .node-popup { opacity: 1; }
 
-/* POPUP INVERTIDO HACIA LA DERECHA PARA EL NODO LAMBDA */
-.node-popup.popup-right {
-  right: auto;
-  left: 120%;
-}
+/* POPUP INVERTIDO HACIA LA DERECHA PARA EL NODO LAMBDA (EVITA SALIRSE DE LA PANTALLA) */
+.node-popup.popup-right { right: auto; left: 120%; }
 
-/* NOTAS MANUSCRITAS CONTROLADAS (MÁXIMO 2 LÍNEAS / COMPACTAS) */
+/* NOTAS MANUSCRITAS CONTROLADAS COMPACTAS (MÁXIMO 2 LÍNEAS) */
 .map-side-note {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  right: -280px; 
-  width: 250px; 
+  right: -250px; 
+  width: 220px; 
   display: flex;
   flex-direction: row;
   align-items: center;
   pointer-events: none;
   gap: 8px;
 }
-.marker-arrow { width: 50px; flex-shrink: 0; overflow: visible; }
+.marker-arrow { width: 45px; flex-shrink: 0; overflow: visible; }
 .map-handwritten-text {
   font-family: 'Caveat', cursive;
-  font-size: 24px; /* Tamaño de letra más pequeño y compacto */
+  font-size: 22px; 
   font-weight: 700;
   color: #d3d3d3;
-  line-height: 1.1; /* Forzar ajuste correcto en dos líneas */
+  line-height: 1.1;
   display: inline-block;
   transform: rotate(-1deg);
 }
 
 /* NOTA COMPACTA IZQUIERDA ADAPTADA PARA LAMBDA */
-.map-side-note-left {
-  right: auto;
-  left: -280px;
-  flex-direction: row-reverse;
-}
+.map-side-note-left { right: auto; left: -250px; flex-direction: row-reverse; }
 .reverse-arrow { transform: rotate(180deg); }
 
-/* MEDIDAS Y DIMENSIONES PROPORCIONALES */
-.node-origin { top: 220px; width: 190px; height: 190px; }
-.node-origin h2 { font-size: 32px; margin: 0; color: #000; }
+/* MEDIDAS Y DIMENSIONES TOTALMENTE COMPACTADAS */
+.node-origin { top: 110px; width: 170px; height: 170px; }
+.node-origin h2 { font-size: 28px; margin: 0; color: #000; }
 
-.node-iam { top: 20px; width: 140px; height: 140px; }
-.node-medium { width: 165px; height: 165px; }
-.node-final { top: 2260px; width: 200px; height: 200px; }
+.node-iam { top: 20px; width: 110px; height: 110px; }
+.node-medium { width: 145px; height: 145px; }
+.node-final { top: 1275px; width: 170px; height: 170px; } /* El centro geométrico se alinea a los 1350px de la línea */
 
-/* RUTA VERTICAL CENTRAL */
-.node-s3 { top: 560px; }
-.node-buckets { top: 900px; }
-.node-crawlers { top: 1240px; }
-.node-glue { top: 1580px; }
-.node-athena { top: 1920px; }
+/* DISTRIBUCIÓN VERTICAL COMPACTA DEL EJE CENTRAL */
+.node-s3 { top: 320px; }
+.node-buckets { top: 510px; }
+.node-glue { top: 890px; }
+.node-athena { top: 1080px; }
 
-/* UBICACIÓN ESTRATÉGICA IZQUIERDA DE LAMBDA (PREVIENE IMPACTO CON CRAWLERS) */
-.node-side-left { left: 30%; transform: translateX(-50%); }
-.node-lambda { top: 1180px; width: 165px; height: 165px; }
+/* SISTEMA DEFECTO DE RAMAS LATERALES (EVITA CRUCES COMPLETAMENTE) */
+.node-side-left { left: 32%; transform: translateX(-50%); }
+.node-side-right { left: 68%; transform: translateX(-50%); }
+
+.node-lambda { top: 700px; width: 145px; height: 145px; }
 .node-lambda .node-content { border-style: dashed; }
+
+.node-crawlers { top: 700px; width: 145px; height: 145px; }
 
 /* RESPONSIVE CONTROL */
 @media (max-width: 1100px) {
-  .architecture-wrapper { min-height: 3400px; padding-top: 380px; }
+  .architecture-wrapper { min-height: 2400px; padding-top: 300px; }
   .info-intro-card { position: absolute; top: 20px; left: 50%; transform: translateX(-50%); width: 85%; }
   .node { left: 50% !important; transform: translateX(-50%) !important; }
-  .node-side-left { top: 2260px !important; }
-  .node-final { top: 2580px !important; }
+  .node-side-left { top: 1460px !important; }
+  .node-side-right { top: 1680px !important; }
+  .node-final { top: 1900px !important; }
   .map-side-note { display: none; }
 }
 </style>
