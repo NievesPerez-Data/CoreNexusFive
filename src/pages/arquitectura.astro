@@ -20,13 +20,22 @@ import Layout from "../layouts/Layout.astro";
     <div class="info-intro-card">
       <div class="card-shadow"></div>
       <div class="card-content">
-        <h4 class="font-fugaz">EL OLIMPO DE LOS DATOS</h4>
-        <p>Este mapa conceptual interactivo desarma nuestra arquitectura desde su base para comprender su lógica.
-  Pasa el cursor sobre los círculos para iluminar el halo de luz y revelar el popup explicativo.</p>
+
+        <h4 class="card-main-title">EL OLIMPO DE LOS DATOS</h4>
+
+        <p class="card-subtitle-hint">
+          Este mapa conceptual interactivo desarma nuestra arquitectura desde su base para comprender su lógica.
+        </p>
+
+        <p class="card-hover-cta">
+          ↗ Pasa el cursor sobre los círculos para iluminar el halo de luz y revelar el popup explicativo.
+        </p>
+
         <div class="analogy-box">
           <span class="handwritten-title">¿Por qué la analogía clásica?</span>
-          <p>La infraestructura de AWS opera sobre abstracciones complejas de red, computación y almacenamiento de datos. Implementamos esta capa conceptual basada en la Grecia Clásica no como decoración, sino como un modelo mental unificado. Al asociar servicios nativos en la nube con arquetipos universales, aceleramos la comprensión de la arquitectura, humanizamos los flujos de datos y transformamos la documentación técnica en una narrativa lógica y visual.</p>
+          <p class="analogy-body">La infraestructura de AWS opera sobre abstracciones complejas de red, computación y almacenamiento de datos. Implementamos esta capa conceptual basada en la Grecia Clásica no como decoración, sino como un modelo mental unificado. Al asociar servicios nativos en la nube con arquetipos universales, aceleramos la comprensión de la arquitectura, humanizamos los flujos de datos y transformamos la documentación técnica en una narrativa lógica y visual.</p>
         </div>
+
       </div>
     </div>
 
@@ -205,7 +214,7 @@ import Layout from "../layouts/Layout.astro";
 </Layout>
 
 <style>
-/* CONFIGURACIÓN CONTENEDOR SEGURO */
+/* WRAPPER */
 .architecture-wrapper {
   position: relative;
   width: 100%;
@@ -216,6 +225,7 @@ import Layout from "../layouts/Layout.astro";
   box-sizing: border-box;
 }
 
+/* LÍNEA CENTRAL ANIMADA */
 .architecture-wrapper::before {
   content: "";
   position: absolute;
@@ -224,9 +234,9 @@ import Layout from "../layouts/Layout.astro";
   left: 50%;
   width: 5px;
   transform: translateX(-50%);
-  background: linear-gradient(to bottom, 
-    rgba(255, 255, 255, 0.15), 
-    rgba(255, 255, 255, 0.8) 50%, 
+  background: linear-gradient(to bottom,
+    rgba(255, 255, 255, 0.15),
+    rgba(255, 255, 255, 0.8) 50%,
     rgba(255, 255, 255, 0.15)
   );
   background-size: 100% 200%;
@@ -235,36 +245,112 @@ import Layout from "../layouts/Layout.astro";
 }
 
 @keyframes solidPulseFlow {
-  0% { background-position: 0% 0%; }
+  0%   { background-position: 0% 0%; }
   100% { background-position: 0% -200%; }
 }
 
-.info-intro-card { position: absolute; top: 40px; left: 40px; width: 280px; z-index: 10; }
-.card-shadow { position: absolute; width: 100%; height: 100%; background: #d3d3d3; top: 10px; left: 10px; z-index: 1; }
-.card-content { position: relative; background: #ffffff; border: 2px solid #000000; padding: 20px; z-index: 2; color: #000000; }
-.info-intro-card h4 { margin: 0 0 8px 0; font-size: 15px; color: #000; }
-.info-intro-card p { font-size: 13px; line-height: 1.4; color: #222; margin: 0 0 10px 0; }
-.analogy-box { border-top: 1px solid #ddd; padding-top: 8px; }
-.analogy-box .handwritten-title { font-family: 'Caveat', cursive; font-size: 24px; font-weight: 700; color: #000; }
+/* ─── TARJETA INFO ─────────────────────────────────── */
+.info-intro-card {
+  position: absolute;
+  top: 110px;        /* bajada para no solaparse con el logo */
+  left: 40px;
+  width: 300px;
+  z-index: 10;
+}
 
-.architecture-lines { 
-  position: absolute; 
-  top: 0;
-  left: 0;
-  width: 100%; 
-  height: 100%; 
-  pointer-events: none; 
+.card-shadow {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #d3d3d3;
+  top: 8px;
+  left: 8px;
+  z-index: 1;
+}
+
+.card-content {
+  position: relative;
+  background: #111111;
+  border: 1.5px solid rgba(255,255,255,0.18);
+  padding: 22px 20px 20px;
+  z-index: 2;
+  color: #ffffff;
+  border-radius: 2px;
+}
+
+/* Título principal: misma familia Caveat que las notas del mapa */
+.card-main-title {
+  font-family: 'Caveat', cursive;
+  font-size: 28px;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: 0.5px;
+  margin: 0 0 10px 0;
+  line-height: 1.1;
+}
+
+/* Subtexto secundario */
+.card-subtitle-hint {
+  font-size: 13px;
+  line-height: 1.5;
+  color: #aaaaaa;
+  margin: 0 0 12px 0;
+}
+
+/* Frase CTA: en negrita, Caveat, con parpadeo suave */
+.card-hover-cta {
+  font-family: 'Caveat', cursive;
+  font-size: 19px;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.3;
+  margin: 0 0 16px 0;
+  padding: 10px 12px;
+  border: 1px solid rgba(255,255,255,0.25);
+  border-left: 3px solid #ffffff;
+  background: rgba(255,255,255,0.05);
+  animation: ctaBlink 2.8s ease-in-out infinite;
+}
+
+@keyframes ctaBlink {
+  0%, 100% { opacity: 1; border-left-color: #ffffff; }
+  50%       { opacity: 0.55; border-left-color: rgba(255,255,255,0.3); }
+}
+
+/* Separador analogy */
+.analogy-box {
+  border-top: 1px solid rgba(255,255,255,0.12);
+  padding-top: 14px;
+}
+
+.handwritten-title {
+  font-family: 'Caveat', cursive;
+  font-size: 26px;
+  font-weight: 700;
+  color: #ffffff;
+  display: block;
+  margin-bottom: 8px;
+  line-height: 1.1;
+}
+
+.analogy-body {
+  font-size: 13px;
+  line-height: 1.55;
+  color: #999999;
+  margin: 0;
+}
+
+/* ─── SVG RAMAS ───────────────────────────────────── */
+.architecture-lines {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
   z-index: 2;
 }
 
-.side-map-line { 
-  fill: none; 
-  stroke-width: 4px; 
-}
-
-.static-base {
-  stroke: rgba(255, 255, 255, 0.15);
-}
+.side-map-line { fill: none; stroke-width: 4px; }
+.static-base   { stroke: rgba(255,255,255,0.15); }
 
 .pulse-diagonal {
   stroke: url(#diagonal-pulse-gradient);
@@ -273,109 +359,137 @@ import Layout from "../layouts/Layout.astro";
 }
 
 @keyframes svgPulseFlow {
-  0% { stroke-dashoffset: 180; }
+  0%   { stroke-dashoffset: 180; }
   100% { stroke-dashoffset: 0; }
 }
 
-.node { position: absolute; left: 50%; transform: translateX(-50%); z-index: 5; cursor: pointer; }
+/* ─── NODOS ───────────────────────────────────────── */
+.node {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5;
+  cursor: pointer;
+}
+
 .node-content {
   position: relative;
-  width: 100%;
-  height: 100%;
+  width: 100%; height: 100%;
   border-radius: 999px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: flex; align-items: center; justify-content: center;
   background: #ffffff;
   border: 2px solid #000000;
   box-sizing: border-box;
   padding: 15px;
   transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
 }
+
 .node:hover .node-content {
-  box-shadow: 0 0 32px 12px rgba(255, 255, 255, 0.8);
+  box-shadow: 0 0 32px 12px rgba(255,255,255,0.8);
   transform: scale(1.05);
 }
+
 .node-logo { width: 62%; height: 62%; object-fit: contain; }
 
-.note-text-block { display: flex; flex-direction: column; text-align: left; width: 190px; }
+/* ─── NOTAS MANUSCRITAS ──────────────────────────── */
+.note-text-block {
+  display: flex; flex-direction: column;
+  text-align: left; width: 210px;
+}
+
 .service-title-handwritten {
   font-family: 'Caveat', cursive;
-  font-size: 24px;
+  font-size: 28px;
   font-weight: 800;
   color: #ffffff;
   line-height: 1;
-  margin-bottom: 3px;
+  margin-bottom: 4px;
   letter-spacing: 0.5px;
 }
+
 .map-handwritten-text {
   font-family: 'Caveat', cursive;
-  font-size: 19px; 
+  font-size: 22px;
   font-weight: 500;
   color: #c5c5c5;
-  line-height: 1.1;
+  line-height: 1.2;
 }
 
+/* ─── FLECHAS Y POSICIONES ───────────────────────── */
 .marker-arrow { width: 50px; flex-shrink: 0; overflow: visible; }
 
-.map-side-note { position: absolute; top: 50%; transform: translateY(-50%); display: flex; align-items: center; pointer-events: none; gap: 14px; }
+.map-side-note {
+  position: absolute; top: 50%;
+  transform: translateY(-50%);
+  display: flex; align-items: center;
+  pointer-events: none; gap: 14px;
+}
 
-.note-right-large-node  { right: -268px; flex-direction: row; } 
-.note-right-medium-node { right: -256px; flex-direction: row; } 
-.note-right-small-node  { right: -246px; flex-direction: row; } 
+.note-right-large-node  { right: -280px; flex-direction: row; }
+.note-right-medium-node { right: -268px; flex-direction: row; }
+.note-right-small-node  { right: -258px; flex-direction: row; }
 
-.note-left-small-node { left: -246px; flex-direction: row-reverse; }
+.note-left-small-node { left: -258px; flex-direction: row-reverse; }
 .note-left-small-node .note-text-block { text-align: right; }
 .reverse-arrow { transform: rotate(180deg); }
 
+/* ─── POPUPS ─────────────────────────────────────── */
 .node-popup {
-  position: absolute;
-  top: 50%;
+  position: absolute; top: 50%;
   transform: translateY(-50%);
-  width: 230px;
+  width: 240px;
   background: #ffffff;
   border: 2px solid #000000;
-  padding: 14px;
+  padding: 16px;
   opacity: 0;
   pointer-events: none;
   transition: all 0.25s ease;
-  font-size: 13px;
-  line-height: 1.4;
+  font-size: 14px;
+  line-height: 1.5;
   color: #000000;
-  box-shadow: 8px 8px 0px rgba(255, 255, 255, 0.1);
+  box-shadow: 8px 8px 0px rgba(255,255,255,0.1);
   text-align: left;
   z-index: 30;
 }
 .node:hover .node-popup { opacity: 1; }
-.node-popup.popup-left { right: 128%; }
+.node-popup.popup-left  { right: 128%; }
 .node-popup.popup-right { left: 128%; }
 
-.node-large { width: 170px; height: 170px; }   
-.node-medium { width: 150px; height: 150px; } 
-.node-small { width: 135px; height: 135px; }  
+/* ─── TAMAÑOS DE NODO ────────────────────────────── */
+.node-large  { width: 170px; height: 170px; }
+.node-medium { width: 150px; height: 150px; }
+.node-small  { width: 135px; height: 135px; }
 
-.node-s3 { top: 40px; }
+/* ─── POSICIONES EJE VERTICAL ────────────────────── */
+.node-s3      { top: 40px; }
 .node-buckets { top: 320px; }
-.node-glue { top: 690px; }
-.node-athena { top: 920px; }
-.node-final { top: 1120px; }
+.node-glue    { top: 690px; }
+.node-athena  { top: 920px; }
+.node-final   { top: 1120px; }
 
-.node-side-left { left: 32%; transform: translateX(-50%); }
+/* ─── RAMAS LATERALES ────────────────────────────── */
+.node-side-left  { left: 32%; transform: translateX(-50%); }
 .node-side-right { left: 68%; transform: translateX(-50%); }
 
-.node-iam { top: 160px; }
-.node-lambda { top: 505px; }
+.node-iam      { top: 160px; }
+.node-lambda   { top: 505px; }
 .node-crawlers { top: 505px; }
 
+/* ─── RESPONSIVE ─────────────────────────────────── */
 @media (max-width: 1100px) {
-  .architecture-wrapper { min-height: 2400px; padding-top: 300px; }
+  .architecture-wrapper { min-height: 2400px; padding-top: 420px; }
   .architecture-wrapper::before { display: none; }
-  .info-intro-card { position: absolute; top: 20px; left: 50%; transform: translateX(-50%); width: 85%; }
+  .info-intro-card {
+    position: absolute;
+    top: 20px; left: 50%;
+    transform: translateX(-50%);
+    width: 85%;
+  }
   .node { left: 50% !important; transform: translateX(-50%) !important; }
-  .node-side-left { top: 1260px !important; }
+  .node-side-left  { top: 1260px !important; }
   .node-side-right { top: 1480px !important; }
-  .node-final { top: 1700px !important; }
-  .map-side-note { display: none; }
+  .node-final      { top: 1700px !important; }
+  .map-side-note   { display: none; }
   .architecture-lines { display: none; }
 }
 </style>
