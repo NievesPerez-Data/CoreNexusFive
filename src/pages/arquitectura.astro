@@ -31,7 +31,16 @@ Pasa el cursor sobre los círculos para iluminar el halo de luz y revelar el pop
       </linearGradient>
     </defs>
 
-    <path d="M 50% 125 L 68% 225" class="side-map-line" /> <path d="M 50% 570 L 32% 570" class="side-map-line" /> <path d="M 50% 570 L 68% 570" class="side-map-line" /> </svg>
+    <path d="M 50% 125 L 68% 225" class="side-map-line" /> 
+    <path d="M 50% 570 L 32% 570" class="side-map-line" /> 
+    <path d="M 50% 570 L 68% 570" class="side-map-line" /> 
+
+    <path d="M 50% 125 L 68% 227" class="side-map-line pulse-diagonal" />
+
+    <path d="M 50% 395 L 32% 572" class="side-map-line pulse-diagonal" />
+
+    <path d="M 50% 395 L 68% 572" class="side-map-line pulse-diagonal" />
+  </svg>
 
   <div class="node node-large node-s3">
     <div class="node-content">
@@ -264,6 +273,26 @@ Pasa el cursor sobre los círculos para iluminar el halo de luz y revelar el pop
   stroke-width: 3.5; 
 }
 
+/* ANIMACIÓN DE PARPADEO/FLUJO PARA LÍNEAS DIAGONALES */
+.pulse-diagonal {
+  stroke-dasharray: 12 6;
+  animation: diagonalFlow 4s linear infinite;
+}
+
+@keyframes diagonalFlow {
+  0% {
+    stroke-dashoffset: 120;
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.85;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 0.3;
+  }
+}
+
 /* NODOS CONCEPTUALES */
 .node { position: absolute; left: 50%; transform: translateX(-50%); z-index: 5; cursor: pointer; }
 .node-content {
@@ -343,7 +372,7 @@ Pasa el cursor sobre los círculos para iluminar el halo de luz y revelar el pop
 .node-popup.popup-right { left: 128%; }
 
 /* DIMENSIONES DE LOS NODOS */
-.node-large { width: 170px; height: 170px; }  
+.node-large { width: 170px; height: 170px; }   
 .node-medium { width: 150px; height: 150px; } 
 .node-small { width: 135px; height: 135px; }  
 
