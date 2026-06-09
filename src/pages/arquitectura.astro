@@ -36,74 +36,18 @@ import Layout from "../layouts/Layout.astro";
 
     <svg class="architecture-lines" viewBox="0 0 1000 1300" preserveAspectRatio="none">
       <defs>
-
-        <!-- Gradiente para el pulso animado -->
         <linearGradient id="diagonal-pulse-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
           <stop offset="0%" stop-color="#ffffff" stop-opacity="0.2" />
           <stop offset="50%" stop-color="#ffffff" stop-opacity="1" />
           <stop offset="100%" stop-color="#ffffff" stop-opacity="0.2" />
         </linearGradient>
-
-        <!-- Marcador de flecha: punta redondeada, igual estilo que las notas -->
-        <marker id="arrowhead" markerWidth="10" markerHeight="7"
-                refX="9" refY="3.5" orient="auto">
-          <path d="M0,0 L0,7 L10,3.5 Z"
-                fill="rgba(255,255,255,0.7)"
-                stroke="none" />
-        </marker>
-
-        <!-- Mismo marcador pero con opacidad baja para las líneas base estáticas -->
-        <marker id="arrowhead-dim" markerWidth="10" markerHeight="7"
-                refX="9" refY="3.5" orient="auto">
-          <path d="M0,0 L0,7 L10,3.5 Z"
-                fill="rgba(255,255,255,0.15)"
-                stroke="none" />
-        </marker>
-
       </defs>
-
-      <!-- Línea central vertical: S3 → Buckets -->
-      <line x1="500" y1="125" x2="500" y2="308"
-            class="side-map-line static-base" marker-end="url(#arrowhead-dim)" />
-      <line x1="500" y1="125" x2="500" y2="308"
-            class="side-map-line pulse-vertical" marker-end="url(#arrowhead)" />
-
-      <!-- Línea central vertical: Buckets → Glue -->
-      <line x1="500" y1="395" x2="500" y2="678"
-            class="side-map-line static-base" marker-end="url(#arrowhead-dim)" />
-      <line x1="500" y1="395" x2="500" y2="678"
-            class="side-map-line pulse-vertical" marker-end="url(#arrowhead)" />
-
-      <!-- Línea central vertical: Glue → Athena -->
-      <line x1="500" y1="775" x2="500" y2="908"
-            class="side-map-line static-base" marker-end="url(#arrowhead-dim)" />
-      <line x1="500" y1="775" x2="500" y2="908"
-            class="side-map-line pulse-vertical" marker-end="url(#arrowhead)" />
-
-      <!-- Línea central vertical: Athena → Demo -->
-      <line x1="500" y1="995" x2="500" y2="1108"
-            class="side-map-line static-base" marker-end="url(#arrowhead-dim)" />
-      <line x1="500" y1="995" x2="500" y2="1108"
-            class="side-map-line pulse-vertical" marker-end="url(#arrowhead)" />
-
-      <!-- Rama diagonal: S3 → IAM (derecha) -->
-      <line x1="500" y1="125" x2="666" y2="222"
-            class="side-map-line static-base" marker-end="url(#arrowhead-dim)" />
-      <line x1="500" y1="125" x2="666" y2="222"
-            class="side-map-line pulse-diagonal" marker-end="url(#arrowhead)" />
-
-      <!-- Rama diagonal: Buckets → Lambda (izquierda) -->
-      <line x1="500" y1="395" x2="334" y2="562"
-            class="side-map-line static-base" marker-end="url(#arrowhead-dim)" />
-      <line x1="500" y1="395" x2="334" y2="562"
-            class="side-map-line pulse-diagonal" marker-end="url(#arrowhead)" />
-
-      <!-- Rama diagonal: Buckets → Crawlers (derecha) -->
-      <line x1="500" y1="395" x2="666" y2="562"
-            class="side-map-line static-base" marker-end="url(#arrowhead-dim)" />
-      <line x1="500" y1="395" x2="666" y2="562"
-            class="side-map-line pulse-diagonal" marker-end="url(#arrowhead)" />
-
+      <line x1="500" y1="125" x2="680" y2="227" class="side-map-line static-base" />
+      <line x1="320" y1="572" x2="500" y2="395" class="side-map-line static-base" />
+      <line x1="680" y1="572" x2="500" y2="395" class="side-map-line static-base" />
+      <line x1="500" y1="125" x2="680" y2="227" class="side-map-line pulse-diagonal" />
+      <line x1="320" y1="572" x2="500" y2="395" class="side-map-line pulse-diagonal" />
+      <line x1="680" y1="572" x2="500" y2="395" class="side-map-line pulse-diagonal" />
     </svg>
 
     <div class="node node-large node-s3">
@@ -295,7 +239,7 @@ import Layout from "../layouts/Layout.astro";
 </Layout>
 
 <style>
-/* WRAPPER — fondo gris oscuro en vez de negro puro */
+/* WRAPPER */
 .architecture-wrapper {
   position: relative;
   width: 100%;
@@ -306,12 +250,31 @@ import Layout from "../layouts/Layout.astro";
   box-sizing: border-box;
 }
 
-/* LÍNEA CENTRAL — ya gestionada por SVG, este pseudo desaparece */
 .architecture-wrapper::before {
-  display: none;
+  content: "";
+  position: absolute;
+  top: 120px;
+  bottom: 180px;
+  left: 50%;
+  width: 5px;
+  transform: translateX(-50%);
+  background: linear-gradient(to bottom,
+    rgba(255,255,255,0.15),
+    rgba(255,255,255,0.8) 50%,
+    rgba(255,255,255,0.15)
+  );
+  background-size: 100% 200%;
+  animation: solidPulseFlow 3s linear infinite;
+  z-index: 1;
+}
+
+@keyframes solidPulseFlow {
+  0%   { background-position: 0% 0%; }
+  100% { background-position: 0% -200%; }
 }
 
 /* ─── TARJETA INFO ─────────────────────────────────── */
+/* Bajada a 220px para dejar el logo completamente libre */
 .info-intro-card {
   position: absolute;
   top: 220px;
@@ -324,7 +287,7 @@ import Layout from "../layouts/Layout.astro";
   position: absolute;
   width: 100%;
   height: 100%;
-  background: rgba(255,255,255,0.04);
+  background: rgba(255,255,255,0.08);
   top: 8px;
   left: 8px;
   z-index: 1;
@@ -399,7 +362,7 @@ import Layout from "../layouts/Layout.astro";
   margin: 0;
 }
 
-/* ─── SVG LÍNEAS CON FLECHAS ─────────────────────── */
+/* ─── SVG RAMAS ───────────────────────────────────── */
 .architecture-lines {
   position: absolute;
   top: 0; left: 0;
@@ -408,32 +371,17 @@ import Layout from "../layouts/Layout.astro";
   z-index: 2;
 }
 
-.side-map-line {
-  fill: none;
-  stroke-width: 3.5px;
-  stroke-linecap: round;
-}
+.side-map-line { fill: none; stroke-width: 4px; }
+.static-base   { stroke: rgba(255,255,255,0.15); }
 
-.static-base {
-  stroke: rgba(255,255,255,0.12);
-}
-
-/* Pulso vertical (línea central) */
-.pulse-vertical {
-  stroke: rgba(255,255,255,0.7);
-  stroke-dasharray: 50 110;
-  animation: svgPulseFlow 3s linear infinite;
-}
-
-/* Pulso diagonal (ramas laterales) */
 .pulse-diagonal {
-  stroke: rgba(255,255,255,0.55);
-  stroke-dasharray: 50 110;
+  stroke: url(#diagonal-pulse-gradient);
+  stroke-dasharray: 60 120;
   animation: svgPulseFlow 3s linear infinite;
 }
 
 @keyframes svgPulseFlow {
-  0%   { stroke-dashoffset: 160; }
+  0%   { stroke-dashoffset: 180; }
   100% { stroke-dashoffset: 0; }
 }
 
@@ -465,7 +413,7 @@ import Layout from "../layouts/Layout.astro";
 
 .node-logo { width: 62%; height: 62%; object-fit: contain; }
 
-/* ─── POPUPS ─────────────────────────────────────── */
+/* ─── POPUPS — estética web: gris claro, tipografía limpia ── */
 .node-popup {
   position: absolute;
   top: 50%;
@@ -478,7 +426,7 @@ import Layout from "../layouts/Layout.astro";
   pointer-events: none;
   transition: all 0.25s ease;
   color: #111111;
-  box-shadow: 6px 6px 0px rgba(0,0,0,0.2);
+  box-shadow: 6px 6px 0px rgba(0,0,0,0.12);
   text-align: left;
   z-index: 30;
   overflow: hidden;
@@ -488,15 +436,17 @@ import Layout from "../layouts/Layout.astro";
 .node-popup.popup-left  { right: 128%; }
 .node-popup.popup-right { left: 128%; }
 
+/* Cabecera: fondo gris muy oscuro, tipografía blanca */
 .popup-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 12px 16px 10px;
   border-bottom: 1.5px solid #cccccc;
-  background: #1a1a1a;
+  background: #222222;
 }
 
+/* Nombre del dios en Caveat blanco */
 .popup-deity {
   font-family: 'Caveat', cursive;
   font-size: 32px;
@@ -506,6 +456,7 @@ import Layout from "../layouts/Layout.astro";
   line-height: 1;
 }
 
+/* Badge neutro */
 .popup-aws-badge {
   font-size: 10px;
   font-weight: 700;
@@ -519,6 +470,7 @@ import Layout from "../layouts/Layout.astro";
   align-self: center;
 }
 
+/* Cuerpo popup: fondo gris claro como la web */
 .popup-body {
   font-size: 14px;
   line-height: 1.55;
@@ -552,7 +504,7 @@ import Layout from "../layouts/Layout.astro";
   line-height: 1.2;
 }
 
-/* ─── FLECHAS NOTAS LATERALES ────────────────────── */
+/* ─── FLECHAS Y POSICIONES ───────────────────────── */
 .marker-arrow { width: 50px; flex-shrink: 0; overflow: visible; }
 
 .map-side-note {
@@ -593,6 +545,7 @@ import Layout from "../layouts/Layout.astro";
 /* ─── RESPONSIVE ─────────────────────────────────── */
 @media (max-width: 1100px) {
   .architecture-wrapper { min-height: 2400px; padding-top: 520px; }
+  .architecture-wrapper::before { display: none; }
   .info-intro-card {
     position: absolute;
     top: 20px; left: 50%;
