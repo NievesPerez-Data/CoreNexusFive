@@ -20,22 +20,17 @@ import Layout from "../layouts/Layout.astro";
     <div class="info-intro-card">
       <div class="card-shadow"></div>
       <div class="card-content">
-
         <h4 class="card-main-title">EL OLIMPO DE LOS DATOS</h4>
-
         <p class="card-subtitle-hint">
           Este mapa conceptual interactivo desarma nuestra arquitectura desde su base para comprender su lógica.
         </p>
-
         <p class="card-hover-cta">
           ↗ Pasa el cursor sobre los círculos para iluminar el halo de luz y revelar el popup explicativo.
         </p>
-
         <div class="analogy-box">
           <span class="handwritten-title">¿Por qué la analogía clásica?</span>
           <p class="analogy-body">La infraestructura de AWS opera sobre abstracciones complejas de red, computación y almacenamiento de datos. Implementamos esta capa conceptual basada en la Grecia Clásica no como decoración, sino como un modelo mental unificado. Al asociar servicios nativos en la nube con arquetipos universales, aceleramos la comprensión de la arquitectura, humanizamos los flujos de datos y transformamos la documentación técnica en una narrativa lógica y visual.</p>
         </div>
-
       </div>
     </div>
 
@@ -47,11 +42,9 @@ import Layout from "../layouts/Layout.astro";
           <stop offset="100%" stop-color="#ffffff" stop-opacity="0.2" />
         </linearGradient>
       </defs>
-
       <line x1="500" y1="125" x2="680" y2="227" class="side-map-line static-base" />
       <line x1="320" y1="572" x2="500" y2="395" class="side-map-line static-base" />
       <line x1="680" y1="572" x2="500" y2="395" class="side-map-line static-base" />
-
       <line x1="500" y1="125" x2="680" y2="227" class="side-map-line pulse-diagonal" />
       <line x1="320" y1="572" x2="500" y2="395" class="side-map-line pulse-diagonal" />
       <line x1="680" y1="572" x2="500" y2="395" class="side-map-line pulse-diagonal" />
@@ -62,7 +55,11 @@ import Layout from "../layouts/Layout.astro";
         <img src="/s3-logo.png" alt="S3" class="node-logo" />
       </div>
       <div class="node-popup popup-left">
-        <p><strong>Gaia:</strong> S3 actúa como la raíz primordial del almacenamiento, donde se origina y asienta todo el ecosistema de datos.</p>
+        <div class="popup-header">
+          <span class="popup-deity">Gaia</span>
+          <span class="popup-aws-badge">AWS S3</span>
+        </div>
+        <p class="popup-body">S3 actúa como la raíz primordial del almacenamiento, donde se origina y asienta todo el ecosistema de datos.</p>
       </div>
       <div class="map-side-note note-right-large-node">
         <svg class="marker-arrow" viewBox="0 0 120 80">
@@ -81,7 +78,11 @@ import Layout from "../layouts/Layout.astro";
         <img src="/iam-logo.png" alt="IAM" class="node-logo" />
       </div>
       <div class="node-popup popup-left">
-        <p><strong>Cerbero:</strong> IAM custodia y gestiona los accesos de seguridad periférica de todo el ecosistema.</p>
+        <div class="popup-header">
+          <span class="popup-deity">Cerbero</span>
+          <span class="popup-aws-badge">AWS IAM</span>
+        </div>
+        <p class="popup-body">IAM custodia y gestiona los accesos de seguridad periférica de todo el ecosistema.</p>
       </div>
       <div class="map-side-note note-right-small-node">
         <svg class="marker-arrow" viewBox="0 0 120 80">
@@ -100,7 +101,11 @@ import Layout from "../layouts/Layout.astro";
         <img src="/bucket-logo.png" alt="Buckets" class="node-logo" />
       </div>
       <div class="node-popup popup-left">
-        <p><strong>Pandora:</strong> Contenedores de datos específicos. Mal configurados desatan problemas, bien custodiados albergan valor.</p>
+        <div class="popup-header">
+          <span class="popup-deity">Pandora</span>
+          <span class="popup-aws-badge">S3 Buckets</span>
+        </div>
+        <p class="popup-body">Contenedores de datos específicos. Mal configurados desatan problemas, bien custodiados albergan valor.</p>
       </div>
       <div class="map-side-note note-right-medium-node">
         <svg class="marker-arrow" viewBox="0 0 120 80">
@@ -119,7 +124,11 @@ import Layout from "../layouts/Layout.astro";
         <img src="/lambda-logo.png" alt="Lambda" class="node-logo" />
       </div>
       <div class="node-popup popup-right">
-        <p><strong>Zeus:</strong> Cómputo serverless inmediato que lanza rayos de código de manera reactiva bajo demanda.</p>
+        <div class="popup-header">
+          <span class="popup-deity">Zeus</span>
+          <span class="popup-aws-badge">AWS Lambda</span>
+        </div>
+        <p class="popup-body">Cómputo serverless inmediato que lanza rayos de código de manera reactiva bajo demanda.</p>
       </div>
       <div class="map-side-note note-left-small-node">
         <svg class="marker-arrow reverse-arrow" viewBox="0 0 120 80">
@@ -138,7 +147,11 @@ import Layout from "../layouts/Layout.astro";
         <img src="/crawler-logo.png" alt="Crawlers" class="node-logo" />
       </div>
       <div class="node-popup popup-left">
-        <p><strong>Argos:</strong> Explora automáticamente las fuentes de datos mapeando y estructurando sus metadatos ocultos.</p>
+        <div class="popup-header">
+          <span class="popup-deity">Argos</span>
+          <span class="popup-aws-badge">Glue Crawlers</span>
+        </div>
+        <p class="popup-body">Explora automáticamente las fuentes de datos mapeando y estructurando sus metadatos ocultos.</p>
       </div>
       <div class="map-side-note note-right-small-node">
         <svg class="marker-arrow" viewBox="0 0 120 80">
@@ -157,7 +170,11 @@ import Layout from "../layouts/Layout.astro";
         <img src="/glue-logo.png" alt="Glue" class="node-logo" />
       </div>
       <div class="node-popup popup-left">
-        <p><strong>Hermes:</strong> Orquestador ETL encargado de transformar y mensajear los flujos de datos entre capas.</p>
+        <div class="popup-header">
+          <span class="popup-deity">Hermes</span>
+          <span class="popup-aws-badge">AWS Glue</span>
+        </div>
+        <p class="popup-body">Orquestador ETL encargado de transformar y mensajear los flujos de datos entre capas.</p>
       </div>
       <div class="map-side-note note-right-large-node">
         <svg class="marker-arrow" viewBox="0 0 120 80">
@@ -176,7 +193,11 @@ import Layout from "../layouts/Layout.astro";
         <img src="/athena-logo.png" alt="Athena" class="node-logo" />
       </div>
       <div class="node-popup popup-left">
-        <p><strong>Atenea:</strong> Motor de análisis interactivo que ejecuta consultas estructuradas SQL directas sobre S3.</p>
+        <div class="popup-header">
+          <span class="popup-deity">Atenea</span>
+          <span class="popup-aws-badge">AWS Athena</span>
+        </div>
+        <p class="popup-body">Motor de análisis interactivo que ejecuta consultas estructuradas SQL directas sobre S3.</p>
       </div>
       <div class="map-side-note note-right-medium-node">
         <svg class="marker-arrow" viewBox="0 0 120 80">
@@ -195,7 +216,11 @@ import Layout from "../layouts/Layout.astro";
         <img src="/demo-logo.png" alt="Demo" class="node-logo" />
       </div>
       <div class="node-popup popup-left">
-        <p><strong>Efesto:</strong> La forja definitiva donde confluyen los flujos de datos expuestos en su interfaz funcional.</p>
+        <div class="popup-header">
+          <span class="popup-deity">Efesto</span>
+          <span class="popup-aws-badge">Demo App</span>
+        </div>
+        <p class="popup-body">La forja definitiva donde confluyen los flujos de datos expuestos en su interfaz funcional.</p>
       </div>
       <div class="map-side-note note-right-small-node">
         <svg class="marker-arrow" viewBox="0 0 120 80">
@@ -225,7 +250,6 @@ import Layout from "../layouts/Layout.astro";
   box-sizing: border-box;
 }
 
-/* LÍNEA CENTRAL ANIMADA */
 .architecture-wrapper::before {
   content: "";
   position: absolute;
@@ -235,9 +259,9 @@ import Layout from "../layouts/Layout.astro";
   width: 5px;
   transform: translateX(-50%);
   background: linear-gradient(to bottom,
-    rgba(255, 255, 255, 0.15),
-    rgba(255, 255, 255, 0.8) 50%,
-    rgba(255, 255, 255, 0.15)
+    rgba(255,255,255,0.15),
+    rgba(255,255,255,0.8) 50%,
+    rgba(255,255,255,0.15)
   );
   background-size: 100% 200%;
   animation: solidPulseFlow 3s linear infinite;
@@ -252,9 +276,9 @@ import Layout from "../layouts/Layout.astro";
 /* ─── TARJETA INFO ─────────────────────────────────── */
 .info-intro-card {
   position: absolute;
-  top: 110px;        /* bajada para no solaparse con el logo */
+  top: 170px;
   left: 40px;
-  width: 300px;
+  width: 310px;
   z-index: 10;
 }
 
@@ -262,7 +286,7 @@ import Layout from "../layouts/Layout.astro";
   position: absolute;
   width: 100%;
   height: 100%;
-  background: #d3d3d3;
+  background: #444444;
   top: 8px;
   left: 8px;
   z-index: 1;
@@ -272,40 +296,37 @@ import Layout from "../layouts/Layout.astro";
   position: relative;
   background: #111111;
   border: 1.5px solid rgba(255,255,255,0.18);
-  padding: 22px 20px 20px;
+  padding: 24px 22px 22px;
   z-index: 2;
   color: #ffffff;
   border-radius: 2px;
 }
 
-/* Título principal: misma familia Caveat que las notas del mapa */
 .card-main-title {
   font-family: 'Caveat', cursive;
-  font-size: 28px;
+  font-size: 34px;
   font-weight: 800;
   color: #ffffff;
   letter-spacing: 0.5px;
-  margin: 0 0 10px 0;
-  line-height: 1.1;
-}
-
-/* Subtexto secundario */
-.card-subtitle-hint {
-  font-size: 13px;
-  line-height: 1.5;
-  color: #aaaaaa;
   margin: 0 0 12px 0;
+  line-height: 1.05;
 }
 
-/* Frase CTA: en negrita, Caveat, con parpadeo suave */
+.card-subtitle-hint {
+  font-size: 15px;
+  line-height: 1.55;
+  color: #aaaaaa;
+  margin: 0 0 14px 0;
+}
+
 .card-hover-cta {
   font-family: 'Caveat', cursive;
-  font-size: 19px;
+  font-size: 22px;
   font-weight: 700;
   color: #ffffff;
   line-height: 1.3;
-  margin: 0 0 16px 0;
-  padding: 10px 12px;
+  margin: 0 0 18px 0;
+  padding: 11px 14px;
   border: 1px solid rgba(255,255,255,0.25);
   border-left: 3px solid #ffffff;
   background: rgba(255,255,255,0.05);
@@ -314,28 +335,27 @@ import Layout from "../layouts/Layout.astro";
 
 @keyframes ctaBlink {
   0%, 100% { opacity: 1; border-left-color: #ffffff; }
-  50%       { opacity: 0.55; border-left-color: rgba(255,255,255,0.3); }
+  50%       { opacity: 0.45; border-left-color: rgba(255,255,255,0.2); }
 }
 
-/* Separador analogy */
 .analogy-box {
   border-top: 1px solid rgba(255,255,255,0.12);
-  padding-top: 14px;
+  padding-top: 16px;
 }
 
 .handwritten-title {
   font-family: 'Caveat', cursive;
-  font-size: 26px;
+  font-size: 30px;
   font-weight: 700;
   color: #ffffff;
   display: block;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
   line-height: 1.1;
 }
 
 .analogy-body {
-  font-size: 13px;
-  line-height: 1.55;
+  font-size: 14px;
+  line-height: 1.6;
   color: #999999;
   margin: 0;
 }
@@ -391,15 +411,81 @@ import Layout from "../layouts/Layout.astro";
 
 .node-logo { width: 62%; height: 62%; object-fit: contain; }
 
-/* ─── NOTAS MANUSCRITAS ──────────────────────────── */
+/* ─── POPUPS ─────────────────────────────────────── */
+.node-popup {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 255px;
+  background: #ffffff;
+  border: 2px solid #000000;
+  padding: 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.25s ease;
+  color: #000000;
+  box-shadow: 8px 8px 0px rgba(0,0,0,0.15);
+  text-align: left;
+  z-index: 30;
+  overflow: hidden;
+}
+
+.node:hover .node-popup { opacity: 1; }
+.node-popup.popup-left  { right: 128%; }
+.node-popup.popup-right { left: 128%; }
+
+/* Cabecera del popup: deity + badge en una fila */
+.popup-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px 10px;
+  border-bottom: 2px solid #000000;
+  background: #000000;
+}
+
+/* Nombre del dios */
+.popup-deity {
+  font-family: 'Caveat', cursive;
+  font-size: 32px;
+  font-weight: 800;
+  font-style: italic;
+  color: #ffffff;
+  line-height: 1;
+}
+
+/* Badge AWS */
+.popup-aws-badge {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #000000;
+  background: #FF9900;
+  padding: 3px 8px;
+  border-radius: 2px;
+  white-space: nowrap;
+  align-self: center;
+}
+
+/* Cuerpo del popup */
+.popup-body {
+  font-size: 14px;
+  line-height: 1.55;
+  color: #222222;
+  margin: 0;
+  padding: 12px 16px 14px;
+}
+
+/* ─── NOTAS MANUSCRITAS DEL MAPA ─────────────────── */
 .note-text-block {
   display: flex; flex-direction: column;
-  text-align: left; width: 210px;
+  text-align: left; width: 220px;
 }
 
 .service-title-handwritten {
   font-family: 'Caveat', cursive;
-  font-size: 28px;
+  font-size: 30px;
   font-weight: 800;
   color: #ffffff;
   line-height: 1;
@@ -409,7 +495,7 @@ import Layout from "../layouts/Layout.astro";
 
 .map-handwritten-text {
   font-family: 'Caveat', cursive;
-  font-size: 22px;
+  font-size: 24px;
   font-weight: 500;
   color: #c5c5c5;
   line-height: 1.2;
@@ -425,35 +511,13 @@ import Layout from "../layouts/Layout.astro";
   pointer-events: none; gap: 14px;
 }
 
-.note-right-large-node  { right: -280px; flex-direction: row; }
-.note-right-medium-node { right: -268px; flex-direction: row; }
-.note-right-small-node  { right: -258px; flex-direction: row; }
+.note-right-large-node  { right: -290px; flex-direction: row; }
+.note-right-medium-node { right: -278px; flex-direction: row; }
+.note-right-small-node  { right: -268px; flex-direction: row; }
 
-.note-left-small-node { left: -258px; flex-direction: row-reverse; }
+.note-left-small-node { left: -268px; flex-direction: row-reverse; }
 .note-left-small-node .note-text-block { text-align: right; }
 .reverse-arrow { transform: rotate(180deg); }
-
-/* ─── POPUPS ─────────────────────────────────────── */
-.node-popup {
-  position: absolute; top: 50%;
-  transform: translateY(-50%);
-  width: 240px;
-  background: #ffffff;
-  border: 2px solid #000000;
-  padding: 16px;
-  opacity: 0;
-  pointer-events: none;
-  transition: all 0.25s ease;
-  font-size: 14px;
-  line-height: 1.5;
-  color: #000000;
-  box-shadow: 8px 8px 0px rgba(255,255,255,0.1);
-  text-align: left;
-  z-index: 30;
-}
-.node:hover .node-popup { opacity: 1; }
-.node-popup.popup-left  { right: 128%; }
-.node-popup.popup-right { left: 128%; }
 
 /* ─── TAMAÑOS DE NODO ────────────────────────────── */
 .node-large  { width: 170px; height: 170px; }
@@ -477,7 +541,7 @@ import Layout from "../layouts/Layout.astro";
 
 /* ─── RESPONSIVE ─────────────────────────────────── */
 @media (max-width: 1100px) {
-  .architecture-wrapper { min-height: 2400px; padding-top: 420px; }
+  .architecture-wrapper { min-height: 2400px; padding-top: 520px; }
   .architecture-wrapper::before { display: none; }
   .info-intro-card {
     position: absolute;
