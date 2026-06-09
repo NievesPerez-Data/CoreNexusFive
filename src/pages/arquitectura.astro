@@ -22,12 +22,25 @@ Pasa el cursor sobre los círculos para iluminar el halo de luz y revelar el pop
     </div>
   </div>
 
-  <div class="css-diagonal-line line-s3-iam"></div>
-  
-  <div class="css-diagonal-line line-lambda-buckets"></div>
-  
-  <div class="css-diagonal-line line-crawlers-buckets"></div>
+  <svg class="architecture-lines" viewBox="0 0 1000 1300" preserveAspectRatio="none">
+    <defs>
+      <linearGradient id="diagonal-pulse-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#ffffff" stop-opacity="0.2" />
+        <stop offset="50%" stop-color="#ffffff" stop-opacity="1" />
+        <stop offset="100%" stop-color="#ffffff" stop-opacity="0.2" />
+      </linearGradient>
+    </defs>
 
+    <line x1="500" y1="125" x2="680" y2="227" class="side-map-line static-base" />
+    <line x1="320" y1="572" x2="500" y2="395" class="side-map-line static-base" />
+    <line x1="680" y1="572" x2="500" y2="395" class="side-map-line static-base" />
+
+    <line x1="500" y1="125" x2="680" y2="227" class="side-map-line pulse-diagonal" />
+    
+    <line x1="320" y1="572" x2="500" y2="395" class="side-map-line pulse-diagonal" />
+    
+    <line x1="680" y1="572" x2="500" y2="395" class="side-map-line pulse-diagonal" />
+  </svg>
 
   <div class="node node-large node-s3">
     <div class="node-content">
@@ -219,43 +232,6 @@ Pasa el cursor sobre los círculos para iluminar el halo de luz y revelar el pop
   100% { background-position: 0% -200%; }
 }
 
-/* ================= LÍNEAS DIAGONALES CSS (Sincronizadas, estables y seguras) ================= */
-.css-diagonal-line {
-  position: absolute;
-  height: 4px;
-  z-index: 1;
-  transform-origin: top left;
-  background: linear-gradient(to right, 
-    rgba(255, 255, 255, 0.15), 
-    rgba(255, 255, 255, 0.8) 50%, 
-    rgba(255, 255, 255, 0.15)
-  );
-  background-size: 200% 100%;
-  animation: solidPulseFlow 3s linear infinite;
-}
-
-/* Coordenadas calculadas matemáticamente desde el centro de cada nodo */
-.line-s3-iam {
-  top: 125px;
-  left: 50%;
-  width: 205px;
-  transform: rotate(29.5deg);
-}
-
-.line-lambda-buckets {
-  top: 572px;
-  left: 32%;
-  width: 252px;
-  transform: rotate(-44.5deg);
-}
-
-.line-crawlers-buckets {
-  top: 572px;
-  left: 68%;
-  width: 252px;
-  transform: rotate(-135.5deg);
-}
-
 /* NAVBAR */
 .map-navigation-bar {
   display: flex;
@@ -280,6 +256,44 @@ Pasa el cursor sobre los círculos para iluminar el halo de luz y revelar el pop
 .info-intro-card p { font-size: 13px; line-height: 1.4; color: #222; margin: 0 0 10px 0; }
 .analogy-box { border-top: 1px solid #ddd; padding-top: 8px; }
 .analogy-box .handwritten-title { font-family: 'Caveat', cursive; font-size: 24px; font-weight: 700; color: #000; }
+
+/* SVG PARA RAMAS LATERALES */
+.architecture-lines { 
+  position: absolute; 
+  top: 0;
+  left: 0;
+  width: 100%; 
+  height: 100%; 
+  pointer-events: none; 
+  z-index: 2;
+}
+
+/* BASE ESTÁNDAR DE LAS LÍNEAS DEL MAPA */
+.side-map-line { 
+  fill: none; 
+  stroke-width: 4px; 
+}
+
+/* Líneas base estáticas que dan el tono tenue de fondo */
+.static-base {
+  stroke: rgba(255, 255, 255, 0.15);
+}
+
+/* EFECTO PULSO SEGURO MEDIANTE DASH DISPLACEMENT (Sincronizado a 3s con la línea central) */
+.pulse-diagonal {
+  stroke: url(#diagonal-pulse-gradient);
+  stroke-dasharray: 60 120;
+  animation: svgPulseFlow 3s linear infinite;
+}
+
+@keyframes svgPulseFlow {
+  0% {
+    stroke-dashoffset: 180;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
 
 /* NODOS CONCEPTUALES */
 .node { position: absolute; left: 50%; transform: translateX(-50%); z-index: 5; cursor: pointer; }
@@ -383,12 +397,12 @@ Pasa el cursor sobre los círculos para iluminar el halo de luz y revelar el pop
 @media (max-width: 1100px) {
   .architecture-wrapper { min-height: 2400px; padding-top: 300px; }
   .architecture-wrapper::before { display: none; }
-  .css-diagonal-line { display: none; }
   .info-intro-card { position: absolute; top: 20px; left: 50%; transform: translateX(-50%); width: 85%; }
   .node { left: 50% !important; transform: translateX(-50%) !important; }
   .node-side-left { top: 1260px !important; }
   .node-side-right { top: 1480px !important; }
   .node-final { top: 1700px !important; }
   .map-side-note { display: none; }
+  .architecture-lines { display: none; }
 }
 </style>
