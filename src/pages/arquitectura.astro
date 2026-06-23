@@ -75,7 +75,7 @@ import Layout from "../layouts/Layout.astro";
 
     <div class="node node-small node-side-right node-iam">
       <div class="node-content">
-        <img src="/hefesto.png" alt="IAM" class="node-logo" />
+        <img src="/athena.png" alt="IAM" class="node-logo" />
       </div>
       <div class="node-popup popup-left">
         <div class="popup-header">
@@ -121,7 +121,7 @@ import Layout from "../layouts/Layout.astro";
 
     <div class="node node-small node-side-left node-lambda">
       <div class="node-content">
-        <img src="/hefesto.png" alt="Lambda" class="node-logo" />
+        <img src="/athena.png" alt="Lambda" class="node-logo" />
       </div>
       <div class="node-popup popup-right">
         <div class="popup-header">
@@ -167,7 +167,7 @@ import Layout from "../layouts/Layout.astro";
 
     <div class="node node-large node-glue">
       <div class="node-content">
-        <img src="/hefesto.png" alt="Glue" class="node-logo" />
+        <img src="/athena.png" alt="Glue" class="node-logo" />
       </div>
       <div class="node-popup popup-left">
         <div class="popup-header">
@@ -213,7 +213,7 @@ import Layout from "../layouts/Layout.astro";
 
     <div class="node node-small node-final">
       <div class="node-content">
-        <img src="/hefesto.png" alt="Demo" class="node-logo" />
+        <img src="/athena.png" alt="Demo" class="node-logo" />
       </div>
       <div class="node-popup popup-left">
         <div class="popup-header">
@@ -274,7 +274,6 @@ import Layout from "../layouts/Layout.astro";
 }
 
 /* ─── TARJETA INFO ─────────────────────────────────── */
-/* Bajada a 220px para dejar el logo completamente libre */
 .info-intro-card {
   position: absolute;
   top: 220px;
@@ -413,7 +412,7 @@ import Layout from "../layouts/Layout.astro";
 
 .node-logo { width: 62%; height: 62%; object-fit: contain; }
 
-/* ─── POPUPS — estética web: gris claro, tipografía limpia ── */
+/* ─── POPUPS ── */
 .node-popup {
   position: absolute;
   top: 50%;
@@ -436,7 +435,6 @@ import Layout from "../layouts/Layout.astro";
 .node-popup.popup-left  { right: 128%; }
 .node-popup.popup-right { left: 128%; }
 
-/* Cabecera: fondo gris muy oscuro, tipografía blanca */
 .popup-header {
   display: flex;
   align-items: center;
@@ -446,7 +444,6 @@ import Layout from "../layouts/Layout.astro";
   background: #222222;
 }
 
-/* Nombre del dios en Caveat blanco */
 .popup-deity {
   font-family: 'Caveat', cursive;
   font-size: 32px;
@@ -456,7 +453,6 @@ import Layout from "../layouts/Layout.astro";
   line-height: 1;
 }
 
-/* Badge neutro */
 .popup-aws-badge {
   font-size: 10px;
   font-weight: 700;
@@ -470,7 +466,6 @@ import Layout from "../layouts/Layout.astro";
   align-self: center;
 }
 
-/* Cuerpo popup: fondo gris claro como la web */
 .popup-body {
   font-size: 14px;
   line-height: 1.55;
@@ -480,7 +475,7 @@ import Layout from "../layouts/Layout.astro";
   background: #f4f4f4;
 }
 
-/* ─── NOTAS MANUSCRITAS DEL MAPA ─────────────────── */
+/* ─── NOTAS MANUSCRITAS ─────────────────────────── */
 .note-text-block {
   display: flex; flex-direction: column;
   text-align: left; width: 220px;
