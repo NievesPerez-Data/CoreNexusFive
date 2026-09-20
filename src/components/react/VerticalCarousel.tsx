@@ -11,8 +11,8 @@ interface VerticalCarouselProps {
   basePath?: string;
   scrollSpeed?: number; // px per step
   interval?: number; // ms per step
-  linkIndex?: number; // posición (1-indexada) que se convierte en enlace, ej: 2 = "city2"
-  linkHref?: string; // ruta relativa a la base del sitio, ej: "blog/creacion-buckets-s3"
+  linkIndex?: number; // posición (1-indexada) que se convierte en enlace
+  linkHref?: string; // ruta relativa
 }
 
 const VerticalCarousel: React.FC<VerticalCarouselProps> = ({
@@ -31,14 +31,11 @@ const VerticalCarousel: React.FC<VerticalCarouselProps> = ({
   const x = useMotionValue(0);
   const [isMobile, setIsMobile] = useState(false);
 
-  // Base real del sitio (ej: "/CoreNexusFive/"). Si se pasa basePath se respeta ese,
-  // si no, se usa la que Astro inyecta en build según `base` de astro.config.mjs.
   const siteBase = (basePath ?? import.meta.env.BASE_URL ?? "/").replace(/\/?$/, "/");
   const assetUrl = (file: string) => `${siteBase}assets/${file}`;
   const linkUrl = linkHref ? `${siteBase}${linkHref.replace(/^\//, "")}` : null;
 
   useEffect(() => {
-    // Detecta si es mobile
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 768);
     };
@@ -50,8 +47,7 @@ const VerticalCarousel: React.FC<VerticalCarouselProps> = ({
   }, []);
 
   useEffect(() => {
-    // Genera nombres determinísticos de /public/assets (servidos como {base}assets/*)
-    const MAX_AVAILABLE = 6; // número de archivos cityN.webp disponibles en public/assets
+    const MAX_AVAILABLE = 6;
     const count = Math.min(Math.max(0, imageCount), MAX_AVAILABLE);
     const prepared: ImageData[] = Array.from({ length: count }, (_, i) => {
       const index = i + 1;
@@ -65,7 +61,6 @@ const VerticalCarousel: React.FC<VerticalCarouselProps> = ({
   }, [imageCount]);
 
   useEffect(() => {
-    // reinicia posición al cambiar imágenes o velocidad
     y.set(0);
     x.set(0);
     lastTsRef.current = null;
@@ -77,32 +72,30 @@ const VerticalCarousel: React.FC<VerticalCarouselProps> = ({
     if (!container || !content || images.length === 0) return;
 
     const pixelsPerSecond = (scrollSpeed * 1000) / Math.max(1, interval);
-    const distance = (pixelsPerSecond * delta) / 1000; // px por frame
+    const distance = (pixelsPerSecond * delta) / 1000;
 
     if (isMobile) {
-      // Scroll horizontal en mobile
       const maxScroll = Math.max(
         0,
         content.scrollWidth - container.clientWidth,
       );
       if (maxScroll <= 0) return;
 
-      let nextX = x.get() - distance; // desplazamiento hacia la izquierda
+      let nextX = x.get() - distance;
       if (Math.abs(nextX) >= maxScroll - 1) {
-        nextX = 0; // reinicio de bucle
+        nextX = 0;
       }
       x.set(nextX);
     } else {
-      // Scroll vertical en desktop
       const maxScroll = Math.max(
         0,
         content.scrollHeight - container.clientHeight,
       );
       if (maxScroll <= 0) return;
 
-      let nextY = y.get() - distance; // desplazamiento hacia arriba
+      let nextY = y.get() - distance;
       if (Math.abs(nextY) >= maxScroll - 1) {
-        nextY = 0; // reinicio de bucle
+        nextY = 0;
       }
       y.set(nextY);
     }
@@ -139,14 +132,22 @@ const VerticalCarousel: React.FC<VerticalCarouselProps> = ({
         {images.map(({ file, alt }, index) => {
           const url = assetUrl(file);
           const isLinkSlot = linkUrl && index + 1 === linkIndex;
+          const isFirstSlide = index === 0;
 
-          const picture = (
+          // Si es el primer slot (city1), inserta el iframe HTML interactivo
+          const mediaContent = isFirstSlide ? (
+            <div className="w-full h-full max-h-[80vh] max-w-[90vw] md:max-w-full aspect-video flex items-center justify-center overflow-hidden rounded-lg shadow-2xl">
+              <iframe
+                src={assetUrl("ochoretratos.html")}
+                title="Ocho retratos"
+                className="w-full h-full border-none pointer-events-auto"
+                loading="eager"
+              />
+            </div>
+          ) : (
             <picture>
-              {/* Mobile: solo 400w (suficiente para ~90vw en móviles) */}
               <source media="(max-width: 768px)" srcSet={url} type="image/webp" />
-              {/* Desktop: 800w (suficiente para max-h-[80vh]) */}
               <source media="(min-width: 769px)" srcSet={url} type="image/webp" />
-              {/* Fallback */}
               <img
                 src={url}
                 alt={isLinkSlot ? "Fase 1: Creación de Buckets S3" : alt}
@@ -162,7 +163,7 @@ const VerticalCarousel: React.FC<VerticalCarouselProps> = ({
           return (
             <div
               key={index}
-              className="relative flex grow justify-center h-full min-w-screen md:w-full md:min-w-0 md:h-auto"
+              className="relative flex grow justify-center items-center h-full min-w-screen md:w-full md:min-w-0 md:h-auto"
             >
               {isLinkSlot ? (
                 <a
@@ -170,13 +171,13 @@ const VerticalCarousel: React.FC<VerticalCarouselProps> = ({
                   className="relative flex justify-center items-center group"
                   aria-label="Ir al post: Fase 1, Creación de Buckets S3"
                 >
-                  {picture}
+                  {mediaContent}
                   <span className="pointer-events-none absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/70 text-white text-xs uppercase tracking-wide px-3 py-1.5 opacity-0 group-hover:opacity-100 transition-opacity">
                     Blog · Fase 1: Creación de Buckets S3
                   </span>
                 </a>
               ) : (
-                picture
+                mediaContent
               )}
             </div>
           );
