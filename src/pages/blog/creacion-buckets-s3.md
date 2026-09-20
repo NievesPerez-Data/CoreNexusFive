@@ -5,6 +5,8 @@ pubDate: "May 26 2026"
 heroImage: "/city1.webp"
 ---
 
+import "./creacion-buckets-s3.css";
+
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="crossorigin" />
 <link href="https://fonts.googleapis.com/css2?family=Caveat:wght=700&display=swap" rel="stylesheet" />
@@ -78,48 +80,3 @@ Seguridad y Buenas Prácticas
 </div>
 </div>
 </section>
-
-<style>{`
-.text-block-container {
-  max-width: 450px;
-  width: 100%;
-  position: relative;
-  box-sizing: border-box;
-}
-.block-clean-relative { position: relative; }
-.block-card {
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  padding: 35px 35px;
-  position: relative;
-  background-color: #ffffff;
-}
-.featured-card {
-  border: 2px solid #000000 !important;
-  box-shadow: 10px 10px 0px rgba(0, 0, 0, 0.08);
-}
-.video-wrapper-large {
-  position: relative;
-  padding-bottom: 56.25%;
-  height: 0;
-  overflow: hidden;
-  border: 2px solid #000000;
-  box-shadow: 10px 10px 0px rgba(0, 0, 0, 0.08);
-  background-color: #000000;
-  width: 100%;
-}
-.embedded-video {
-  position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;
-}
-.side-note {
-  position: absolute; top: 50%; transform: translateY(-50%); right: -240px; width: 210px; display: flex; flex-direction: column; align-items: flex-start; pointer-events: none;
-}
-.marker-arrow { width: 70px; margin-left: -20px; overflow: visible; }
-.handwritten-text {
-  font-family: 'Caveat', cursive; font-size: 34px; font-weight: 700; color: #000000; line-height: 0.85; padding-left: 10px; transform: rotate(-1deg); display: block;
-}
-@media (max-width: 950px) {
-  .side-note { position: relative; right: 0; top: 0; width: 100%; margin-top: 20px; transform: none; align-items: center; }
-  .marker-arrow { margin-left: 0; transform: rotate(90deg); width: 35px; }
-  .handwritten-text { text-align: center; padding-left: 0; }
-}
-`}</style>
