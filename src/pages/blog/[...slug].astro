@@ -1,130 +1,190 @@
 ---
+import { getCollection, render } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
 
-export function getStaticPaths() {
-  const posts = import.meta.glob(
-    "../../content/blog/*.mdx",
-    {
-      eager: true,
-      import: "default",
+export async function getStaticPaths() {
+  const posts = await getCollection("blog");
+
+  return posts.map((post) => ({
+    params: {
+      slug: post.id,
     },
-  );
-
-  return Object.entries(posts).map(
-    ([filePath, component]) => {
-      const fileName =
-        filePath.split("/").pop() ?? "";
-
-      const slug = fileName.replace(
-        /\.mdx$/,
-        "",
-      );
-
-      return {
-        params: {
-          slug,
-        },
-        props: {
-          component,
-        },
-      };
+    props: {
+      post,
     },
-  );
+  }));
 }
 
-const {
-  component: Post,
-} = Astro.props;
+const { post } = Astro.props;
+
+const { Content } = await render(post);
 ---
 
 <Layout
-  title="Blog | Core Nexus Five"
-  description="Proceso de construcción de la arquitectura de datos en AWS."
+  title={post.data.title}
+  description={post.data.description}
 >
-  <main class="blog-page">
-    <article class="blog-article">
-      <Post />
+  <main class="blog-post">
+
+    <header class="blog-post-header">
+      <p class="blog-post-label">
+        DOCUMENTACIÓN TÉCNICA
+      </p>
+
+      <h1>
+        {post.data.title}
+      </h1>
+
+      <p class="blog-post-description">
+        {post.data.description}
+      </p>
+
+      <p class="blog-post-date">
+        {post.data.pubDate.toLocaleDateString("es-ES", {
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+        })}
+      </p>
+    </header>
+
+    <article class="blog-post-content">
+      <Content />
     </article>
+
+    <div class="blog-post-back">
+      <a href="/CoreNexusFive/blog/">
+        ← Volver a Documentación Técnica
+      </a>
+    </div>
+
   </main>
 </Layout>
 
 <style>
-  .blog-page {
+  .blog-post {
     width: 100%;
     min-height: 100vh;
     background: #f7f6f3;
-    padding: 80px 24px 100px;
+    padding: 100px 24px;
   }
 
-  .blog-article {
+  .blog-post-header {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto 70px;
+  }
+
+  .blog-post-label {
+    margin: 0 0 15px;
+    font-size: 0.75rem;
+    letter-spacing: 0.16em;
+    font-weight: 600;
+    color: #777;
+  }
+
+  .blog-post-header h1 {
+    margin: 0;
+    font-size: clamp(2.5rem, 7vw, 6rem);
+    line-height: 0.95;
+    font-weight: 800;
+    text-transform: uppercase;
+    font-style: italic;
+  }
+
+  .blog-post-description {
+    max-width: 750px;
+    margin-top: 30px;
+    font-size: 1.15rem;
+    line-height: 1.7;
+    color: #555;
+  }
+
+  .blog-post-date {
+    margin-top: 20px;
+    font-size: 0.85rem;
+    color: #777;
+  }
+
+  .blog-post-content {
     width: 100%;
     max-width: 900px;
     margin: 0 auto;
-    color: #141312;
-  }
-
-  .blog-article :global(h1) {
-    font-size: clamp(2.2rem, 5vw, 4rem);
-    line-height: 1.05;
-    margin-bottom: 30px;
-    font-weight: 700;
-  }
-
-  .blog-article :global(h2) {
-    font-size: 2rem;
-    margin-top: 55px;
-    margin-bottom: 20px;
-  }
-
-  .blog-article :global(h3) {
-    font-size: 1.4rem;
-    margin-top: 35px;
-    margin-bottom: 15px;
-  }
-
-  .blog-article :global(p) {
     font-size: 1.05rem;
     line-height: 1.8;
-    margin-bottom: 22px;
   }
 
-  .blog-article :global(img) {
+  .blog-post-content :global(h1) {
+    font-size: 2.5rem;
+    margin: 60px 0 25px;
+  }
+
+  .blog-post-content :global(h2) {
+    font-size: 2rem;
+    margin: 55px 0 20px;
+  }
+
+  .blog-post-content :global(h3) {
+    font-size: 1.4rem;
+    margin: 40px 0 15px;
+  }
+
+  .blog-post-content :global(p) {
+    margin: 0 0 25px;
+  }
+
+  .blog-post-content :global(ul),
+  .blog-post-content :global(ol) {
+    margin: 20px 0 30px 25px;
+  }
+
+  .blog-post-content :global(img) {
     display: block;
-    max-width: 100%;
+    width: 100%;
     height: auto;
-    margin: 35px auto;
+    margin: 40px auto;
     border-radius: 8px;
   }
 
-  .blog-article :global(pre) {
+  .blog-post-content :global(pre) {
     overflow-x: auto;
-    padding: 20px;
-    border-radius: 8px;
+    padding: 25px;
+    margin: 35px 0;
     background: #111;
-    color: #f5f5f5;
-    margin: 30px 0;
+    color: #fff;
+    border-radius: 8px;
   }
 
-  .blog-article :global(code) {
+  .blog-post-content :global(code) {
     font-family: monospace;
   }
 
-  .blog-article :global(a) {
-    color: inherit;
+  .blog-post-content :global(blockquote) {
+    margin: 35px 0;
+    padding-left: 25px;
+    border-left: 3px solid #111;
+    font-style: italic;
+  }
+
+  .blog-post-content :global(a) {
+    color: #111;
     text-decoration: underline;
     text-underline-offset: 4px;
   }
 
-  .blog-article :global(ul),
-  .blog-article :global(ol) {
-    margin: 20px 0 30px 25px;
-    line-height: 1.8;
+  .blog-post-back {
+    width: 100%;
+    max-width: 900px;
+    margin: 70px auto 0;
   }
 
-  .blog-article :global(blockquote) {
-    border-left: 4px solid #141312;
-    padding-left: 20px;
-    margin: 30px 0;
-    font-style: italic;
+  .blog-post-back a {
+    color: #111;
+    text-decoration: none;
+    font-size: 0.9rem;
+  }
+
+  .blog-post-back a:hover {
+    text-decoration: underline;
   }
 </style>
