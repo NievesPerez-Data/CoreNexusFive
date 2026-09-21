@@ -9,10 +9,10 @@ interface ImageData {
 interface VerticalCarouselProps {
   imageCount: number;
   basePath?: string;
-  scrollSpeed?: number; // px per step
-  interval?: number; // ms per step
-  linkIndex?: number; // posición (1-indexada) que se convierte en enlace
-  linkHref?: string; // ruta relativa
+  scrollSpeed?: number;
+  interval?: number;
+  linkIndex?: number;
+  linkHref?: string;
 }
 
 const VerticalCarousel: React.FC<VerticalCarouselProps> = ({
@@ -31,9 +31,16 @@ const VerticalCarousel: React.FC<VerticalCarouselProps> = ({
   const x = useMotionValue(0);
   const [isMobile, setIsMobile] = useState(false);
 
-  const siteBase = (basePath ?? import.meta.env.BASE_URL ?? "/").replace(/\/?$/, "/");
+  const siteBase = (basePath ?? import.meta.env.BASE_URL ?? "/").replace(
+    /\/?$/,
+    "/",
+  );
+
   const assetUrl = (file: string) => `${siteBase}assets/${file}`;
-  const linkUrl = linkHref ? `${siteBase}${linkHref.replace(/^\//, "")}` : null;
+
+  const linkUrl = linkHref
+    ? `${siteBase}${linkHref.replace(/^\//, "")}`
+    : null;
 
   useEffect(() => {
     const checkMobile = () => {
@@ -49,13 +56,18 @@ const VerticalCarousel: React.FC<VerticalCarouselProps> = ({
   useEffect(() => {
     const MAX_AVAILABLE = 6;
     const count = Math.min(Math.max(0, imageCount), MAX_AVAILABLE);
-    const prepared: ImageData[] = Array.from({ length: count }, (_, i) => {
-      const index = i + 1;
-      return {
-        file: `city${index}.webp`,
-        alt: `City artwork ${index}`,
-      };
-    });
+
+    const prepared: ImageData[] = Array.from(
+      { length: count },
+      (_, i) => {
+        const index = i + 1;
+
+        return {
+          file: `city${index}.webp`,
+          alt: `City artwork ${index}`,
+        };
+      },
+    );
 
     setImages(prepared);
   }, [imageCount]);
@@ -69,9 +81,12 @@ const VerticalCarousel: React.FC<VerticalCarouselProps> = ({
   useAnimationFrame((t, delta) => {
     const container = carouselRef.current;
     const content = contentRef.current;
+
     if (!container || !content || images.length === 0) return;
 
-    const pixelsPerSecond = (scrollSpeed * 1000) / Math.max(1, interval);
+    const pixelsPerSecond =
+      (scrollSpeed * 1000) / Math.max(1, interval);
+
     const distance = (pixelsPerSecond * delta) / 1000;
 
     if (isMobile) {
@@ -79,24 +94,30 @@ const VerticalCarousel: React.FC<VerticalCarouselProps> = ({
         0,
         content.scrollWidth - container.clientWidth,
       );
+
       if (maxScroll <= 0) return;
 
       let nextX = x.get() - distance;
+
       if (Math.abs(nextX) >= maxScroll - 1) {
         nextX = 0;
       }
+
       x.set(nextX);
     } else {
       const maxScroll = Math.max(
         0,
         content.scrollHeight - container.clientHeight,
       );
+
       if (maxScroll <= 0) return;
 
       let nextY = y.get() - distance;
+
       if (Math.abs(nextY) >= maxScroll - 1) {
         nextY = 0;
       }
+
       y.set(nextY);
     }
   });
@@ -107,7 +128,7 @@ const VerticalCarousel: React.FC<VerticalCarouselProps> = ({
         {["#d991c2", "#9869b8", "#6756cc"].map((color, index) => (
           <div
             key={index}
-            className={`w-5 h-5 rounded-full animate-bounce`}
+            className="w-5 h-5 rounded-full animate-bounce"
             style={{
               backgroundColor: color,
               animationDelay: `${index * 0.1}s`,
@@ -119,7 +140,10 @@ const VerticalCarousel: React.FC<VerticalCarouselProps> = ({
   }
 
   return (
-    <div className="h-screen w-full overflow-hidden relative" ref={carouselRef}>
+    <div
+      className="h-screen w-full overflow-hidden relative"
+      ref={carouselRef}
+    >
       <motion.div
         ref={contentRef}
         style={{
@@ -131,26 +155,100 @@ const VerticalCarousel: React.FC<VerticalCarouselProps> = ({
       >
         {images.map(({ file, alt }, index) => {
           const url = assetUrl(file);
-          const isLinkSlot = linkUrl && index + 1 === linkIndex;
+
+          const isLinkSlot =
+            linkUrl && index + 1 === linkIndex;
+
           const isFirstSlide = index === 0;
 
-          // Si es el primer slot (city1), inserta el iframe HTML interactivo
+          /*
+           * PRIMER SLIDE:
+           * iframe compacto + enlace a Arquitectura
+           */
           const mediaContent = isFirstSlide ? (
-            <div className="w-full h-full max-h-[80vh] max-w-[90vw] md:max-w-full aspect-video flex items-center justify-center overflow-hidden rounded-lg shadow-2xl">
+            <div
+              className="
+                relative
+                w-full
+                max-w-[1080px]
+                h-[220px]
+                overflow-hidden
+                rounded-lg
+                bg-black
+                shadow-2xl
+              "
+            >
               <iframe
                 src={assetUrl("ochoretratos.html")}
                 title="Ocho retratos"
-                className="w-full h-full border-none pointer-events-auto"
+                className="absolute inset-0 w-full h-full border-none pointer-events-none"
                 loading="eager"
               />
+
+              {/* Texto sobre la imagen */}
+              <div
+                className="
+                  absolute
+                  bottom-0
+                  left-0
+                  right-0
+                  z-10
+                  px-5
+                  py-3
+                  bg-gradient-to-t
+                  from-black/85
+                  via-black/45
+                  to-transparent
+                  pointer-events-none
+                "
+              >
+                <span
+                  className="
+                    text-white
+                    text-sm
+                    md:text-base
+                    font-medium
+                    tracking-wide
+                  "
+                >
+                  Stack &amp; Data Flow
+                </span>
+              </div>
+
+              {/* Capa clicable */}
+              {isLinkSlot && linkUrl && (
+                <a
+                  href={linkUrl}
+                  className="absolute inset-0 z-20"
+                  aria-label="Stack & Data Flow"
+                >
+                  <span className="sr-only">
+                    Stack &amp; Data Flow
+                  </span>
+                </a>
+              )}
             </div>
           ) : (
             <picture>
-              <source media="(max-width: 768px)" srcSet={url} type="image/webp" />
-              <source media="(min-width: 769px)" srcSet={url} type="image/webp" />
+              <source
+                media="(max-width: 768px)"
+                srcSet={url}
+                type="image/webp"
+              />
+
+              <source
+                media="(min-width: 769px)"
+                srcSet={url}
+                type="image/webp"
+              />
+
               <img
                 src={url}
-                alt={isLinkSlot ? "Fase 1: Creación de Buckets S3" : alt}
+                alt={
+                  isLinkSlot
+                    ? "Fase 1: Creación de Buckets S3"
+                    : alt
+                }
                 loading={index === 0 ? "eager" : "lazy"}
                 decoding="async"
                 draggable={false}
@@ -163,16 +261,46 @@ const VerticalCarousel: React.FC<VerticalCarouselProps> = ({
           return (
             <div
               key={index}
-              className="relative flex grow justify-center items-center h-full min-w-screen md:w-full md:min-w-0 md:h-auto"
+              className="
+                relative
+                flex
+                grow
+                justify-center
+                items-center
+                h-full
+                min-w-screen
+                md:w-full
+                md:min-w-0
+                md:h-auto
+              "
             >
-              {isLinkSlot ? (
+              {isLinkSlot && !isFirstSlide ? (
                 <a
-                  href={linkUrl}
+                  href={linkUrl ?? "#"}
                   className="relative flex justify-center items-center group"
                   aria-label="Ir al post: Fase 1, Creación de Buckets S3"
                 >
                   {mediaContent}
-                  <span className="pointer-events-none absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/70 text-white text-xs uppercase tracking-wide px-3 py-1.5 opacity-0 group-hover:opacity-100 transition-opacity">
+
+                  <span
+                    className="
+                      pointer-events-none
+                      absolute
+                      bottom-4
+                      left-1/2
+                      -translate-x-1/2
+                      bg-black/70
+                      text-white
+                      text-xs
+                      uppercase
+                      tracking-wide
+                      px-3
+                      py-1.5
+                      opacity-0
+                      group-hover:opacity-100
+                      transition-opacity
+                    "
+                  >
                     Blog · Fase 1: Creación de Buckets S3
                   </span>
                 </a>
