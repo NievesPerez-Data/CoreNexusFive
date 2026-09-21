@@ -1,32 +1,15 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 
-/*
- * Carga automáticamente todas las publicaciones MDX
- * que estén dentro de:
- *
- * src/content/blog/
- */
-const posts = import.meta.glob(
-  "../../content/blog/*.mdx",
-  {
-    eager: true,
-    import: "default",
-  },
-);
-
-/*
- * Generamos una página para cada archivo .mdx
- *
- * Ejemplo:
- *
- * creacion-buckets-s3.mdx
- *
- * se convierte en:
- *
- * /blog/creacion-buckets-s3/
- */
 export function getStaticPaths() {
+  const posts = import.meta.glob(
+    "../../content/blog/*.mdx",
+    {
+      eager: true,
+      import: "default",
+    },
+  );
+
   return Object.entries(posts).map(
     ([filePath, component]) => {
       const fileName =
@@ -59,11 +42,9 @@ const {
   description="Proceso de construcción de la arquitectura de datos en AWS."
 >
   <main class="blog-page">
-
     <article class="blog-article">
       <Post />
     </article>
-
   </main>
 </Layout>
 
