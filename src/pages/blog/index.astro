@@ -1,45 +1,196 @@
 ---
-import Layout from "@/layouts/Layout.astro";
-import HomeMob from "@/components/HomeMob.astro";
-import VerticalCarousel from "@/components/react/VerticalCarousel";
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+
+const posts = await getCollection("blog");
+
+const sortedPosts = posts.sort(
+  (a, b) =>
+    b.data.pubDate.getTime() -
+    a.data.pubDate.getTime(),
+);
 ---
 
-<Layout>
-  <div class="md:flex-row flex flex-col md:gap-10 relative md:pr-72 grow">
+<Layout
+  title="Documentación Técnica | Core Nexus Five"
+  description="Documentación técnica del proyecto Core Nexus Five y del proceso de construcción del pipeline de datos en AWS."
+>
+  <main class="documentation">
 
-    <div class="relative hidden md:flex flex-1">
-      
-      <h2 class="max-w-96 text-9xl absolute text-center z-20 -right-32 bottom-1/3 font-fugaz uppercase leading-[0.8]">
-        Core Nexus Five
-      </h2>
+    <section class="documentation-header">
 
-      <p class="text-xl absolute bottom-1/4 right-0 z-20 font-bold uppercase tracking-tight">
-        Proyecto Final AWS Re/Start
+      <p class="eyebrow">
+        CORE NEXUS FIVE · AWS
       </p>
 
-      <p class="text-lg absolute bottom-[20%] right-0 z-20 italic font-light">
-        Nexo entre infraestructura y analítica de datos.
+      <h1>
+        Documentación Técnica
+      </h1>
+
+      <p class="intro">
+        Registro del proceso de construcción de la arquitectura
+        de datos, desde la infraestructura inicial hasta el
+        procesamiento y análisis de la información.
       </p>
 
-      <a 
-        href="https://nievesperez-data.github.io/" 
-        class="text-xl absolute bottom-[15%] right-0 z-20 border-b-2 border-black pb-1"
-      >
-        Nieves Pérez
-      </a>
+    </section>
 
-    </div>
+    <section class="documentation-list">
 
-    <HomeMob />
+      {
+        sortedPosts.map((post, index) => (
+          <a
+            href={`/CoreNexusFive/blog/${post.id}/`}
+            class="documentation-item"
+          >
 
-    <div class="min-h-screen md:w-1/2 -mt-50 md:mt-0 max-h-full overflow-hidden">
-      <VerticalCarousel
-        client:visible
-        imageCount={10}
-        linkIndex={2}
-        linkHref="blog/creacion-buckets-s3"
-      />
-    </div>
+            <div class="documentation-number">
+              {String(index + 1).padStart(2, "0")}
+            </div>
 
-  </div>
+            <div class="documentation-info">
+
+              <p class="documentation-category">
+                FASE {index + 1}
+              </p>
+
+              <h2>
+                {post.data.title}
+              </h2>
+
+              <p class="documentation-description">
+                {post.data.description}
+              </p>
+
+            </div>
+
+            <div class="documentation-arrow">
+              →
+            </div>
+
+          </a>
+        ))
+      }
+
+    </section>
+
+  </main>
 </Layout>
+
+<style>
+  .documentation {
+    width: 100%;
+    min-height: 100vh;
+    background: #f7f6f3;
+    padding: 110px 24px 120px;
+  }
+
+  .documentation-header {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto 80px;
+  }
+
+  .eyebrow {
+    margin: 0 0 20px;
+    font-size: 0.75rem;
+    letter-spacing: 0.18em;
+    font-weight: 700;
+    color: #777;
+  }
+
+  .documentation-header h1 {
+    margin: 0;
+    font-size: clamp(3rem, 8vw, 7rem);
+    line-height: 0.9;
+    text-transform: uppercase;
+    font-weight: 800;
+    font-style: italic;
+  }
+
+  .intro {
+    max-width: 700px;
+    margin-top: 35px;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #555;
+  }
+
+  .documentation-list {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    border-top: 1px solid #ccc;
+  }
+
+  .documentation-item {
+    display: grid;
+    grid-template-columns: 80px 1fr 50px;
+    align-items: center;
+    gap: 30px;
+    padding: 35px 0;
+    border-bottom: 1px solid #ccc;
+    color: #111;
+    text-decoration: none;
+    transition: padding 0.25s ease;
+  }
+
+  .documentation-item:hover {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  .documentation-number {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #888;
+  }
+
+  .documentation-category {
+    margin: 0 0 8px;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    font-weight: 700;
+    color: #888;
+  }
+
+  .documentation-info h2 {
+    margin: 0;
+    font-size: clamp(1.5rem, 3vw, 2.4rem);
+    line-height: 1;
+    text-transform: uppercase;
+    font-style: italic;
+  }
+
+  .documentation-description {
+    max-width: 650px;
+    margin: 12px 0 0;
+    color: #666;
+    line-height: 1.6;
+  }
+
+  .documentation-arrow {
+    font-size: 1.8rem;
+    text-align: right;
+  }
+
+  @media (max-width: 700px) {
+
+    .documentation {
+      padding: 80px 20px;
+    }
+
+    .documentation-item {
+      grid-template-columns: 45px 1fr 25px;
+      gap: 15px;
+    }
+
+    .documentation-info h2 {
+      font-size: 1.35rem;
+    }
+
+    .documentation-description {
+      font-size: 0.9rem;
+    }
+  }
+</style>
