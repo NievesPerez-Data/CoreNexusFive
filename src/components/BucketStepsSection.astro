@@ -14,39 +14,33 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, ""); // sin barra final
 
 <div class="steps-grid">
 
-  <div class="step-card size-lg">
+  <div class="step-card">
     <img src={`${base}/paso1.crear.png`} alt="Paso 1: Crear el bucket" />
-    <div class="scrim"></div>
     <div class="tag"><span class="rule"></span><span class="num">01</span><span class="label">Crear</span></div>
   </div>
 
-  <div class="step-card size-md">
+  <div class="step-card">
     <img src={`${base}/paso2.control.png`} alt="Paso 2: Control y cifrado" />
-    <div class="scrim"></div>
     <div class="tag"><span class="rule"></span><span class="num">02</span><span class="label">Control y cifrado</span></div>
   </div>
 
-  <div class="step-card size-md">
+  <div class="step-card">
     <img src={`${base}/paso3.acceso-publico.png`} alt="Paso 3: Acceso público" />
-    <div class="scrim"></div>
     <div class="tag"><span class="rule"></span><span class="num">03</span><span class="label">Acceso público</span></div>
   </div>
 
-  <div class="step-card size-lg">
+  <div class="step-card">
     <img src={`${base}/paso4.crear-carpetas.png`} alt="Paso 4: Crear carpetas" />
-    <div class="scrim"></div>
     <div class="tag"><span class="rule"></span><span class="num">04</span><span class="label">Crear carpetas</span></div>
   </div>
 
-  <div class="step-card size-lg">
+  <div class="step-card">
     <img src={`${base}/paso5.crear-carpetas.png`} alt="Paso 5: Crear subcarpetas" />
-    <div class="scrim"></div>
     <div class="tag"><span class="rule"></span><span class="num">05</span><span class="label">Subcarpetas</span></div>
   </div>
 
-  <div class="step-card size-md">
+  <div class="step-card">
     <img src={`${base}/paso6.subir-archivos.png`} alt="Paso 6: Subir archivos" />
-    <div class="scrim"></div>
     <div class="tag"><span class="rule"></span><span class="num">06</span><span class="label">Subir archivos</span></div>
   </div>
 
@@ -97,65 +91,58 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, ""); // sin barra final
   .ts-label { font-size: 11px; line-height: 1.4; color: #6b6862; text-align: center; white-space: nowrap; }
   .ts-label .n { display: block; color: #141312; font-weight: 600; margin-bottom: 2px; }
 
-  /* ---- Cuadrícula: horizontales, tamaños distintos, imagen completa ---- */
+  /* ---- Cuadrícula: 2 columnas, se sale del ancho del texto, sin fondo ---- */
   .steps-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 18px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
     margin: 0 0 48px;
+
+    /* rompe el ancho del texto: ocupa el viewport completo, con un máximo */
+    width: 100vw;
+    max-width: 1400px;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0 32px;
+    box-sizing: border-box;
+  }
+
+  @media (max-width: 700px) {
+    .steps-grid {
+      grid-template-columns: 1fr;
+      padding: 0 18px;
+    }
   }
 
   .step-card {
     position: relative;
-    border: 1px solid rgba(17,17,17,0.14);
+    border: 1px solid rgba(17,17,17,0.16);
     overflow: hidden;
-    background: #fff; /* se funde con capturas de fondo claro */
-    aspect-ratio: 4 / 3;
-    flex-grow: 1;
+    line-height: 0; /* evita el hueco bajo la imagen */
     cursor: pointer;
-  }
-  .step-card.size-lg { flex-basis: 58%; }
-  .step-card.size-md { flex-basis: 38%; }
-
-  @media (max-width: 700px) {
-    .step-card.size-lg,
-    .step-card.size-md { flex-basis: 100%; }
   }
 
   .step-card img {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: contain;   /* se ve la captura entera, sin recortes */
-    object-position: top;  /* la parte superior de la captura queda junto al degradado */
     display: block;
-    margin: 0;
+    width: 100%;
+    height: auto;           /* respeta las proporciones reales de cada captura */
     transition: transform 0.5s ease;
   }
   .step-card:hover img {
-    transform: scale(1.08); /* zoom al pasar el cursor */
+    transform: scale(1.05); /* zoom al pasar el cursor */
   }
 
-  /* franja oscura fija arriba: el número siempre se lee, sea cual sea el fondo de la captura */
-  .scrim {
-    position: absolute;
-    inset: 0 0 auto 0;
-    height: 46%;
-    background: linear-gradient(180deg, rgba(10,9,8,0.65) 0%, rgba(10,9,8,0) 100%);
-    pointer-events: none;
-    z-index: 2;
-  }
-
+  /* número en negro, directamente sobre la imagen, sin caja ni degradado */
   .tag {
     position: absolute;
     top: 14px; left: 14px;
-    z-index: 3;
-    color: #f5f4f0;
+    z-index: 2;
+    color: #141312;
   }
-  .tag .rule { display: block; width: 22px; height: 1px; background: #f5f4f0; margin-bottom: 8px; }
-  .tag .num { display: block; font-size: 30px; font-weight: 600; line-height: 1; letter-spacing: -0.02em; }
-  .tag .label { display: block; font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(245,244,240,0.85); margin-top: 4px; }
+  .tag .rule { display: block; width: 22px; height: 1px; background: #141312; margin-bottom: 8px; }
+  .tag .num { display: block; font-size: 32px; font-weight: 700; line-height: 1; letter-spacing: -0.02em; }
+  .tag .label { display: block; font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(20,19,18,0.85); margin-top: 4px; }
 
   /* ---- Recuadro de la demo: centrado, sin subrayado, misma tipografía que architecture.astro ---- */
   .demo-cta-row {
