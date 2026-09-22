@@ -1,5 +1,6 @@
 ---
 // src/components/BucketStepsSection.astro
+const base = import.meta.env.BASE_URL.replace(/\/$/, ""); // sin barra final
 ---
 
 <div class="steps-timeline">
@@ -14,38 +15,38 @@
 <div class="steps-grid">
 
   <div class="step-card secondary" data-align="right" data-shape="vert">
-    <img src="/paso1.crear.png" alt="Paso 1: Crear el bucket" />
+    <img src={`${base}/paso1.crear.png`} alt="Paso 1: Crear el bucket" />
     <div class="tag"><span class="rule"></span><span class="num">01</span><span class="label">Crear</span></div>
   </div>
 
   <div class="step-card" data-shape="horiz">
-    <img src="/paso2.control.png" alt="Paso 2: Control y cifrado" />
+    <img src={`${base}/paso2.control.png`} alt="Paso 2: Control y cifrado" />
     <div class="tag"><span class="rule"></span><span class="num">02</span><span class="label">Control y cifrado</span></div>
   </div>
 
   <div class="step-card secondary" data-align="left" data-shape="vert">
-    <img src="/paso3.acceso-publico.png" alt="Paso 3: Acceso público" />
+    <img src={`${base}/paso3.acceso-publico.png`} alt="Paso 3: Acceso público" />
     <div class="tag"><span class="rule"></span><span class="num">03</span><span class="label">Acceso público</span></div>
   </div>
 
   <div class="step-card" data-shape="horiz">
-    <img src="/paso4.crear-carpetas.png" alt="Paso 4: Crear carpetas" />
+    <img src={`${base}/paso4.crear-carpetas.png`} alt="Paso 4: Crear carpetas" />
     <div class="tag"><span class="rule"></span><span class="num">04</span><span class="label">Crear carpetas</span></div>
   </div>
 
   <div class="step-card secondary" data-align="right" data-shape="vert">
-    <img src="/paso5.crear-carpetas.png" alt="Paso 5: Crear subcarpetas" />
+    <img src={`${base}/paso5.crear-carpetas.png`} alt="Paso 5: Crear subcarpetas" />
     <div class="tag"><span class="rule"></span><span class="num">05</span><span class="label">Subcarpetas</span></div>
   </div>
 
   <div class="step-card" data-shape="horiz">
-    <img src="/paso6.subir-archivos.png" alt="Paso 6: Subir archivos" />
+    <img src={`${base}/paso6.subir-archivos.png`} alt="Paso 6: Subir archivos" />
     <div class="tag"><span class="rule"></span><span class="num">06</span><span class="label">Subir archivos</span></div>
   </div>
 
 </div>
 
-<a href="/about" class="demo-cta-row">
+<a href={`${base}/about`} class="demo-cta-row">
   <p class="demo-cta-box">
     ↗ Accede a la demo y sigue los pasos en vídeo.
   </p>
