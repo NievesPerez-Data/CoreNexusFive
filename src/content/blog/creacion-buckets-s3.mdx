@@ -1,3 +1,42 @@
+---
+title: "Creación de Buckets S3"
+description: "Proceso de creación y configuración de los buckets S3 utilizados en Core Nexus Five."
+pubDate: 2026-09-21
+---
+
+# Creación de Buckets S3
+
+## Introducción
+
+En esta fase se configura la capa de almacenamiento sobre Amazon S3 que servirá como base para el flujo de datos de Core Nexus Five.
+
+El objetivo es establecer una estructura organizada para almacenar los diferentes datos que posteriormente serán procesados y analizados por los servicios de AWS.
+
+## Amazon S3
+
+Amazon S3 proporciona el almacenamiento de objetos utilizado como punto de entrada y persistencia de los datos.
+
+La arquitectura utiliza los buckets como contenedores sobre los que posteriormente trabajarán otros servicios de AWS.
+
+## Creación del bucket
+
+El primer paso consiste en crear el bucket que actuará como espacio de almacenamiento.
+
+La configuración debe mantener una estructura coherente con el flujo de datos definido para el proyecto.
+
+## Estructura de los datos
+
+La organización del almacenamiento permite separar las diferentes etapas del proceso.
+
+Por ejemplo:
+
+```text
+S3
+├── datos/
+├── procesados/
+└── resultados/
+```
+
 ## Pasos del proceso
 
 <div class="steps-timeline">
