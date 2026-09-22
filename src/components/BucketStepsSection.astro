@@ -14,32 +14,32 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, ""); // sin barra final
 
 <div class="steps-grid">
 
-  <div class="step-card secondary" data-align="right" data-shape="vert">
+  <div class="step-card size-lg">
     <img src={`${base}/paso1.crear.png`} alt="Paso 1: Crear el bucket" />
     <div class="tag"><span class="rule"></span><span class="num">01</span><span class="label">Crear</span></div>
   </div>
 
-  <div class="step-card" data-shape="horiz">
+  <div class="step-card size-md">
     <img src={`${base}/paso2.control.png`} alt="Paso 2: Control y cifrado" />
     <div class="tag"><span class="rule"></span><span class="num">02</span><span class="label">Control y cifrado</span></div>
   </div>
 
-  <div class="step-card secondary" data-align="left" data-shape="vert">
+  <div class="step-card size-md">
     <img src={`${base}/paso3.acceso-publico.png`} alt="Paso 3: Acceso público" />
     <div class="tag"><span class="rule"></span><span class="num">03</span><span class="label">Acceso público</span></div>
   </div>
 
-  <div class="step-card" data-shape="horiz">
+  <div class="step-card size-lg">
     <img src={`${base}/paso4.crear-carpetas.png`} alt="Paso 4: Crear carpetas" />
     <div class="tag"><span class="rule"></span><span class="num">04</span><span class="label">Crear carpetas</span></div>
   </div>
 
-  <div class="step-card secondary" data-align="right" data-shape="vert">
+  <div class="step-card size-lg">
     <img src={`${base}/paso5.crear-carpetas.png`} alt="Paso 5: Crear subcarpetas" />
     <div class="tag"><span class="rule"></span><span class="num">05</span><span class="label">Subcarpetas</span></div>
   </div>
 
-  <div class="step-card" data-shape="horiz">
+  <div class="step-card size-md">
     <img src={`${base}/paso6.subir-archivos.png`} alt="Paso 6: Subir archivos" />
     <div class="tag"><span class="rule"></span><span class="num">06</span><span class="label">Subir archivos</span></div>
   </div>
@@ -58,6 +58,8 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, ""); // sin barra final
 </a>
 
 <style>
+  @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;700;800&display=swap');
+
   .steps-timeline {
     position: relative;
     display: flex;
@@ -89,54 +91,65 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, ""); // sin barra final
   .ts-label { font-size: 11px; line-height: 1.4; color: #6b6862; text-align: center; white-space: nowrap; }
   .ts-label .n { display: block; color: #141312; font-weight: 600; margin-bottom: 2px; }
 
+  /* ---- Cuadrícula: todas horizontales, tamaños distintos, imagen completa ---- */
   .steps-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    display: flex;
+    flex-wrap: wrap;
     gap: 18px;
-    align-items: start;
-    margin: 0 0 44px;
+    margin: 0 0 48px;
   }
-  @media (max-width: 900px) { .steps-grid { grid-template-columns: repeat(2, 1fr); } }
-  @media (max-width: 560px) { .steps-grid { grid-template-columns: 1fr; } }
 
   .step-card {
-    border: 1px solid rgba(17,17,17,0.14);
     position: relative;
+    border: 1px solid rgba(17,17,17,0.14);
     overflow: hidden;
-    background: #0e0d0c;
+    background: #f1f0ec; /* fondo claro: sin bandas negras en capturas con fondo blanco */
+    aspect-ratio: 4 / 3;
+    flex-grow: 1;
   }
-  .step-card[data-shape="vert"]  { aspect-ratio: 3 / 4.4; }
-  .step-card[data-shape="horiz"] { aspect-ratio: 4 / 3; }
+  .step-card.size-lg { flex-basis: 58%; }
+  .step-card.size-md { flex-basis: 38%; }
 
-  .step-card.secondary { width: 66%; }
-  .step-card.secondary[data-align="left"]  { margin-right: auto; }
-  .step-card.secondary[data-align="right"] { margin-left: auto; }
+  @media (max-width: 700px) {
+    .step-card.size-lg,
+    .step-card.size-md { flex-basis: 100%; }
+  }
 
   .step-card img {
-    position: absolute; inset: 0;
-    width: 100%; height: 100%;
-    object-fit: cover;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* se ve la captura entera, sin recortes */
     display: block;
     margin: 0;
   }
 
+  /* etiqueta en negro, legible sobre capturas de fondo claro */
   .tag {
     position: absolute;
-    top: 18px; left: 18px;
+    top: 14px; left: 14px;
     z-index: 4;
-    color: #f5f4f0;
+    color: #141312;
   }
-  .tag .rule { display: block; width: 22px; height: 1px; background: #f5f4f0; margin-bottom: 8px; }
+  .tag .rule { display: block; width: 22px; height: 1px; background: #141312; margin-bottom: 8px; }
   .tag .num { display: block; font-size: 30px; font-weight: 600; line-height: 1; letter-spacing: -0.02em; }
-  .tag .label { display: block; font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(245,244,240,0.7); margin-top: 4px; }
+  .tag .label { display: block; font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(20,19,18,0.7); margin-top: 4px; }
 
+  /* ---- Recuadro de la demo: centrado, sin subrayado, misma tipografía que architecture.astro ---- */
   .demo-cta-row {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 18px;
-    margin: 48px 0 24px;
+    margin: 48px auto 24px;
+    max-width: 640px;
     flex-wrap: wrap;
-    text-decoration: none;
+    text-decoration: none !important;
+  }
+  .demo-cta-row,
+  .demo-cta-row * {
+    text-decoration: none !important;
   }
 
   .demo-cta-box {
@@ -146,6 +159,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, ""); // sin barra final
     color: #141312;
     line-height: 1.3;
     margin: 0;
+    text-align: center;
     max-width: 460px;
     padding: 13px 16px;
     border: 1px solid rgba(17,17,17,0.14);
@@ -176,7 +190,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, ""); // sin barra final
   }
 
   @media (max-width: 640px) {
-    .demo-cta-row { flex-direction: column; align-items: flex-start; gap: 6px; }
+    .demo-cta-row { flex-direction: column; gap: 10px; }
     .demo-marker-arrow { display: none; }
   }
 
