@@ -16,31 +16,37 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, ""); // sin barra final
 
   <div class="step-card size-lg">
     <img src={`${base}/paso1.crear.png`} alt="Paso 1: Crear el bucket" />
+    <div class="scrim"></div>
     <div class="tag"><span class="rule"></span><span class="num">01</span><span class="label">Crear</span></div>
   </div>
 
   <div class="step-card size-md">
     <img src={`${base}/paso2.control.png`} alt="Paso 2: Control y cifrado" />
+    <div class="scrim"></div>
     <div class="tag"><span class="rule"></span><span class="num">02</span><span class="label">Control y cifrado</span></div>
   </div>
 
   <div class="step-card size-md">
     <img src={`${base}/paso3.acceso-publico.png`} alt="Paso 3: Acceso público" />
+    <div class="scrim"></div>
     <div class="tag"><span class="rule"></span><span class="num">03</span><span class="label">Acceso público</span></div>
   </div>
 
   <div class="step-card size-lg">
     <img src={`${base}/paso4.crear-carpetas.png`} alt="Paso 4: Crear carpetas" />
+    <div class="scrim"></div>
     <div class="tag"><span class="rule"></span><span class="num">04</span><span class="label">Crear carpetas</span></div>
   </div>
 
   <div class="step-card size-lg">
     <img src={`${base}/paso5.crear-carpetas.png`} alt="Paso 5: Crear subcarpetas" />
+    <div class="scrim"></div>
     <div class="tag"><span class="rule"></span><span class="num">05</span><span class="label">Subcarpetas</span></div>
   </div>
 
   <div class="step-card size-md">
     <img src={`${base}/paso6.subir-archivos.png`} alt="Paso 6: Subir archivos" />
+    <div class="scrim"></div>
     <div class="tag"><span class="rule"></span><span class="num">06</span><span class="label">Subir archivos</span></div>
   </div>
 
@@ -91,7 +97,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, ""); // sin barra final
   .ts-label { font-size: 11px; line-height: 1.4; color: #6b6862; text-align: center; white-space: nowrap; }
   .ts-label .n { display: block; color: #141312; font-weight: 600; margin-bottom: 2px; }
 
-  /* ---- Cuadrícula: todas horizontales, tamaños distintos, imagen completa ---- */
+  /* ---- Cuadrícula: horizontales, tamaños distintos, imagen completa ---- */
   .steps-grid {
     display: flex;
     flex-wrap: wrap;
@@ -103,9 +109,10 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, ""); // sin barra final
     position: relative;
     border: 1px solid rgba(17,17,17,0.14);
     overflow: hidden;
-    background: #f1f0ec; /* fondo claro: sin bandas negras en capturas con fondo blanco */
+    background: #fff; /* se funde con capturas de fondo claro */
     aspect-ratio: 4 / 3;
     flex-grow: 1;
+    cursor: pointer;
   }
   .step-card.size-lg { flex-basis: 58%; }
   .step-card.size-md { flex-basis: 38%; }
@@ -120,21 +127,35 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, ""); // sin barra final
     inset: 0;
     width: 100%;
     height: 100%;
-    object-fit: contain; /* se ve la captura entera, sin recortes */
+    object-fit: contain;   /* se ve la captura entera, sin recortes */
+    object-position: top;  /* la parte superior de la captura queda junto al degradado */
     display: block;
     margin: 0;
+    transition: transform 0.5s ease;
+  }
+  .step-card:hover img {
+    transform: scale(1.08); /* zoom al pasar el cursor */
   }
 
-  /* etiqueta en negro, legible sobre capturas de fondo claro */
+  /* franja oscura fija arriba: el número siempre se lee, sea cual sea el fondo de la captura */
+  .scrim {
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 46%;
+    background: linear-gradient(180deg, rgba(10,9,8,0.65) 0%, rgba(10,9,8,0) 100%);
+    pointer-events: none;
+    z-index: 2;
+  }
+
   .tag {
     position: absolute;
     top: 14px; left: 14px;
-    z-index: 4;
-    color: #141312;
+    z-index: 3;
+    color: #f5f4f0;
   }
-  .tag .rule { display: block; width: 22px; height: 1px; background: #141312; margin-bottom: 8px; }
+  .tag .rule { display: block; width: 22px; height: 1px; background: #f5f4f0; margin-bottom: 8px; }
   .tag .num { display: block; font-size: 30px; font-weight: 600; line-height: 1; letter-spacing: -0.02em; }
-  .tag .label { display: block; font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(20,19,18,0.7); margin-top: 4px; }
+  .tag .label { display: block; font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(245,244,240,0.85); margin-top: 4px; }
 
   /* ---- Recuadro de la demo: centrado, sin subrayado, misma tipografía que architecture.astro ---- */
   .demo-cta-row {
