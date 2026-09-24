@@ -55,6 +55,19 @@ const VerticalCarousel: React.FC<VerticalCarouselProps> = ({
    */
   const architectureUrl = `${siteBase}arquitectura/`;
 
+  /*
+   * ENLACE DEL SLIDE "BUCKETS"
+   *
+   * El slide que usa:
+   * assets/buckets.jpg
+   *
+   * lleva al post del blog:
+   * /CoreNexusFive/blog/creacion-buckets-s3/
+   *
+   * Si la ruta real de tu post es distinta, cambia solo esta línea.
+   */
+  const bucketsPostUrl = `${siteBase}blog/creacion-buckets-s3/`;
+
   useEffect(() => {
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 768);
@@ -77,7 +90,7 @@ const VerticalCarousel: React.FC<VerticalCarouselProps> = ({
       MAX_AVAILABLE,
     );
 
-    const prepared: ImageData[] = Array.from(
+    const cityImages: ImageData[] = Array.from(
       { length: count },
       (_, i) => {
         const index = i + 1;
@@ -88,6 +101,17 @@ const VerticalCarousel: React.FC<VerticalCarouselProps> = ({
         };
       },
     );
+
+    /*
+     * SLIDE "BUCKETS"
+     *
+     * Se añade al final de la secuencia, aparte del
+     * conteo de imágenes de ciudad (no cuenta para MAX_AVAILABLE).
+     */
+    const prepared: ImageData[] = [
+      ...cityImages,
+      { file: "buckets.jpg", alt: "Creación de Buckets S3" },
+    ];
 
     setImages(prepared);
   }, [imageCount]);
@@ -215,6 +239,16 @@ const VerticalCarousel: React.FC<VerticalCarouselProps> = ({
               index === 0;
 
             /*
+             * SLIDE "BUCKETS"
+             *
+             * Identificado por su nombre de archivo,
+             * no por posición, para que no dependa
+             * de cuántas imágenes de ciudad haya.
+             */
+            const isBucketsSlide =
+              file === "buckets.jpg";
+
+            /*
              * CONTENIDO DEL ELEMENTO
              */
             const mediaContent =
@@ -300,6 +334,92 @@ const VerticalCarousel: React.FC<VerticalCarouselProps> = ({
                   >
                     <span className="sr-only">
                       Stack &amp; Data Flow
+                    </span>
+                  </a>
+                </div>
+              ) : isBucketsSlide ? (
+                <div
+                  className="
+                    relative
+                    w-full
+                    max-w-[1080px]
+                    h-[220px]
+                    overflow-hidden
+                    rounded-lg
+                    bg-black
+                    shadow-2xl
+                  "
+                >
+                  {/*
+                   * IMAGEN
+                   */}
+                  <img
+                    src={url}
+                    alt={alt}
+                    loading="lazy"
+                    decoding="async"
+                    draggable={false}
+                    fetchPriority="low"
+                    className="
+                      absolute
+                      inset-0
+                      w-full
+                      h-full
+                      object-cover
+                      pointer-events-none
+                    "
+                  />
+
+                  {/*
+                   * TEXTO SOBRE LA IMAGEN
+                   */}
+                  <div
+                    className="
+                      absolute
+                      bottom-0
+                      left-0
+                      right-0
+                      z-10
+                      px-5
+                      py-3
+                      bg-gradient-to-t
+                      from-black/90
+                      via-black/50
+                      to-transparent
+                      pointer-events-none
+                    "
+                  >
+                    <span
+                      className="
+                        text-white
+                        text-sm
+                        md:text-base
+                        font-medium
+                        tracking-wide
+                      "
+                    >
+                      Creación de Buckets S3
+                    </span>
+                  </div>
+
+                  {/*
+                   * CAPA CLICABLE
+                   *
+                   * Todo el bloque lleva al post del blog:
+                   * /CoreNexusFive/blog/creacion-buckets-s3/
+                   */}
+                  <a
+                    href={bucketsPostUrl}
+                    className="
+                      absolute
+                      inset-0
+                      z-20
+                      cursor-pointer
+                    "
+                    aria-label="Creación de Buckets S3"
+                  >
+                    <span className="sr-only">
+                      Creación de Buckets S3
                     </span>
                   </a>
                 </div>
