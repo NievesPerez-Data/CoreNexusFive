@@ -2,9 +2,18 @@
 import "@/styles/global.css";
 import BaseHead from "../components/BaseHead.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+import { getCollection } from "astro:content";
 import DeskNav from "@/components/react/DeskNav"; 
 import Footer from "@/components/Footer.astro";
 import miLogoPropio from "../../public/mi-logo-propio.png"; 
+
+const blogEntries = await getCollection("blog");
+const collectionEntries = await getCollection("collection");
+
+const middle = Math.ceil(blogEntries.length / 2);
+
+const blogCol1 = blogEntries.slice(0, middle);
+const blogCol2 = blogEntries.slice(middle);
 ---
 
 <!doctype html>
@@ -19,33 +28,41 @@ import miLogoPropio from "../../public/mi-logo-propio.png";
         margin: 0;
         padding: 0;
       }
+
       .container {
         max-width: 100%;
         margin: 0 auto;
       }
     </style>
   </head>
+
   <body class="flex flex-col items-center min-h-screen relative max-w-screen p-0 m-0">
     
     <DeskNav client:load />
 
-   <a
-  href="/CoreNexusFive/"
-  class="hidden md:block absolute top-6 left-8 cursor-pointer z-50 hover:scale-105 transition-transform"
-  aria-label="Ir a Project Overview"
->
-  <img 
-    src={miLogoPropio.src} 
-    alt="Logo Proyecto" 
-    class="h-50 w-auto object-contain mix-blend-multiply border-none p-0 bg-transparent shadow-none"
-  />
-</a>
+    <a
+      href="/CoreNexusFive/"
+      class="hidden md:block absolute top-6 left-8 cursor-pointer z-50 hover:scale-105 transition-transform"
+      aria-label="Ir a Project Overview"
+    >
+      <img 
+        src={miLogoPropio.src} 
+        alt="Logo Proyecto" 
+        class="h-50 w-auto object-contain mix-blend-multiply border-none p-0 bg-transparent shadow-none"
+      />
+    </a>
 
     <main
       class="container min-h-screen px-2 flex flex-col gap-10 overflow-hidden mx-auto relative pt-20 md:pt-0"
     >
       <slot />
     </main>
-    <Footer />
+
+    <Footer
+      blogCol1={blogCol1}
+      blogCol2={blogCol2}
+      collectionEntries={collectionEntries}
+    />
+
   </body>
 </html>
