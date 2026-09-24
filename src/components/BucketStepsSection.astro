@@ -168,8 +168,8 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, ""); // sin barra final
     color: #141312;
     line-height: 1.3;
     margin: 0;
-    text-align: center;
-    white-space: nowrap;
+    text-align: left;
+    max-width: 460px;
     padding: 13px 16px;
     border: 1px solid rgba(17,17,17,0.14);
     background: rgba(20,19,18,0.03);
@@ -184,6 +184,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, ""); // sin barra final
   .demo-marker-arrow {
     width: 60px;
     flex-shrink: 0;
+    align-self: center;
     overflow: visible;
     color: #141312;
   }
@@ -201,7 +202,6 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, ""); // sin barra final
   @media (max-width: 640px) {
     .demo-cta-row { flex-direction: column; gap: 10px; width: 100%; }
     .demo-marker-arrow { display: none; }
-    .demo-cta-box { white-space: normal; }
   }
 
   @media (max-width: 560px) {
